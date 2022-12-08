@@ -13,7 +13,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.3.0",
     "react-router-hash-link": "^2.4.3",
     "template-fullstack": "file:..",
     "toastify": "^2.0.1"
