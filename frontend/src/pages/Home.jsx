@@ -1,16 +1,25 @@
-import img1 from "@assets/photo-homepage.jpg";
+import img2 from "@assets/test1.jpg";
+import img3 from "@assets/test1-2.jpg";
+import icon1 from "@assets/main.png";
+import icon2 from "@assets/fusee.png";
+import icon3 from "@assets/sablier.png";
 
 export default function Home() {
   return (
     <div>
       <div className="relative">
-        <img alt="" src={img1} />
-        <h1 className="absolute top-4 left-4 text-lg font-bold text-pink bg-white/[.1] w-3/6">
+        <div className="block sm:hidden">
+          <img alt="" src={img2} />
+        </div>
+        <div className="hidden sm:block">
+          <img alt="" src={img3} />
+        </div>
+        <h1 className="absolute top-4 md:top-6 left-4 md:left-6 lg:text-5xl text-lg font-bold text-pink w-3/6">
           Nous cassons les codes du recrutement informatique
         </h1>
         <button
           type="button"
-          className="absolute shadow bg-darkPink bottom-4 left-1/2 -translate-x-1/2 bg-blue-500 hover:bg-pink text-white font-bold py-2 px-4 rounded-full"
+          className="absolute md:text-4xl bg-darkPink bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
         >
           S'inscrire
         </button>
@@ -35,8 +44,11 @@ export default function Home() {
         <h2 className="text-center text-white font-bold pt-4 text-2xl">
           La réussite d’un recrutement Externatic repose sur
         </h2>
-        <div className="mt-4 w-11/12 mx-auto">
-          <h3 className="text-white font-bold text-center">Notre proximité</h3>
+        <div className="mt-5 w-11/12 mx-auto">
+          <div className="flex space-x-16 items-center">
+            <img alt="icone mains" src={icon1} className="w-12" />
+            <h3 className="text-white font-bold ">Notre proximité</h3>
+          </div>
           <p className="text-white">
             L’expérience professionnelle est une chose. L’expérience de vie en
             est une autre. Alors nos consultants prennent le temps de faire
@@ -44,18 +56,24 @@ export default function Home() {
             parcours, les envies et les projets.
           </p>
         </div>
-        <div className="mt-4 w-11/12 mx-auto">
-          <h3 className="text-white font-bold text-center">
-            Notre performance
-          </h3>
+        <div className="mt-5 w-11/12 mx-auto">
+          <div className="flex space-x-16 items-center">
+            <img alt="icone fusée" src={icon2} className="w-12" />
+            <h3 className="text-white font-bold">Notre performance</h3>
+          </div>
           <p className="text-white">
             Notre réseau est une force et nous y travaillons sans relâche. Notre
             expérience nous permet d’identifier les vrais besoins d’une
             entreprise et de ceux qui la rejoignent.
           </p>
         </div>
-        <div className="mt-4 w-11/12 mx-auto">
-          <h3 className="text-white font-bold text-center">Notre durabilité</h3>
+        <div className="mt-5 w-11/12 mx-auto">
+          <div className="flex space-x-16 items-center">
+            <img alt="icone sablier" src={icon3} className="w-12" />
+            <h3 className="text-white font-bold text-center">
+              Notre durabilité
+            </h3>
+          </div>
           <p className="text-white pb-4">
             Notre challenge est de trouver l’équipe qui fonctionnera ensemble de
             manière professionnelle et personnelle, pour aller jusqu’au bout
@@ -64,6 +82,14 @@ export default function Home() {
             également à notre politique RSE.
           </p>
         </div>
+        <iframe
+          className="w-full aspect-video ..."
+          src="https://www.youtube.com/embed/BYmNVsS5J58"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       </div>
     </div>
   );
