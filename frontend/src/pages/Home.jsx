@@ -41,16 +41,18 @@ export default function Home() {
         </button>
       </div>
       <div className="mt-4 bg-darkPink">
-        <h2 className="text-center text-white font-bold pt-4 text-2xl">
+        <h2 className="text-center text-white font-bold pt-4 text-2xl md:text-3xl md:mb-10">
           La réussite d’un recrutement Externatic repose sur
         </h2>
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row md:pb-6">
           <div className="mt-5 w-11/12  md:w-96 mx-auto">
             <div className="flex space-x-16 items-center">
               <img alt="icone mains" src={icon1} className="w-12" />
-              <h3 className="text-white font-bold ">Notre proximité</h3>
+              <h3 className="text-white font-bold md:text-2xl">
+                Notre proximité
+              </h3>
             </div>
-            <p className="text-white md:mt-2">
+            <p className="text-white md:mt-2 md:text-2xl">
               L’expérience professionnelle est une chose. L’expérience de vie en
               est une autre. Alors nos consultants prennent le temps de faire
               connaissance avec chaque personne, pour comprendre le contexte, le
@@ -60,9 +62,11 @@ export default function Home() {
           <div className="mt-5 w-11/12 md:w-96 mx-auto">
             <div className="flex space-x-16 items-center">
               <img alt="icone fusée" src={icon2} className="w-12" />
-              <h3 className="text-white font-bold">Notre performance</h3>
+              <h3 className="text-white font-bold md:text-2xl">
+                Notre performance
+              </h3>
             </div>
-            <p className="text-white md:mt-2">
+            <p className="text-white md:mt-2 md:text-2xl">
               Notre réseau est une force et nous y travaillons sans relâche.
               Notre expérience nous permet d’identifier les vrais besoins d’une
               entreprise et de ceux qui la rejoignent.
@@ -71,11 +75,11 @@ export default function Home() {
           <div className="mt-5 w-11/12 md:w-96 mx-auto">
             <div className="flex space-x-16 items-center">
               <img alt="icone sablier" src={icon3} className="w-12" />
-              <h3 className="text-white font-bold text-center">
+              <h3 className="text-white font-bold md:text-2xl">
                 Notre durabilité
               </h3>
             </div>
-            <p className="text-white pb-4 md:mt-2">
+            <p className="text-white pb-4 md:mt-2 md:text-2xl">
               Notre challenge est de trouver l’équipe qui fonctionnera ensemble
               de manière professionnelle et personnelle, pour aller jusqu’au
               bout d’un projet commun. Notre responsabilité vis-à-vis des
