@@ -1,4 +1,3 @@
-import img2 from "@assets/test1.jpg";
 import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
@@ -8,18 +7,12 @@ export default function Home() {
   return (
     <div>
       <div className="relative">
-        <div className="block sm:hidden">
-          <img alt="" src={img2} />
-        </div>
-        <div className="hidden sm:block">
+        <div className="">
           <img alt="" src={img3} />
         </div>
-        <h1 className="absolute top-4 md:top-6 left-4 md:left-6 lg:text-5xl text-lg font-bold text-pink w-3/6">
-          Nous cassons les codes du recrutement informatique
-        </h1>
         <button
           type="button"
-          className="absolute transition-colors duration-300 md:text-4xl bg-darkPink bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
+          className="absolute transition-colors duration-300 md:text-5xl bg-darkPink bottom-1/4 md:px-10 md:bottom-1/3 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
         >
           S'inscrire
         </button>
@@ -88,15 +81,15 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <iframe
-          className="w-full aspect-video ..."
-          src="https://www.youtube.com/embed/BYmNVsS5J58"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
       </div>
+      <iframe
+        className="w-full aspect-video mt-8"
+        src="https://www.youtube.com/embed/BYmNVsS5J58"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
     </div>
   );
 }
