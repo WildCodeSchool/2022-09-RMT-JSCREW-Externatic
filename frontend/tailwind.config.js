@@ -8,7 +8,13 @@ module.exports = {
       "pink": "#C91961",
       "darkPink": "#851342"
     },
-    extend: {},
+    extend: 
+    {
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'roboto':  ['Roboto', 'sans-serif']   
+      },
+    },
     colors: {
       black: "#404040",
       white: "#FFFFFF",
