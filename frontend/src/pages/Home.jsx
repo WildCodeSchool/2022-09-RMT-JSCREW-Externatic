@@ -44,8 +44,8 @@ export default function Home() {
         <h2 className="text-center text-white font-bold pt-4 text-2xl md:text-3xl md:mb-10">
           La réussite d’un recrutement Externatic repose sur
         </h2>
-        <div className="flex flex-col md:flex-row md:pb-6">
-          <div className="mt-5 w-11/12  md:w-96 mx-auto">
+        <div className="flex flex-col lg:flex-row md:pb-6">
+          <div className="mt-5 w-11/12  lg:w-96 mx-auto">
             <div className="flex space-x-16 items-center">
               <img alt="icone mains" src={icon1} className="w-12" />
               <h3 className="text-white font-bold md:text-2xl">
@@ -59,7 +59,7 @@ export default function Home() {
               parcours, les envies et les projets.
             </p>
           </div>
-          <div className="mt-5 w-11/12 md:w-96 mx-auto">
+          <div className="mt-5 w-11/12 lg:w-96 mx-auto">
             <div className="flex space-x-16 items-center">
               <img alt="icone fusée" src={icon2} className="w-12" />
               <h3 className="text-white font-bold md:text-2xl">
@@ -72,7 +72,7 @@ export default function Home() {
               entreprise et de ceux qui la rejoignent.
             </p>
           </div>
-          <div className="mt-5 w-11/12 md:w-96 mx-auto">
+          <div className="mt-5 w-11/12 lg:w-96 mx-auto">
             <div className="flex space-x-16 items-center">
               <img alt="icone sablier" src={icon3} className="w-12" />
               <h3 className="text-white font-bold md:text-2xl">
