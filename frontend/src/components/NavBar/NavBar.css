@@ -1,7 +1,18 @@
 .hideMenuNav {
-  display: none;
-  transform: translate(100%);
-  transition: 3s;
+  color: white;
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 420px;
+  height: 70vh;
+  top: 0;
+  background: #c91961;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 .showMenuNav {
   color: white;
@@ -17,6 +28,4 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition-property: left;
-  transition-duration: 2s;
 }

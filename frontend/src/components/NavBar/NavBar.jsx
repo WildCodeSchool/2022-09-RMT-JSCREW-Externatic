@@ -21,7 +21,7 @@ function NavBar() {
       </div>
       <div className="Menu justify-self-end -mt-7 mr-6">
         <button
-          className="burgerIcon space-y-2 hover:cursor-pointer"
+          className={`burgerIcon space-y-2 hover:cursor-pointer w-fit ${ !isNavOpen && "absolute top-0 right-0 px-8 py-4" }`}
           type="button"
           onClick={() => setIsNavOpen((prev) => !prev)}
         >
@@ -30,7 +30,7 @@ function NavBar() {
           <span className="block h-0.5 w-8 bg-darkPink" />
         </button>
 
-        <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+        <div className={`transform transition-all duration-700 ${isNavOpen ? "showMenuNav md:rounded-l-[200px]" : "hideMenuNav translate-x-[420px]"}`}>
           <button
             className="absolute top-0 right-0 px-8 py-4 hover:cursor-pointer"
             type="button"
