@@ -19,7 +19,7 @@ export default function Home() {
         </h1>
         <button
           type="button"
-          className="absolute md:text-4xl bg-darkPink bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
+          className="absolute transition-colors duration-300 md:text-4xl bg-darkPink bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
         >
           S'inscrire
         </button>
@@ -35,7 +35,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mt-4">Rejoins nous!</h2>
         <button
           type="button"
-          className="bg-white mt-4 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 rounded"
+          className="bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 rounded"
         >
           Voir plus
         </button>
