@@ -1,5 +1,7 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AllJobs from "@pages/AllJobs";
+import NavBar from "./components/NavBar/NavBar";
 
 import "./App.css";
 
@@ -11,8 +13,15 @@ function App() {
       <div>
         <AllJobs />
       </div>
+      <Router>
+        <div>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
-
 export default App;
