@@ -1,10 +1,10 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.entreprise
+  models.offre
     .findAll()
-    .then(([entreprises]) => {
-      res.send(entreprises);
+    .then(([offres]) => {
+      res.send(offres);
     })
     .catch((err) => {
       console.error(err);
