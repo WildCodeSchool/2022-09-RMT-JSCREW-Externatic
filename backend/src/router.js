@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const entrepriseControllers = require("./controllers/entrepriseControllers");
+const candidatControllers = require("./controllers/candidatControllers");
 
 // /*-------------exemple route------------------------*/
 // router.get("/items", itemControllers.browse);
@@ -12,5 +13,7 @@ const entrepriseControllers = require("./controllers/entrepriseControllers");
 // router.delete("/items/:id", itemControllers.destroy);
 
 router.get("/entreprises", entrepriseControllers.browse);
+
+router.post("/profil", candidatControllers.add);
 
 module.exports = router;
