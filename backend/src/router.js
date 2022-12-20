@@ -12,5 +12,5 @@ const entrepriseControllers = require("./controllers/entrepriseControllers");
 // router.delete("/items/:id", itemControllers.destroy);
 
 router.get("/entreprises", entrepriseControllers.browse);
-
+router.post("/entreprises",entrepriseControllers.add);
 module.exports = router;

@@ -12,6 +12,23 @@ const browse = (req, res) => {
     });
 };
 
+// create entreprise
+
+const add = (req, res) => {
+  const entreprise = req.body;
+
+  models.entreprise
+    .insert(entreprise)
+    .then(([result]) => {
+      res.location(`/entreprise/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
-  browse
+  browse,
+  add
 };
