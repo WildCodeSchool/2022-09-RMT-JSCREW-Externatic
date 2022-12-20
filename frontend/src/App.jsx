@@ -2,7 +2,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "@components/Footer/footer";
 import AllJobs from "@pages/AllJobs";
 import Entreprise from "@pages/BackOffice/Entreprise";
+
 import Profil from "@pages/Profil/Profil";
+
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar/NavBar";
 
