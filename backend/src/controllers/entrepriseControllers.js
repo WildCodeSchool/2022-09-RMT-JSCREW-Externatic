@@ -13,5 +13,5 @@ const browse = (req, res) => {
 };
 
 module.exports = {
-  browse
+  browse,
 };
