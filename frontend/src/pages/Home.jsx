@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
+import Card from "@components/UI/Card";
 import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
 import icon3 from "@assets/sablier.png";
 
+
 export default function Home() {
+
+  const [randomData, setRandomData] = useState([])
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/rand`)
+      .then((res) => res.json())
+      .then((data) => setRandomData(data))
+      .catch((err) => console.error(err));
+  }, [])
   return (
     <div>
       <div className="relative">
@@ -26,6 +38,9 @@ export default function Home() {
           il n'y a pas d'algorithmes, de profils ou de liens automatisés.{" "}
         </p>
         <h2 className="text-3xl font-bold text-center mt-4">Rejoins nous!</h2>
+        <div className="lg:flex lg:w-full">
+          {randomData.map((offre) => <Card key={offre.id} offre={offre} />)}
+        </div>
         <button
           type="button"
           className="bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 rounded"
