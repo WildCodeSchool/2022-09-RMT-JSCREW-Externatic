@@ -14,6 +14,10 @@ const candidatControllers = require("./controllers/candidatControllers");
 
 router.get("/entreprises", entrepriseControllers.browse);
 
+
 router.post("/profil", candidatControllers.add);
+
+router.get("/offres/rand", offresControllers.random);
+
 
 module.exports = router;
