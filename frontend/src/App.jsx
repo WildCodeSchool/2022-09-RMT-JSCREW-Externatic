@@ -3,8 +3,8 @@ import Footer from "@components/Footer/footer";
 import AllJobs from "@pages/AllJobs";
 import Entreprise from "@pages/BackOffice/Entreprise";
 import Quisommesnous from "@pages/quisommesnous/qui";
-import Home from "./pages/Home";
-import NavBar from "./components/NavBar/NavBar";
+import Home from "@pages/Home";
+import NavBar from "@components/NavBar/NavBar";
 
 import "./App.css";
 
