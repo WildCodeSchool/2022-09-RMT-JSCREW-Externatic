@@ -1,8 +1,20 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
+import "react-toastify/dist/ReactToastify.css";
+
+const toastifyConfig = {
+  position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+};
 
 function Profil() {
-  const [message, setMessage] = useState("");
   const [profil, setProfil] = useState({
     profil_photo: "Null",
     profil_nom: "",
@@ -18,7 +30,7 @@ function Profil() {
     profil_description: "",
     profil_metier: "",
     profil_telephone: "",
-    profil_dateInscription: "2022-12-19",
+    profil_dateInscription: "2022-12-20",
     profil_dateDisponibilite: "",
     profil_connexion_id: "3",
   });
@@ -34,10 +46,16 @@ function Profil() {
     apiConnexion
       .post("/profil", profil)
       .then(() => {
-        setMessage("Profil succesfully added");
+        toast.success(
+          `Bonjour ${profil.profil_nom} ${profil.profil_prenom} votre inscription a bien été enregistrée.`,
+          toastifyConfig
+        );
       })
       .catch((err) => {
-        setMessage("Profil not added");
+        toast.error(
+          `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
+          toastifyConfig
+        );
         console.warn(err);
       });
   };
@@ -72,6 +90,7 @@ function Profil() {
           </div>
           <div className="w-full md:w-1/2 px-3 mt-6 mb-3 md:mb-0">
             <input
+              required
               className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="grid-age"
               type="text"
@@ -83,6 +102,7 @@ function Profil() {
           </div>
           <div className="w-full md:w-1/2 px-3 md:mt-6">
             <input
+              required
               className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-telephone"
               type="text"
@@ -96,6 +116,7 @@ function Profil() {
         <div className="flex flex-wrap md:grid md:grid-rows-3 md:grid-flow-col -mx-3 mt-6">
           <div className=" row-span-3 w-full pl-3 mr-4 md:mr-10">
             <textarea
+              required
               className="appearance-none block mb-6 w-full bg-[#D9D9D9] text-gray-700 rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-adresse"
               type="text"
@@ -108,6 +129,7 @@ function Profil() {
           </div>
           <div className=" col-span-1 w-full px-4">
             <input
+              required
               className="appearance-none block w-full md:mx-4 bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-ville"
               type="text"
@@ -119,6 +141,7 @@ function Profil() {
           </div>
           <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
             <input
+              required
               className="appearance-none block w-full md:ml-2 bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-pays"
               type="text"
@@ -130,6 +153,7 @@ function Profil() {
           </div>
           <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
             <input
+              required
               className="appearance-none block w-full md:ml-2 bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-pays"
               type="text"
@@ -157,6 +181,7 @@ function Profil() {
         <div className="flex flex-wrap -mx-3 mb-2">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <input
+              required
               className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-dispo"
               type="text"
@@ -168,6 +193,7 @@ function Profil() {
           </div>
           <div className="w-full md:w-1/2 px-3">
             <input
+              required
               className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-poste"
               type="text"
@@ -181,6 +207,7 @@ function Profil() {
         <div className="flex flex-wrap -mx-3 mb-2 mt-6">
           <div className="w-full px-3 mb-6 md:mb-0">
             <textarea
+              required
               className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-description"
               type="text"
@@ -192,16 +219,27 @@ function Profil() {
             />
           </div>
         </div>
-        <div className="boutonvalid flex justify-center mt-5">
+        <div className="buttonvalid flex justify-center mt-5">
           <button
             className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
             type="submit"
           >
             Valider
           </button>
-          <h3>{message}</h3>
         </div>
       </form>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

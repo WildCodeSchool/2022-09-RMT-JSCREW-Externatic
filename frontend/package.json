@@ -16,8 +16,8 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-router-hash-link": "^2.4.3",
-    "template-fullstack": "file:..",
-    "toastify": "^2.0.1"
+    "react-toastify": "^9.1.1",
+    "template-fullstack": "file:.."
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",

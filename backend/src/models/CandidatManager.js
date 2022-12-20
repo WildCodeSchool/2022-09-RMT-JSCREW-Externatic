@@ -5,26 +5,26 @@ class CandidatManager extends AbstractManager {
     super({ table: "candidat" });
   }
 
-  insert(Candidat) {
+  insert(candidat) {
     return this.connection.query(
       `insert into ${this.table} (photo, nom, prenom, age, adresse, code_postal, ville, pays, email, cv, description, metier, telephone, dateInscription, dateDisponibilite, connexion_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        Candidat.profil_photo,
-        Candidat.profil_nom,
-        Candidat.profil_prenom,
-        Candidat.profil_age,
-        Candidat.profil_adresse,
-        Candidat.profil_code_postal,
-        Candidat.profil_ville,
-        Candidat.profil_pays,
-        Candidat.profil_email,
-        Candidat.profil_cv,
-        Candidat.profil_description,
-        Candidat.profil_metier,
-        Candidat.profil_telephone,
-        Candidat.profil_dateInscription,
-        Candidat.profil_dateDisponibilite,
-        Candidat.profil_connexion_id,
+        candidat.profil_photo,
+        candidat.profil_nom,
+        candidat.profil_prenom,
+        candidat.profil_age,
+        candidat.profil_adresse,
+        candidat.profil_code_postal,
+        candidat.profil_ville,
+        candidat.profil_pays,
+        candidat.profil_email,
+        candidat.profil_cv,
+        candidat.profil_description,
+        candidat.profil_metier,
+        candidat.profil_telephone,
+        candidat.profil_dateInscription,
+        candidat.profil_dateDisponibilite,
+        candidat.profil_connexion_id,
       ]
     );
   }
