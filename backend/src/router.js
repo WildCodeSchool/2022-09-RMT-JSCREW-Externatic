@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-
+const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 
@@ -14,10 +14,8 @@ const candidatControllers = require("./controllers/candidatControllers");
 
 router.get("/entreprises", entrepriseControllers.browse);
 
-
 router.post("/profil", candidatControllers.add);
 
 router.get("/offres/rand", offresControllers.random);
-
 
 module.exports = router;

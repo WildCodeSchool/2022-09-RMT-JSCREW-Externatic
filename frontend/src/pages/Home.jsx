@@ -5,17 +5,15 @@ import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
 import icon3 from "@assets/sablier.png";
 
-
 export default function Home() {
-
-  const [randomData, setRandomData] = useState([])
+  const [randomData, setRandomData] = useState([]);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/rand`)
       .then((res) => res.json())
       .then((data) => setRandomData(data))
       .catch((err) => console.error(err));
-  }, [])
+  }, []);
   return (
     <div>
       <div className="relative">
@@ -30,16 +28,18 @@ export default function Home() {
         </button>
       </div>
       <div className="w-5/6 mx-auto  mt-8 flex flex-col items-center">
-        <h1 className="text-xl font-bold md:text-3xl">
+        <h1 className="text-xl font-bold md:text-3xl text-center">
           Externatic est une plateforme créée pour les métiers de l'informatique
         </h1>
         <p className="md:text-2xl text-center mt-4">
-          ici, chaque visage a un nom. Nos consultants ne sont pas des robots,
+          Ici, chaque visage a un nom. Nos consultants ne sont pas des robots,
           il n'y a pas d'algorithmes, de profils ou de liens automatisés.{" "}
         </p>
         <h2 className="text-3xl font-bold text-center mt-4">Rejoins nous!</h2>
         <div className="lg:flex lg:w-full">
-          {randomData.map((offre) => <Card key={offre.id} offre={offre} />)}
+          {randomData.map((offre) => (
+            <Card key={offre.id} offre={offre} />
+          ))}
         </div>
         <button
           type="button"
