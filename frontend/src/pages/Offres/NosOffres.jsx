@@ -1,16 +1,25 @@
+import React, { useEffect, useState } from "react";
 import Card from "@components/UI/Card";
-import React from "react";
 
 function NosOffres() {
+  const [offresData, setOffresData] = useState([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/offres`)
+      .then((res) => res.json())
+      .then((data) => setOffresData(data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
-    <div className="container">
+    <div className="">
       <div className="flex flex-col items-center text-dark my-5 mx-5">
         <div className="font-bold text-center mb-4">
           Vos opportunités d'emploi,
           <br />
           uniquement chez les clients finaux
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-center space-x-7">
+        <div className="flex flex-col items-center justify-center">
           <img
             src="src/assets/connaissance.png"
             alt="connaissance"
@@ -25,8 +34,41 @@ function NosOffres() {
           </div>
         </div>
       </div>
+      <div className="flex flex-col md:flex-row items-center justify-around lg:mx-40 xl:mx-56 my-2">
+        <h2 className="font-bold text-center mb-4 md:mb-0">
+          Toutes nos offres :
+        </h2>
+        <div className="flex items-center my-2">
+          <div className="border-solid border-2 border-darkPink rounded-3xl p-3">
+            <select>
+              <option selected>Titre du poste</option>
+              <option value="devweb">Développeur Web</option>
+              <option value="ingetest">Ingénieur automatisation de test</option>
+              <option value="devjavaspring">Développeur Java Spring</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex items-center my-2">
+          <div className="border-solid border-2 border-darkPink rounded-3xl p-3 ">
+            <select>
+              <option selected>Ville</option>
+              <option value="pariscv">Paris</option>
+              <option value="lyoncv">Lyon</option>
+              <option value="rennescv">Rennes</option>
+            </select>
+          </div>
+        </div>
+        <button
+          type="button"
+          className="text-darkPink border-solid border-2 border-darkPink rounded-xl px-3 mx-3 my-3 hover:bg-pink hover:text-white "
+        >
+          Recherche
+        </button>
+      </div>
       <div>
-        <Card />
+        {offresData.map((offre) => (
+          <Card key={offre.id} offre={offre} />
+        ))}
       </div>
     </div>
   );
