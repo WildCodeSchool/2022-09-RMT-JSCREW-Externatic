@@ -8,7 +8,7 @@ function Entreprise() {
   const getAllEntreprises = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/entreprises`)
-      .then((data) => setEntreprises(data.data))
+      .then((firm) => setEntreprises(firm.data))
       .catch((error) => console.error(error));
   };
 
