@@ -13,4 +13,7 @@ const entrepriseControllers = require("./controllers/entrepriseControllers");
 
 router.get("/entreprises", entrepriseControllers.browse);
 
+router.get("/offres/rand", offresControllers.random);
+
+
 module.exports = router;
