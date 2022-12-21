@@ -12,13 +12,15 @@ const random = (req, res) => {
     });
 };
 
+// create offre formulaire
+
 const add = (req, res) => {
   const offreForm = req.body;
 
   models.offre
     .insert(offreForm)
     .then(([result]) => {
-      res.location(`/postOffre/${result.insertId}`).sendStatus(201);
+      res.location(`/offres/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);

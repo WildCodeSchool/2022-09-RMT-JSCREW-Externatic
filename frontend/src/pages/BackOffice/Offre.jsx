@@ -1,20 +1,22 @@
 import React, { useState } from "react";
+import apiConnexion from "@services/apiConnexion";
 
 function Offre() {
+  const [message, setMessage] = useState("");
   const [offre, setOffre] = useState({
-    offre_contrat: "",
-    offre_condition_travail: "",
-    offre_avantages: "",
-    offre_poste: "",
-    offre_localisation: "",
-    offre_dateOffre: "",
-    offre_date_fin_offre: "",
-    offre_salaire: "",
-    offre_mission: "",
-    offre_profil_recherche: "",
-    offre_specialitees: "",
-    offre_entreprise_id: "",
-    offre_domaine_id: "",
+    contrat: "",
+    condition_travail: "",
+    avantages: null,
+    poste: "",
+    localisation: "",
+    dateOffre: "",
+    date_fin_offre: "",
+    salaire: null,
+    mission: "",
+    profil_recherche: "",
+    specialitees: "",
+    entreprise_id: "",
+    domaine_id: "",
   });
 
   const handleOffre = (place, value) => {
@@ -25,6 +27,16 @@ function Offre() {
 
   const sendForm = (e) => {
     e.preventDefault();
+
+    apiConnexion
+      .post("/offres", offre)
+      .then(() => {
+        setMessage("Offre succesfully added");
+      })
+      .catch((err) => {
+        setMessage("Offre not added");
+        console.warn(err);
+      });
   };
 
   return (
@@ -40,8 +52,8 @@ function Offre() {
               <input
                 required
                 type="text"
-                name="offre_contrat"
-                value={offre.offre_contrat}
+                name="contrat"
+                value={offre.contrat}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -62,8 +74,8 @@ function Offre() {
               <span className="text-gray-700">condition de travail</span>
               <input
                 type="text"
-                name="offre_condition_travail"
-                value={offre.offre_condition_travail}
+                name="condition_travail"
+                value={offre.condition_travail}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -84,8 +96,8 @@ function Offre() {
               <span className="text-gray-700">avantages</span>
               <input
                 type="text"
-                name="offre_avantages"
-                value={offre.offre_avantages}
+                name="avantages"
+                value={offre.avantages}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -106,8 +118,8 @@ function Offre() {
               <span className="text-gray-700">poste</span>
               <input
                 type="text"
-                name="offre_poste"
-                value={offre.offre_poste}
+                name="poste"
+                value={offre.poste}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -128,8 +140,8 @@ function Offre() {
               <span className="text-gray-700">localisation</span>
               <input
                 type="text"
-                name="offre_localisation"
-                value={offre.offre_localisation}
+                name="localisation"
+                value={offre.localisation}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -150,8 +162,8 @@ function Offre() {
               <span className="text-gray-700">date de l'offre</span>
               <input
                 type="date"
-                name="offre_dateOffre"
-                value={offre.offre_dateOffre}
+                name="dateOffre"
+                value={offre.dateOffre}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -172,8 +184,8 @@ function Offre() {
               <span className="text-gray-700">date de fin de l'offre</span>
               <input
                 type="date"
-                name="offre_dateOffre"
-                value={offre.offre_dateOffre}
+                name="dateOffre"
+                value={offre.dateOffre}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -194,8 +206,8 @@ function Offre() {
               <span className="text-gray-700">salaire</span>
               <input
                 type="number"
-                name="offre_salaire"
-                value={offre.offre_salaire}
+                name="salaire"
+                value={offre.salaire}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -216,8 +228,8 @@ function Offre() {
               <span className="text-gray-700">mission</span>
               <input
                 type="text"
-                name="offre_mission"
-                value={offre.offre_mission}
+                name="mission"
+                value={offre.mission}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -238,8 +250,8 @@ function Offre() {
               <span className="text-gray-700">profil recherché</span>
               <input
                 type="text"
-                name="offre_profil_recherche"
-                value={offre.offre_profil_recherche}
+                name="profil_recherche"
+                value={offre.profil_recherche}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -260,8 +272,8 @@ function Offre() {
               <span className="text-gray-700">specialitées</span>
               <input
                 type="text"
-                name="offre_specialitees"
-                value={offre.offre_specialitees}
+                name="specialitees"
+                value={offre.specialitees}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -282,8 +294,8 @@ function Offre() {
               <span className="text-gray-700">identifiant de l'entreprise</span>
               <input
                 type="text"
-                name="offre_entreprise_id"
-                value={offre.offre_entreprise_id}
+                name="entreprise_id"
+                value={offre.entreprise_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -304,8 +316,8 @@ function Offre() {
               <span className="text-gray-700">identifiant du domaine</span>
               <input
                 type="text"
-                name="offre_domaine_id"
-                value={offre.offre_domaine_id}
+                name="domaine_id"
+                value={offre.domaine_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
 
@@ -343,6 +355,7 @@ function Offre() {
             >
               Envoyer
             </button>
+            <h3>{message}</h3>
           </div>
         </form>
       </div>
