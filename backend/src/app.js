@@ -4,7 +4,6 @@ const path = require("path");
 const cors = require("cors");
 const router = require("./router");
 
-
 const app = express();
 
 // use some application-level middlewares
@@ -25,7 +24,6 @@ app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 
 // API routes
 app.use(router);
-
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(

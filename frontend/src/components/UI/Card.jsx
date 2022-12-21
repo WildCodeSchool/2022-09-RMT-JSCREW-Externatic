@@ -1,4 +1,5 @@
 import React from "react";
+import iconAjout from "@assets/ajouter.png";
 
 function Card() {
   return (
@@ -9,11 +10,7 @@ function Card() {
         </h3>
         <div className="flex flex-row justify-between ">
           <p className="text-gray-600 p-1 ml-1">Nantes centres</p>
-          <img
-            src="\src\assets\ajouter.png"
-            alt="bouton-ajout"
-            className=" mt-2 w-10 "
-          />
+          <img src={iconAjout} alt="bouton-ajout" className=" mt-2 w-10 " />
         </div>
         <div className="">
           <p className="text-gray-600 ml-1">@Foodtech</p>

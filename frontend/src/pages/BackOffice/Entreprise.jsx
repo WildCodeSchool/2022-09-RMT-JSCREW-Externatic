@@ -9,7 +9,7 @@ function Entreprise() {
   const getAllEntreprises = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/entreprises`)
-      .then((entreprises) => setEntreprises(entreprises.data))
+      .then((firm) => setEntreprises(firm.data))
       .catch((error) => console.error(error));
   };
 
@@ -20,7 +20,7 @@ function Entreprise() {
 
   return (
     <div>
-      <div className="flex justify-center">
+      <div className=" mb-3 flex justify-left">
         <div className="mb-3 xl:w-96">
           <select
             className="form-select appearance-none
