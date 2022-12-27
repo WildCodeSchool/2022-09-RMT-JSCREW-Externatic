@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "@components/UI/Card";
+import RegisterModal from "@components/UI/RegisterModal";
 import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
@@ -7,6 +8,11 @@ import icon3 from "@assets/sablier.png";
 
 export default function Home() {
   const [randomData, setRandomData] = useState([]);
+  const [registerModalIsVisible, setregisterModalIsVisible] = useState(false)
+
+  const handleOnCloseRegisterModal = () => {
+    setregisterModalIsVisible(false);
+  }
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/rand`)
@@ -22,6 +28,7 @@ export default function Home() {
         </div>
         <button
           type="button"
+          onClick={() => { setregisterModalIsVisible(true) }}
           className="absolute transition-colors duration-300 md:text-5xl bg-darkPink bottom-1/4 md:px-10 md:bottom-1/3 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
         >
           S'inscrire
@@ -105,6 +112,7 @@ export default function Home() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
+      <RegisterModal visible={registerModalIsVisible} onclose={handleOnCloseRegisterModal} />
     </div>
   );
 }
