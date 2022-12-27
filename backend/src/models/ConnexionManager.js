@@ -8,7 +8,7 @@ class ConnexionManager extends AbstractManager {
   insert(connexion) {
     return this.connection.query(
       `INSERT INTO ${this.table} (utilisateur, mot_de_passe, role) VALUES (?, ?, ?)`,
-      [connexion.utilisateur, connexion.mot_de_passe, connexion.role]
+      [connexion.utilisateur, connexion.mot_de_passe, "candidat"]
     );
   }
 }
