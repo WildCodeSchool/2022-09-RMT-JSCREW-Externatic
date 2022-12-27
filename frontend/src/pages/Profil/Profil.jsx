@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
 import "react-toastify/dist/ReactToastify.css";
+import "@pages/Profil/Profil.css";
 
 const toastifyConfig = {
   position: "bottom-right",
@@ -30,7 +31,9 @@ function Profil() {
     profil_description: "",
     profil_metier: "",
     profil_telephone: "",
-    profil_dateInscription: "2022-12-20",
+    profil_dateInscription: `${new Date().getFullYear()}-${
+      new Date().getMonth() + 1
+    }-${new Date().getDate()}`,
     profil_dateDisponibilite: "",
     profil_connexion_id: "3",
   });
@@ -67,7 +70,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-nom"
               type="text"
               placeholder="Nom"
@@ -117,7 +120,7 @@ function Profil() {
           <div className=" row-span-3 w-full pl-3 mr-4 md:mr-10">
             <textarea
               required
-              className="appearance-none block mb-6 w-full bg-[#D9D9D9] text-gray-700 rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="block mb-6 w-full bg-[#D9D9D9] rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
               id="grid-adresse"
               type="text"
               rows="8"
@@ -184,8 +187,8 @@ function Profil() {
               required
               className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-dispo"
-              type="text"
-              placeholder="Disponibilités"
+              type="date"
+              placeholder="Disponibilité"
               name="profil_dateDisponibilite"
               value={profil.profil_dateDisponibilite}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
