@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
 import avatar from "@assets/Avatar.png";
 import cv from "@assets/cv.png";
+import emailjs from "@emailjs/browser";
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -45,15 +46,34 @@ function Profil() {
     setProfil(newProfil);
   };
 
+  const validateSignIn = () => {
+    const sendFeedback = (serviceID, templateId, variables, publicKey) => {
+      emailjs
+        .send(serviceID, templateId, variables, publicKey)
+        .then()
+        .catch((err) => console.error("There has been an Error.", err));
+    };
+    const templateId = "template_16jl94i";
+    const serviceID = "service_x1i40xc";
+    const publicKey = "fsQWG3jp6V7MOxwtA";
+    sendFeedback(
+      serviceID,
+      templateId,
+      { from_name: profil.profil_prenom, email: profil.profil_email },
+      publicKey
+    );
+  };
+
   const sendForm = (e) => {
     e.preventDefault();
     apiConnexion
       .post("/profil", profil)
       .then(() => {
         toast.success(
-          `Bonjour ${profil.profil_nom} ${profil.profil_prenom} votre inscription a bien été enregistrée.`,
+          `Bonjour ${profil.profil_nom} ${profil.profil_prenom} votre inscription a bien été enregistrée. Vous recevrez bientôt un email de confirmation`,
           toastifyConfig
         );
+        validateSignIn()
       })
       .catch((err) => {
         toast.error(
