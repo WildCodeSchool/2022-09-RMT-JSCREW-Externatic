@@ -73,7 +73,7 @@ function Profil() {
           `Bonjour ${profil.profil_nom} ${profil.profil_prenom} votre inscription a bien été enregistrée. Vous recevrez bientôt un email de confirmation`,
           toastifyConfig
         );
-        validateSignIn()
+        validateSignIn();
       })
       .catch((err) => {
         toast.error(
