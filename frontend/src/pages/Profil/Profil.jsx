@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
+import avatar from "@assets/Avatar.png";
+import cv from "@assets/cv.png";
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -17,7 +19,7 @@ const toastifyConfig = {
 
 function Profil() {
   const [profil, setProfil] = useState({
-    profil_photo: "Null",
+    profil_photo: avatar,
     profil_nom: "",
     profil_prenom: "",
     profil_age: "",
@@ -26,8 +28,7 @@ function Profil() {
     profil_ville: "",
     profil_pays: "",
     profil_email: "",
-    profil_cv:
-      "https://www.canva.com/design/DAFUFppkOt0/BwbW_3WK6dOEmald9N9mvw/edit?utm_content=DAFUFppkOt0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+    profil_cv: cv,
     profil_description: "",
     profil_metier: "",
     profil_telephone: "",
@@ -66,6 +67,17 @@ function Profil() {
   return (
     <div className="profil p-9 flex justify-center">
       <form onSubmit={(e) => sendForm(e)} className="w-full max-w-lg">
+        <div className="flex flex-wrap -mx-3 md:mb-6">
+          <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
+            <img src={profil.profil_photo} alt="avatar" />
+            <input className="hidden" type="file" />
+          </label>
+          <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
+            <img src={profil.profil_cv} alt="cv" />
+            <input className="hidden" type="file" />
+          </label>
+        </div>
+
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
             <input

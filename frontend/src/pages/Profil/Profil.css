@@ -4,7 +4,6 @@
 
 input:focus {
   border: 1px solid pink;
-  background-color: blue;
 }
 
 textarea:focus {
