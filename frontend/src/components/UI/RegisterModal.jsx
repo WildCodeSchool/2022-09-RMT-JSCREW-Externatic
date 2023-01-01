@@ -72,7 +72,7 @@ function RegisterModal({ visible, onclose }) {
             id="Mot de passe"
             name="mot_de_passe"
             value={registration.mot_de_passe}
-            type="text"
+            type="password"
             placeholder="Mot de passe"
             onChange={(e) => handleRegistration(e.target.name, e.target.value)}
           />
@@ -80,7 +80,7 @@ function RegisterModal({ visible, onclose }) {
             required
             className="shadow appearance-none border rounded-full w-full mt-4 py-2 px-3 bg-grey text-black placeholder-black"
             id="Confirmer MDP"
-            type="text"
+            type="password"
             placeholder="Confirmer MDP"
           />
         </form>
