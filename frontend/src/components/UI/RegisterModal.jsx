@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +16,7 @@ const toastifyConfig = {
 };
 
 function RegisterModal({ visible, onclose }) {
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [registration, setRegistration] = useState({
     utilisateur: "",
     mot_de_passe: "",
@@ -25,24 +27,32 @@ function RegisterModal({ visible, onclose }) {
     newRegistration[place] = value;
     setRegistration(newRegistration);
   };
-
+  const navigate = useNavigate();
   const sendForm = (e) => {
     e.preventDefault();
-    apiConnexion
-      .post("/register", registration)
-      .then(() => {
-        toast.success(
-          `Votre compte a bien été créé, pensez à remplir votre profil`,
-          toastifyConfig
-        );
-      })
-      .catch((err) => {
-        toast.error(
-          `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
-          toastifyConfig
-        );
-        console.warn(err);
-      });
+    if (registration.mot_de_passe !== confirmPassword) {
+      toast.error(
+        `Les deux mots de passe doivent être identiques`,
+        toastifyConfig
+      );
+    } else {
+      apiConnexion
+        .post("/register", registration)
+        .then(() => {
+          navigate("/profil");
+          toast.success(
+            `Votre compte a bien été créé, pensez à remplir votre profil`,
+            toastifyConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    }
   };
 
   if (!visible) {
@@ -82,6 +92,7 @@ function RegisterModal({ visible, onclose }) {
             id="Confirmer MDP"
             type="password"
             placeholder="Confirmer MDP"
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </form>
         <div className="mt-4 flex justify-around mb-6">
