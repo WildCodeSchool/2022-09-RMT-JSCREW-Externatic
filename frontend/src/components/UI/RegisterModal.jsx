@@ -39,11 +39,11 @@ function RegisterModal({ visible, onclose }) {
       apiConnexion
         .post("/register", registration)
         .then(() => {
-          navigate("/profil");
           toast.success(
-            `Votre compte a bien été créé, pensez à remplir votre profil`,
+            `completez votre profil pour finaliser votre inscription`,
             toastifyConfig
           );
+          navigate("/profil");
         })
         .catch((err) => {
           toast.error(
