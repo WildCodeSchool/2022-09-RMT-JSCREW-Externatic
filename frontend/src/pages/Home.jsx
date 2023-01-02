@@ -1,3 +1,5 @@
+import SliderComponent from "../components/carousel/Carousel"
+
 import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
@@ -90,6 +92,7 @@ export default function Home() {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
+      <SliderComponent />
     </div>
   );
 }
