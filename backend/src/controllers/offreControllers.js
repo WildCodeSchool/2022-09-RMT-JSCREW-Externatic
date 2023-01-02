@@ -12,6 +12,7 @@ const random = (req, res) => {
     });
 };
 
+
 // create offre formulaire
 
 const add = (req, res) => {
@@ -21,6 +22,13 @@ const add = (req, res) => {
     .insert(offreForm)
     .then(([result]) => {
       res.location(`/offres/${result.insertId}`).sendStatus(201);
+
+const browse = (req, res) => {
+  models.offre
+    .findAll()
+    .then(([offres]) => {
+      res.send(offres);
+
     })
     .catch((err) => {
       console.error(err);
@@ -28,4 +36,8 @@ const add = (req, res) => {
     });
 };
 
-module.exports = { random, add };
+
+module.exports = { random, add, browse };
+
+
+

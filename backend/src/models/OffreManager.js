@@ -12,6 +12,7 @@ class OffreManager extends AbstractManager {
     );
   }
 
+
   insert(Offre) {
     return this.connection.query(
       `insert into ${this.table} 
@@ -32,6 +33,11 @@ class OffreManager extends AbstractManager {
         Offre.entreprise_id,
         Offre.domaine_id,
       ]
+
+  findAll() {
+    return this.connection.query(
+      `SELECT poste, localisation FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
+
     );
   }
 }

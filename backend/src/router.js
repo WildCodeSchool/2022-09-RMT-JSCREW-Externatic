@@ -3,17 +3,15 @@ const express = require("express");
 const router = express.Router();
 const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
-
-// /*-------------exemple route------------------------*/
-// router.get("/items", itemControllers.browse);
-// router.get("/items/:id", itemControllers.read);
-// router.put("/items/:id", itemControllers.edit);
-// router.post("/items", itemControllers.add);
-// router.delete("/items/:id", itemControllers.destroy);
+const candidatControllers = require("./controllers/candidatControllers");
 
 router.get("/entreprises", entrepriseControllers.browse);
+router.post("/entreprises", entrepriseControllers.add);
 
+router.post("/profil", candidatControllers.add);
+router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
 router.post("/offres", offreControllers.add);
+
 
 module.exports = router;

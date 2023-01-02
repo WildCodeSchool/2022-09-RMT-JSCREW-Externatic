@@ -1,4 +1,5 @@
 import React from "react";
+import iconAjout from "@assets/ajouter.png";
 
 function Card({ offre }) {
   const { poste, localisation } = offre;
@@ -9,12 +10,8 @@ function Card({ offre }) {
           {poste}
         </h3>
         <div className="flex flex-row justify-between ">
+          <img src={iconAjout} alt="bouton-ajout" className=" mt-2 w-10 " />
           <p className="text-gray-600 p-1 ml-1">{localisation}</p>
-          <img
-            src="\src\assets\ajouter.png"
-            alt="bouton-ajout"
-            className=" mt-2 w-10 "
-          />
         </div>
         <div className="">
           <p className="text-gray-600 ml-1">@Foodtech</p>
