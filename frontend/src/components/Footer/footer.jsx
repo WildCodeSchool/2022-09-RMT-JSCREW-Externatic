@@ -1,3 +1,7 @@
+import linkedin from "@assets/linkedin.png";
+import instagram from "@assets/instagram.png";
+import twitter from "@assets/twitter.png";
+
 function Footer() {
   return (
     <div className="bg-pink text-white">
@@ -13,25 +17,13 @@ function Footer() {
         </div>
         <div className="flex flex-row justify-center items-center mb-4 md:w-1/3">
           <a href="https://www.linkedin.com/company/externatic?originalSubdomain=fr">
-            <img
-              src="\src\assets\linkedin.png"
-              alt="logo linkedin"
-              className="w-12 m-3"
-            />
+            <img src={linkedin} alt="logo linkedin" className="w-12 m-3" />
           </a>
           <a href="https://www.instagram.com/externatic/">
-            <img
-              src="\src\assets\instagram.png"
-              alt="logo instagram"
-              className="w-12 m-3"
-            />
+            <img src={instagram} alt="logo instagram" className="w-12 m-3" />
           </a>
           <a href="https://twitter.com/Externatic">
-            <img
-              src="\src\assets\twitter.png"
-              alt="logo twitter"
-              className="w-12 m-3"
-            />
+            <img src={twitter} alt="logo twitter" className="w-12 m-3" />
           </a>
         </div>
         <div className="md:w-1/3 md:text-right">

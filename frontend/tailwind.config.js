@@ -1,19 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     colors: {
-      "white": "#FFFFFF",
-      "black": "#404040",
-      "pink": "#C91961",
-      "darkPink": "#851342"
-    },
-    extend: {},
-    colors: {
-      black: "#404040",
       white: "#FFFFFF",
+      black: "#404040",
       pink: "#C91961",
       darkPink: "#851342",
+      indigo: "#4338ca",
+    },
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],

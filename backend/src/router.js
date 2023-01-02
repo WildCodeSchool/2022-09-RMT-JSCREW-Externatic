@@ -1,13 +1,16 @@
 const express = require("express");
 
 const router = express.Router();
+const offreControllers = require("./controllers/offreControllers");
+const entrepriseControllers = require("./controllers/entrepriseControllers");
+const candidatControllers = require("./controllers/candidatControllers");
 
-const itemControllers = require("./controllers/itemControllers");
+router.get("/entreprises", entrepriseControllers.browse);
+router.post("/entreprises", entrepriseControllers.add);
 
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+router.post("/profil", candidatControllers.add);
+router.get("/offres", offreControllers.browse);
+router.get("/offres/rand", offreControllers.random);
+
 
 module.exports = router;
