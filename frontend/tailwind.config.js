@@ -8,6 +8,8 @@ module.exports = {
       pink: "#C91961",
       darkPink: "#851342",
       indigo: "#4338ca",
+      glass: "rgba(255, 255, 255,0.25)",
+      brown: "rgb(30, 30, 17)",
     },
     extend: {
       fontFamily: {
