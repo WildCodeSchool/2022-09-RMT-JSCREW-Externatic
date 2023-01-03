@@ -11,7 +11,7 @@ const validate = (data) => {
     profil_ville: Joi.string().min(3).max(50).presence("required"),
     profil_pays: Joi.string().min(3).max(30).presence("required"),
     profil_email: Joi.string().email().max(255).required(),
-    profil_cv: Joi.string().min(50).presence("optional"),
+    profil_cv: Joi.string().min(3).max(255).presence("optional"),
     profil_description: Joi.string().min(10).presence("required"),
     profil_metier: Joi.string().min(10).presence("required"),
     profil_telephone: Joi.string().min(3).max(30).presence("required"),
