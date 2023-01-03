@@ -97,14 +97,16 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <iframe
-        className="w-full aspect-video mt-8"
-        src="https://www.youtube.com/embed/BYmNVsS5J58"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      <div className="flex justify-center mt-8 mb-8">
+        <iframe
+          className="w-full lg:w-3/4 aspect-video "
+          src="https://www.youtube.com/embed/BYmNVsS5J58"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
     </div>
   );
 }
