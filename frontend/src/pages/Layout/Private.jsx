@@ -1,13 +1,14 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Sidebar from "@components/UI/Sidebar";
 
-function CustmrSite() {
+function Dashboard() {
   return (
-    <div>
-      <h1>hay toto va falloir bosser !</h1>
+    <div className="flex">
+      <Sidebar />
       <Outlet />
     </div>
   );
 }
 
-export default CustmrSite;
+export default Dashboard;

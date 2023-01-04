@@ -22,7 +22,7 @@ function App() {
             <Route path="profil" element={<Profil />} />
             <Route path="infos" element={<Quisommesnous />} />
           </Route>
-          <Route path="/Dashboard/" element={<Private />}>
+          <Route path="/dashboard/" element={<Private />}>
             <Route path="entreprises" element={<AdminEntreprise />} />
           </Route>
         </Routes>

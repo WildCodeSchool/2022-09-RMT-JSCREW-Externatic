@@ -20,6 +20,7 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.2.5",
     "react-toastify": "^9.1.1"
   }
 }

@@ -10,6 +10,7 @@ module.exports = {
       indigo: "#4338ca",
       glass: "rgba(255, 255, 255,0.25)",
       brown: "rgb(30, 30, 17)",
+      indigo: "#6d28d9",
     },
     extend: {
       fontFamily: {
