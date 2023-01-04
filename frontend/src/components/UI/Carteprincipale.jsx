@@ -18,10 +18,10 @@ function CartePrincipale({ id }) {
         {offre?.poste}
       </h1>
       <div className="flex flex-row justify-center">
-        <h2 className="w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
+        <h2 className="flex items-center justify-center w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
           {offre?.contrat}
         </h2>
-        <h2 className="w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
+        <h2 className="flex items-center justify-center w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
           {offre?.condition_travail}
         </h2>
       </div>
