@@ -7,7 +7,7 @@ import "./NavBar.css";
 function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
-    <nav className="navBar grid justify-items-stretch">
+    <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch">
       <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 md:justify-self-center">
         <Link to="/" className="logo">
           <img
@@ -72,7 +72,7 @@ function NavBar() {
               </p>
             </Link>
             <Link
-              to="/"
+              to="/profil"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
