@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import CartePrincipale from "@components/UI/Carteprincipale";
+import CarteEntreprise from "@components/UI/CarteEntreprise";
 import ListOfOffers from "@components/UI/ListOfOffers";
 import offreentete from "@assets/offre_emploi.jpg";
 
@@ -13,6 +14,7 @@ function UneOffre() {
         <img src={offreentete} alt="" />
       </div>
       <CartePrincipale id={id} />
+      <CarteEntreprise id={id} />
       <ListOfOffers />
     </div>
   );
