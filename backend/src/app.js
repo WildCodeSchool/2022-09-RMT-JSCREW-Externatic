@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
-const cookie = require("cookie-parser")
+const cookie = require("cookie-parser");
 const router = require("./router");
 
 const app = express();
