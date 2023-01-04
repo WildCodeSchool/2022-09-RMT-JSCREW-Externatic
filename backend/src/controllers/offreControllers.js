@@ -12,6 +12,22 @@ const random = (req, res) => {
     });
 };
 
+// create offre formulaire
+
+const add = (req, res) => {
+  const offreForm = req.body;
+
+  models.offre
+    .insert(offreForm)
+    .then(([result]) => {
+      res.location(`/offres/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const browse = (req, res) => {
   models.offre
     .findAll()
@@ -24,4 +40,4 @@ const browse = (req, res) => {
     });
 };
 
-module.exports = { random, browse };
+module.exports = { random, add, browse };

@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+
 import Footer from "@components/Footer/footer";
-import AllJobs from "@pages/AllJobs";
+
+import Entreprise from "@pages/BackOffice/Entreprise";
 import NosOffres from "@pages/Offres/NosOffres";
-import Entreprise from "@pages/BackOffice/Entreprise"
+import Offre from "@pages/BackOffice/Offre";
 import Profil from "@pages/Profil/Profil";
 import Quisommesnous from "@pages/quisommesnous/qui";
-import Home from "@pages/Home";
-import NavBar from "@components/NavBar/NavBar";
-
-
-import "./App.css";
+import Home from "./pages/Home";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/offres" element={<NosOffres />} />
             <Route path="/entreprises" element={<Entreprise />} />
+            <Route path="/offre" element={<Offre />} />
             <Route path="/profil" element={<Profil />} />
             <Route path="/infos" element={<Quisommesnous />} />
           </Routes>

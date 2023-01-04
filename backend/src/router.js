@@ -13,5 +13,6 @@ router.post("/register", connexionControllers.add);
 router.post("/profil", candidatControllers.add);
 router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
+router.post("/offres", offreControllers.add);
 
 module.exports = router;
