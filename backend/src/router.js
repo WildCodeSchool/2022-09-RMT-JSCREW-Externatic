@@ -11,6 +11,6 @@ router.post("/entreprises", entrepriseControllers.add);
 router.post("/profil", candidatControllers.add);
 router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
-
+router.get("/offres/:id", offreControllers.read);
 
 module.exports = router;
