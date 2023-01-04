@@ -32,12 +32,11 @@ function ConnexionModal({ visible, onclose }) {
       .then(() => {
         toast.success(`Bonjour à vous`, toastifyConfig);
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error(
           `Votre email ou votre mot de passe n'est pas valide`,
           toastifyConfig
         );
-        console.warn(err);
       });
   };
 
