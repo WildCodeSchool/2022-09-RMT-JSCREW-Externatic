@@ -72,7 +72,7 @@ function NavBar() {
               </p>
             </Link>
             <Link
-              to="/"
+              to="/profil"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
