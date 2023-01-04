@@ -1,11 +1,18 @@
 import { React, useState } from "react";
 import logo from "@assets/Logo-Externatic.png";
 import { Link } from "react-router-dom";
+import ConnexionModal from "../UI/ConnexionModal";
 
 import "./NavBar.css";
 
 function NavBar() {
+  const [connexionModalIsVisible, setConnexionModalIsVisible] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const handleOnCloseConnexionModal = () => {
+    setConnexionModalIsVisible(false);
+  };
+
   return (
     <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch">
       <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 md:justify-self-center">
@@ -58,6 +65,13 @@ function NavBar() {
             </svg>
           </button>
           <div className="flex flex-col justify-between min-h-[200px] w-80 text-2xl">
+            <button
+              className="text-start my-6 md:hidden"
+              type="button"
+              onClick={() => setConnexionModalIsVisible(true)}
+            >
+              Connexion
+            </button>
             <Link to="/" className="border-gray-400 my-6 ">
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Accueil
@@ -98,6 +112,10 @@ function NavBar() {
           </div>
         </div>
       </div>
+      <ConnexionModal
+        visible={connexionModalIsVisible}
+        onclose={handleOnCloseConnexionModal}
+      />
     </nav>
   );
 }
