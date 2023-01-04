@@ -33,7 +33,7 @@ function Offre() {
     apiConnexion
       .post("/offres", offre)
       .then(() => {
-        toast.success(`Votre offre à bien été enregistrer`, toastiConfig);
+        toast.success(`Votre offre a bien été enregistrée`, toastiConfig);
       })
       .catch((err) => {
         toast.error(
