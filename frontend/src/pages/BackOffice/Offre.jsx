@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import apiConnexion from "@services/apiConnexion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import toastiConfig from "@services/toastiConfig";
 
 function Offre() {
-  const [message, setMessage] = useState("");
   const [offre, setOffre] = useState({
     contrat: "",
     condition_travail: "",
@@ -31,10 +33,13 @@ function Offre() {
     apiConnexion
       .post("/offres", offre)
       .then(() => {
-        setMessage("Offre succesfully added");
+        toast.success(`Votre offre a bien été enregistrée`, toastiConfig);
       })
       .catch((err) => {
-        setMessage("Offre not added");
+        toast.error(
+          `Veuillez renseigner vos champs, votre formulaire n'a pas été enregistré`,
+          toastiConfig
+        );
         console.warn(err);
       });
   };
@@ -355,10 +360,21 @@ function Offre() {
             >
               Envoyer
             </button>
-            <h3>{message}</h3>
           </div>
         </form>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
