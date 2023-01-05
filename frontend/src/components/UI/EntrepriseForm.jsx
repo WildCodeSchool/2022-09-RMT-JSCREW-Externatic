@@ -175,7 +175,7 @@ function EntrepriseForm() {
           </div>
           <div className="mb-2">
             <label>
-              <span className="text-gray-700"> Addresse email</span>
+              <span className="text-gray-700"> Adresse email</span>
               <input
                 name="email"
                 type="email"
