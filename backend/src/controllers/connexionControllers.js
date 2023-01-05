@@ -19,10 +19,28 @@ const add = (req, res) => {
   }
 };
 
-const login = () => {
-  // retrouver
+const getUserByUtilisateurWithPasswordAndPassToNext = (req, res, next) => {
+  const { utilisateur } = req.body;
+
+  models.connexion
+    .login(utilisateur)
+    // .query("select * from connexion where utilisateur = ?", [utilisateur])
+    .then(([users]) => {
+      if (users[0] != null) {
+        req.utilisateur = { ...users[0] };
+
+        next();
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
 };
+
 module.exports = {
   add,
-  login,
+  getUserByUtilisateurWithPasswordAndPassToNext,
 };

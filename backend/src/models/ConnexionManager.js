@@ -11,6 +11,13 @@ class ConnexionManager extends AbstractManager {
       [connexion.utilisateur, connexion.hashedPassword, "candidat"]
     );
   }
+
+  login(utilisateur) {
+    return this.connection.query(
+      "select * from connexion where utilisateur = ?",
+      [utilisateur]
+    );
+  }
 }
 
 module.exports = ConnexionManager;
