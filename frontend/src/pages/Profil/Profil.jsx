@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
 import avatar from "@assets/Avatar.png";
@@ -33,7 +33,7 @@ function Profil() {
   };
 
   const [profil, setProfil] = useState({
-    profil_photo: avatar,
+    // profil_photo: avatar,
     profil_nom: "",
     profil_prenom: "",
     profil_age: "",
@@ -42,7 +42,7 @@ function Profil() {
     profil_ville: "",
     profil_pays: "",
     profil_email: "",
-    profil_cv: cv,
+    // profil_cv: cv,
     profil_description: "",
     profil_metier: "",
     profil_telephone: "",
@@ -56,11 +56,16 @@ function Profil() {
     newProfil[place] = value;
     setProfil(newProfil);
   };
-
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
   const sendForm = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("avatar", inputRef1.current.files[0]);
+    formData.append("cv", inputRef2.current.files[0]);
+    formData.append("data", JSON.stringify(profil));
     apiConnexion
-      .post("/profil", profil)
+      .post("/profil", formData)
       .then(() => {
         toast.success(
           `Bonjour ${profil.profil_nom} ${profil.profil_prenom} votre inscription a bien été enregistrée.`,
@@ -78,15 +83,24 @@ function Profil() {
 
   return (
     <div className="profil p-9 flex justify-center">
-      <form onSubmit={(e) => sendForm(e)} className="w-full max-w-lg">
+      <form
+        encType="multipart/form-data"
+        onSubmit={(e) => sendForm(e)}
+        className="w-full max-w-lg"
+      >
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={profil.profil_photo} alt="avatar" />
-            <input className="hidden" type="file" />
+            <img src={avatar} alt="avatar" />
+            <input
+              className="hidden"
+              type="file"
+              ref={inputRef1}
+              name="avatar"
+            />
           </label>
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={profil.profil_cv} alt="cv" />
-            <input className="hidden" type="file" />
+            <img src={cv} alt="cv" />
+            <input className="hidden" type="file" ref={inputRef2} name="cv" />
           </label>
         </div>
 
