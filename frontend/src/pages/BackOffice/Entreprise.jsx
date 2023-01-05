@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import EntrepriseForm from "@components/UI/EntrepriseForm";
 import axios from "axios";
 
 function Entreprise() {
@@ -48,9 +47,6 @@ function Entreprise() {
             ))}
           </select>
         </div>
-      </div>
-      <div className="container-xl  ">
-        <EntrepriseForm />
       </div>
     </div>
   );

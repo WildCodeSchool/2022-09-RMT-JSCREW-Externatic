@@ -49,10 +49,10 @@ function EntrepriseForm() {
   };
 
   return (
-    <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen ">
-      <div className="shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
+    <div className=" mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
+      <div className=" shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
         <h1 className="font-poppins text-2xl font-semibold text-center text-indigo-700  uppercase ">
-          Formulaire creation entreprise
+          Formulaire entreprise
         </h1>
         <form onSubmit={(e) => sendFirm(e)} className="mt-6">
           <div className="mb-2">
@@ -67,7 +67,6 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-
             w-full
             block px-16 py-2 mt-2
             border-gray-300
@@ -91,7 +90,6 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-
             w-full
             block px-16 py-2 mt-2
             border-gray-300
@@ -115,7 +113,6 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-
             w-full
             block px-16 py-2 mt-2
             border-gray-300
@@ -139,7 +136,6 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-
             w-full
             block px-16 py-2 mt-2
             border-gray-300
@@ -163,7 +159,6 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-
             w-full
             block px-16 py-2 mt-2
             border-gray-300
@@ -180,7 +175,7 @@ function EntrepriseForm() {
           </div>
           <div className="mb-2">
             <label>
-              <span className="text-gray-700">Email address</span>
+              <span className="text-gray-700"> Addresse email</span>
               <input
                 name="email"
                 type="email"
