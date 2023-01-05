@@ -33,7 +33,6 @@ function Profil() {
   };
 
   const [profil, setProfil] = useState({
-    // profil_photo: avatar,
     profil_nom: "",
     profil_prenom: "",
     profil_age: "",
@@ -42,7 +41,6 @@ function Profil() {
     profil_ville: "",
     profil_pays: "",
     profil_email: "",
-    // profil_cv: cv,
     profil_description: "",
     profil_metier: "",
     profil_telephone: "",
