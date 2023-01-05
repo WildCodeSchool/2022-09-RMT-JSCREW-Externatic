@@ -18,6 +18,11 @@ const add = (req, res) => {
       });
   }
 };
+
+const login = () => {
+  // retrouver
+};
 module.exports = {
   add,
+  login,
 };
