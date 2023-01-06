@@ -56,4 +56,4 @@ const read = (req, res) => {
     });
 };
 
-module.exports = { random, browse, read };
+module.exports = { random, browse, read, add };
