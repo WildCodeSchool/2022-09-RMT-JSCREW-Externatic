@@ -15,10 +15,16 @@ function UneOffre() {
       <div className="">
         <img src={offreentete} alt="" />
       </div>
-      <CartePrincipale id={id} />
-      <CarteEntreprise id={id} />
-      <CarteProfil id={id} />
-      <CarteSalaire id={id} />
+      <div className="flex flex-col md:flex-row justify-center items-center">
+        <div className="flex justify-center md:w-6/12 xl:w-5/12 mx-6">
+          <CartePrincipale id={id} />
+        </div>
+        <div className="flex flex-col md:w-6/12 xl:w-5/12 mx-3 items-center">
+          <CarteEntreprise id={id} />
+          <CarteProfil id={id} />
+          <CarteSalaire id={id} />
+        </div>
+      </div>
       <ListOfOffers />
     </div>
   );

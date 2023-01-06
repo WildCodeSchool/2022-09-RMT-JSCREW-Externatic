@@ -13,7 +13,7 @@ function CartePrincipale({ id }) {
   }, []);
 
   return (
-    <div className="flex flex-col md:w-6/12 xl:w-5/12 justify-items-center items-center mx-6 my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
+    <div className="flex flex-col min-w-full justify-items-center items-center mx-6 my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
       <h1 className="text-center text-2xl underline underline-offset-8 my-4">
         {offre?.poste}
       </h1>
