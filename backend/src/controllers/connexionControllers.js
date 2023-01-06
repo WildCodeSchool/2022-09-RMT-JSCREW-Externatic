@@ -1,4 +1,6 @@
+const jwt = require("jsonwebtoken");
 const models = require("../models");
+const { verifyHash } = require("../service/auth");
 const validateConnexion = require("../service/connexion");
 
 const add = (req, res) => {
@@ -19,17 +21,29 @@ const add = (req, res) => {
   }
 };
 
-const getUserByUtilisateurWithPasswordAndPassToNext = (req, res, next) => {
+const validateUser = (req, res) => {
   const { utilisateur } = req.body;
 
   models.connexion
     .login(utilisateur)
-    // .query("select * from connexion where utilisateur = ?", [utilisateur])
-    .then(([users]) => {
-      if (users[0] != null) {
-        req.utilisateur = { ...users[0] };
+    .then(async ([user]) => {
+      if (user[0]) {
+        if (await verifyHash(user[0].hashedPassword, req.body.mot_de_passe)) {
+          const myUser = { ...user[0] };
+          delete myUser.hashedPassword;
+          const token = jwt.sign(myUser, process.env.JWT_SECRET, {
+            expiresIn: "24h",
+          });
 
-        next();
+          res
+            .status(201)
+            .cookie("access_token", token, {
+              httpOnly: true,
+            })
+            .json(myUser);
+        } else {
+          res.sendStatus(401);
+        }
       } else {
         res.sendStatus(401);
       }
@@ -42,5 +56,5 @@ const getUserByUtilisateurWithPasswordAndPassToNext = (req, res, next) => {
 
 module.exports = {
   add,
-  getUserByUtilisateurWithPasswordAndPassToNext,
+  validateUser,
 };
