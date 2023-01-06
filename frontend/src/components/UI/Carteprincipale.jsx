@@ -13,15 +13,15 @@ function CartePrincipale({ id }) {
   }, []);
 
   return (
-    <div className="flex flex-col min-w-full justify-items-center items-center mx-6 my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
+    <div className="flex flex-col min-w-full justify-items-center items-center my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
       <h1 className="text-center text-2xl underline underline-offset-8 my-4">
         {offre?.poste}
       </h1>
       <div className="flex flex-row justify-center">
-        <h2 className="flex items-center justify-center w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
+        <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
           {offre?.contrat}
         </h2>
-        <h2 className="flex items-center justify-center w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
+        <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
           {offre?.condition_travail}
         </h2>
       </div>
@@ -29,10 +29,10 @@ function CartePrincipale({ id }) {
         {offre?.specialitees}
       </h2>
       <div className="flex flex-row justify-center">
-        <h2 className="flex items-center w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
+        <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
           Posté le : {offre?.dateOffre}
         </h2>
-        <h2 className="flex items-center w-32 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
+        <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
           Fin des candidatures : {offre?.date_fin_offre}
         </h2>
       </div>
