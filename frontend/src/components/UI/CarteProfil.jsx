@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 function CarteProfil({ id }) {
-  const [offre, setOffre] = useState();
+  const [profil, setProfil] = useState();
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        setOffre(data);
+        setProfil(data);
       })
       .catch((err) => console.error(err));
   }, []);
@@ -17,7 +17,7 @@ function CarteProfil({ id }) {
       <h1 className="underline underline-offset-8 mx-4 mb-4">
         Profil recherché 🌱
       </h1>
-      <p className="text-black">{offre?.profil_recherche}</p>
+      <p className="text-black">{profil?.profil_recherche}</p>
     </div>
   );
 }
