@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "@components/UI/Card";
+import RegisterModal from "@components/UI/RegisterModal";
 import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
@@ -7,6 +9,11 @@ import icon3 from "@assets/sablier.png";
 
 export default function Home() {
   const [randomData, setRandomData] = useState([]);
+  const [registerModalIsVisible, setregisterModalIsVisible] = useState(false);
+
+  const handleOnCloseRegisterModal = () => {
+    setregisterModalIsVisible(false);
+  };
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/rand`)
@@ -22,6 +29,9 @@ export default function Home() {
         </div>
         <button
           type="button"
+          onClick={() => {
+            setregisterModalIsVisible(true);
+          }}
           className="absolute transition-colors duration-300 md:text-5xl bg-darkPink bottom-1/4 md:px-10 md:bottom-1/3 left-1/2 -translate-x-1/2 hover:bg-pink text-white font-bold py-2 px-4 rounded-full border-2  border-solid border-white"
         >
           S'inscrire
@@ -41,12 +51,14 @@ export default function Home() {
             <Card key={offre.id} offre={offre} />
           ))}
         </div>
-        <button
-          type="button"
-          className="bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 rounded"
-        >
-          Voir plus
-        </button>
+        <Link to="/offres">
+          <button
+            type="button"
+            className="bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 rounded"
+          >
+            Voir plus
+          </button>
+        </Link>
       </div>
       <div className="mt-4 bg-darkPink">
         <h2 className="text-center text-white font-bold pt-4 text-2xl md:text-3xl md:mb-10">
@@ -97,13 +109,19 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <iframe
-        className="w-full aspect-video mt-8"
-        src="https://www.youtube.com/embed/BYmNVsS5J58"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
+      <div className="flex justify-center mt-8 mb-8">
+        <iframe
+          className="w-full lg:w-3/4 aspect-video "
+          src="https://www.youtube.com/embed/BYmNVsS5J58"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+      <RegisterModal
+        visible={registerModalIsVisible}
+        onclose={handleOnCloseRegisterModal}
       />
     </div>
   );
