@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function CarteProfil({ id }) {
+function CarteSalaire({ id }) {
   const [offre, setOffre] = useState();
 
   useEffect(() => {
@@ -20,4 +20,4 @@ function CarteProfil({ id }) {
   );
 }
 
-export default CarteProfil;
+export default CarteSalaire;
