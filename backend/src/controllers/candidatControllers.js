@@ -3,18 +3,13 @@ const validate = require("../service/candidat");
 
 const add = (req, res) => {
   let candidat = req.body.data;
-  let profilPhoto = "";
-  let profilCv = "";
-  if (req.files.avatar !== undefined) {
-    profilPhoto = `public/assets${req.files.avatar[0].filename}`;
-  } else {
-    profilPhoto = `public/assets/avatar/Avatar.png`;
-  }
-  if (req.files.cv !== undefined) {
-    profilCv = `public/assets${req.files.cv[0].filename}`;
-  } else {
-    profilCv = `public/assets/cv/cv.png`;
-  }
+  const profilPhoto = `public/assets${
+    req.files.avatar ? req.files.avatar[0].filename : "/avatar/Avatar.png"
+  }`;
+  const profilCv = `public/assets${
+    req.files.cv ? req.files.cv[0].filename : "/cv/cv.png"
+  }`;
+
   candidat = JSON.parse(candidat);
   const error = validate(candidat);
   if (error) {
