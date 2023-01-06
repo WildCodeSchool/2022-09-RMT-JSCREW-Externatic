@@ -19,8 +19,7 @@ function Entreprise() {
 
   return (
     <div>
-      <div>Entreprise</div>;
-      <div className="flex justify-center">
+      <div className=" mb-3 flex justify-left">
         <div className="mb-3 xl:w-96">
           <select
             className="form-select appearance-none

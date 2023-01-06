@@ -1,9 +1,9 @@
 .hideMenuNav {
   color: white;
-  display: block;
-  position: absolute;
+  display: none;
+  position: fixed;
   right: 0;
-  width: 420px;
+  width: 0px;
   height: 70vh;
   top: 0;
   background: #c91961;
@@ -16,7 +16,7 @@
 .showMenuNav {
   color: white;
   display: block;
-  position: absolute;
+  position: fixed;
   right: 0;
   width: 420px;
   height: 70vh;
@@ -27,4 +27,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.Menu::-webkit-scrollbar {
+  display: none;
 }
