@@ -12,11 +12,11 @@ function UneOffre() {
 
   return (
     <div className="container-offre">
-      <div className="">
-        <img src={offreentete} alt="" />
+      <div className="flex justify-center">
+        <img className="h-auto lg:w-9/12" src={offreentete} alt="" />
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center">
-        <div className="flex justify-center md:w-6/12 lg:w-6/12 xl:w-5/12 mx-6">
+        <div className="flex justify-center md:w-6/12 lg:w-6/12 xl:w-6/12 mx-6">
           <CartePrincipale id={id} />
         </div>
         <div className="flex flex-col md:w-6/12 lg:w-4/12 xl:w-4/12 mx-6 items-center">
