@@ -6,6 +6,8 @@ const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
+const { hashPassword } = require("./service/auth");
+const checkAuth = require("./middleware/auth");
 
 // configuration de l'upload profil
 const storage = multer.diskStorage({
@@ -28,9 +30,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 // fin de la configuration de l'upload
 
+// routes publiques
+router.get("/offres", offreControllers.browse);
+router.get("/offres/rand", offreControllers.random);
 router.get("/entreprises", entrepriseControllers.browse);
-router.post("/entreprises", entrepriseControllers.add);
+router.post("/login", connexionControllers.validateUser);
+router.post("/register", hashPassword, connexionControllers.add);
 
+// mur d'authentification
+router.use(checkAuth);
+
+// routes privées
+router.post("/entreprises", entrepriseControllers.add);
 router.post(
   "/profil",
   upload.fields([
@@ -39,11 +50,6 @@ router.post(
   ]),
   candidatControllers.add
 );
-
-router.post("/register", connexionControllers.add);
-
-router.get("/offres", offreControllers.browse);
-router.get("/offres/rand", offreControllers.random);
 router.post("/offres", offreControllers.add);
 
 module.exports = router;

@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `externatic`.`connexion`;
 CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `utilisateur` VARCHAR(255) UNIQUE NOT NULL,
-  `mot_de_passe` VARCHAR(255) NOT NULL,
+  `hashedPassword` VARCHAR(255) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
 -- Data for table `externatic`.`connexion`
 -- -----------------------------------------------------
 INSERT INTO
-  `connexion`(`utilisateur`, `mot_de_passe`, `role`)
+  `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
   (
     'alain.villeneuve@email.f',
@@ -31,12 +31,12 @@ VALUES
   );
 
 INSERT INTO
-  `connexion`(`utilisateur`, `mot_de_passe`, `role`)
+  `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
   ('jules.simons@email.com', '123456', 'consultant');
 
 INSERT INTO
-  `connexion`(`utilisateur`, `mot_de_passe`, `role`)
+  `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
   ('leo.dupuis@gmail.com', '123456', 'candidat');
 
