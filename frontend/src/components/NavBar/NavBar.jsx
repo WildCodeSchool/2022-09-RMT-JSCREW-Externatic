@@ -14,7 +14,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch font-roboto">
+    <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden">
       <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
