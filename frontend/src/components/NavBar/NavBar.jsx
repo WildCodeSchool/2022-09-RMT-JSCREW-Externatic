@@ -15,20 +15,20 @@ function NavBar() {
 
   return (
     <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch font-roboto">
-      <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 md:justify-self-center">
+      <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
             src={logo}
             alt="Logo"
-            width="200"
-            height="200"
-            className="imageLogo"
+            width="100"
+            height="100"
+            className="imageLogo md:w-[200px] "
           />
         </Link>
       </div>
-      <div className="Menu justify-self-start -mt-7 mr-6">
+      <div className="Menu justify-self-start -mt-7 md:mr-6">
         <button
-          className={`burgerIcon absolute top-0 left-0 px-8 py-4 ${
+          className={`burgerIcon pl-2 md:pl-7 absolute py-1 top-0 left-0 px-8 md:py-4 ${
             !isNavOpen && "absolute top-0 left-0 px-8 py-4"
           }`}
           type="button"
@@ -42,7 +42,7 @@ function NavBar() {
             <span className="block h-0.5 w-6 bg-darkPink" />
           </div>
         </button>
-        <span className="block mx-16 -mt-2 pl-1">Menu</span>
+        <span className="block mx-12 md:mx-16 md:-mt-2">Menu</span>
         <div
           className={`transform transition-all duration-700 ${
             isNavOpen
@@ -69,13 +69,6 @@ function NavBar() {
             </svg>
           </button>
           <div className="flex flex-col justify-between min-h-[200px] w-80 text-2xl">
-            <button
-              className="text-start my-6 md:hidden"
-              type="button"
-              onClick={() => setConnexionModalIsVisible(true)}
-            >
-              Connexion
-            </button>
             <Link
               to="/"
               className="border-gray-400 my-6 "
@@ -123,6 +116,15 @@ function NavBar() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="justify-self-end absolute -mr-10">
+        <button
+          className="mt-1 md:mt-3 transition-colors duration-300 bg-darkPink bottom-1/4 px-1 md:px-6 md:bottom-1/3 -translate-x-1/2 hover:bg-pink text-white rounded-full border-2"
+          type="button"
+          onClick={() => setConnexionModalIsVisible(true)}
+        >
+          Connexion
+        </button>
       </div>
       <ConnexionModal
         visible={connexionModalIsVisible}
