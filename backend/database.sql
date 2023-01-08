@@ -6,6 +6,252 @@
 USE `externatic`;
 
 -- -----------------------------------------------------
+-- Table `externatic`.`consultant`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `externatic`.`consultant`;
+
+CREATE TABLE IF NOT EXISTS `externatic`.`consultant` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `image_url` VARCHAR(255) UNIQUE NOT NULL,
+  `nom_consultant` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(100) NOT NULL,
+  `telephone` VARCHAR(20),
+  `email` VARCHAR(50) NOT NULL,
+  `LinkedIn` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Data for table `externatic`.`consultant`
+-- -----------------------------------------------------
+INSERT INTO
+  `consultant`(
+    `image_url`,
+    `nom_consultant`,
+    `role`,
+    `telephone`,
+    `email`,
+    `LinkedIn`
+  )
+VALUES
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/FGA-1-300x300.jpg",
+    "Franck GASCARD",
+    "Dirigeant",
+    "06 99 48 33 98",
+    "franck.gascard@externatic.fr",
+    "https://www.linkedin.com/in/franckgascard/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/BCA-1-300x300.jpg",
+    "Benjamin CASSERON",
+    "Associé / Consultant recrutement IT",
+    "06 87 28 36 85",
+    "benjamin.casseron@externatic.fr",
+    "https://www.linkedin.com/in/benjamincasseron/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/SBL-1-300x300.jpg",
+    "Sabrina BLANCHET",
+    "Associée / Consultante recrutement IT",
+    "07 83 77 37 09",
+    "sabrina.blanchet@externatic.fr",
+    "https://www.linkedin.com/in/sabrina-blanchet-7a2948b/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/MDE-1-300x300.jpg",
+    "Mathieu DEBROISE",
+    "Associé / Consultant recrutement IT",
+    "06 83 46 10 43",
+    "mathieu.debroise@externatic.fr",
+    "https://www.linkedin.com/in/mathieudebroise/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/TLI-1-300x300.jpg",
+    "Thomas LIMARE",
+    "Consultant recrutement IT & Cybersécurité",
+    "06 73 87 40 18",
+    "thomas.limare@externatic.fr",
+    "https://www.linkedin.com/in/thomas-limare-36b52b116/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/APH-1-300x300.jpg",
+    "Ando PHILISTIN",
+    "Ingénieur recrutement",
+    "07 49 31 93 69",
+    "ando.philistin@externatic.fr",
+    "https://www.linkedin.com/in/ando-philistin/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2022/01/DMA1-300x300.png",
+    "Donatien MAHIEU",
+    "Chargé de recrutement",
+    "",
+    "donatien.mahieu@externatic.fr",
+    "https://www.linkedin.com/in/donatien-mahieu/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/YLO-1-300x300.jpg",
+    "Yvonnick LOIDREAU",
+    "Consultant recrutement IT - Nantes/Rennes",
+    "06 11 55 36 82",
+    "yvonnick.loidreau@externatic.fr",
+    "https://www.linkedin.com/in/yvonnick-loidreau-32417284/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/SJA-1-300x300.jpg",
+    "Sandra JAGU",
+    "Office Manager",
+    "02 85 52 26 33",
+    "sandra.jagu@externatic.fr",
+    "https://www.linkedin.com/in/sandra-jagu-b73b3670/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2022/03/MHA1-300x300.png",
+    "Mathilde HAMEL",
+    "Consultante en recrutement IT - Nantes/Vendée",
+    "06 70 35 46 55",
+    "mathilde.hamel@externatic.fr",
+    "https://www.linkedin.com/in/mathilde-hamel-560a52111/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2022/03/JCO-1-300x300.jpg",
+    "Justine CÔTE",
+    "Consultante en recrutement IT",
+    "06 02 42 82 63",
+    "justine.cote@externatic.fr",
+    "https://www.linkedin.com/in/justine-eriau/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/05/PDU-1-300x300.jpg",
+    "Perrine DUPISSON",
+    "Consultante recrutement IT",
+    "06 29 51 22 51",
+    "perrine.dupisson@externatic.fr",
+    "https://www.linkedin.com/in/perrine-dupisson/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/03/NLA-1-300x300.jpg",
+    "Noé LAMBERT",
+    "Consultant en recrutement IT",
+    "07 83 58 06 14",
+    "noe.lambert@externatic.fr",
+    "https://www.linkedin.com/in/no%C3%A9-lambert-aouizerat/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2022/09/ALO1-300x300.png",
+    "Antoine LOPEZ",
+    "Consultant en recrutement IT - Nantes/Vendée",
+    "06 40 83 19 54",
+    "antoine.lopez@externatic.fr",
+    "https://www.linkedin.com/in/antoine-lopez-093b231a0/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/06/PSE-1-300x300.jpg",
+    "Pierre SEGHIER",
+    "Consultant recrutement IT - Nantes/Angers",
+    "06 50 99 50 98",
+    "pierre.seghier@externatic.fr",
+    "https://www.linkedin.com/in/pierre-seghier-59462399/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2022/01/LDE1-300x300.png",
+    "Lise De Martino",
+    "Office Manager",
+    "06 79 65 00 66",
+    "lise.demartino@externatic.fr",
+    "https://www.linkedin.com/in/lise-de-martino/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2021/09/AUR-1-300x300.jpg",
+    "Alexandre Urien",
+    "Consultant en recrutement IT - Lille",
+    "06 01 39 55 60",
+    "alexandre.urien@externatic.fr",
+    "https://www.linkedin.com/in/alexandre-urien/"
+  ),
+  (
+    "https://www.externatic.fr/wp-content/uploads/2022/09/ASO1-300x300.png",
+    "Adèle SOLD",
+    " Chargée de recutement IT - Lille ",
+    " 06 20 18 15 15 ",
+    " adele.sold @externatic.fr ",
+    " https: / / www.linkedin.com / in / ad % C3 % A8le - sold - 07b68314a / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2020 / 09 / MAU -1 - 300x300.jpg ",
+    " Margaux AUBERT ",
+    " Responsable Communication / Marketing ",
+    " 06 66 76 57 40 ",
+    " margaux.aubert @externatic.fr ",
+    " https: / / www.linkedin.com / in / margaux - aubert / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / NBO -1 - 300x300.jpg ",
+    " Nicolas BOUET",
+    " Consultant recrutement IT - Nantes / Rennes ",
+    " 06 98 28 83 68 ",
+    " nicolas.bouet @externatic.fr ",
+    " https: / / www.linkedin.com / in / bouet - nicolas / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / LFR -1 - 300x300.jpg ",
+    " Lucie FROESCHEL ",
+    " Consultante recrutement IT à Bordeaux ",
+    " 06 82 32 11 45 ",
+    " lucie.froeschel @externatic.fr ",
+    " https: / / www.linkedin.com / in / lucie - froeschel / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / RSA -1 - 300x300.jpg ",
+    " Raphael SANCHEZ ",
+    " Consultant recrutement IT à Bordeaux ",
+    " 06 49 49 91 68 ",
+    " Raphael.sanchez @externatic.fr ",
+    " https: / / www.linkedin.com / in / raphael - sanchez - roson / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 05 / TRO1 - 300x300.png ",
+    " Thomas ROVERE",
+    " Consultant en recrutement IT à Bordeaux ",
+    " 07 65 75 57 03 ",
+    " thomas.rovere @externatic.fr ",
+    " https: / / www.linkedin.com / in / thomas - rovere / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 07 / CNA1 - 300x298.png ",
+    " Charlotte NADAUD ",
+    " Chargée de recrutement IT à Bordeaux ",
+    " 06 73 45 10 59 ",
+    " charlotte.nadaud @externatic.fr ",
+    " https: / / www.linkedin.com / in / charlotte - nadaud / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 09 / RBA2 - 300x300.png ",
+    " Ruben BARACCHINI ",
+    " Consultant recrutement IT à Bordeaux ",
+    " 06 66 84 94 50 ",
+    " ruben.baracchini @externatic.fr ",
+    " https: / / www.linkedin.com / in / ruben - baracchini - 78a474158 / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2020 / 09 / site -01 - 300x300.png ",
+    " Tiffène BULEON",
+    " Consultante en recrutement IT à Nantes ",
+    " 06 74 82 70 85 ",
+    " tiffene.buleon @externatic.fr ",
+    " https: / / www.linkedin.com / in / tiff % C3 % A8ne - buleon - 288512b6 / "
+  ),
+  (
+    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 12 / site -03 - 300x300.png ",
+    " Talsy LOEMBA ",
+    " Consultant recrutement IT à Nantes ",
+    " 06 50 69 21 78 ",
+    " talsy.loemba @externatic.fr ",
+    " https: / / www.linkedin.com / in / talsy - loemba / "
+  );
+
+-- -----------------------------------------------------
 -- Table `externatic`.`connexion`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `externatic`.`connexion`;
