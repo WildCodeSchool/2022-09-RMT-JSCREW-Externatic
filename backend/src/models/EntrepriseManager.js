@@ -25,6 +25,13 @@ class EntrepriseManager extends AbstractManager {
       ]
     );
   }
+
+  update(entreprise) {
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      entreprise,
+      entreprise.id,
+    ]);
+  }
 }
 
 module.exports = EntrepriseManager;

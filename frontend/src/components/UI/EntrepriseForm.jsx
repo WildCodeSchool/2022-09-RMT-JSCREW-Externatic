@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import apiConnexion from "@services/apiConnexion";
 import toastiConfig from "@services/toastiConfig";
+import Entreprise from "@components/UI/Entreprise";
 
 function EntrepriseForm() {
   const [firm, setFirm] = useState({
@@ -20,6 +22,20 @@ function EntrepriseForm() {
     dateInscription: "",
     domaine_id: 2,
   });
+  const [entreprises, setEntreprises] = useState([]);
+
+  // Fonction qui gère la récupération des données "entreprise" avec axios
+  const getAllEntreprises = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/entreprises`)
+      .then((job) => setEntreprises(job.data))
+      .catch((error) => console.error(error));
+  };
+
+  // Données "entreprise" update
+  useEffect(() => {
+    getAllEntreprises();
+  }, []);
 
   const handleEntreprise = (place, value) => {
     const newFirm = { ...firm };
@@ -47,6 +63,10 @@ function EntrepriseForm() {
         console.warn(err);
       });
   };
+  const selectEntreprise = (id) => {
+    const entp = entreprises.find((e) => e.id === parseInt(id, 10));
+    setFirm(entp);
+  };
 
   return (
     <div className=" mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
@@ -54,7 +74,11 @@ function EntrepriseForm() {
         <h1 className="font-poppins text-2xl font-semibold text-center text-indigo-700  uppercase ">
           Formulaire entreprise
         </h1>
-        <form onSubmit={(e) => sendFirm(e)} className="mt-6">
+        <Entreprise
+          selectEntreprise={selectEntreprise}
+          entreprises={entreprises}
+        />
+        <form className="mt-6">
           <div className="mb-2">
             <label>
               <span className="text-gray-700">nom de entreprise</span>
@@ -352,14 +376,39 @@ function EntrepriseForm() {
             </label>
           </div>
           <div className="mb-6">
-            <button
-              type="submit"
-              className="
+            {!firm.id && (
+              <button
+                type="button"
+                onClick={sendFirm}
+                className="
               w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
           "
-            >
-              Envoyer
-            </button>
+              >
+                Ajouter
+              </button>
+            )}
+            {firm.id && (
+              <>
+                <button
+                  type="button"
+                  onClick={sendFirm}
+                  className="
+              w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+          "
+                >
+                  Mettre à jour
+                </button>
+                <button
+                  type="button"
+                  onClick={sendFirm}
+                  className="
+             w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+         "
+                >
+                  Supprimer
+                </button>
+              </>
+            )}
           </div>
           <div />
           <ToastContainer

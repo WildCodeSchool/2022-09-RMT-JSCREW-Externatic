@@ -27,8 +27,30 @@ const add = (req, res) => {
       res.sendStatus(500);
     });
 };
+// edit entreprise
+const edit = (req, res) => {
+  const entreprise = req.body;
 
+  // TODO validations (length, format...)
+
+  entreprise.id = parseInt(req.params.id, 10);
+
+  models.entreprise
+    .update(entreprise)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 module.exports = {
   browse,
   add,
+  edit,
 };
