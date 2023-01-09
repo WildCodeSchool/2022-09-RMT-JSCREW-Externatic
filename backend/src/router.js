@@ -34,9 +34,10 @@ const upload = multer({ storage });
 router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
 router.get("/entreprises", entrepriseControllers.browse);
+router.put("/offres/:id", offreControllers.edit);
+
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
-
 // mur d'authentification
 router.use(checkAuth);
 

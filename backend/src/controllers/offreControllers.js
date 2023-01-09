@@ -40,4 +40,26 @@ const browse = (req, res) => {
     });
 };
 
-module.exports = { random, add, browse };
+const edit = (req, res) => {
+  const Offre = req.body;
+
+  // TODO validations (length, format...)
+
+  Offre.id = parseInt(req.params.id, 10);
+
+  models.offre
+    .update(Offre)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+module.exports = { random, add, browse, edit };
