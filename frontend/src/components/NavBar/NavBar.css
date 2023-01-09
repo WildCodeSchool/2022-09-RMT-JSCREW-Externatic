@@ -2,7 +2,7 @@
   color: white;
   display: none;
   position: fixed;
-  right: 0;
+  left: 0;
   width: 0px;
   height: 70vh;
   top: 0;
@@ -17,7 +17,7 @@
   color: white;
   display: block;
   position: fixed;
-  right: 0;
+  left: 0;
   width: 420px;
   height: 70vh;
   top: 0;
