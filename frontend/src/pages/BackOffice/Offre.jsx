@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function Offre() {
+function Offres() {
   const [offres, setOffres] = useState([]);
 
   // Fonction qui gère la récupération des données "offre" avec axios
@@ -52,4 +52,4 @@ function Offre() {
   );
 }
 
-export default Offre;
+export default Offres;
