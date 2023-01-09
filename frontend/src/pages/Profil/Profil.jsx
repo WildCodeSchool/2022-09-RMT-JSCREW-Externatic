@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
 import avatar from "@assets/Avatar.png";
 import cv from "@assets/cv.png";
+import cvupload from "@assets/cv_uploaded.png"
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -79,6 +80,23 @@ function Profil() {
       });
   };
 
+    // La fonction previewPicture
+  const previewPicture  =  (evt, style) => {
+    const image = style === "photo" ? document.getElementById("image") : document.getElementById("pdf")
+      const [picture] = evt.target.files
+      if (picture && style === "photo") {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            image.src = event.target.result
+          }
+          reader.readAsDataURL(picture)
+
+      } else {
+        image.src = cvupload
+      }
+  }
+
+
   return (
     <div className="profil p-9 flex justify-center">
       <form
@@ -88,17 +106,26 @@ function Profil() {
       >
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={avatar} alt="avatar" />
+            <img src={avatar} id = "image" alt="avatar" />
             <input
               className="hidden"
               type="file"
               ref={inputRef1}
               name="avatar"
+              accept=".jpg, .png, .gif"
+              onChange= {(evt) => previewPicture(evt, "photo")}
             />
           </label>
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={cv} alt="cv" />
-            <input className="hidden" type="file" ref={inputRef2} name="cv" />
+            <img src={cv} alt="cv" id = "pdf" />
+            <input
+            className="hidden"
+            type="file"
+            ref={inputRef2}
+            name="cv"
+            accept=".pdf"
+            onChange= {(evt) => previewPicture(evt, "pdf")}
+            />
           </label>
         </div>
 
