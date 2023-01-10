@@ -42,6 +42,8 @@ router.use(checkAuth);
 
 // routes privées
 router.post("/entreprises", entrepriseControllers.add);
+router.put("/entreprises/:id", entrepriseControllers.edit);
+// router.delete('/entreprises/:id', deleteEntreprises);
 router.post(
   "/profil",
   upload.fields([
