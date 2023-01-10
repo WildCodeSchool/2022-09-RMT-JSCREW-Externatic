@@ -1,17 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function CartePrincipale({ id }) {
-  const [principale, setPrincipale] = useState();
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPrincipale(data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
+function CartePrincipale({ offre }) {
   return (
     <div className="flex flex-col min-w-full justify-items-center items-center my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
       <h1 className="text-center text-2xl underline underline-offset-8 my-4">
