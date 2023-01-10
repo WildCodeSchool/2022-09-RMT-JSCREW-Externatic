@@ -28,6 +28,13 @@ class CandidatManager extends AbstractManager {
       ]
     );
   }
+
+  findOne(connexionId) {
+    return this.connection.query(
+      `select * from  ${this.table} where connexion_id = ?`,
+      [connexionId]
+    );
+  }
 }
 
 module.exports = CandidatManager;
