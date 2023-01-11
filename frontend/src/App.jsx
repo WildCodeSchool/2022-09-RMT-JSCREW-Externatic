@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/entreprises" element={<Entreprise />} />
             <Route path="/offre" element={<Offre />} />
             <Route path="/profil" element={<Profil />} />
+            <Route path="/profil/:id" element={<Profil />} />
             <Route path="/infos" element={<Quisommesnous />} />
           </Route>
           <Route path="/dashboard/" element={<Private />}>
