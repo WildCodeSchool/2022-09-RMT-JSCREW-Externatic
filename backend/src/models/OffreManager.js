@@ -40,6 +40,12 @@ class OffreManager extends AbstractManager {
       `SELECT poste, localisation FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
     );
   }
+
+  find(id) {
+    return this.connection.query(`SELECT * FROM  ${this.table} WHERE id = ?`, [
+      id,
+    ]);
+  }
 }
 
 module.exports = OffreManager;

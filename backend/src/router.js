@@ -50,6 +50,12 @@ router.post(
   ]),
   candidatControllers.add
 );
+
+router.post("/register", connexionControllers.add);
+
+router.get("/offres", offreControllers.browse);
+router.get("/offres/rand", offreControllers.random);
+router.get("/offres/:id", offreControllers.read);
 router.post("/offres", offreControllers.add);
 
 module.exports = router;
