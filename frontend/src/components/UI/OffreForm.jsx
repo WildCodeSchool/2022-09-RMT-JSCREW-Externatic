@@ -8,6 +8,21 @@ import axios from "axios";
 import Offres from "@pages/BackOffice/Offre";
 
 function OffreForm() {
+  // fonction pour mettre à jour les dates en auto
+
+  // const dateInscript = () => {
+  //   const year = new Date().getFullYear();
+  //   let month = new Date().getMonth();
+  //   let date = new Date().getDate();
+  //   if (month < 10) {
+  //     month = `0${month}`;
+  //   }
+  //   if (date < 10) {
+  //     date = `0${date}`;
+  //   }
+  //   return `${year}-${month}-${date}`;
+  // };
+
   const [offre, setOffre] = useState({
     contrat: "",
     condition_travail: "",
@@ -25,7 +40,6 @@ function OffreForm() {
   });
 
   const [jobs, setJobs] = useState([]);
-
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
     axios
@@ -66,29 +80,76 @@ function OffreForm() {
     selectOffre(entp);
   };
 
+  // Effacer une offre (archiver)
+
+  // const handleDeleteOffre = () => {
+  //   apiConnexion
+  //     .delete(`/offres/$(offre.id)`)
+  //     .then(() => {
+  //       setOffre({
+  //         contrat: "",
+  //         condition_travail: "",
+  //         avantages: null,
+  //         poste: "",
+  //         localisation: "",
+  //         dateOffre: dateInscript(),
+  //         date_fin_offre: "",
+  //         salaire: null,
+  //         mission: "",
+  //         profil_recherche: "",
+  //         specialitees: "",
+  //         entreprise_id: "",
+  //         domaine_id: "",
+  //       });
+  //       toast.success(
+  //         `Bonjour votre offre a bien été supprimée.`,
+  //         toastiConfig
+  //       );
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
+
+  // // Mettre à jour une offre
+  // const handelUpdateOffre = () => {
+  //   if (offre.id) {
+  //     apiConnexion
+  //       .put(`/offres/${offre.id}`, offre)
+  //       .then(() => {
+  //         toast.success(
+  //           `Bonjour votre offre a bien été modifiée.`,
+  //           toastiConfig
+  //         );
+  //       })
+  //       .catch((err) => {
+  //         toast.error(
+  //           `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
+  //           toastiConfig
+  //         );
+  //         console.warn(err);
+  //       });
+  //   }
+  // };
+
   return (
-    <div className="">
-      <div className="flex" />
-
-      <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen ">
-        <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
-          <h1 className="font-roboto text-2xl font-semibold text-center text-indigo-700  uppercase ">
-            Formulaire offre
-          </h1>
-          <Entreprise />
-          <Offres />
-          <offre selectOffre={selectOffre} jobs={jobs} />
-          <form className="mt-6">
-            <div className="mb-2">
-              <label>
-                <span className="text-gray-700">contrat</span>
-                <input
-                  required
-                  type="text"
-                  name="contrat"
-                  value={offre.contrat}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+    <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen ">
+      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
+        <h1 className="font-roboto text-2xl font-semibold text-center text-indigo-700  uppercase ">
+          Formulaire offre
+        </h1>
+        <Entreprise />
+        <Offres />
+        <offre selectOffre={selectOffre} jobs={jobs} />
+        <form className="mt-6">
+          <div className="mb-2">
+            <label>
+              <span className="text-gray-700">contrat</span>
+              <input
+                required
+                type="text"
+                name="contrat"
+                value={offre.contrat}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -100,17 +161,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
           "
-                  placeholder="contrat"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">condition de travail</span>
-                <input
-                  type="text"
-                  name="condition_travail"
-                  value={offre.condition_travail}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="contrat"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">condition de travail</span>
+              <input
+                type="text"
+                name="condition_travail"
+                value={offre.condition_travail}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -122,17 +183,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
           "
-                  placeholder="condition de travail"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">avantages</span>
-                <input
-                  type="text"
-                  name="avantages"
-                  value={offre.avantages}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="condition de travail"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">avantages</span>
+              <input
+                type="text"
+                name="avantages"
+                value={offre.avantages}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -144,17 +205,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
           "
-                  placeholder="avantages"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">poste</span>
-                <input
-                  type="text"
-                  name="poste"
-                  value={offre.poste}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="avantages"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">poste</span>
+              <input
+                type="text"
+                name="poste"
+                value={offre.poste}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -166,17 +227,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
               "
-                  placeholder="poste"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">localisation</span>
-                <input
-                  type="text"
-                  name="localisation"
-                  value={offre.localisation}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="poste"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">localisation</span>
+              <input
+                type="text"
+                name="localisation"
+                value={offre.localisation}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -188,17 +249,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
               "
-                  placeholder="localisation"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">date de l'offre</span>
-                <input
-                  type="date"
-                  name="dateOffre"
-                  value={offre.dateOffre}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="localisation"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">date de l'offre</span>
+              <input
+                type="date"
+                name="dateOffre"
+                value={offre.dateOffre}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -210,17 +271,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
               "
-                  placeholder="date de l'offre"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">date de fin de l'offre</span>
-                <input
-                  type="date"
-                  name="dateOffre"
-                  value={offre.dateOffre}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="date de l'offre"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">date de fin de l'offre</span>
+              <input
+                type="date"
+                name="dateOffre"
+                value={offre.dateOffre}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -232,17 +293,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
               "
-                  placeholder="date fin de l'offre"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">salaire</span>
-                <input
-                  type="number"
-                  name="salaire"
-                  value={offre.salaire}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="date fin de l'offre"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">salaire</span>
+              <input
+                type="number"
+                name="salaire"
+                value={offre.salaire}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -254,17 +315,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
               "
-                  placeholder="salaire"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">mission</span>
-                <input
-                  type="text"
-                  name="mission"
-                  value={offre.mission}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="salaire"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">mission</span>
+              <input
+                type="text"
+                name="mission"
+                value={offre.mission}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -276,17 +337,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
               "
-                  placeholder="mission"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">profil recherché</span>
-                <input
-                  type="text"
-                  name="profil_recherche"
-                  value={offre.profil_recherche}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="mission"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">profil recherché</span>
+              <input
+                type="text"
+                name="profil_recherche"
+                value={offre.profil_recherche}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -298,17 +359,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
             "
-                  placeholder="profil recherché"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">specialitées</span>
-                <input
-                  type="text"
-                  name="specialitees"
-                  value={offre.specialitees}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="profil recherché"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">specialitées</span>
+              <input
+                type="text"
+                name="specialitees"
+                value={offre.specialitees}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -320,19 +381,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
             "
-                  placeholder="specialitées"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">
-                  identifiant de l'entreprise
-                </span>
-                <input
-                  type="text"
-                  name="entreprise_id"
-                  value={offre.entreprise_id}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="specialitées"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">identifiant de l'entreprise</span>
+              <input
+                type="text"
+                name="entreprise_id"
+                value={offre.entreprise_id}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -344,17 +403,17 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
             "
-                  placeholder="identifiant de l'entreprise"
-                />
-              </label>
-              <label>
-                <span className="text-gray-700">identifiant du domaine</span>
-                <input
-                  type="text"
-                  name="domaine_id"
-                  value={offre.domaine_id}
-                  onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                  className="
+                placeholder="identifiant de l'entreprise"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">identifiant du domaine</span>
+              <input
+                type="text"
+                name="domaine_id"
+                value={offre.domaine_id}
+                onChange={(e) => handleOffre(e.target.name, e.target.value)}
+                className="
 
                   w-full
                   block px-16 py-2 mt-2
@@ -366,16 +425,16 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50
             "
-                  placeholder="identifiant du domaine"
-                />
-              </label>
-            </div>
-            <div className="mb-6">
-              {!offre.id && (
-                <button
-                  type="button"
-                  onClick={sendForm}
-                  className="
+                placeholder="identifiant du domaine"
+              />
+            </label>
+          </div>
+          <div className="mb-6">
+            {!offre.id && (
+              <button
+                type="button"
+                onClick={sendForm}
+                className="
                   w-40 bg-white 
                   mt-4 transition 
                   duration-300 
@@ -389,25 +448,46 @@ function OffreForm() {
                   py-2 px-4 
                   pl-2 rounded
                   "
+              >
+                Ajouter
+              </button>
+            )}
+            {offre.id && (
+              <>
+                <button
+                  type="button"
+                  onClick={sendForm}
+                  className=" w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded"
                 >
-                  Ajouter
+                  Mettre à jour
                 </button>
-              )}
-            </div>
-          </form>
-        </div>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+
+                <button
+                  type="button"
+                  onClick={sendForm}
+                  className="
+             w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+         "
+                >
+                  Supprimer
+                </button>
+              </>
+            )}
+          </div>
+
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </form>
       </div>
     </div>
   );
