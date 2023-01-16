@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Card from "@components/UI/Card";
 import connaissance from "@assets/connaissance.png";
 
@@ -8,7 +9,9 @@ function NosOffres() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres`)
       .then((res) => res.json())
-      .then((data) => setOffresData(data))
+      .then((data) => {
+        setOffresData(data);
+      })
       .catch((err) => console.error(err));
   }, []);
 
@@ -63,9 +66,12 @@ function NosOffres() {
         </button>
       </div>
       <div className="flex flex-col md:flex-row mb-5 mx-4">
-        {offresData.map((offre) => (
-          <Card key={offre.id} offre={offre} />
-        ))}
+        {offresData &&
+          offresData.map((offre) => (
+            <Link to={`/offres/${offre.id}`}>
+              <Card key={offre.id} offre={offre} />
+            </Link>
+          ))}
       </div>
     </div>
   );
