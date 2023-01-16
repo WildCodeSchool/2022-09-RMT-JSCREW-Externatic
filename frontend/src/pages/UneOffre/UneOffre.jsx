@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CartePrincipale from "@components/UI/Carteprincipale";
-import CarteEntreprise from "@components/UI/CarteEntreprise";
+import CartePrincipale from "@components/UI/CartePrincipale";
+import CarteAvantages from "@components/UI/CarteAvantages";
 import CarteProfil from "@components/UI/CarteProfil";
 import CarteSalaire from "@components/UI/CarteSalaire";
 import ListOfOffers from "@components/UI/ListOfOffers";
@@ -30,7 +30,7 @@ function UneOffre() {
           <CartePrincipale offre={offre} />
         </div>
         <div className="flex flex-col md:w-6/12 lg:w-4/12 xl:w-4/12 mx-6 items-center">
-          <CarteEntreprise offre={offre} />
+          <CarteAvantages offre={offre} />
           <CarteProfil offre={offre} />
           <CarteSalaire offre={offre} />
         </div>

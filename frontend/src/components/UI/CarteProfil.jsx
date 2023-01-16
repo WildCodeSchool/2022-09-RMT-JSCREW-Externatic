@@ -6,7 +6,7 @@ function CarteProfil({ offre }) {
       <h1 className="underline underline-offset-8 mx-4 mb-4">
         Profil recherché 🌱
       </h1>
-      <p className="text-black">{profil?.profil_recherche}</p>
+      <p className="text-black">{offre?.profil_recherche}</p>
     </div>
   );
 }

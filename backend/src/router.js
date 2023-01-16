@@ -33,6 +33,7 @@ const upload = multer({ storage });
 // routes publiques
 router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
+router.get("/offres/:id", offreControllers.read);
 router.get("/entreprises", entrepriseControllers.browse);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
@@ -53,9 +54,6 @@ router.post(
 
 router.post("/register", connexionControllers.add);
 
-router.get("/offres", offreControllers.browse);
-router.get("/offres/rand", offreControllers.random);
-router.get("/offres/:id", offreControllers.read);
 router.post("/offres", offreControllers.add);
 
 module.exports = router;
