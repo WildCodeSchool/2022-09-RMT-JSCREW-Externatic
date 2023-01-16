@@ -4,25 +4,25 @@ function CartePrincipale({ offre }) {
   return (
     <div className="flex flex-col min-w-full justify-items-center items-center my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
       <h1 className="text-center text-2xl underline underline-offset-8 my-4">
-        {principale?.poste}
+        {offre?.poste}
       </h1>
       <div className="flex flex-row justify-center">
         <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
-          {principale?.contrat}
+          {offre?.contrat}
         </h2>
         <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
-          {principale?.condition_travail}
+          {offre?.condition_travail}
         </h2>
       </div>
       <h2 className="w-90 md:w-96 p-1 bg-white rounded-2xl text-darkPink text-center text-lg mx-4 my-4">
-        {principale?.specialitees}
+        {offre?.specialitees}
       </h2>
       <div className="flex flex-row justify-center">
         <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
-          Posté le : {principale?.dateOffre}
+          Posté le : {offre?.dateOffre}
         </h2>
         <h2 className="flex items-center justify-center w-32 lg:w-48 xl:w-64 bg-pink rounded-2xl border-2 text-center text-lg mx-4 my-4">
-          Fin des candidatures : {principale?.date_fin_offre}
+          Fin des candidatures : {offre?.date_fin_offre}
         </h2>
       </div>
       <div>
@@ -30,7 +30,7 @@ function CartePrincipale({ offre }) {
           Missions
         </h1>
         <p className="w-90 md:w-96 text-justify my-4 mx-6">
-          🎯 {principale?.mission}
+          🎯 {offre?.mission}
         </p>
       </div>
     </div>
