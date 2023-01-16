@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toastiConfig from "@services/toastiConfig";
-import Offres from "@pages/BackOffice/Offre";
 import Entreprise from "@pages/BackOffice/Entreprise";
+import axios from "axios";
+import Offres from "@pages/BackOffice/Offre";
 
-function Offre() {
+function OffreForm() {
   const [offre, setOffre] = useState({
     contrat: "",
     condition_travail: "",
@@ -22,6 +23,20 @@ function Offre() {
     entreprise_id: "",
     domaine_id: "",
   });
+
+  const [jobs, setJobs] = useState([]);
+
+  // Fonction qui gère la récupération des données "offre" avec axios
+  const getAllOffres = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
+      .then((job) => setJobs(job.data))
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    getAllOffres();
+  }, []);
 
   const handleOffre = (place, value) => {
     const newOffre = { ...offre };
@@ -46,19 +61,24 @@ function Offre() {
       });
   };
 
+  const selectOffre = (id) => {
+    const entp = jobs.find((e) => e.id === parseInt(id, 10));
+    selectOffre(entp);
+  };
+
   return (
     <div className="">
-      <div className="flex">
-        <Entreprise />
-        <Offres />
-      </div>
+      <div className="flex" />
 
       <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen ">
         <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
-          <h1 className="font-poppins text-2xl font-semibold text-center text-indigo-700 underline uppercase ">
+          <h1 className="font-roboto text-2xl font-semibold text-center text-indigo-700  uppercase ">
             Formulaire offre
           </h1>
-          <form onSubmit={(e) => sendForm(e)} className="mt-6">
+          <Entreprise />
+          <Offres />
+          <offre selectOffre={selectOffre} jobs={jobs} />
+          <form className="mt-6">
             <div className="mb-2">
               <label>
                 <span className="text-gray-700">contrat</span>
@@ -351,9 +371,11 @@ function Offre() {
               </label>
             </div>
             <div className="mb-6">
-              <button
-                type="submit"
-                className="
+              {!offre.id && (
+                <button
+                  type="button"
+                  onClick={sendForm}
+                  className="
                   w-40 bg-white 
                   mt-4 transition 
                   duration-300 
@@ -367,9 +389,10 @@ function Offre() {
                   py-2 px-4 
                   pl-2 rounded
                   "
-              >
-                Envoyer
-              </button>
+                >
+                  Ajouter
+                </button>
+              )}
             </div>
           </form>
         </div>
@@ -390,4 +413,4 @@ function Offre() {
   );
 }
 
-export default Offre;
+export default OffreForm;
