@@ -6,182 +6,50 @@
 USE `externatic`;
 
 -- -----------------------------------------------------
--- Table `externatic`.`connexion`
+-- Table `externatic`.`candidature`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `externatic`.`connexion`;
-
-CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
+-- DROP TABLE IF EXISTS `externatic`.`candidature` ;
+CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `utilisateur` VARCHAR(255) UNIQUE NOT NULL,
-  `hashedPassword` VARCHAR(255) NOT NULL,
-  `role` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  `candidat_id` INT NOT NULL,
+  `offre_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_candidature_candidat` FOREIGN KEY (`candidat_id`) REFERENCES `externatic`.`candidat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_candidature_offre` FOREIGN KEY (`offre_id`) REFERENCES `externatic`.`offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Data for table `externatic`.`connexion`
--- -----------------------------------------------------
+-- ----------------------------------------
+-- Data for table `externatic`.`candidature`;
+-- ----------------------------------------
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`)
+  `externatic`.`candidature` (`candidat_id`, `offre_id`)
 VALUES
-  (
-    'alain.villeneuve@email.f',
-    '$argon2id$v=19$m=65536,t=5,p=1$gK38z/m731hAiZeDmlerHA$kKpFSFCvJNsWB77QbB/jbm6Dmkt8IlSEaZJStPxdW/I',
-    'administrateur'
-  );
+  (1, 1);
 
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`)
+  `externatic`.`candidature` (`candidat_id`, `offre_id`)
 VALUES
-  (
-    'jules.simons@email.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$R5zhYw9IOecMbCx4Ck1ykQ$yCnhM7xzF+Sx0CJM/uvTCHo6JNcxeSgtFWCeWWQWAUM',
-    'consultant'
-  );
+  (1, 2);
 
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`)
+  `externatic`.`candidature` (`candidat_id`, `offre_id`)
 VALUES
-  (
-    'leo.dupuis@gmail.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$a7y8HAgcdUFN7Woyayt+cg$FAS/LW8r2mpjr6EIdBMozVpS7I89gswYddM9sr+f1ls',
-    'candidat'
-  ),
-  (
-    "franck.gascard@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$0V1WR6sYiBta8aZCZCXROA$4GtsulV1jW1K7gi98Eg/KdZgAQ5vTDnyJbBwZFTxiag",
-    "consultant"
-  ),
-  (
-    "benjamin.casseron@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$52xCe/PKuxjzhgVXf3V/Bw$iPBpeqjGmjwg5xgJAddqdRLWSBQCOHoDTLR1GMbVw4Y",
-    "Consultant"
-  ),
-  (
-    "sabrina.blanchet@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$QYnNu0v6LJ3rQgfld5GuUw$Morq/xKz7ka7LukRvBG+t+IGktYmtMXaedKq6UqrBdY",
-    "consultant"
-  ),
-  (
-    "mathieu.debroise@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$7g2/MXBsB4XkML7yadMQEg$CWnGMtkFqsPP7CooSucq3lY7F5vRBrKzFHDA53tJFV8",
-    "Consultant"
-  ),
-  (
-    "thomas.limare@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$CriKcNEI6ytY9MZppPJiRQ$wUNlTvruOjTw0RF+FLIHTh3xjEPTB88ZPAgKG3DzFro",
-    "consultant"
-  ),
-  (
-    "ando.philistin@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$2enKB7+4DiOHTUITy7WK5w$AcS556X/1qJOD7k+MwCLQ321ji5jC5pZCDIBHFyct5U",
-    "consultant"
-  ),
-  (
-    "donatien.mahieu@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$Gofqkb/tyJFSyrMUEI8vAw$25X3FLE7N76jxZh616oj6lGmZxrDPPoZ4udfyxlP8bs",
-    "consultant"
-  ),
-  (
-    "yvonnick.loidreau@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$B+K3VbN2ixZJDgr4onROfA$XWemGjYfLAVdTqseotjzoE6YEzHJErPQXDziI8/ZKQM",
-    "consultant"
-  ),
-  (
-    "sandra.jagu@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$NwYpk2YS6efiziSPK/Qn1w$odNiScKMXqKRXipvYFkQ6UaskGGLjkPDB+68/R6WGlU",
-    "consultant"
-  ),
-  (
-    "mathilde.hamel@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$UL3MfR3AMLIMPwuteuIjDw$xBed5vMgsUfW/sinZJj2hE+BG15GbEt/PyeVuEOvTTA",
-    "consultant"
-  ),
-  (
-    "justine.cote@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$CL8twZI39JEmC+F1tjua3A$HW9yPTZZtWscg6MEy7pHxniaIqfIZuyZ/pYm2+qxn08",
-    "consultant"
-  ),
-  (
-    "perrine.dupisson@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$tbFftgt0qePrwv74DPpvNQ$MObXh2YP8SNH8pnb5u1r/KYB6YZdWqsRRtEL4uIwcRQ",
-    "consultant"
-  ),
-  (
-    "noe.lambert@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$D6LkKuBi8jfM7ZGZA2PAOQ$u4f6mCbUu9yoDhCJFf5gIDCE1TzgHTsb3wUWAUiGF58",
-    "consultant"
-  ),
-  (
-    "antoine.lopez@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$rOUM+9lCK3KhgHphPTMzTg$cw7UdZFUziZKX57TXHfeOBdTt/g7QXCK2+BftCvgyR8",
-    "consultant"
-  ),
-  (
-    "pierre.seghier@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$O7qyUqbc1B7OtSN4soD4sQ$vcD5spnWqWPVBnSKQf4N7hUtKraY2zE+qP3F5soBYv4",
-    "consultant"
-  ),
-  (
-    "lise.demartino@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$DoYK+EyUe2hI4fxFdgmMTg$aCqDDqlARVkMH3iMRpgqQQhKwQig3cnRLHKXDEIWqCM",
-    "consultant"
-  ),
-  (
-    "alexandre.urien@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$U/Ea/9iCVJMbBjnF8Na1Fg$l7RBAbQI1E2jCZgceO3Knn2ed0wFQhktJ4RFE5B2qJc",
-    "consultant"
-  ),
-  (
-    "adele.sold @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$ldQ6+atDySqdtNNHz+tapg$c872nQfD0B8Y8lnwGa300odVO3SRR7pCBtsXGoxPPZk",
-    "consultant"
-  ),
-  (
-    "margaux.aubert @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$dz97nd77JIpUFbXK1t6gXw$ttpdYrkq+ZbcqO3Q81VHrxG1EYOg4aoRWjxxogiX+Mc",
-    "consultant"
-  ),
-  (
-    "nicolas.bouet @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$cT+X+ZVTxm7IWQ7M9mY0LQ$Sm1+wrCr+xiFIa3Cbv2ZUOBogi8REWredAZPuH0Ui1g",
-    "consultant"
-  ),
-  (
-    "lucie.froeschel @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$ySw7Fh7GJ4f5SGlRLr8ERw$yJ2Zj4uhJtPWSPY43N5ql2nBn5RXM7UB03w/oVve5q0",
-    "consultant"
-  ),
-  (
-    "Raphael.sanchez @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$ayvtf2vi9ayaQHR+kxcJew$TD4DwFJSfixYwDtxw5nX54rgDkxnYUs+1Ylysampvo4",
-    "consultant"
-  ),
-  (
-    "thomas.rovere @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$Aa4FKlaCk9s9/2vSeAisPw$AmS47P4Wtf5V4ahhDOeJLsb4ICrpmcUX4N8fKkgtqj4",
-    "consultant"
-  ),
-  (
-    "charlotte.nadaud @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$g2gQLkZcbHJijvwQ1Ow5Dg$lolc7l83GVjLYgtqwDJe/swRua6lTmS5UMTZp3Cqdv4",
-    "consultant"
-  ),
-  (
-    "ruben.baracchini @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$xHXN3G/uicDb2E86D3QpcQ$sC6+8Bjp0VbVwXSzzgjbYXJF6+7sL5eoZlvEXeuijtk",
-    "consultant"
-  ),
-  (
-    "tiffene.buleon @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$thdHw9zmFnJYBTZUFZUhOA$hezorJOBpJzHe1xiI8FFMefLliBIwTs26t+9zH3bWSQ",
-    "consultant"
-  ),
-  (
-    "talsy.loemba @externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$U/Ea/9iCVJMbBjnF8Na1Fg$l7RBAbQI1E2jCZgceO3Knn2ed0wFQhktJ4RFE5B2qJc",
-    "consultant"
-  );
+  (2, 2);
+
+INSERT INTO
+  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+VALUES
+  (2, 3);
+
+INSERT INTO
+  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+VALUES
+  (3, 1);
+
+INSERT INTO
+  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+VALUES
+  (3, 3);
 
 -- -----------------------------------------------------
 -- Table `externatic`.`candidat`
@@ -607,33 +475,182 @@ VALUES
   );
 
 -- -----------------------------------------------------
--- Table `externatic`.`Domaine`
+-- Table `externatic`.`connexion`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `externatic`.`domaine` ; 
-CREATE TABLE IF NOT EXISTS `externatic`.`domaine` (
+DROP TABLE IF EXISTS `externatic`.`connexion`;
+
+CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(255) NOT NULL,
-  `type` VARCHAR(255) NOT NULL,
+  `utilisateur` VARCHAR(255) UNIQUE NOT NULL,
+  `hashedPassword` VARCHAR(255) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
--- ----------------------------------------
--- Data for table `externatic`.`domaine`;
--- ----------------------------------------
+-- -----------------------------------------------------
+-- Data for table `externatic`.`connexion`
+-- -----------------------------------------------------
 INSERT INTO
-  `externatic`.`domaine` (`nom`, `type`)
+  `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
-  ('developpeur full Stack', 'web');
+  (
+    'alain.villeneuve@email.f',
+    '$argon2id$v=19$m=65536,t=5,p=1$gK38z/m731hAiZeDmlerHA$kKpFSFCvJNsWB77QbB/jbm6Dmkt8IlSEaZJStPxdW/I',
+    'administrateur'
+  );
 
 INSERT INTO
-  `externatic`.`domaine` (`nom`, `type`)
+  `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
-  ('devOps', 'web');
+  (
+    'jules.simons@email.com',
+    '$argon2id$v=19$m=65536,t=5,p=1$R5zhYw9IOecMbCx4Ck1ykQ$yCnhM7xzF+Sx0CJM/uvTCHo6JNcxeSgtFWCeWWQWAUM',
+    'consultant'
+  );
 
 INSERT INTO
-  `externatic`.`domaine` (`nom`, `type`)
+  `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
-  ('developpeur senior', 'web');
+  (
+    'leo.dupuis@gmail.com',
+    '$argon2id$v=19$m=65536,t=5,p=1$a7y8HAgcdUFN7Woyayt+cg$FAS/LW8r2mpjr6EIdBMozVpS7I89gswYddM9sr+f1ls',
+    'candidat'
+  ),
+  (
+    "franck.gascard@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$0V1WR6sYiBta8aZCZCXROA$4GtsulV1jW1K7gi98Eg/KdZgAQ5vTDnyJbBwZFTxiag",
+    "consultant"
+  ),
+  (
+    "benjamin.casseron@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$52xCe/PKuxjzhgVXf3V/Bw$iPBpeqjGmjwg5xgJAddqdRLWSBQCOHoDTLR1GMbVw4Y",
+    "Consultant"
+  ),
+  (
+    "sabrina.blanchet@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$QYnNu0v6LJ3rQgfld5GuUw$Morq/xKz7ka7LukRvBG+t+IGktYmtMXaedKq6UqrBdY",
+    "consultant"
+  ),
+  (
+    "mathieu.debroise@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$7g2/MXBsB4XkML7yadMQEg$CWnGMtkFqsPP7CooSucq3lY7F5vRBrKzFHDA53tJFV8",
+    "Consultant"
+  ),
+  (
+    "thomas.limare@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$CriKcNEI6ytY9MZppPJiRQ$wUNlTvruOjTw0RF+FLIHTh3xjEPTB88ZPAgKG3DzFro",
+    "consultant"
+  ),
+  (
+    "ando.philistin@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$2enKB7+4DiOHTUITy7WK5w$AcS556X/1qJOD7k+MwCLQ321ji5jC5pZCDIBHFyct5U",
+    "consultant"
+  ),
+  (
+    "donatien.mahieu@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$Gofqkb/tyJFSyrMUEI8vAw$25X3FLE7N76jxZh616oj6lGmZxrDPPoZ4udfyxlP8bs",
+    "consultant"
+  ),
+  (
+    "yvonnick.loidreau@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$B+K3VbN2ixZJDgr4onROfA$XWemGjYfLAVdTqseotjzoE6YEzHJErPQXDziI8/ZKQM",
+    "consultant"
+  ),
+  (
+    "sandra.jagu@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$NwYpk2YS6efiziSPK/Qn1w$odNiScKMXqKRXipvYFkQ6UaskGGLjkPDB+68/R6WGlU",
+    "consultant"
+  ),
+  (
+    "mathilde.hamel@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$UL3MfR3AMLIMPwuteuIjDw$xBed5vMgsUfW/sinZJj2hE+BG15GbEt/PyeVuEOvTTA",
+    "consultant"
+  ),
+  (
+    "justine.cote@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$CL8twZI39JEmC+F1tjua3A$HW9yPTZZtWscg6MEy7pHxniaIqfIZuyZ/pYm2+qxn08",
+    "consultant"
+  ),
+  (
+    "perrine.dupisson@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$tbFftgt0qePrwv74DPpvNQ$MObXh2YP8SNH8pnb5u1r/KYB6YZdWqsRRtEL4uIwcRQ",
+    "consultant"
+  ),
+  (
+    "noe.lambert@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$D6LkKuBi8jfM7ZGZA2PAOQ$u4f6mCbUu9yoDhCJFf5gIDCE1TzgHTsb3wUWAUiGF58",
+    "consultant"
+  ),
+  (
+    "antoine.lopez@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$rOUM+9lCK3KhgHphPTMzTg$cw7UdZFUziZKX57TXHfeOBdTt/g7QXCK2+BftCvgyR8",
+    "consultant"
+  ),
+  (
+    "pierre.seghier@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$O7qyUqbc1B7OtSN4soD4sQ$vcD5spnWqWPVBnSKQf4N7hUtKraY2zE+qP3F5soBYv4",
+    "consultant"
+  ),
+  (
+    "lise.demartino@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$DoYK+EyUe2hI4fxFdgmMTg$aCqDDqlARVkMH3iMRpgqQQhKwQig3cnRLHKXDEIWqCM",
+    "consultant"
+  ),
+  (
+    "alexandre.urien@externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$U/Ea/9iCVJMbBjnF8Na1Fg$l7RBAbQI1E2jCZgceO3Knn2ed0wFQhktJ4RFE5B2qJc",
+    "consultant"
+  ),
+  (
+    "adele.sold @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$ldQ6+atDySqdtNNHz+tapg$c872nQfD0B8Y8lnwGa300odVO3SRR7pCBtsXGoxPPZk",
+    "consultant"
+  ),
+  (
+    "margaux.aubert @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$dz97nd77JIpUFbXK1t6gXw$ttpdYrkq+ZbcqO3Q81VHrxG1EYOg4aoRWjxxogiX+Mc",
+    "consultant"
+  ),
+  (
+    "nicolas.bouet @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$cT+X+ZVTxm7IWQ7M9mY0LQ$Sm1+wrCr+xiFIa3Cbv2ZUOBogi8REWredAZPuH0Ui1g",
+    "consultant"
+  ),
+  (
+    "lucie.froeschel @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$ySw7Fh7GJ4f5SGlRLr8ERw$yJ2Zj4uhJtPWSPY43N5ql2nBn5RXM7UB03w/oVve5q0",
+    "consultant"
+  ),
+  (
+    "Raphael.sanchez @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$ayvtf2vi9ayaQHR+kxcJew$TD4DwFJSfixYwDtxw5nX54rgDkxnYUs+1Ylysampvo4",
+    "consultant"
+  ),
+  (
+    "thomas.rovere @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$Aa4FKlaCk9s9/2vSeAisPw$AmS47P4Wtf5V4ahhDOeJLsb4ICrpmcUX4N8fKkgtqj4",
+    "consultant"
+  ),
+  (
+    "charlotte.nadaud @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$g2gQLkZcbHJijvwQ1Ow5Dg$lolc7l83GVjLYgtqwDJe/swRua6lTmS5UMTZp3Cqdv4",
+    "consultant"
+  ),
+  (
+    "ruben.baracchini @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$xHXN3G/uicDb2E86D3QpcQ$sC6+8Bjp0VbVwXSzzgjbYXJF6+7sL5eoZlvEXeuijtk",
+    "consultant"
+  ),
+  (
+    "tiffene.buleon @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$thdHw9zmFnJYBTZUFZUhOA$hezorJOBpJzHe1xiI8FFMefLliBIwTs26t+9zH3bWSQ",
+    "consultant"
+  ),
+  (
+    "talsy.loemba @externatic.fr",
+    "$argon2id$v=19$m=65536,t=5,p=1$U/Ea/9iCVJMbBjnF8Na1Fg$l7RBAbQI1E2jCZgceO3Knn2ed0wFQhktJ4RFE5B2qJc",
+    "consultant"
+  );
 
 -- -----------------------------------------------------
 -- Table `externatic`.`entreprise`
@@ -682,19 +699,6 @@ CREATE TABLE IF NOT EXISTS `externatic`.`offre` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_offre_domaine` FOREIGN KEY (`domaine_id`) REFERENCES `externatic`.`domaine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_offre_entreprise` FOREIGN KEY (`entreprise_id`) REFERENCES `externatic`.`entreprise` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `externatic`.`candidature`
--- -----------------------------------------------------
--- DROP TABLE IF EXISTS `externatic`.`candidature` ;
-CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `candidat_id` INT NOT NULL,
-  `offre_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_candidature_candidat` FOREIGN KEY (`candidat_id`) REFERENCES `externatic`.`candidat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_candidature_offre` FOREIGN KEY (`offre_id`) REFERENCES `externatic`.`offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 -- -----------------------------------------
@@ -901,32 +905,31 @@ VALUES
     3
   );
 
+-- -----------------------------------------------------
+-- Table `externatic`.`Domaine`
+-- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `externatic`.`domaine` ; 
+CREATE TABLE IF NOT EXISTS `externatic`.`domaine` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nom` VARCHAR(255) NOT NULL,
+  `type` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+-- ----------------------------------------
+-- Data for table `externatic`.`domaine`;
+-- ----------------------------------------
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`domaine` (`nom`, `type`)
 VALUES
-  (1, 1);
+  ('developpeur full Stack', 'web');
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`domaine` (`nom`, `type`)
 VALUES
-  (1, 2);
+  ('devOps', 'web');
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`domaine` (`nom`, `type`)
 VALUES
-  (2, 2);
-
-INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
-VALUES
-  (2, 3);
-
-INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
-VALUES
-  (3, 1);
-
-INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
-VALUES
-  (3, 3);
+  ('developpeur senior', 'web');
