@@ -16,16 +16,14 @@ class OffreManager extends AbstractManager {
   insert(Offre) {
     return this.connection.query(
       `insert into ${this.table} 
-      (contrat, condition_travail,  avantages, poste, localisation, dateOffre, date_fin_offre, salaire, 
-        mission, profil_recherche, specialitees, entreprise_id, domaine_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      (contrat, condition_travail,  avantages, poste, localisation, salaire, 
+        mission, profil_recherche, specialitees, entreprise_id, domaine_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         Offre.contrat,
         Offre.condition_travail,
         Offre.avantages,
         Offre.poste,
         Offre.localisation,
-        Offre.dateOffre,
-        Offre.date_fin_offre,
         Offre.salaire,
         Offre.mission,
         Offre.profil_recherche,
@@ -44,10 +42,23 @@ class OffreManager extends AbstractManager {
 
   // mise à jour des offres avec UPDATE
   update(Offre) {
-    return this.connection.query(`update ${this.table} set ? where id = ?`, [
-      Offre,
-      Offre.id,
-    ]);
+    return this.connection.query(
+      `update ${this.table} set offre.contrat = ?, offre.condition_travail = ?,  offre.avantages = ?, offre.poste = ?, offre.localisation = ?, offre.salaire = ?, 
+    offre.mission = ?, offre.profil_recherche = ?, offre.specialitees = ?, offre.entreprise_id = ?, offre.domaine_id = ? where id = ?`,
+      [
+        Offre.contrat,
+        Offre.condition_travail,
+        Offre.avantages,
+        Offre.poste,
+        Offre.localisation,
+        Offre.salaire,
+        Offre.mission,
+        Offre.profil_recherche,
+        Offre.specialitees,
+        Offre.entreprise_id,
+        Offre.domaine_id,
+      ]
+    );
   }
 }
 
