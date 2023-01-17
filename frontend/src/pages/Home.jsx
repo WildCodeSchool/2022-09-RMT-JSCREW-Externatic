@@ -45,7 +45,7 @@ export default function Home() {
           Ici, chaque visage a un nom. Nos consultants ne sont pas des robots,
           il n'y a pas d'algorithmes, de profils ou de liens automatisés.{" "}
         </p>
-        <h2 className="text-3xl font-bold text-center mt-4">Rejoins nous!</h2>
+        <h2 className="text-3xl font-bold text-center mt-4">Rejoins-nous!</h2>
         <div className="lg:flex lg:w-full">
           {randomData.map((offre) => (
             <Card key={offre.id} offre={offre} />
