@@ -29,7 +29,6 @@ function OffreForm() {
 
   const sendForm = (e) => {
     e.preventDefault();
-
     apiConnexion
       .post("/offres", offre)
       .then(() => {
@@ -46,8 +45,8 @@ function OffreForm() {
 
   return (
     <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen w-full ">
-      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
-        <h1 className="font-poppins text-2xl font-semibold text-center text-indigo-700 underline uppercase ">
+      <div className="w-full p-6 m-auto bg-white rounded-md shadow-2xl ring-2 ring-indigo-600 lg:max-w-xl">
+        <h1 className="font-roboto text-2xl font-semibold text-center  capitalize ">
           Formulaire creation offre
         </h1>
         <form onSubmit={(e) => sendForm(e)} className="mt-6">
@@ -61,7 +60,6 @@ function OffreForm() {
                 value={offre.contrat}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -83,7 +81,6 @@ function OffreForm() {
                 value={offre.condition_travail}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -105,7 +102,6 @@ function OffreForm() {
                 value={offre.avantages}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -127,7 +123,6 @@ function OffreForm() {
                 value={offre.poste}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -149,7 +144,6 @@ function OffreForm() {
                 value={offre.localisation}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -171,7 +165,6 @@ function OffreForm() {
                 value={offre.dateOffre}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -193,7 +186,6 @@ function OffreForm() {
                 value={offre.dateOffre}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -215,7 +207,6 @@ function OffreForm() {
                 value={offre.salaire}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -259,7 +250,6 @@ function OffreForm() {
                 value={offre.profil_recherche}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -281,7 +271,6 @@ function OffreForm() {
                 value={offre.specialitees}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300

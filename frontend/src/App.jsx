@@ -26,6 +26,7 @@ function App() {
           </Route>
           <Route path="/dashboard/" element={<Private />}>
             <Route path="entreprises" element={<AdminEntreprise />} />
+            <Route path="entreprises/:id" element={<AdminEntreprise />} />
             <Route path="offres" element={<AdminOffres />} />
           </Route>
         </Routes>

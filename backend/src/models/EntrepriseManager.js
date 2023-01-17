@@ -27,10 +27,24 @@ class EntrepriseManager extends AbstractManager {
   }
 
   update(entreprise) {
-    return this.connection.query(`update ${this.table} set ? where id = ?`, [
-      entreprise,
-      entreprise.id,
-    ]);
+    return this.connection.query(
+      `update ${this.table} set entreprise.logo = ?, entreprise.nom_entreprise = ?, entreprise.adresse = ?,entreprise.code_postal = ?,entreprise.ville = ?,entreprise.pays = ?,entreprise.email = ?,entreprise.telephone = ?,entreprise.description = ?,entreprise.numero_siret = ?,entreprise.nombre_employes = ?,entreprise.domaine_id = ? where id = ?`,
+      [
+        entreprise.logo,
+        entreprise.nom_entreprise,
+        entreprise.adresse,
+        entreprise.code_postal,
+        entreprise.ville,
+        entreprise.pays,
+        entreprise.email,
+        entreprise.telephone,
+        entreprise.description,
+        entreprise.numero_siret,
+        entreprise.nombre_employes,
+        entreprise.domaine_id,
+        entreprise.id,
+      ]
+    );
   }
 }
 

@@ -8,8 +8,8 @@ export default function Sidebar() {
       <div
         className={
           open
-            ? "w-40 flex flex-col h-screen p-3 bg-indigo shadow duration-300"
-            : "w-60 flex flex-col h-screen p-3 bg-indigo shadow duration-300 "
+            ? "w-40 flex flex-col h-full p-3 bg-indigo shadow duration-300"
+            : "w-60 flex flex-col h-full p-3 bg-indigo shadow duration-300 "
         }
       >
         <div className="space-y-3">
@@ -63,10 +63,10 @@ export default function Sidebar() {
           </div>
           <div className="flex-1">
             <ul className="pt-2 pb-4 space-y-1 text-sm">
-              <li className="rounded-sm">
+              <li className="rounded-sm focus:border-blue-400">
                 <Link
                   to="dashboard"
-                  className="flex items-center p-2 space-x-3 rounded-md"
+                  className="flex items-center p-2 space-x-3 rounded-md hover:darkPink"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -85,10 +85,10 @@ export default function Sidebar() {
                   <span className="text-white">Home</span>
                 </Link>
               </li>
-              <li className="rounded-sm">
+              <li className="rounded-sm hover:indigo">
                 <Link
-                  to="/entreprises"
-                  className="text-white flex items-center p-2 space-x-3 rounded-md"
+                  to="entreprises"
+                  className="text-white flex items-center p-2 space-x-3 rounded-md  "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ export default function Sidebar() {
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/offres"
+                  to="offres"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg

@@ -33,17 +33,19 @@ const upload = multer({ storage });
 // routes publiques
 router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
-router.get("/entreprises", entrepriseControllers.browse);
+router.post("/offres", offreControllers.add);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 
 // mur d'authentification
 router.use(checkAuth);
 
-// routes privées
+// routes entreprise
 router.post("/entreprises", entrepriseControllers.add);
 router.put("/entreprises/:id", entrepriseControllers.edit);
-// router.delete('/entreprises/:id', deleteEntreprises);
+router.get("/entreprises", entrepriseControllers.browse);
+router.get("/entreprises/:id", entrepriseControllers.read);
+
 router.post(
   "/profil",
   upload.fields([
@@ -52,6 +54,5 @@ router.post(
   ]),
   candidatControllers.add
 );
-router.post("/offres", offreControllers.add);
 
 module.exports = router;

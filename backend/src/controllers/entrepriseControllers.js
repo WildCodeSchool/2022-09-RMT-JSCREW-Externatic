@@ -12,6 +12,22 @@ const browse = (req, res) => {
     });
 };
 
+const read = (req, res) => {
+  models.entreprise
+    .find(req.params.id)
+    .then(([entreprises]) => {
+      if (entreprises[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(entreprises[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 // create entreprise
 
 const add = (req, res) => {
@@ -30,11 +46,8 @@ const add = (req, res) => {
 // edit entreprise
 const edit = (req, res) => {
   const entreprise = req.body;
-
   // TODO validations (length, format...)
-
   entreprise.id = parseInt(req.params.id, 10);
-
   models.entreprise
     .update(entreprise)
     .then(([result]) => {
@@ -53,4 +66,5 @@ module.exports = {
   browse,
   add,
   edit,
+  read,
 };

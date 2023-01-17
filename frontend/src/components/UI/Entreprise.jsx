@@ -16,6 +16,7 @@ function Entreprise({ selectEntreprise, entreprises }) {
               py-1.5
               text-base
               font-normal
+              font-roboto
               text-gray-700
               bg-white bg-clip-padding bg-no-repeat
               border border-solid border-gray-300
@@ -26,7 +27,7 @@ function Entreprise({ selectEntreprise, entreprises }) {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Entreprise</option>
+            <option selected>Les Entreprises</option>
             {entreprises.map((entreprise) => (
               <option key={entreprise.id} value={entreprise.id}>
                 {entreprise.nom_entreprise}
