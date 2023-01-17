@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Card from "@components/UI/Card";
 
 function ListOfOffers() {
@@ -13,12 +14,14 @@ function ListOfOffers() {
 
   return (
     <>
-      <h1 className="text-black text-3xl font-bold ml-10 lg:ml-28">
-        Offres similaires :
+      <h1 className="text-black text-3xl font-bold mt-7 ml-10 lg:ml-28">
+        Envie de voir d'autres offres ?
       </h1>
-      <div className="caroussel my-3 lg:flex lg:w-full">
+      <div className="caroussel md:flex md:flex-row justify-center items-center space-around my-3 mb-10 lg:flex lg:w-full">
         {random.map((offre) => (
-          <Card key={offre.id} offre={offre} />
+          <Link to={`/offres/${offre.id}`}>
+            <Card key={offre.id} offre={offre} />
+          </Link>
         ))}
       </div>
     </>

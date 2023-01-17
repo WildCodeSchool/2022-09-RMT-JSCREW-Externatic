@@ -7,7 +7,7 @@ class OffreManager extends AbstractManager {
 
   rand(number) {
     return this.connection.query(
-      `select poste, localisation from  ${this.table} ORDER BY rand() LIMIT ?`,
+      `select * from  ${this.table} ORDER BY rand() LIMIT ?`,
       [number]
     );
   }

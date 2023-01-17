@@ -1,8 +1,9 @@
 import React from "react";
+import "./CartePrincipale.css";
 
 function CartePrincipale({ offre }) {
   return (
-    <div className="flex flex-col min-w-full justify-items-center items-center my-5 bg-darkPink text-white rounded-3xl drop-shadow-xl">
+    <div className="bganimationcard flex flex-col min-w-full justify-items-center items-center my-5 text-white rounded-3xl drop-shadow-xl">
       <h1 className="text-center text-2xl underline underline-offset-8 my-4">
         {offre?.poste}
       </h1>
