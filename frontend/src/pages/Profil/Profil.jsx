@@ -1,9 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
-import avatar from "@assets/Avatar.png";
+import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
-import cvupload from "@assets/cv_uploaded.png";
+import User from '../../contexts/User'
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -19,36 +19,30 @@ const toastifyConfig = {
 };
 
 function Profil() {
-  // ajout d'un zéro pour les dates et les mois inférieurs à 10
-  const dateinscript = () => {
-    const year = new Date().getFullYear();
-    let month = new Date().getMonth() + 1;
-    let date = new Date().getDate();
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (date < 10) {
-      date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`;
-  };
 
-  const [profil, setProfil] = useState({
-    profil_nom: "",
-    profil_prenom: "",
-    profil_age: "",
-    profil_adresse: "",
-    profil_code_postal: "",
-    profil_ville: "",
-    profil_pays: "",
-    profil_email: "",
-    profil_description: "",
-    profil_metier: "",
-    profil_telephone: "",
-    profil_dateInscription: dateinscript(),
-    profil_dateDisponibilite: "",
-    profil_connexion_id: "3",
-  });
+const { user, setUser } = useContext(User.UserContext);
+
+const profilType = {
+  photo: "/assets/avatar/Avatar.png",
+  nom: "",
+  prenom: "",
+  age: "",
+  adresse: "",
+  code_postal: "",
+  ville: "",
+  pays: "",
+  email: "",
+  description: "",
+  metier: "",
+  telephone: "",
+  dateDisponibilite: "",
+  connexion_id: user.id,
+}
+
+  // ajout d'un zéro pour les dates et les mois inférieurs à 10
+  
+
+  const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
     const newProfil = { ...profil };
@@ -67,7 +61,7 @@ function Profil() {
       .post("/profil", formData)
       .then(() => {
         toast.success(
-          `Bonjour ${profil.profil_nom} ${profil.profil_prenom} votre inscription a bien été enregistrée.`,
+          `Bonjour ${profil.nom} ${profil.prenom} votre inscription a bien été enregistrée.`,
           toastifyConfig
         );
       })
@@ -94,9 +88,37 @@ function Profil() {
       };
       reader.readAsDataURL(picture);
     } else {
-      image.src = cvupload;
+      image.src = cvUpload;
     }
   };
+
+  // Fonction qui gère la récupération des données profil
+
+if (user.id) {
+  const getFullProfil = () => {
+    apiConnexion
+      .get(`/profil/${user.id}`)
+      .then((profil) => {
+        console.log(profil.data);
+       setProfil(profil.data)
+
+      })
+      .catch((error) => console.error(error));
+
+  };
+
+  // Données "profil"
+  useEffect(() => {
+    getFullProfil();
+  }, []);
+
+}
+
+const handelUpdateProfil = () => {
+    // A définir
+}
+
+
 
   return (
     <div className="profil p-9 flex justify-center">
@@ -107,7 +129,7 @@ function Profil() {
       >
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={avatar} id="image" alt="avatar" />
+            <img src={`${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`} id="image" alt="avatar" />
             <input
               className="hidden"
               type="file"
@@ -118,7 +140,7 @@ function Profil() {
             />
           </label>
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={cv} alt="cv" id="pdf" />
+            <img src={profil.cv ? cvUpload : cv} alt="cv" id="pdf" />
             <input
               className="hidden"
               type="file"
@@ -138,8 +160,8 @@ function Profil() {
               id="grid-nom"
               type="text"
               placeholder="Nom"
-              name="profil_nom"
-              value={profil.profil_nom}
+              name="nom"
+              value={profil.nom}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -150,8 +172,8 @@ function Profil() {
               id="grid-last-name"
               type="text"
               placeholder="Prenom"
-              name="profil_prenom"
-              value={profil.profil_prenom}
+              name="prenom"
+              value={profil.prenom}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -162,8 +184,8 @@ function Profil() {
               id="grid-age"
               type="text"
               placeholder="Age"
-              name="profil_age"
-              value={profil.profil_age}
+              name="age"
+              value={profil.age}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -174,8 +196,8 @@ function Profil() {
               id="grid-telephone"
               type="text"
               placeholder="Téléphone"
-              name="profil_telephone"
-              value={profil.profil_telephone}
+              name="telephone"
+              value={profil.telephone}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -189,8 +211,8 @@ function Profil() {
               type="text"
               rows="8"
               placeholder="Adresse"
-              name="profil_adresse"
-              value={profil.profil_adresse}
+              name="adresse"
+              value={profil.adresse}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -201,8 +223,8 @@ function Profil() {
               id="grid-ville"
               type="text"
               placeholder="Ville"
-              name="profil_ville"
-              value={profil.profil_ville}
+              name="ville"
+              value={profil.ville}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -213,8 +235,8 @@ function Profil() {
               id="grid-pays"
               type="text"
               placeholder="code postal"
-              name="profil_code_postal"
-              value={profil.profil_code_postal}
+              name="code_postal"
+              value={profil.code_postal}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -225,8 +247,8 @@ function Profil() {
               id="grid-pays"
               type="text"
               placeholder="Pays"
-              name="profil_pays"
-              value={profil.profil_pays}
+              name="pays"
+              value={profil.pays}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -239,8 +261,8 @@ function Profil() {
               id="grid-email"
               type="email"
               placeholder="nom@exemple.com"
-              name="profil_email"
-              value={profil.profil_email}
+              name="email"
+              value={profil.email}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -253,8 +275,8 @@ function Profil() {
               id="grid-dispo"
               type="date"
               placeholder="Disponibilité"
-              name="profil_dateDisponibilite"
-              value={profil.profil_dateDisponibilite}
+              name="dateDisponibilite"
+              value={profil.dateDisponibilite.split("T").shift()}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -265,8 +287,8 @@ function Profil() {
               id="grid-poste"
               type="text"
               placeholder="Métier"
-              name="profil_metier"
-              value={profil.profil_metier}
+              name="metier"
+              value={profil.metier}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -280,12 +302,13 @@ function Profil() {
               type="text"
               rows="4"
               placeholder="Description"
-              name="profil_description"
-              value={profil.profil_description}
+              name="description"
+              value={profil.description}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
         </div>
+        {!user.id && (
         <div className="buttonvalid flex justify-center mt-5">
           <button
             className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
@@ -294,6 +317,20 @@ function Profil() {
             Valider
           </button>
         </div>
+        )}
+        {user.id && (
+        <>
+        <div className="buttonvalid flex justify-center mt-5">
+          <button
+            className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+            type="button"
+            onClick={() => handelUpdateProfil()}
+          >
+            Mettre à jour
+          </button>
+        </div>
+        </>
+        )}
       </form>
       <ToastContainer
         position="bottom-right"

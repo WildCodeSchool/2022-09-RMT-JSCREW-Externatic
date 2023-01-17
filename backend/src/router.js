@@ -36,10 +36,12 @@ router.get("/offres/rand", offreControllers.random);
 router.get("/entreprises", entrepriseControllers.browse);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
-router.get("/profil/:id", candidatControllers.read);
+
 
 // mur d'authentification
 router.use(checkAuth);
+
+router.get("/profil/:id", candidatControllers.read);
 
 // routes privées
 router.post("/entreprises", entrepriseControllers.add);
