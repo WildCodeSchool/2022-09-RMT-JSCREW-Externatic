@@ -3,25 +3,24 @@ import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toastiConfig from "@services/toastiConfig";
-import Entreprise from "@pages/BackOffice/Entreprise";
 import axios from "axios";
-import Offres from "@pages/BackOffice/Offre";
+import SelectOffreForm from "./SelectOffreForm";
 
 function OffreForm() {
   // fonction pour mettre à jour les dates en auto
 
-  const dateInscript = () => {
-    const year = new Date().getFullYear();
-    let month = new Date().getMonth();
-    let date = new Date().getDate();
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (date < 10) {
-      date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`;
-  };
+  // const dateInscript = () => {
+  //   const year = new Date().getFullYear();
+  //   let month = new Date().getMonth() + 1;
+  //   let date = new Date().getDate();
+  //   if (month < 10) {
+  //     month = `0${month}`;
+  //   }
+  //   if (date < 10) {
+  //     date = `0${date}`;
+  //   }
+  //   return `${year}-${month}-${date}`;
+  // };
 
   const [offre, setOffre] = useState({
     contrat: "",
@@ -43,7 +42,7 @@ function OffreForm() {
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/offres/`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
       .then((job) => setJobs(job.data))
       .catch((error) => console.error(error));
   };
@@ -64,6 +63,7 @@ function OffreForm() {
     apiConnexion
       .post("/offres", offre)
       .then(() => {
+        getAllOffres();
         toast.success(`Votre offre a bien été enregistrée`, toastiConfig);
       })
       .catch((err) => {
@@ -76,37 +76,8 @@ function OffreForm() {
   };
 
   const selectOffre = (id) => {
-    const entp = jobs.find((e) => e.id === parseInt(id, 10));
-    selectOffre(entp);
-  };
-
-  // Effacer une offre (archiver)
-
-  const handleDeleteOffre = () => {
-    apiConnexion
-      .delete(`/offres/$(offre.id)`)
-      .then(() => {
-        setOffre({
-          contrat: "",
-          condition_travail: "",
-          avantages: null,
-          poste: "",
-          localisation: "",
-          dateOffre: dateInscript(),
-          date_fin_offre: "",
-          salaire: null,
-          mission: "",
-          profil_recherche: "",
-          specialitees: "",
-          entreprise_id: "",
-          domaine_id: "",
-        });
-        toast.success(
-          `Bonjour votre offre a bien été supprimée.`,
-          toastiConfig
-        );
-      })
-      .catch((err) => console.error(err));
+    const offs = jobs.find((e) => e.id === parseInt(id, 10));
+    setOffre(offs);
   };
 
   // // Mettre à jour une offre
@@ -136,9 +107,7 @@ function OffreForm() {
         <h1 className="font-roboto text-2xl font-semibold text-center text-indigo-700  uppercase ">
           Formulaire offre
         </h1>
-        <Entreprise />
-        <Offres />
-        <offre selectOffre={selectOffre} jobs={jobs} />
+        <SelectOffreForm selectOffre={selectOffre} jobs={jobs} />
         <form className="mt-6">
           <div className="mb-2">
             <label>
@@ -453,25 +422,13 @@ function OffreForm() {
               </button>
             )}
             {offre.id && (
-              <>
-                <button
-                  type="button"
-                  onClick={() => handelUpdateOffre()}
-                  className=" w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded"
-                >
-                  Mettre à jour
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleDeleteOffre}
-                  className="
-             w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
-         "
-                >
-                  Supprimer
-                </button>
-              </>
+              <button
+                type="button"
+                onClick={() => handelUpdateOffre()}
+                className=" w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded"
+              >
+                Mettre à jour
+              </button>
             )}
           </div>
 

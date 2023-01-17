@@ -1,6 +1,6 @@
 import React from "react";
 
-function SelectOffreForm({ selectOffres, offres }) {
+function SelectOffreForm({ selectOffres, jobs }) {
   return (
     <div>
       <div className=" mb-3 flex justify-left">
@@ -27,7 +27,7 @@ function SelectOffreForm({ selectOffres, offres }) {
             aria-label="Default select example"
           >
             <option selected>Offres</option>
-            {offres.map((offre) => (
+            {jobs.map((offre) => (
               <option key={offre.id} value={offre.id}>
                 {offre.poste}
               </option>
