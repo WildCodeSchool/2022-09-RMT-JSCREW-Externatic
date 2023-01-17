@@ -41,26 +41,23 @@ const add = (req, res) => {
 };
 
 const read = (req, res) => {
-console.log(req.params.id)
-console.log(req.auth)
-if (parseInt(req.params.id) === req.auth.id) {
-  models.candidat
-    .findOne(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.status(200).json({});
-      } else {
-        res.status(200).json(rows[0]);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-} else {
-  res.sendStatus(404);
-}
-
+  if (parseInt(req.params.id, 10) === req.auth.id) {
+    models.candidat
+      .findOne(req.params.id)
+      .then(([rows]) => {
+        if (rows[0] == null) {
+          res.status(200).json({});
+        } else {
+          res.status(200).json(rows[0]);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(404);
+  }
 };
 
 module.exports = {

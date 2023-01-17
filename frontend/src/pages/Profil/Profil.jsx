@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
-import User from '../../contexts/User'
+import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -19,28 +19,26 @@ const toastifyConfig = {
 };
 
 function Profil() {
+  const { user } = useContext(User.UserContext);
 
-const { user, setUser } = useContext(User.UserContext);
-
-const profilType = {
-  photo: "/assets/avatar/Avatar.png",
-  nom: "",
-  prenom: "",
-  age: "",
-  adresse: "",
-  code_postal: "",
-  ville: "",
-  pays: "",
-  email: "",
-  description: "",
-  metier: "",
-  telephone: "",
-  dateDisponibilite: "",
-  connexion_id: user.id,
-}
+  const profilType = {
+    photo: "/assets/avatar/Avatar.png",
+    nom: "",
+    prenom: "",
+    age: "",
+    adresse: "",
+    code_postal: "",
+    ville: "",
+    pays: "",
+    email: "",
+    description: "",
+    metier: "",
+    telephone: "",
+    dateDisponibilite: "",
+    connexion_id: user.id,
+  };
 
   // ajout d'un zéro pour les dates et les mois inférieurs à 10
-  
 
   const [profil, setProfil] = useState(profilType);
 
@@ -94,31 +92,25 @@ const profilType = {
 
   // Fonction qui gère la récupération des données profil
 
-if (user.id) {
-  const getFullProfil = () => {
-    apiConnexion
-      .get(`/profil/${user.id}`)
-      .then((profil) => {
-        console.log(profil.data);
-       setProfil(profil.data)
+  if (user.id) {
+    const getFullProfil = () => {
+      apiConnexion
+        .get(`/profil/${user.id}`)
+        .then((profilUser) => {
+          setProfil(profilUser.data);
+        })
+        .catch((error) => console.error(error));
+    };
 
-      })
-      .catch((error) => console.error(error));
+    // Données "profil"
+    useEffect(() => {
+      getFullProfil();
+    }, []);
+  }
 
-  };
-
-  // Données "profil"
-  useEffect(() => {
-    getFullProfil();
-  }, []);
-
-}
-
-const handelUpdateProfil = () => {
+  const handelUpdateProfil = () => {
     // A définir
-}
-
-
+  };
 
   return (
     <div className="profil p-9 flex justify-center">
@@ -129,7 +121,11 @@ const handelUpdateProfil = () => {
       >
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={`${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`} id="image" alt="avatar" />
+            <img
+              src={`${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`}
+              id="image"
+              alt="avatar"
+            />
             <input
               className="hidden"
               type="file"
@@ -309,27 +305,25 @@ const handelUpdateProfil = () => {
           </div>
         </div>
         {!user.id && (
-        <div className="buttonvalid flex justify-center mt-5">
-          <button
-            className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
-            type="submit"
-          >
-            Valider
-          </button>
-        </div>
+          <div className="buttonvalid flex justify-center mt-5">
+            <button
+              className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+              type="submit"
+            >
+              Valider
+            </button>
+          </div>
         )}
         {user.id && (
-        <>
-        <div className="buttonvalid flex justify-center mt-5">
-          <button
-            className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
-            type="button"
-            onClick={() => handelUpdateProfil()}
-          >
-            Mettre à jour
-          </button>
-        </div>
-        </>
+          <div className="buttonvalid flex justify-center mt-5">
+            <button
+              className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+              type="button"
+              onClick={() => handelUpdateProfil()}
+            >
+              Mettre à jour
+            </button>
+          </div>
         )}
       </form>
       <ToastContainer

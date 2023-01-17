@@ -37,7 +37,6 @@ router.get("/entreprises", entrepriseControllers.browse);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 
-
 // mur d'authentification
 router.use(checkAuth);
 
