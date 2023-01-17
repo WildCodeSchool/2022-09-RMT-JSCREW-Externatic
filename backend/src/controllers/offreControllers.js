@@ -78,4 +78,20 @@ const read = (req, res) => {
     });
 };
 
-module.exports = { random, add, browse, edit, read };
+const destroy = (req, res) => {
+  models.offre
+    .delete(req.params.id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+module.exports = { random, add, browse, edit, read, destroy };

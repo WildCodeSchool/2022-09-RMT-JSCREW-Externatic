@@ -10,18 +10,18 @@ import Offres from "@pages/BackOffice/Offre";
 function OffreForm() {
   // fonction pour mettre à jour les dates en auto
 
-  // const dateInscript = () => {
-  //   const year = new Date().getFullYear();
-  //   let month = new Date().getMonth();
-  //   let date = new Date().getDate();
-  //   if (month < 10) {
-  //     month = `0${month}`;
-  //   }
-  //   if (date < 10) {
-  //     date = `0${date}`;
-  //   }
-  //   return `${year}-${month}-${date}`;
-  // };
+  const dateInscript = () => {
+    const year = new Date().getFullYear();
+    let month = new Date().getMonth();
+    let date = new Date().getDate();
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (date < 10) {
+      date = `0${date}`;
+    }
+    return `${year}-${month}-${date}`;
+  };
 
   const [offre, setOffre] = useState({
     contrat: "",
@@ -43,7 +43,7 @@ function OffreForm() {
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/offres/`)
       .then((job) => setJobs(job.data))
       .catch((error) => console.error(error));
   };
@@ -82,53 +82,53 @@ function OffreForm() {
 
   // Effacer une offre (archiver)
 
-  // const handleDeleteOffre = () => {
-  //   apiConnexion
-  //     .delete(`/offres/$(offre.id)`)
-  //     .then(() => {
-  //       setOffre({
-  //         contrat: "",
-  //         condition_travail: "",
-  //         avantages: null,
-  //         poste: "",
-  //         localisation: "",
-  //         dateOffre: dateInscript(),
-  //         date_fin_offre: "",
-  //         salaire: null,
-  //         mission: "",
-  //         profil_recherche: "",
-  //         specialitees: "",
-  //         entreprise_id: "",
-  //         domaine_id: "",
-  //       });
-  //       toast.success(
-  //         `Bonjour votre offre a bien été supprimée.`,
-  //         toastiConfig
-  //       );
-  //     })
-  //     .catch((err) => console.error(err));
-  // };
+  const handleDeleteOffre = () => {
+    apiConnexion
+      .delete(`/offres/$(offre.id)`)
+      .then(() => {
+        setOffre({
+          contrat: "",
+          condition_travail: "",
+          avantages: null,
+          poste: "",
+          localisation: "",
+          dateOffre: dateInscript(),
+          date_fin_offre: "",
+          salaire: null,
+          mission: "",
+          profil_recherche: "",
+          specialitees: "",
+          entreprise_id: "",
+          domaine_id: "",
+        });
+        toast.success(
+          `Bonjour votre offre a bien été supprimée.`,
+          toastiConfig
+        );
+      })
+      .catch((err) => console.error(err));
+  };
 
   // // Mettre à jour une offre
-  // const handelUpdateOffre = () => {
-  //   if (offre.id) {
-  //     apiConnexion
-  //       .put(`/offres/${offre.id}`, offre)
-  //       .then(() => {
-  //         toast.success(
-  //           `Bonjour votre offre a bien été modifiée.`,
-  //           toastiConfig
-  //         );
-  //       })
-  //       .catch((err) => {
-  //         toast.error(
-  //           `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
-  //           toastiConfig
-  //         );
-  //         console.warn(err);
-  //       });
-  //   }
-  // };
+  const handelUpdateOffre = () => {
+    if (offre.id) {
+      apiConnexion
+        .put(`/offres/${offre.id}`, offre)
+        .then(() => {
+          toast.success(
+            `Bonjour votre offre a bien été modifiée.`,
+            toastiConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
+            toastiConfig
+          );
+          console.warn(err);
+        });
+    }
+  };
 
   return (
     <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen ">
@@ -456,7 +456,7 @@ function OffreForm() {
               <>
                 <button
                   type="button"
-                  onClick={sendForm}
+                  onClick={() => handelUpdateOffre()}
                   className=" w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded"
                 >
                   Mettre à jour
@@ -464,7 +464,7 @@ function OffreForm() {
 
                 <button
                   type="button"
-                  onClick={sendForm}
+                  onClick={() => handleDeleteOffre}
                   className="
              w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
          "

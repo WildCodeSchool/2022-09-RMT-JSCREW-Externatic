@@ -35,6 +35,7 @@ router.get("/offres/:id", offreControllers.read);
 router.get("/offres", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
 router.get("/entreprises", entrepriseControllers.browse);
+router.post("/offres", offreControllers.add);
 
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
@@ -51,7 +52,6 @@ router.post(
   ]),
   candidatControllers.add
 );
-router.post("/offres", offreControllers.add);
 router.put("/offres/:id", offreControllers.edit);
-
+router.delete("/offres/:id", offreControllers.destroy);
 module.exports = router;
