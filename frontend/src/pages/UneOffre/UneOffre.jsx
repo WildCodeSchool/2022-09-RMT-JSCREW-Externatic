@@ -17,12 +17,12 @@ function UneOffre() {
         setOffre(data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [id]);
 
   return (
     <div className="container-offre">
-      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed z-10 w-screen">
-        <button type="button" className="font-bold text-black">
+      <div className="flex justify-center items-center bg-darkPink h-20 border-y-2 border-black fixed z-10 w-screen">
+        <button type="button" className="font-bold text-white w-full h-full">
           Postuler à cette offre
         </button>
       </div>
@@ -36,7 +36,7 @@ function UneOffre() {
           <CarteSalaire offre={offre} />
         </div>
       </div>
-      <ListOfOffers />
+      <ListOfOffers offre={offre} />
     </div>
   );
 }

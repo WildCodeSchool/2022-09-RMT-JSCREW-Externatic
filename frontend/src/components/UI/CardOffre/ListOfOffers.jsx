@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import Card from "@components/UI/Card";
 
 function ListOfOffers() {
@@ -18,11 +18,12 @@ function ListOfOffers() {
         Envie de voir d'autres offres ?
       </h1>
       <div className="caroussel flex flex-col md:flex md:flex-row justify-center items-center space-around my-3 mb-10 lg:flex lg:w-full">
-        {random.map((offre) => (
-          <Link to={`/offres/${offre.id}`}>
-            <Card key={offre.id} offre={offre} />
-          </Link>
-        ))}
+        {random &&
+          random.map((offre) => (
+            <HashLink to={`/offres/${offre.id}#`}>
+              <Card key={offre.id} offre={offre} />
+            </HashLink>
+          ))}
       </div>
     </>
   );

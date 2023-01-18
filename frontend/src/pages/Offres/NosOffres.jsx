@@ -60,7 +60,7 @@ function NosOffres() {
         </div>
         <button
           type="button"
-          className="text-darkPink border-solid border-2 border-darkPink rounded-xl px-3 mx-3 my-3 hover:bg-pink hover:text-white "
+          className="text-darkPink border-solid border-2 border-darkPink rounded-xl px-3 mx-3 my-3 hover:bg-darkPink hover:text-white "
         >
           Recherche
         </button>
