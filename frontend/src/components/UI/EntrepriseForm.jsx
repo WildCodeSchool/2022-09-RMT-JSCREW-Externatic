@@ -6,36 +6,23 @@ import apiConnexion from "@services/apiConnexion";
 import toastiConfig from "@services/toastiConfig";
 import EntrepriseSelect from "./EntrepriseSelect";
 
-function EntrepriseForm() {
-  // fonction pour mettre à jour les dates en auto
-  const dateinscript = () => {
-    const year = new Date().getFullYear();
-    let month = new Date().getMonth() + 1;
-    let date = new Date().getDate();
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (date < 10) {
-      date = `0${date}`;
-    }
-    return `${year}-${month}-${date}`;
-  };
+const firmType = {
+  logo: null,
+  nom_entreprise: "",
+  adresse: "",
+  code_postal: "",
+  ville: "",
+  pays: "",
+  email: "",
+  telephone: "",
+  description: "",
+  numero_siret: "",
+  nombre_employes: "",
+  domaine_id: 2,
+};
 
-  const [firm, setFirm] = useState({
-    logo: null,
-    nom_entreprise: "",
-    adresse: "",
-    code_postal: "",
-    ville: "",
-    pays: "",
-    email: "",
-    telephone: "",
-    description: "",
-    numero_siret: "",
-    nombre_employes: "",
-    dateInscription: dateinscript(),
-    domaine_id: 2,
-  });
+function EntrepriseForm() {
+  const [firm, setFirm] = useState(firmType);
   const [entreprises, setEntreprises] = useState([]);
 
   // Fonction qui gère la récupération des données "entreprise" avec axios
@@ -402,6 +389,15 @@ function EntrepriseForm() {
                 Mettre à jour
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => setFirm(firmType)}
+              className="
+                w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+              "
+            >
+              Annuler
+            </button>
           </div>
           <div />
           <ToastContainer

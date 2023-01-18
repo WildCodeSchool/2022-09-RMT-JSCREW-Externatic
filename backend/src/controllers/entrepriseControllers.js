@@ -1,5 +1,18 @@
 const models = require("../models");
 
+const dateinscript = () => {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let date = new Date().getDate();
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  return `${year}-${month}-${date}`;
+};
+
 const browse = (req, res) => {
   models.entreprise
     .findAll()
@@ -32,6 +45,7 @@ const read = (req, res) => {
 
 const add = (req, res) => {
   const entreprise = req.body;
+  entreprise.dateInscription = dateinscript();
 
   models.entreprise
     .insert(entreprise)
