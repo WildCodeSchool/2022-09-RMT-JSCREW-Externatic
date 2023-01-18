@@ -22,6 +22,7 @@ const firmType = {
 };
 
 function EntrepriseForm() {
+  const [domain, setDomain] = useState([]);
   const [firm, setFirm] = useState(firmType);
   const [entreprises, setEntreprises] = useState([]);
 
@@ -33,9 +34,17 @@ function EntrepriseForm() {
       .catch((error) => console.error(error));
   };
 
+  const getAllDomain = () => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/domaines`)
+      .then((job) => setDomain(job.data))
+      .catch((error) => console.error(error));
+  };
+
   // Données "entreprise"
   useEffect(() => {
     getAllEntreprises();
+    getAllDomain();
   }, []);
 
   const handleEntreprise = (place, value) => {
@@ -343,10 +352,9 @@ function EntrepriseForm() {
 
             <label>
               <span className="text-gray-700">domaine</span>
-              <input
-                name="domaine "
+              <select
+                name="domaine_id"
                 type="text"
-                value={firm.domaine_id}
                 onChange={(e) =>
                   handleEntreprise(e.target.name, e.target.value)
                 }
@@ -362,8 +370,12 @@ function EntrepriseForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50 "
                 placeholder="domaine"
-                required
-              />
+                required                                  
+              >
+              {domain.map((dom)=>{
+                return <option key={dom.id} value={dom.id} selected={dom.id===firm.domaine_id}>{dom.nom}</option>
+              })}
+             </select>
             </label>
           </div>
           <div className="mb-6">
