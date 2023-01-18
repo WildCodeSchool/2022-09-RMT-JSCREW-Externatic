@@ -7,17 +7,17 @@ USE `externatic`;
 
 DROP TABLE IF EXISTS `externatic`.`candidature`;
 
+DROP TABLE IF EXISTS `externatic`.`offre`;
+
+DROP TABLE IF EXISTS `externatic`.`entreprise`;
+
+DROP TABLE IF EXISTS `externatic`.`domaine`;
+
 DROP TABLE IF EXISTS `externatic`.`candidat`;
 
 DROP TABLE IF EXISTS `externatic`.`consultant`;
 
 DROP TABLE IF EXISTS `externatic`.`connexion`;
-
-DROP TABLE IF EXISTS `externatic`.`entreprise`;
-
-DROP TABLE IF EXISTS `externatic`.`offre`;
-
-DROP TABLE IF EXISTS `externatic`.`domaine`;
 
 -- -----------------------------------------------------
 -- Table `externatic`.`connexion`
