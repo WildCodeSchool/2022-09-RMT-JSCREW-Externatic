@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "@components/UI/Card";
 import RegisterModal from "@components/UI/RegisterModal";
+import Carousel from "@components/Carousel/Carousel";
 import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
@@ -45,7 +46,7 @@ export default function Home() {
           Ici, chaque visage a un nom. Nos consultants ne sont pas des robots,
           il n'y a pas d'algorithmes, de profils ou de liens automatisés.{" "}
         </p>
-        <h2 className="text-3xl font-bold text-center mt-4">Rejoins nous!</h2>
+        <h2 className="text-3xl font-bold text-center mt-4">Rejoins-nous!</h2>
         <div className="lg:flex lg:w-full">
           {randomData.map((offre) => (
             <Card key={offre.id} offre={offre} />
@@ -118,6 +119,9 @@ export default function Home() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
+      </div>
+      <div className="2xl:container 2xl:mx-auto 2xl:px-0">
+        <Carousel />
       </div>
       <RegisterModal
         visible={registerModalIsVisible}

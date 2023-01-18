@@ -1,4 +1,6 @@
 import "./qui.css";
+import dessinduo1 from "@assets/pictureduo.png";
+import dessinduo2 from "@assets/pictureduo2.png";
 
 function Quisommesnous() {
   return (
@@ -11,11 +13,7 @@ function Quisommesnous() {
           <h2 className="text-black p-5 drop-shadow-xl rounded-3xl px-2 font-bold">
             Nos valeurs humaines et professionnelles
           </h2>
-          <img
-            src="src/assets/pictureduo.png"
-            alt="dessinduo"
-            className="w-40"
-          />
+          <img src={dessinduo1} alt="dessinduo" className="w-40" />
         </div>
         <div className="flex flex-col items-center">
           <div className="bg-darkPink text-white p-5 drop-shadow-xl rounded-3xl text-center">
@@ -54,11 +52,7 @@ function Quisommesnous() {
             </button>
           </div>
           <div className="flex flex-row items-center mx-auto">
-            <img
-              src="src/assets/pictureduo2.png"
-              alt="dessinduo2"
-              className="w-40"
-            />
+            <img src={dessinduo2} alt="dessinduo2" className="w-40" />
             <h2 className="text-black p-5 drop-shadow-xl rounded-3xl w-2/3 px-2 font-bold text-end">
               Nos valeurs humaines et professionnelles
             </h2>

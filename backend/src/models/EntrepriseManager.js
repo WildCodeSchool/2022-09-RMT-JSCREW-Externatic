@@ -25,6 +25,13 @@ class EntrepriseManager extends AbstractManager {
       ]
     );
   }
+
+  rand(number) {
+    return this.connection.query(
+      `select logo from  ${this.table} WHERE logo IS NOT NULL ORDER BY rand() LIMIT ?`,
+      [number]
+    );
+  }
 }
 
 module.exports = EntrepriseManager;
