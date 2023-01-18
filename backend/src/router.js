@@ -38,12 +38,14 @@ router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
+router.post("/entreprises", entrepriseControllers.add);
+router.put("/entreprises/:id", entrepriseControllers.edit);
+router.get("/entreprises/:id", entrepriseControllers.read);
 
 // mur d'authentification
 router.use(checkAuth);
 
 // routes privées
-router.post("/entreprises", entrepriseControllers.add);
 router.post(
   "/profil",
   upload.fields([

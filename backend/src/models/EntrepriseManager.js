@@ -26,6 +26,13 @@ class EntrepriseManager extends AbstractManager {
     );
   }
 
+  update(entreprise, id) {
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      entreprise,
+      id,
+    ]);
+  }
+
   rand(number) {
     return this.connection.query(
       `select logo from  ${this.table} WHERE logo IS NOT NULL ORDER BY rand() LIMIT ?`,
