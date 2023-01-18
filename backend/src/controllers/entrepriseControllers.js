@@ -28,7 +28,20 @@ const add = (req, res) => {
     });
 };
 
+const random = (req, res) => {
+  models.entreprise
+    .rand(15)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   add,
+  random,
 };
