@@ -21,8 +21,8 @@ function UneOffre() {
 
   return (
     <div className="container-offre">
-      <div className="flex justify-center items-center bg-darkPink h-20 border-y-2 border-black fixed z-10 w-screen">
-        <button type="button" className="font-bold text-white w-full h-full">
+      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed z-10 w-screen drop-shadow-xl hover:bg-darkPink hover:text-white text-xl text-black ">
+        <button type="button" className="font-bold w-full h-full">
           Postuler à cette offre
         </button>
       </div>
