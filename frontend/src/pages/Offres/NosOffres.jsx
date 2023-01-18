@@ -65,7 +65,7 @@ function NosOffres() {
           Recherche
         </button>
       </div>
-      <div className="flex flex-col md:flex-row mb-5 mx-4">
+      <div className="flex flex-col md:flex-row items-center justify-center mb-5 mx-14">
         {offresData &&
           offresData.map((offre) => (
             <Link to={`/offres/${offre.id}`}>

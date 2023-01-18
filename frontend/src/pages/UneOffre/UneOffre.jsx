@@ -5,7 +5,6 @@ import CarteAvantages from "@components/UI/CardOffre/CarteAvantages";
 import CarteProfil from "@components/UI/CardOffre/CarteProfil";
 import CarteSalaire from "@components/UI/CardOffre/CarteSalaire";
 import ListOfOffers from "@components/UI/CardOffre/ListOfOffers";
-import offreentete from "@assets/offre_emploi.jpg";
 
 function UneOffre() {
   const { id } = useParams();
@@ -22,14 +21,16 @@ function UneOffre() {
 
   return (
     <div className="container-offre">
-      <div className="flex justify-center">
-        <img className="h-auto w-screen" src={offreentete} alt="" />
+      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed z-10 w-screen">
+        <button type="button" className="font-bold text-black">
+          Postuler à cette offre
+        </button>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center">
-        <div className="flex justify-center md:w-6/12 lg:w-6/12 xl:w-6/12 mx-6">
+        <div className="flex justify-center md:w-6/12 lg:w-6/12 xl:w-6/12 mx-6 mt-28">
           <CartePrincipale offre={offre} />
         </div>
-        <div className="flex flex-col md:w-6/12 lg:w-4/12 xl:w-4/12 mx-6 items-center">
+        <div className="flex flex-col md:w-6/12 lg:w-4/12 xl:w-4/12 mx-6 items-center md:mt-28">
           <CarteAvantages offre={offre} />
           <CarteProfil offre={offre} />
           <CarteSalaire offre={offre} />
