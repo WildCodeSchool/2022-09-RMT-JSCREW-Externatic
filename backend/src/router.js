@@ -53,5 +53,4 @@ router.post(
 );
 router.post("/offres", offreControllers.add);
 router.put("/offres/:id", offreControllers.edit);
-router.delete("/offres/:id", offreControllers.destroy);
 module.exports = router;

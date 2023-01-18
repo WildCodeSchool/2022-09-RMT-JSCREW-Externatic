@@ -13,7 +13,7 @@ class OffreManager extends AbstractManager {
   }
 
   // insérer des offres dans le formulaire
-  insert(Offre) {
+  insert(Offre, dateInscript) {
     return this.connection.query(
       `insert into ${this.table} 
       (contrat, condition_travail,  avantages, poste, localisation ,dateOffre, date_fin_offre, salaire, 
@@ -24,7 +24,7 @@ class OffreManager extends AbstractManager {
         Offre.avantages,
         Offre.poste,
         Offre.localisation,
-        Offre.dateOffre,
+        dateInscript,
         Offre.date_fin_offre,
         Offre.salaire,
         Offre.mission,
@@ -38,7 +38,7 @@ class OffreManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `SELECT poste, localisation FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
+      `SELECT * FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
     );
   }
 

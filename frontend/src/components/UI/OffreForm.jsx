@@ -9,19 +9,6 @@ import SelectOffreForm from "./SelectOffreForm";
 function OffreForm() {
   // fonction pour mettre à jour les dates en auto
 
-  // const dateInscript = () => {
-  //   const year = new Date().getFullYear();
-  //   let month = new Date().getMonth() + 1;
-  //   let date = new Date().getDate();
-  //   if (month < 10) {
-  //     month = `0${month}`;
-  //   }
-  //   if (date < 10) {
-  //     date = `0${date}`;
-  //   }
-  //   return `${year}-${month}-${date}`;
-  // };
-
   const [offre, setOffre] = useState({
     contrat: "",
     condition_travail: "",
@@ -75,7 +62,7 @@ function OffreForm() {
       });
   };
 
-  const selectOffre = (id) => {
+  const selectJobs = (id) => {
     const offs = jobs.find((e) => e.id === parseInt(id, 10));
     setOffre(offs);
   };
@@ -102,12 +89,12 @@ function OffreForm() {
   };
 
   return (
-    <div className="mt-5 mb-5 relative flex flex-col justify-center min-h-screen ">
-      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-indigo-600 lg:max-w-xl">
-        <h1 className="font-roboto text-2xl font-semibold text-center text-indigo-700  uppercase ">
+    <div className="mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
+      <div className="shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
+        <h1 className="font-roboto text-2xl font-light text-center capitalize ">
           Formulaire offre
         </h1>
-        <SelectOffreForm selectOffre={selectOffre} jobs={jobs} />
+        <SelectOffreForm selectJobs={selectJobs} jobs={jobs} />
         <form className="mt-6">
           <div className="mb-2">
             <label>
@@ -421,6 +408,7 @@ function OffreForm() {
                 Ajouter
               </button>
             )}
+
             {offre.id && (
               <button
                 type="button"

@@ -1,5 +1,17 @@
 const models = require("../models");
 
+const dateInscript = () => {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let date = new Date().getDate();
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  return `${year}-${month}-${date}`;
+};
 const random = (req, res) => {
   models.offre
     .rand(3)
@@ -18,7 +30,7 @@ const add = (req, res) => {
   const offreForm = req.body;
 
   models.offre
-    .insert(offreForm)
+    .insert(offreForm, dateInscript())
     .then(([result]) => {
       res.location(`/offres/${result.insertId}`).sendStatus(201);
     })
@@ -65,11 +77,11 @@ const edit = (req, res) => {
 const read = (req, res) => {
   models.offre
     .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
+    .then(([offres]) => {
+      if (offres[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.send(offres[0]);
       }
     })
     .catch((err) => {
@@ -78,20 +90,4 @@ const read = (req, res) => {
     });
 };
 
-const destroy = (req, res) => {
-  models.offre
-    .delete(req.params.id)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
-module.exports = { random, add, browse, edit, read, destroy };
+module.exports = { random, add, browse, edit, read };

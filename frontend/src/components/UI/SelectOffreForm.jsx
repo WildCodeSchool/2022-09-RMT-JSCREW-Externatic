@@ -1,13 +1,13 @@
 import React from "react";
 
-function SelectOffreForm({ selectOffres, jobs }) {
+function SelectOffreForm({ selectJobs, jobs }) {
   return (
     <div>
       <div className=" mb-3 flex justify-left">
         <div className="mb-3 xl:w-96">
           <select
             onChange={(e) => {
-              selectOffres(e.target.value);
+              selectJobs(e.target.value);
             }}
             className="form-select appearance-none
               block
