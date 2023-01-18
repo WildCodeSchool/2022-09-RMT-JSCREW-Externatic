@@ -35,6 +35,29 @@ class CandidatManager extends AbstractManager {
       [connexionId]
     );
   }
+
+  update(candidat, profilPhoto, profilCv) {
+    const newCandidat = { ...candidat };
+    const dateDispo = newCandidat.dateDisponibilite;
+    delete newCandidat.dateDisponibilite;
+    delete newCandidat.dateInscription;
+
+    if (profilPhoto === "assetsnull") {
+      delete newCandidat.photo;
+    } else {
+      newCandidat.photo = profilPhoto;
+    }
+    if (profilCv === "assetsnull") {
+      delete newCandidat.cv;
+    } else {
+      newCandidat.cv = profilCv;
+    }
+
+    return this.connection.query(
+      `update ${this.table} set ?, dateDisponibilite = ? where connexion_id = ?`,
+      [newCandidat, dateDispo.split("T").shift(), newCandidat.connexion_id]
+    );
+  }
 }
 
 module.exports = CandidatManager;

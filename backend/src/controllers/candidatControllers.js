@@ -41,7 +41,7 @@ const add = (req, res) => {
 };
 
 const read = (req, res) => {
-  if (parseInt(req.params.id, 10) === req.auth.id) {
+  if (parseInt(req.params.id, 10)) {
     models.candidat
       .findOne(req.params.id)
       .then(([rows]) => {
@@ -60,7 +60,40 @@ const read = (req, res) => {
   }
 };
 
+const edit = (req, res) => {
+  let candidat = req.body;
+
+  const profilPhoto = `assets${
+    req.files.avatar ? req.files.avatar[0].filename : null
+  }`;
+  const profilCv = `assets${req.files.cv ? req.files.cv[0].filename : null}`;
+
+  candidat = JSON.parse(candidat.data);
+
+  const error = validate(candidat);
+  candidat.id = parseInt(req.params.id, 10);
+
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.candidat
+      .update(candidat, profilPhoto, profilCv)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
+};
+
 module.exports = {
   add,
   read,
+  edit,
 };

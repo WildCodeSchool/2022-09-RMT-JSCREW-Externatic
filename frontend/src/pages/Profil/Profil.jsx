@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import apiConnexion from "@services/apiConnexion";
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
+import avatar from "@assets/Avatar.png";
 import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
@@ -21,8 +22,9 @@ const toastifyConfig = {
 function Profil() {
   const { user } = useContext(User.UserContext);
 
+  const userId = user.id ? user.id : user;
+
   const profilType = {
-    photo: "/assets/avatar/Avatar.png",
     nom: "",
     prenom: "",
     age: "",
@@ -35,7 +37,7 @@ function Profil() {
     metier: "",
     telephone: "",
     dateDisponibilite: "",
-    connexion_id: user.id,
+    connexion_id: userId,
   };
 
   // ajout d'un zéro pour les dates et les mois inférieurs à 10
@@ -109,7 +111,27 @@ function Profil() {
   }
 
   const handelUpdateProfil = () => {
-    // A définir
+    if (user.id) {
+      const formData = new FormData();
+      formData.append("avatar", inputRef1.current.files[0]);
+      formData.append("cv", inputRef2.current.files[0]);
+      formData.append("data", JSON.stringify(profil));
+      apiConnexion
+        .put(`/profil/${user.id}`, formData)
+        .then(() => {
+          toast.success(
+            `Bonjour  votre profil à bien été modifier.`,
+            toastifyConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    }
   };
 
   return (
@@ -122,7 +144,11 @@ function Profil() {
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
             <img
-              src={`${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`}
+              src={
+                profil.photo
+                  ? `${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`
+                  : avatar
+              }
               id="image"
               alt="avatar"
             />
