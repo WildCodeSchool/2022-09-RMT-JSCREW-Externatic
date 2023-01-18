@@ -36,7 +36,6 @@ router.get("/offres/rand", offreControllers.random);
 router.get("/offres/:id", offreControllers.read);
 router.get("/entreprises", entrepriseControllers.browse);
 
-
 router.get("/entreprises/rand", entrepriseControllers.random);
 
 router.post("/login", connexionControllers.validateUser);

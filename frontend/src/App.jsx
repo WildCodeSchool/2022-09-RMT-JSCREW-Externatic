@@ -1,13 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NosOffres from "@pages/Offres/NosOffres";
 
-
 import Entreprise from "@pages/BackOffice/Entreprise";
 import Profil from "@pages/Profil/Profil";
 import Quisommesnous from "@pages/quisommesnous/qui";
 import Home from "@pages/Home";
 import UneOffre from "@pages/UneOffre/UneOffre";
-import Offre from "@pages/BackOffice/Offre";
 import AdminEntreprise from "@pages/BackOffice/AdminEntreprise";
 import AdminOffres from "@pages/BackOffice/AdminOffres";
 import Public from "@pages/Layout/Public";
