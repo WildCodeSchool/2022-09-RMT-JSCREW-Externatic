@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import Entreprises from "@pages/Entreprises/Entreprises";
 import NosOffres from "@pages/Offres/NosOffres";
 import Entreprise from "@pages/BackOffice/Entreprise";
 import Profil from "@pages/Profil/Profil";
@@ -14,8 +13,6 @@ import AdminOffres from "@pages/BackOffice/AdminOffres";
 import Public from "@pages/Layout/Public";
 import Private from "@pages/Layout/Private";
 
-import "./App.css";
-
 function App() {
   return (
     <div className="App">
@@ -24,7 +21,6 @@ function App() {
           <Route path="/" element={<Public />}>
             <Route path="/" element={<Home />} />
             <Route path="/offres" element={<NosOffres />} />
-            <Route path="/entreprises" element={<Entreprises />} />
             <Route path="/offres/:id" element={<UneOffre />} />
             <Route path="/entreprises" element={<Entreprise />} />
             <Route path="/offre" element={<Offre />} />

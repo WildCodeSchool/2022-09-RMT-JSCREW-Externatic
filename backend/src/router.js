@@ -57,9 +57,7 @@ router.post(
   candidatControllers.add
 );
 
-
 router.post("/register", connexionControllers.add);
 router.post("/offres", offreControllers.add);
-
 
 module.exports = router;

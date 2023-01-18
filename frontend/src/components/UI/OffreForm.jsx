@@ -68,8 +68,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-          "
+                  focus:ring-opacity-50"
                 placeholder="contrat"
               />
             </label>
@@ -89,8 +88,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-          "
+                  focus:ring-opacity-50"
                 placeholder="condition de travail"
               />
             </label>
@@ -110,8 +108,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-          "
+                  focus:ring-opacity-50"
                 placeholder="avantages"
               />
             </label>
@@ -131,8 +128,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="poste"
               />
             </label>
@@ -152,8 +148,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="localisation"
               />
             </label>
@@ -173,8 +168,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="date de l'offre"
               />
             </label>
@@ -194,8 +188,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="date fin de l'offre"
               />
             </label>
@@ -215,8 +208,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="salaire"
               />
             </label>
@@ -228,7 +220,6 @@ function OffreForm() {
                 value={offre.mission}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -237,8 +228,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="mission"
               />
             </label>
@@ -258,8 +248,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="profil recherché"
               />
             </label>
@@ -279,8 +268,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="specialitées"
               />
             </label>
@@ -292,7 +280,6 @@ function OffreForm() {
                 value={offre.entreprise_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -301,8 +288,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="identifiant de l'entreprise"
               />
             </label>
@@ -314,7 +300,6 @@ function OffreForm() {
                 value={offre.domaine_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -323,8 +308,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="identifiant du domaine"
               />
             </label>
@@ -344,8 +328,7 @@ function OffreForm() {
                   border-darkPink 
                   font-bold 
                   py-2 px-4 
-                  pl-2 rounded
-                  "
+                  pl-2 rounded"
             >
               Envoyer
             </button>
