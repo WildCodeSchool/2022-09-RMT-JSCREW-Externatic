@@ -5,10 +5,23 @@
 -- MySQL Workbench Forward Engineering
 USE `externatic`;
 
+DROP TABLE IF EXISTS `externatic`.`candidature`;
+
+DROP TABLE IF EXISTS `externatic`.`candidat`;
+
+DROP TABLE IF EXISTS `externatic`.`consultant`;
+
+DROP TABLE IF EXISTS `externatic`.`connexion`;
+
+DROP TABLE IF EXISTS `externatic`.`entreprise`;
+
+DROP TABLE IF EXISTS `externatic`.`offre`;
+
+DROP TABLE IF EXISTS `externatic`.`domaine`;
+
 -- -----------------------------------------------------
 -- Table `externatic`.`candidature`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `externatic`.`candidature` ;
 CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `candidat_id` INT NOT NULL,
@@ -54,8 +67,6 @@ VALUES
 -- -----------------------------------------------------
 -- Table `externatic`.`candidat`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `externatic`.`candidat`;
-
 CREATE TABLE IF NOT EXISTS `externatic`.`candidat` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `photo` VARCHAR(255) NULL,
@@ -201,8 +212,6 @@ VALUES
 -- -----------------------------------------------------
 -- Table `externatic`.`consultant`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `externatic`.`consultant`;
-
 CREATE TABLE IF NOT EXISTS `externatic`.`consultant` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `image_url` VARCHAR(255) NOT NULL,
@@ -477,8 +486,6 @@ VALUES
 -- -----------------------------------------------------
 -- Table `externatic`.`connexion`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `externatic`.`connexion`;
-
 CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `utilisateur` VARCHAR(255) UNIQUE NOT NULL,
@@ -655,8 +662,6 @@ VALUES
 -- -----------------------------------------------------
 -- Table `externatic`.`entreprise`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `externatic`.`entreprise`;
-
 CREATE TABLE IF NOT EXISTS `externatic`.`entreprise` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `logo` VARCHAR(100) NULL,
@@ -679,8 +684,6 @@ CREATE TABLE IF NOT EXISTS `externatic`.`entreprise` (
 -- -----------------------------------------------------
 -- Table `externatic`.`offre`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `externatic`.`offre`;
-
 CREATE TABLE IF NOT EXISTS `externatic`.`offre` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `contrat` VARCHAR(50) NOT NULL,
@@ -908,7 +911,6 @@ VALUES
 -- -----------------------------------------------------
 -- Table `externatic`.`Domaine`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `externatic`.`domaine` ; 
 CREATE TABLE IF NOT EXISTS `externatic`.`domaine` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(255) NOT NULL,
