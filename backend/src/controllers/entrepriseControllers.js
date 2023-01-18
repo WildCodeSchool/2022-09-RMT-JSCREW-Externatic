@@ -36,7 +36,10 @@ const add = (req, res) => {
   models.entreprise
     .insert(entreprise)
     .then(([result]) => {
-      res.location(`/entreprise/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/entreprise/${result.insertId}`)
+        .status(201)
+        .json({ ...entreprise, id: result.insertId });
     })
     .catch((err) => {
       console.error(err);

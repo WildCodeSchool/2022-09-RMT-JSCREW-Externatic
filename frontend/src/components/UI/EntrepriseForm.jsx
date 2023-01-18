@@ -61,8 +61,9 @@ function EntrepriseForm() {
     e.preventDefault();
     apiConnexion
       .post("/entreprises", firm)
-      .then(() => {
+      .then((res) => {
         getAllEntreprises();
+        setFirm(res.data);
         toast.success(
           `Bonjour  votre entreprise au nom de  ${firm.nom_entreprise} a bien été enregistrée .`,
           toastiConfig
