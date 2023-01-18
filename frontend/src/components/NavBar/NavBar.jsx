@@ -14,14 +14,14 @@ function NavBar() {
   };
 
   return (
-    <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden">
-      <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 justify-self-center">
+    <nav className="navBar z-50 sticky h-16 bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden">
+      <div className="bg-white mt-6 md:mt-4 mr-14 sm:mt-6 justify-self-start md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
             src={logo}
             alt="Logo"
-            width="100"
-            height="100"
+            width="120"
+            height="120"
             className="imageLogo md:w-[200px] "
           />
         </Link>
@@ -34,15 +34,14 @@ function NavBar() {
           type="button"
           onClick={() => setIsNavOpen((prev) => !prev)}
         >
-          <div className="space-y-2 hover:cursor-pointer w-fit flex flex-col items-center">
-            <span className="block h-0.5 w-8 bg-darkPink" />
-            <span className="block h-0.5 w-8 bg-darkPink" />
+          <div className="space-y-2 hover:cursor-pointer w-fit flex flex-col items-center mt-1">
+            <span className="block h-1 w-9 rounded-xl bg-darkPink" />
+            <span className="block h-1 w-9 rounded-xl bg-darkPink" />
           </div>
           <div className="mt-2 hover:cursor-pointer w-fit flex flex-col">
-            <span className="block h-0.5 w-6 bg-darkPink" />
+            <span className="block h-1 w-7 rounded-xl bg-darkPink" />
           </div>
         </button>
-        <span className="block mx-12 md:mx-16 md:-mt-2">Menu</span>
         <div
           className={`transform transition-all duration-700 ${
             isNavOpen
@@ -56,7 +55,7 @@ function NavBar() {
             onClick={() => setIsNavOpen(false)}
           >
             <svg
-              className="h-8 w-8 text-gray-600"
+              className="h-12 w-10 text-gray-600"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -84,7 +83,7 @@ function NavBar() {
               onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
-                Offre d'emploi
+                Offres d'emploi
               </p>
             </Link>
             <Link
@@ -117,9 +116,9 @@ function NavBar() {
           </div>
         </div>
       </div>
-      <div className="justify-self-end absolute -mr-10">
+      <div className="justify-self-end absolute -mr-12">
         <button
-          className="mt-1 md:mt-3 transition-colors duration-300 bg-darkPink bottom-1/4 px-1 md:px-6 md:bottom-1/3 -translate-x-1/2 hover:bg-pink text-white rounded-full border-2"
+          className="mt-4 md:mt-3 transition-colors duration-300 bg-darkPink bottom-1/4 p-1 md:p-2 px-4 md:px-6 -translate-x-1/2 hover:bg-pink text-white rounded-lg border-2"
           type="button"
           onClick={() => setConnexionModalIsVisible(true)}
         >
