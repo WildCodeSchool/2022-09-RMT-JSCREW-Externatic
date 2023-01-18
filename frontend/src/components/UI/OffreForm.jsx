@@ -7,8 +7,6 @@ import axios from "axios";
 import SelectOffreForm from "./SelectOffreForm";
 
 function OffreForm() {
-  // fonction pour mettre à jour les dates en auto
-
   const [offre, setOffre] = useState({
     contrat: "",
     condition_travail: "",

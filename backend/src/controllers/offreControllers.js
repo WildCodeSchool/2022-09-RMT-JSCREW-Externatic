@@ -1,5 +1,6 @@
 const models = require("../models");
 
+// fonction pour mettre à jour les dates en auto
 const dateInscript = () => {
   const year = new Date().getFullYear();
   let month = new Date().getMonth() + 1;
