@@ -37,8 +37,13 @@ INSERT INTO
   `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
   (
-    'alain.villeneuve@email.f',
+    'alain.villeneuve@email.fr',
     '$argon2id$v=19$m=65536,t=5,p=1$gK38z/m731hAiZeDmlerHA$kKpFSFCvJNsWB77QbB/jbm6Dmkt8IlSEaZJStPxdW/I',
+    'candidat'
+  ),
+  (
+    'admin@email.fr',
+    '$argon2id$v=19$m=65536,t=5,p=1$K4MCUL/SfTYXJwTvaNReLA$rykd7aX4kbZqvkGAUGaaEw0So7b/T4qRDU2sfSMP3js',
     'administrateur'
   );
 
@@ -48,7 +53,7 @@ VALUES
   (
     'jules.simons@email.com',
     '$argon2id$v=19$m=65536,t=5,p=1$R5zhYw9IOecMbCx4Ck1ykQ$yCnhM7xzF+Sx0CJM/uvTCHo6JNcxeSgtFWCeWWQWAUM',
-    'consultant'
+    'candidat'
   );
 
 INSERT INTO
