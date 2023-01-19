@@ -13,7 +13,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="navBar z-50 sticky h-16 bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden">
+    <nav className="navBar z-50 sticky h-16 bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden md:mx-6 lg:mx-12">
       <div className="bg-white mt-6 md:mt-4 mr-14 md:mr-2 justify-self-start md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
@@ -33,12 +33,19 @@ function NavBar() {
           type="button"
           onClick={() => setIsNavOpen((prev) => !prev)}
         >
-          <div className="space-y-2 hover:cursor-pointer w-fit flex flex-col items-center mt-1">
-            <span className="block h-1 w-9 rounded-xl bg-darkPink" />
-            <span className="block h-1 w-9 rounded-xl bg-darkPink" />
-          </div>
-          <div className="mt-2 hover:cursor-pointer w-fit flex flex-col">
-            <span className="block h-1 w-7 rounded-xl bg-darkPink" />
+          <div className="flex flex-row">
+            <div>
+              <div className="space-y-2 hover:cursor-pointer w-fit flex flex-col items-center mt-1">
+                <span className="block h-1 w-9 rounded-xl bg-darkPink" />
+                <span className="block h-1 w-9 rounded-xl bg-darkPink" />
+              </div>
+              <div className="mt-2 hover:cursor-pointer w-fit flex flex-col">
+                <span className="block h-1 w-7 rounded-xl bg-darkPink" />
+              </div>
+            </div>
+            <h1 className="invisible md:visible mt-2 ml-4 text-black font-bold">
+              Menu
+            </h1>
           </div>
         </button>
         <div
