@@ -135,11 +135,11 @@ function Profil() {
   };
 
   return (
-    <div className="profil p-9 flex justify-center">
+    <div className="profil flex justify-center">
       <form
         encType="multipart/form-data"
         onSubmit={(e) => sendForm(e)}
-        className="w-full max-w-lg"
+        className="w-full max-w-lg mb-5 p-5 rounded-3xl"
       >
         <div className="flex flex-wrap -mx-3 md:mb-6">
           <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
@@ -178,7 +178,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 mb-3 focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white"
               id="grid-nom"
               type="text"
               placeholder="Nom"
@@ -190,7 +190,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3 md:mt-6">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white"
               id="grid-last-name"
               type="text"
               placeholder="Prenom"
@@ -202,7 +202,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3 mt-6 mb-3 md:mb-0">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="grid-age"
               type="text"
               placeholder="Age"
@@ -214,7 +214,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3 md:mt-6">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-telephone"
               type="text"
               placeholder="Téléphone"
@@ -228,7 +228,7 @@ function Profil() {
           <div className=" row-span-3 w-full pl-3 mr-4 md:mr-10">
             <textarea
               required
-              className="block mb-6 w-full bg-[#D9D9D9] rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+              className="block mb-6 w-full bg-white text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
               id="grid-adresse"
               type="text"
               rows="8"
@@ -241,7 +241,7 @@ function Profil() {
           <div className=" col-span-1 w-full px-4">
             <input
               required
-              className="appearance-none block w-full md:mx-4 bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full md:ml-2 bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-ville"
               type="text"
               placeholder="Ville"
@@ -253,7 +253,7 @@ function Profil() {
           <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
             <input
               required
-              className="appearance-none block w-full md:ml-2 bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full md:ml-2 bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-pays"
               type="text"
               placeholder="code postal"
@@ -265,7 +265,7 @@ function Profil() {
           <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
             <input
               required
-              className="appearance-none block w-full md:ml-2 bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full md:ml-2 bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-pays"
               type="text"
               placeholder="Pays"
@@ -279,7 +279,7 @@ function Profil() {
           <div className="w-full px-3">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-email"
               type="email"
               placeholder="nom@exemple.com"
@@ -293,7 +293,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-dispo"
               type="date"
               placeholder="Disponibilité"
@@ -305,7 +305,7 @@ function Profil() {
           <div className="w-full md:w-1/2 px-3">
             <input
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-poste"
               type="text"
               placeholder="Métier"
@@ -319,7 +319,7 @@ function Profil() {
           <div className="w-full px-3 mb-6 md:mb-0">
             <textarea
               required
-              className="appearance-none block w-full bg-[#D9D9D9] text-gray-700 rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-white text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-description"
               type="text"
               rows="4"
@@ -333,7 +333,7 @@ function Profil() {
         {!user.id && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
-              className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+              className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
               type="submit"
             >
               Valider
@@ -343,7 +343,7 @@ function Profil() {
         {user.id && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
-              className="bg-pink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+              className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
               type="button"
               onClick={() => handelUpdateProfil()}
             >
