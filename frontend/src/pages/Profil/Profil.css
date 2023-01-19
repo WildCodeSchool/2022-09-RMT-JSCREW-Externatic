@@ -2,12 +2,23 @@
   color: #9ca3af;
 }
 
+form {
+  background-color: rgb(233, 233, 233);
+}
+
 input:focus {
-  border: 1px solid pink;
+  border: 2px solid pink;
+}
+input {
+  border: 2px solid pink;
+}
+
+textarea {
+  border: 2px solid pink;
 }
 
 textarea:focus {
-  border: 1px solid pink;
+  border: 2px solid pink;
 }
 
 input[type="date"]::before {
