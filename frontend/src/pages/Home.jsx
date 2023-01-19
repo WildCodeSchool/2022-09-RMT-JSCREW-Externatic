@@ -47,7 +47,7 @@ export default function Home() {
           il n'y a pas d'algorithmes, de profils ou de liens automatisés.{" "}
         </p>
         <h2 className="text-3xl font-bold text-center mt-4">Rejoins-nous!</h2>
-        <div className="lg:flex lg:w-full">
+        <div className="lg:flex lg:justify-around lg:w-full">
           {randomData.map((offre) => (
             <Card key={offre.id} offre={offre} />
           ))}
