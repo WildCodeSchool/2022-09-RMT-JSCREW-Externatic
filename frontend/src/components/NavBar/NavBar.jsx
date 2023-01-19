@@ -8,7 +8,6 @@ import "./NavBar.css";
 function NavBar() {
   const [connexionModalIsVisible, setConnexionModalIsVisible] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-
   const handleOnCloseConnexionModal = () => {
     setConnexionModalIsVisible(false);
   };
@@ -88,7 +87,7 @@ function NavBar() {
               </p>
             </Link>
             <Link
-              to="/profil"
+              to="/profil/:id"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
               onClick={() => setIsNavOpen(false)}
             >

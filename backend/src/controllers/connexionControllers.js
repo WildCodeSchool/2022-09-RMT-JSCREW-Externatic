@@ -12,7 +12,7 @@ const add = (req, res) => {
     models.connexion
       .insert(connexion)
       .then(([result]) => {
-        res.location(`/register/${result.insertId}`).sendStatus(201);
+        res.location(`/register/${result.insertId}`).status(201).send(result);
       })
       .catch((err) => {
         console.error(err);
