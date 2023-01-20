@@ -13,7 +13,7 @@ class OffreManager extends AbstractManager {
   }
 
   // insérer des offres dans le formulaire
-  insert(Offre, dateInscript) {
+  insert(Offre) {
     return this.connection.query(
       `insert into ${this.table} 
       (contrat, condition_travail,  avantages, poste, localisation ,dateOffre, date_fin_offre, salaire, 
@@ -24,7 +24,7 @@ class OffreManager extends AbstractManager {
         Offre.avantages,
         Offre.poste,
         Offre.localisation,
-        dateInscript,
+        Offre.dateOffre,
         Offre.date_fin_offre,
         Offre.salaire,
         Offre.mission,
@@ -37,38 +37,32 @@ class OffreManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(
-      `SELECT * FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
-    );
+    return this.connection.query(`SELECT * FROM offre ${this.table} `);
   }
 
   // mise à jour des offres avec UPDATE
-  update(Offre) {
-    return this.connection.query(
-      `update ${this.table} set contrat = ?, condition_travail = ?, avantages = ?, poste = ?, localisation = ?, date_fin_offre = ?, salaire = ?, 
-      mission = ?, profil_recherche = ?, specialitees = ?, entreprise_id = ?, domaine_id = ? where id = ?`,
-      [
-        Offre.contrat,
-        Offre.condition_travail,
-        Offre.avantages,
-        Offre.poste,
-        Offre.localisation,
-        Offre.date_fin_offre,
-        Offre.salaire,
-        Offre.mission,
-        Offre.profil_recherche,
-        Offre.specialitees,
-        Offre.entreprise_id,
-        Offre.domaine_id,
-        Offre.id,
-      ]
-    );
-  }
+  update(offre) {
+    const newOffre = { ...offre };
+    const dateFinOffre = newOffre.date_fin_offre;
+    delete newOffre.date_fin_offre;
+    delete newOffre.dateOffre;
+    delete newOffre.logo;
+    delete newOffre.nom_entreprise;
+    delete newOffre.adresse;
+    delete newOffre.code_postal;
+    delete newOffre.ville;
+    delete newOffre.pays;
+    delete newOffre.email;
+    delete newOffre.telephone;
+    delete newOffre.description;
+    delete newOffre.numero_siret;
+    delete newOffre.nombre_employes;
+    delete newOffre.dateInscription;
 
-  find(id) {
-    return this.connection.query(`SELECT * FROM  ${this.table} WHERE id = ?`, [
-      id,
-    ]);
+    return this.connection.query(
+      `update ${this.table} set ?, date_fin_offre = ? where id = ?`,
+      [newOffre, dateFinOffre, newOffre.id]
+    );
   }
 }
 

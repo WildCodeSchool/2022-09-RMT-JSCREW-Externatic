@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function Offres() {
-  const [offres, setOffres] = useState([]);
+  const [jobs, setjobs] = useState([]);
 
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
-      .then((jobs) => setOffres(jobs.data))
+      .then((offres) => setjobs(offres.data))
       .catch((error) => console.error(error));
   };
 
@@ -40,7 +40,7 @@ function Offres() {
             aria-label="Default select example"
           >
             <option selected> offre</option>
-            {offres.map((offre) => (
+            {jobs.map((offre) => (
               <option key={offre.id} value="">
                 {offre.poste}
               </option>

@@ -3,30 +3,30 @@ import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toastiConfig from "@services/toastiConfig";
-import axios from "axios";
 import SelectOffreForm from "./SelectOffreForm";
 
-function OffreForm() {
-  const [offre, setOffre] = useState({
-    contrat: "",
-    condition_travail: "",
-    avantages: null,
-    poste: "",
-    localisation: "",
-    dateOffre: "",
-    date_fin_offre: "",
-    salaire: null,
-    mission: "",
-    profil_recherche: "",
-    specialitees: "",
-    entreprise_id: "",
-    domaine_id: "",
-  });
+const offreType = {
+  contrat: "",
+  condition_travail: "",
+  avantages: null,
+  poste: "",
+  localisation: "",
+  date_fin_offre: "",
+  salaire: null,
+  mission: "",
+  profil_recherche: "",
+  specialitees: "",
+  entreprise_id: "",
+  domaine_id: "",
+};
 
+function OffreForm() {
+  const [offre, setOffre] = useState(offreType);
   const [jobs, setJobs] = useState([]);
+
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
-    axios
+    apiConnexion
       .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
       .then((job) => setJobs(job.data))
       .catch((error) => console.error(error));
@@ -47,8 +47,9 @@ function OffreForm() {
 
     apiConnexion
       .post("/offres", offre)
-      .then(() => {
+      .then((res) => {
         getAllOffres();
+        setOffre(res.data);
         toast.success(`Votre offre a bien été enregistrée`, toastiConfig);
       })
       .catch((err) => {
@@ -104,7 +105,6 @@ function OffreForm() {
                 value={offre.contrat}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -113,8 +113,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-          "
+                  focus:ring-opacity-50"
                 placeholder="contrat"
               />
             </label>
@@ -126,7 +125,6 @@ function OffreForm() {
                 value={offre.condition_travail}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -135,8 +133,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-          "
+                  focus:ring-opacity-50"
                 placeholder="condition de travail"
               />
             </label>
@@ -148,7 +145,6 @@ function OffreForm() {
                 value={offre.avantages}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -157,8 +153,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-          "
+                  focus:ring-opacity-50"
                 placeholder="avantages"
               />
             </label>
@@ -170,7 +165,6 @@ function OffreForm() {
                 value={offre.poste}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -179,8 +173,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="poste"
               />
             </label>
@@ -192,7 +185,6 @@ function OffreForm() {
                 value={offre.localisation}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -201,8 +193,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="localisation"
               />
             </label>
@@ -214,7 +205,6 @@ function OffreForm() {
                 value={offre.dateOffre}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -223,8 +213,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="date de l'offre"
               />
             </label>
@@ -232,11 +221,10 @@ function OffreForm() {
               <span className="text-gray-700">date de fin de l'offre</span>
               <input
                 type="date"
-                name="dateOffre"
-                value={offre.dateOffre}
+                name="date_fin_offre"
+                value={offre.date_fin_offre}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -245,8 +233,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="date fin de l'offre"
               />
             </label>
@@ -258,7 +245,6 @@ function OffreForm() {
                 value={offre.salaire}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -267,8 +253,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="salaire"
               />
             </label>
@@ -280,7 +265,6 @@ function OffreForm() {
                 value={offre.mission}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -289,8 +273,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-              "
+                  focus:ring-opacity-50"
                 placeholder="mission"
               />
             </label>
@@ -302,7 +285,6 @@ function OffreForm() {
                 value={offre.profil_recherche}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -311,8 +293,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="profil recherché"
               />
             </label>
@@ -324,7 +305,6 @@ function OffreForm() {
                 value={offre.specialitees}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -333,8 +313,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="specialitées"
               />
             </label>
@@ -346,7 +325,6 @@ function OffreForm() {
                 value={offre.entreprise_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -355,8 +333,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="identifiant de l'entreprise"
               />
             </label>
@@ -368,7 +345,6 @@ function OffreForm() {
                 value={offre.domaine_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
-
                   w-full
                   block px-16 py-2 mt-2
                   border-gray-300
@@ -377,8 +353,7 @@ function OffreForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50
-            "
+                  focus:ring-opacity-50"
                 placeholder="identifiant du domaine"
               />
             </label>
@@ -389,9 +364,10 @@ function OffreForm() {
                 type="button"
                 onClick={sendForm}
                 className="
-                  w-40 bg-white 
-                  mt-4 transition 
-                  duration-300 
+                  w-40 
+                  bg-white 
+                  mt-4 
+                  transition duration-300 
                   hover:bg-pink 
                   hover:text-white 
                   text-darkPink 
@@ -400,22 +376,56 @@ function OffreForm() {
                   border-darkPink 
                   font-bold 
                   py-2 px-4 
-                  pl-2 rounded
-                  "
+                  pl-2 rounded"
               >
                 Ajouter
               </button>
             )}
-
             {offre.id && (
               <button
                 type="button"
                 onClick={() => handelUpdateOffre()}
-                className=" w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded"
+                className="
+                w-40
+                bg-white 
+                mt-4
+                transition duration-300 
+                hover:bg-pink 
+                hover:text-white 
+                text-darkPink 
+                border-2 
+                border-solid 
+                border-darkPink 
+                font-bold py-2 
+                px-4 
+                pl-2 
+                rounded"
               >
                 Mettre à jour
               </button>
             )}
+            <button
+              type="button"
+              onClick={() => setOffre(offreType)}
+              className=" 
+                w-40 
+                bg-white 
+                mt-4 
+                transition duration-300 
+                hover:bg-pink 
+                hover:text-white 
+                text-darkPink 
+                border-2 
+                border-solid 
+                border-darkPink 
+                font-bold 
+                py-2 
+                px-4 
+                pl-2 
+                rounded"
+            >
+              Annuler
+            </button>
           </div>
 
           <ToastContainer

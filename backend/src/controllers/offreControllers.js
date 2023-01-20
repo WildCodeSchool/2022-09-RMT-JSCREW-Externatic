@@ -1,18 +1,19 @@
 const models = require("../models");
+const validate = require("../service/offre");
 
 // fonction pour mettre à jour les dates en auto
-const dateInscript = () => {
-  const year = new Date().getFullYear();
-  let month = new Date().getMonth() + 1;
-  let date = new Date().getDate();
-  if (month < 10) {
-    month = `0${month}`;
-  }
-  if (date < 10) {
-    date = `0${date}`;
-  }
-  return `${year}-${month}-${date}`;
-};
+// const dateInscript = () => {
+//   const year = new Date().getFullYear();
+//   let month = new Date().getMonth() + 1;
+//   let date = new Date().getDate();
+//   if (month < 10) {
+//     month = `0${month}`;
+//   }
+//   if (date < 10) {
+//     date = `0${date}`;
+//   }
+//   return `${year}-${month}-${date}`;
+// };
 const random = (req, res) => {
   models.offre
     .rand(3)
@@ -28,17 +29,23 @@ const random = (req, res) => {
 // create offre formulaire
 
 const add = (req, res) => {
-  const offreForm = req.body;
+  const offre = req.body;
+  const error = validate(offre);
 
-  models.offre
-    .insert(offreForm, dateInscript())
-    .then(([result]) => {
-      res.location(`/offres/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.offre
+      .insert(offre)
+      .then(([result]) => {
+        res.location(`/offres/${result.insertId}`).sendStatus(201).status(201);
+        //  .json({...offre, id:result.insertId});
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
 
 const browse = (req, res) => {
@@ -54,27 +61,31 @@ const browse = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const Offre = req.body;
+  const offre = req.body;
+  offre.id = parseInt(req.params.id, 10);
 
-  // TODO validations (length, format...)
+  // delete offre.dateOffre;
 
-  Offre.id = parseInt(req.params.id, 10);
+  const error = validate(offre);
 
-  models.offre
-    .update(Offre)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.offre
+      .update(offre)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
-
 const read = (req, res) => {
   models.offre
     .find(req.params.id)
