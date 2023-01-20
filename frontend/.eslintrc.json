@@ -15,11 +15,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "import"
-  ],
+  "plugins": ["react", "import"],
   "rules": {
+    "react/jsx-no-constructed-context-values": "off",
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
@@ -28,7 +26,6 @@
         "message": "You can only call the error() and warn() functions from the console object"
       }
     ],
-    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/no-unescaped-entities": "off",
@@ -49,10 +46,7 @@
           "@pages": "./src/pages",
           "@services": "./src/services"
         },
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     }
   }

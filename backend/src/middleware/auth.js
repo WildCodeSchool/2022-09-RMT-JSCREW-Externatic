@@ -4,7 +4,7 @@ const checkAuth = (req, res, next) => {
   if (req.cookies) {
     jwt.verify(
       req.cookies.access_token,
-      process.env.JWT_AUTH_SECRET,
+      process.env.JWT_SECRET,
       (err, decode) => {
         if (err) {
           res.sendStatus(401);

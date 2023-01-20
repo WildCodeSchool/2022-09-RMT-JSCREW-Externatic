@@ -8,51 +8,60 @@ import "./NavBar.css";
 function NavBar() {
   const [connexionModalIsVisible, setConnexionModalIsVisible] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-
   const handleOnCloseConnexionModal = () => {
     setConnexionModalIsVisible(false);
   };
 
   return (
-    <nav className="navBar z-50 sticky bg-white top-0 grid justify-items-stretch">
-      <div className="bg-white mt-4 justify-self-start ml-5 md:ml-0 md:justify-self-center">
+    <nav className="navBar z-50 sticky h-16 bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden md:mx-6 lg:mx-12">
+      <div className="bg-white mt-6 md:mt-4 mr-14 md:mr-2 justify-self-start md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
             src={logo}
             alt="Logo"
-            width="200"
-            height="200"
-            className="imageLogo"
+            width="120"
+            height="120"
+            className="imageLogo md:w-[200px] "
           />
         </Link>
       </div>
-      <div className="Menu justify-self-end -mt-7 mr-6">
+      <div className="Menu justify-self-start -mt-7 md:mr-6">
         <button
-          className={`burgerIcon space-y-2 hover:cursor-pointer w-fit ${
-            !isNavOpen && "absolute top-0 right-0 px-8 py-4"
+          className={`burgerIcon pl-2 md:pl-7 absolute py-1 top-0 left-0 px-8 md:py-4 ${
+            !isNavOpen && "absolute top-0 left-0 px-8 py-4"
           }`}
           type="button"
           onClick={() => setIsNavOpen((prev) => !prev)}
         >
-          <span className="block h-0.5 w-8 bg-darkPink" />
-          <span className="block h-0.5 w-8 bg-darkPink" />
-          <span className="block h-0.5 w-8 bg-darkPink" />
+          <div className="flex flex-row">
+            <div>
+              <div className="space-y-2 hover:cursor-pointer w-fit flex flex-col items-center mt-1">
+                <span className="block h-1 w-9 rounded-xl bg-darkPink" />
+                <span className="block h-1 w-9 rounded-xl bg-darkPink" />
+              </div>
+              <div className="mt-2 hover:cursor-pointer w-fit flex flex-col">
+                <span className="block h-1 w-7 rounded-xl bg-darkPink" />
+              </div>
+            </div>
+            <h1 className="invisible md:visible mt-2 ml-4 text-black font-bold">
+              Menu
+            </h1>
+          </div>
         </button>
-
         <div
           className={`transform transition-all duration-700 ${
             isNavOpen
-              ? "showMenuNav md:rounded-l-[200px]"
-              : "hideMenuNav translate-x-[420px]"
+              ? "showMenuNav md:rounded-r-[200px]"
+              : "hideMenuNav -translate-x-[420px]"
           }`}
         >
           <button
-            className="absolute top-0 right-0 px-8 py-4 hover:cursor-pointer"
+            className="absolute top-0 left-0 px-8 py-4 hover:cursor-pointer"
             type="button"
             onClick={() => setIsNavOpen(false)}
           >
             <svg
-              className="h-8 w-8 text-gray-600"
+              className="h-12 w-10 text-gray-600"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -65,14 +74,11 @@ function NavBar() {
             </svg>
           </button>
           <div className="flex flex-col justify-between min-h-[200px] w-80 text-2xl">
-            <button
-              className="text-start my-6 md:hidden"
-              type="button"
-              onClick={() => setConnexionModalIsVisible(true)}
+            <Link
+              to="/"
+              className="border-gray-400 my-6 "
+              onClick={() => setIsNavOpen(false)}
             >
-              Connexion
-            </button>
-            <Link to="/" className="border-gray-400 my-6 ">
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Accueil
               </p>
@@ -80,14 +86,16 @@ function NavBar() {
             <Link
               to="/offres"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
+              onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
-                Offre d'emploi
+                Offres d'emploi
               </p>
             </Link>
             <Link
-              to="/profil"
+              to="/profil/:id"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
+              onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Profil
@@ -96,6 +104,7 @@ function NavBar() {
             <Link
               to="/infos"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
+              onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Qui sommes-nous ?
@@ -104,6 +113,7 @@ function NavBar() {
             <Link
               to="/"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
+              onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Contact
@@ -111,6 +121,15 @@ function NavBar() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="justify-self-end absolute -mr-12">
+        <button
+          className="mt-4 md:mt-3 transition-colors duration-300 bg-darkPink bottom-1/4 p-1 md:p-2 px-4 md:px-6 -translate-x-1/2 hover:bg-pink text-white rounded-lg border-2"
+          type="button"
+          onClick={() => setConnexionModalIsVisible(true)}
+        >
+          Connexion
+        </button>
       </div>
       <ConnexionModal
         visible={connexionModalIsVisible}

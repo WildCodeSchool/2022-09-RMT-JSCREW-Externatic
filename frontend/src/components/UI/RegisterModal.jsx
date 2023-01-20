@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
+import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
 
 const toastifyConfig = {
@@ -16,6 +17,8 @@ const toastifyConfig = {
 };
 
 function RegisterModal({ visible, onclose }) {
+  const userContext = useContext(User.UserContext);
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registration, setRegistration] = useState({
     utilisateur: "",
@@ -38,7 +41,8 @@ function RegisterModal({ visible, onclose }) {
     } else {
       apiConnexion
         .post("/register", registration)
-        .then(() => {
+        .then((data) => {
+          userContext.handleUser(data.data.insertId);
           toast.success(
             `completez votre profil pour finaliser votre inscription`,
             toastifyConfig
