@@ -46,18 +46,6 @@ class OffreManager extends AbstractManager {
     const dateFinOffre = newOffre.date_fin_offre;
     delete newOffre.date_fin_offre;
     delete newOffre.dateOffre;
-    delete newOffre.logo;
-    delete newOffre.nom_entreprise;
-    delete newOffre.adresse;
-    delete newOffre.code_postal;
-    delete newOffre.ville;
-    delete newOffre.pays;
-    delete newOffre.email;
-    delete newOffre.telephone;
-    delete newOffre.description;
-    delete newOffre.numero_siret;
-    delete newOffre.nombre_employes;
-    delete newOffre.dateInscription;
 
     return this.connection.query(
       `update ${this.table} set ?, date_fin_offre = ? where id = ?`,

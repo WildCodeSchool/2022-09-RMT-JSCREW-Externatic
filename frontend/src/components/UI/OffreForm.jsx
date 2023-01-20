@@ -120,6 +120,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">condition de travail</span>
               <input
+                required
                 type="text"
                 name="condition_travail"
                 value={offre.condition_travail}
@@ -140,6 +141,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">avantages</span>
               <input
+                required
                 type="text"
                 name="avantages"
                 value={offre.avantages}
@@ -160,6 +162,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">poste</span>
               <input
+                required
                 type="text"
                 name="poste"
                 value={offre.poste}
@@ -180,6 +183,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">localisation</span>
               <input
+                required
                 type="text"
                 name="localisation"
                 value={offre.localisation}
@@ -200,6 +204,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">date de l'offre</span>
               <input
+                required
                 type="date"
                 name="dateOffre"
                 value={offre.dateOffre}
@@ -220,6 +225,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">date de fin de l'offre</span>
               <input
+                required
                 type="date"
                 name="date_fin_offre"
                 value={offre.date_fin_offre}
@@ -240,6 +246,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">salaire</span>
               <input
+                required
                 type="number"
                 name="salaire"
                 value={offre.salaire}
@@ -260,6 +267,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">mission</span>
               <input
+                required
                 type="text"
                 name="mission"
                 value={offre.mission}
@@ -280,6 +288,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">profil recherché</span>
               <input
+                required
                 type="text"
                 name="profil_recherche"
                 value={offre.profil_recherche}
@@ -300,6 +309,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">specialitées</span>
               <input
+                required
                 type="text"
                 name="specialitees"
                 value={offre.specialitees}
@@ -320,6 +330,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">identifiant de l'entreprise</span>
               <input
+                required
                 type="text"
                 name="entreprise_id"
                 value={offre.entreprise_id}
@@ -340,6 +351,7 @@ function OffreForm() {
             <label>
               <span className="text-gray-700">identifiant du domaine</span>
               <input
+                required
                 type="text"
                 name="domaine_id"
                 value={offre.domaine_id}
