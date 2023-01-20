@@ -2,18 +2,18 @@ const models = require("../models");
 const validate = require("../service/offre");
 
 // fonction pour mettre à jour les dates en auto
-// const dateInscript = () => {
-//   const year = new Date().getFullYear();
-//   let month = new Date().getMonth() + 1;
-//   let date = new Date().getDate();
-//   if (month < 10) {
-//     month = `0${month}`;
-//   }
-//   if (date < 10) {
-//     date = `0${date}`;
-//   }
-//   return `${year}-${month}-${date}`;
-// };
+const dateInscript = () => {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let date = new Date().getDate();
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  return `${year}-${month}-${date}`;
+};
 const random = (req, res) => {
   models.offre
     .rand(3)
@@ -36,9 +36,9 @@ const add = (req, res) => {
     res.status(422).send(error);
   } else {
     models.offre
-      .insert(offre)
+      .insert(offre, dateInscript())
       .then(([result]) => {
-        res.location(`/offres/${result.insertId}`).sendStatus(201).status(201);
+        res.location(`/offres/${result.insertId}`).sendStatus(201);
         //  .json({...offre, id:result.insertId});
       })
       .catch((err) => {
