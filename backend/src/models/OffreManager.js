@@ -46,6 +46,13 @@ class OffreManager extends AbstractManager {
       id,
     ]);
   }
+
+  findCandidatures(id) {
+    return this.connection.query(
+      `SELECT o.id, o.poste, o.localisation FROM ${this.table} AS o INNER JOIN candidature AS c ON o.id = c.offre_id WHERE c.candidat_id = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = OffreManager;
