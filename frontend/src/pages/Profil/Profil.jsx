@@ -1,5 +1,6 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import apiConnexion from "@services/apiConnexion";
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
@@ -370,9 +371,13 @@ function Profil() {
         {user.id && (
           <div>
             <h1 className="text-center">Vos candidatures</h1>
-            {candidatures.map((candidature) => (
-              <Card candidature={candidature} key={candidature.id} />
-            ))}
+            <div className="lg:flex lg:justify-around lg:w-full">
+              {candidatures.map((candidature) => (
+                <Link to={`/offres/${candidature.id}`}>
+                  <Card candidature={candidature} key={candidature.id} />
+                </Link>
+              ))}
+            </div>
           </div>
         )}
       </form>

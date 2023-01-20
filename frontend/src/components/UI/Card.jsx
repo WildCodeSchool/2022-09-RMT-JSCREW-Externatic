@@ -1,8 +1,8 @@
 import React from "react";
 import iconAjout from "@assets/ajouter.png";
 
-function Card({ offre }) {
-  const { poste, localisation } = offre;
+function Card(props) {
+  const { poste, localisation } = props;
   return (
     <div className="w-72 md:w-56 border-2 border-white hover:border-darkPink rounded-lg shadow-2xl lg:max-w-lg mt-3 mx-3">
       <h3 className="bg-darkPink rounded-lg text-center text-1xl text-white font-semibold p-3">
