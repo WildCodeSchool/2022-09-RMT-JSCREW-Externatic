@@ -38,7 +38,7 @@ INSERT INTO
 VALUES
   (
     'alain.villeneuve@email.fr',
-    '$argon2id$v=19$m=65536,t=5,p=1$gK38z/m731hAiZeDmlerHA$kKpFSFCvJNsWB77QbB/jbm6Dmkt8IlSEaZJStPxdW/I',
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
     'candidat'
   ),
   (
@@ -52,7 +52,7 @@ INSERT INTO
 VALUES
   (
     'jules.simons@email.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$R5zhYw9IOecMbCx4Ck1ykQ$yCnhM7xzF+Sx0CJM/uvTCHo6JNcxeSgtFWCeWWQWAUM',
+    '$argon2id$v=19$m=65536,t=5,p=1$/HK/Ld5LeiO4jvCt1RiZ5w$uZ4S6Rv3fgZjJ7zXOcSWu/4AqVYS7b8shoQ8jBp97iQ',
     'candidat'
   );
 
@@ -61,7 +61,7 @@ INSERT INTO
 VALUES
   (
     'leo.dupuis@gmail.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$a7y8HAgcdUFN7Woyayt+cg$FAS/LW8r2mpjr6EIdBMozVpS7I89gswYddM9sr+f1ls',
+    '$argon2id$v=19$m=65536,t=5,p=1$ljTaKRXcTPtt0DA6x++gJQ$cV4GQmsqa3o9WGu5Mr88ibCNlolIyryFXbMecKApIEA',
     'candidat'
   ),
   (
