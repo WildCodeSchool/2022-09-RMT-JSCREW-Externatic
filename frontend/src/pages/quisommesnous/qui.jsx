@@ -1,10 +1,21 @@
+import { Helmet } from "react-helmet";
 import "./qui.css";
 import dessinduo1 from "@assets/pictureduo.png";
 import dessinduo2 from "@assets/pictureduo2.png";
+import icon4 from "@assets/externatic_favicon.png";
 
 function Quisommesnous() {
   return (
     <div className="parent">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Qui sommes nous</title>
+        <meta
+          name="description"
+          content="Page Qui sommes nous qui affiche toutes les informations utiles sur l'entreprise Externatic et ses consultants"
+        />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
       <div className="container flex flex-col w-5/6 place-items-center m-auto mt-4">
         <h1 className="font-bold text-2xl text-black text-center">
           Qui sommes-nous ?

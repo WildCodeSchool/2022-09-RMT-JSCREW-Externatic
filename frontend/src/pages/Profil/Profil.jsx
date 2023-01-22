@@ -1,11 +1,13 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import apiConnexion from "@services/apiConnexion";
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
 import avatar from "@assets/Avatar.png";
 import Card from "@components/UI/Card";
+import icon4 from "@assets/externatic_favicon.png";
 import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
@@ -44,7 +46,7 @@ function Profil() {
 
   // ajout d'un zéro pour les dates et les mois inférieurs à 10
 
-  const [candidatures, setCandidatures] = useState({});
+  const [candidatures, setCandidatures] = useState([]);
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -153,6 +155,15 @@ function Profil() {
 
   return (
     <div className="profil flex justify-center">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Profil</title>
+        <meta
+          name="description"
+          content="Page Profil qui affiche toutes les informations concernant un utilisateur"
+        />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
       <form
         encType="multipart/form-data"
         onSubmit={(e) => sendForm(e)}
@@ -374,7 +385,7 @@ function Profil() {
             <div className="lg:flex lg:justify-around lg:w-full">
               {candidatures.map((candidature) => (
                 <Link to={`/offres/${candidature.id}`}>
-                  <Card candidature={candidature} key={candidature.id} />
+                  <Card offre={candidature} key={candidature.id} />
                 </Link>
               ))}
             </div>
