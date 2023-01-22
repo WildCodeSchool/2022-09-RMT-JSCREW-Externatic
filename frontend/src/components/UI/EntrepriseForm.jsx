@@ -57,7 +57,7 @@ function EntrepriseForm() {
         <form onSubmit={(e) => sendFirm(e)} className="mt-6">
           <div className="mb-2">
             <label>
-              <span className="text-gray-700">nom de entreprise</span>
+              <span className="text-gray-700">Nom de entreprise</span>
               <input
                 required
                 type="text"
@@ -81,7 +81,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">adresse</span>
+              <span className="text-gray-700">Adresse</span>
               <input
                 type="text"
                 name="adresse"
@@ -104,7 +104,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">code postal</span>
+              <span className="text-gray-700">Code postal</span>
               <input
                 type="text"
                 name="code_postal"
@@ -150,7 +150,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">pays</span>
+              <span className="text-gray-700">Pays</span>
               <input
                 type="text"
                 name="pays"
@@ -200,7 +200,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">telephone</span>
+              <span className="text-gray-700">Téléphone</span>
               <input
                 name="telephone"
                 type="tel"
@@ -226,7 +226,7 @@ function EntrepriseForm() {
             </label>
             <div className="mb-2">
               <label>
-                <span className="text-gray-700">description</span>
+                <span className="text-gray-700">Description</span>
                 <input
                   name="description"
                   type="text"
@@ -251,7 +251,7 @@ function EntrepriseForm() {
               </label>
             </div>
             <label>
-              <span className="text-gray-700">numero_siret</span>
+              <span className="text-gray-700">Numéro de siret</span>
               <input
                 name="numero_siret"
                 type="text"
@@ -276,7 +276,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">nombre_employes</span>
+              <span className="text-gray-700">Nombre d'employés</span>
               <input
                 name="nombre_employes"
                 type="text"
@@ -301,7 +301,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">date inscription</span>
+              <span className="text-gray-700">Date d'inscription</span>
               <input
                 name="dateInscription"
                 type="date"
@@ -326,7 +326,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">domaine</span>
+              <span className="text-gray-700">Domaine</span>
               <input
                 name="domaine "
                 type="text"

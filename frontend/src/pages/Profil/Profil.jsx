@@ -64,7 +64,7 @@ function Profil() {
       .post("/profil", formData)
       .then(() => {
         toast.success(
-          `Bonjour ${profil.nom} ${profil.prenom} votre inscription a bien été enregistrée.`,
+          `Bonjour ${profil.nom} ${profil.prenom}, votre inscription a bien été enregistrée.`,
           toastifyConfig
         );
       })
@@ -137,7 +137,7 @@ function Profil() {
         .put(`/profil/${user.id}`, formData)
         .then(() => {
           toast.success(
-            `Bonjour  votre profil à bien été modifier.`,
+            `Bonjour,  votre profil à bien été modifié.`,
             toastifyConfig
           );
         })

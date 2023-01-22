@@ -53,7 +53,7 @@ function Offre() {
         <form onSubmit={(e) => sendForm(e)} className="mt-6">
           <div className="mb-2">
             <label>
-              <span className="text-gray-700">contrat</span>
+              <span className="text-gray-700">Contrat</span>
               <input
                 required
                 type="text"
@@ -76,7 +76,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">condition de travail</span>
+              <span className="text-gray-700">Conditions de travail</span>
               <input
                 type="text"
                 name="condition_travail"
@@ -98,7 +98,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">avantages</span>
+              <span className="text-gray-700">Avantages</span>
               <input
                 type="text"
                 name="avantages"
@@ -120,7 +120,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">poste</span>
+              <span className="text-gray-700">Poste</span>
               <input
                 type="text"
                 name="poste"
@@ -142,7 +142,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">localisation</span>
+              <span className="text-gray-700">Localisation</span>
               <input
                 type="text"
                 name="localisation"
@@ -164,7 +164,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">date de l'offre</span>
+              <span className="text-gray-700">Date de l'offre</span>
               <input
                 type="date"
                 name="dateOffre"
@@ -186,7 +186,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">date de fin de l'offre</span>
+              <span className="text-gray-700">Date de fin de l'offre</span>
               <input
                 type="date"
                 name="dateOffre"
@@ -208,7 +208,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">salaire</span>
+              <span className="text-gray-700">Salaire</span>
               <input
                 type="number"
                 name="salaire"
@@ -230,7 +230,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">mission</span>
+              <span className="text-gray-700">Mission</span>
               <input
                 type="text"
                 name="mission"
@@ -252,7 +252,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">profil recherché</span>
+              <span className="text-gray-700">Profil recherché</span>
               <input
                 type="text"
                 name="profil_recherche"
@@ -274,7 +274,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">specialitées</span>
+              <span className="text-gray-700">Spécialitées</span>
               <input
                 type="text"
                 name="specialitees"
@@ -296,7 +296,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">identifiant de l'entreprise</span>
+              <span className="text-gray-700">Identifiant de l'entreprise</span>
               <input
                 type="text"
                 name="entreprise_id"
@@ -318,7 +318,7 @@ function Offre() {
               />
             </label>
             <label>
-              <span className="text-gray-700">identifiant du domaine</span>
+              <span className="text-gray-700">Identifiant du domaine</span>
               <input
                 type="text"
                 name="domaine_id"
