@@ -65,7 +65,7 @@ export default function Sidebar() {
             <ul className="pt-2 pb-4 space-y-1 text-sm">
               <li className="rounded-sm">
                 <Link
-                  to="dashboard"
+                  to="/dashboard"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -87,7 +87,7 @@ export default function Sidebar() {
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/entreprises"
+                  to="/dashboard/entreprises"
                   className="text-white flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -109,7 +109,7 @@ export default function Sidebar() {
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/offres"
+                  to="/dashboard/offre"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
