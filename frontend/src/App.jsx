@@ -29,7 +29,7 @@ function App() {
           </Route>
           <Route path="/dashboard/" element={<Private />}>
             <Route path="entreprises" element={<AdminEntreprise />} />
-            <Route path="offre" element={<Offre />} />
+            <Route path="offres" element={<Offre />} />
           </Route>
         </Routes>
       </Router>
