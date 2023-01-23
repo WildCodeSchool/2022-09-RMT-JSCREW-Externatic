@@ -1026,16 +1026,16 @@ INSERT INTO
 VALUES
   (
     'CDI',
-    'Full remote',
-    ' Carte swile / CSE /  locaux en centre ville de Nantes avec coporate appartment en cas de remote (2-3 jours / mois sur site attendu) contexte international  possibilités d évolution.',
-    'Développeur fullstack JS full ',
+    'Télétravail',
+    'Carte swile / CSE / Nos locaux se trouvent en centre ville de Nantes avec coporate appartement en cas de remote (2-3 jours / mois sur site attendu) contexte international + possibilités d\'évolution.',
+    'Développeur Web FullStack JS',
     'Nantes',
     '07/12/2022',
-    '08/03/2023',
-    '45 000 - 60 000€',
-    'Vous rejoignez cette nouvelle feature team : En contexte Agile, vous serez impliqué dans le build (étude et développement) Node et react de la solution en contexte serverless Au sein de cette société innovante où le niveau tech est une architecture Serverless',
-    'Soft skills : Vous êtes proactif et autonome, vous souhaitez avoir un impact au sein de la structure Vous aimez travailler en équipe et partager Vous êtes dans l amélioration continue et aimez apprendre de vos réussites mais aussi de vos erreurs',
-    'NodeJS / Architecture Serverless / React / Git / GCP / Approche DDD etc.',
+    '18/03/2023',
+    'De 45 000 à 60 000€ par an',
+    'Vous rejoignez notre team : En contexte Agile, vous serez impliqué dans le build (étude et développement via Node et React) de la solution en contexte serverless. Au sein de cette société innovante où le niveau tech est une architecture Serverless.',
+    'Vous êtes proactif et autonome, vous souhaitez avoir un impact au sein de la structure en pleine évolution. Vous aimez travailler en équipe et partager ! Vous êtes dans l\'amélioration continue et aimez apprendre de vos réussites mais aussi de vos erreurs.',
+    'NodeJs / Architecture Serverless / React / Git&Github / MySQL',
     1,
     2
   );
@@ -1059,16 +1059,16 @@ INSERT INTO
 VALUES
   (
     'CDI',
-    'Contrat : CDI, forfait jours Lieu de travail : Nantes, Lyon ou Paris avec 2 jours de télétravail par semaine) ; ou full remote + déplacements à prévoir 2-3 jours par mois',
-    '???',
-    '???',
-    '???',
-    '01/01/22',
-    '05/01/22',
-    '000€',
-    'c infrastructure (sécurité, performances …) Résoudre les incidents et en faire le suivi Supporter les équipes techniques, dev et data pour la mise en place de nouveaux projets ou fonctionnalités',
-    'Etre à l’aise avec les processus d’intégration et de déploiement continu Etre en phase avec ces traits culturels : curiosité et pragmatisme, autonomie et solidarité, passion et fiabilité Valoriser l’esprit d’équipe Avoir un bon relationnel Et un excellent sens de l’humour :)',
-    'Ruby On Rails, RabbitMQ, PostgreSQL, React, React Native',
+    '3/4 jours de TT/semaine',
+    'Un équilibre pro/perso grâce au télétravail et aux libertés d\'horaires de travail. Des locaux sympathiques à Station F (Paris 13) si tu souhaites venir en présentiel. Une équipe sympathique avec qui partager un apéro après le travail. Des points en visio sur Gather.town, qui rend les visios agréables et fun.',
+    'Développeur Web Ruby/React',
+    'Paris',
+    '01/02/23',
+    '01/04/23',
+    'De 50 000 à 55 000€ par an',
+    'Développement des infrastructures (sécurité, performances …). Résoudre les incidents et en faire le suivi. Supporter les équipes techniques, dev et data pour la mise en place de nouveaux projets ou fonctionnalitées',
+    'Etre à l’aise avec les processus d’intégration et de déploiement continu. Etre en phase avec ces traits culturels : curiosité et pragmatisme, autonomie et solidarité, passion et fiabilité. Bien évidemment valoriser l’esprit d’équipe, un excellent sens de l’humour 😊',
+    'Ruby, RabbitMQ, PostgreSQL, React, React Native',
     2,
     1
   );
@@ -1092,16 +1092,181 @@ INSERT INTO
 VALUES
   (
     'CDI',
-    'TT ou FULL REMOTE possible.',
-    DEFAULT,
-    'Développeur senior PHP/React ',
+    'Télétravail',
+    'Entreprise innovante intervenant dans un domaine de pointe avec une stack technique riche. Aspect multiculturel et tourné sur l\'international.',
+    'Développeur Web PHP/React ',
     'Bordeaux',
     '23/11/2022',
     '05/05/2023',
-    ' 45-55K €/ an selon profil',
-    'Développer de nouvelles fonctionnalités sur les outils du produit Améliorer les processus techniques et les environnements de développement Prendre en main des problématiques métier plus que des technologies Améliorer les fonctionnalités existantes : correction de bugs, optimisation des temps de réponses, etc',
-    'Être à l écoute des utilisateurs quant aux problématiques rencontrées Et bien évidement rendre vos futurs utilisateurs heureux',
-    'Langages : PHP 8 et Javascript ECMAScript6 et plus, Symfony / API Platform, API Rest/Soap, POO, framework & Design patterns, Base de données : MySQL, ElasticSearch, Outils de développement collaboratif : Git & submodules, GitLab & registry, Gitflow, DevOps : Docker, CI/CD, Linux : SSH, bash & co, AWS est un plus non négligeable, car projet de migration des services vers le cloud.',
+    'De 40 000 à 45 000€ par an',
+    'Développer de nouvelles fonctionnalités sur les outils du produit. Améliorer les processus techniques et les environnements de développement. Prendre en main des problématiques et améliorer les fonctionnalitées existantes : correction de bugs, optimisation des temps de réponses, etc.',
+    'Être à l\'écoute des utilisateurs et aux problématiques rencontrées. Posséder des bases en design et en expérience utilisateur (UX) 🎨',
+    'PHP 8, Angular, Symfony, MySQL, ElasticSearch, Git, GitLab & registry, Gitflow',
+    3,
+    3
+  );
+
+  INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDD',
+    '1 jour de TT/semaine',
+    'Formation externe (séminaire IO, Devoxx World, ...). Locaux refait à neuf, CSE attractif, restaurant d\'entreprise, mise à disposition d\'un complexe sportif et prime d\'intéressement.',
+    'Développeur Web FullStack Spring/JS',
+    'Bordeaux',
+    '23/01/2023',
+    '01/06/2023',
+    'De 60 000 à 65 000€ par an',
+    'Participer aux séances de conception fonctionnelles et techniques des futures solutions. Réaliser les développements associés ainsi que les tests automatisés. Contribuer de façon active avec votre équipe à l\'amélioration de la qualité logicielle.',
+    'Vous justifiez d\'une expérience de 3 ans minimum dans le développement de services web et cloud. Vous êtes rodés aux pratiques agiles et au travail en équipe ; de plus, vous êtes une personne curieuse, sensible aux problématiques de qualité de code.',
+    'Springboot, React, Kotlin, Rest, Azure, Docker',
+    3,
+    3
+  );
+
+  INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '1 jour de TT/semaine',
+    'Des formations agiles et l\'accès à des solutions de formation e-learning. CE et tickets restaurants grâce à notre partenaires, et on vous réserve bien d\'autres surprises, alors rejoignez-nous ⚡',
+    'Développeur Web FullStack JS',
+    'Paris',
+    '13/01/2023',
+    '02/04/2023',
+    'De 50 000 à 60 000€ par an',
+    'Participation à la conception. Réalisation du développement des applications & des tests qualités. Participation à l\'architecture du produit, aux revues de code et à la qualité et stabilité du code.',
+    '2 ans d\'expérience en développement web avec Javascript, et plus particulièrement avec les frameworks Angular & NodeJs (fullStack). Tu as déjà travaillé avec l\'infrastructure AWS & l\'environnement Linux.',
+    'ReactJs, Angular, NodeJs, Scrum, Agile',
+    3,
+    3
+  );
+
+  INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    'Télétravail',
+    'Emploi du temps flexible grâce au télétravail. Rémunération + variable sur objectifs + mutuelle.',
+    'Développeur Web FullStack JS',
+    'Paris',
+    '16/01/2023',
+    '16/04/2023',
+    'De 30 000 à 35 000€ par an',
+    'Développer des logiciels en toute autonomie à partir de cahiers des charges, spécifications fonctionnelles ou de tâches définies à l\'intérieur de sprints. Participer à la mise en production et à la livraison de l\'application. Rédiger des notes explicatives pour détailler le code et le rendre compréhensible par les autres intervenants.',
+    'De formation de Bac +2 à Bac +5, vous disposez d\'une prémière expérience d\'au moins 3 ans. Vous disposez d\'une bonne culture digitale et entretenez une veille régulière sur les nouvelles technologies afin de consolider votre expérience. Autonome, créatif, et bien sûr vous aimez travailler en équipe 😊',
+    'ReactJs, Spring-Boot, NodeJs, MySql, Approche Rest',
+    3,
+    3
+  );
+
+  INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '3 jours de TT/semaine',
+    'Emploi du temps flexible grâce au télétravail. Projets qui s\'inscrit dans un cadre international.',
+    'Développeur Web FullStack Java/Angular',
+    'Paris',
+    '11/01/2023',
+    '16/04/2023',
+    'De 35 000 à 38 000€ par an',
+    'Participer à la conception et au chiffrage des user ou technical stories à implémenter. Coder les features et les tests unitaires associés dans le respect des normes, de l\’ergonomie et des bonnes pratiques d\’ingénierie logicielle. Être moteur à la réduction de la dette technique et à l\’amélioration continue de son équipe',
+    'Bonnes connaissances de GIT, bonnes connaissances du développement web avec Angular, HTML, CSS & bonnes bases de programmation en Java et construction des livrables (ex : jar) avec un IDE',
+    'Java 11/Quarkus, Plotly (Python & JS), HTML5, CSS3, Angular, Maven, GIT, Jenkins',
+    3,
+    3
+  );
+
+    INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '2 jours de TT/semaine',
+    'Multiples avantages sociaux : mutuelle d\'entreprise, tickets restaurant, tickets CESU, épargne salariale, intéressement. Emploi du temps flexible grâce au télétravail.',
+    'Développeur Web FullStack JS',
+    'La Rochelle',
+    '09/01/2023',
+    '21/03/2023',
+    'De 30 000 à 35 000€ par an',
+    'Maintenance et optimisation de l’existant après une formation métier. Recueil et la formalisation des expressions de besoin des différents services intervenants. Mise en place des évolutions des applications et de nouveaux projets d\’applications web/mobile : étude de faisabilité, conception technique, rédaction du cahier des charges. Pilotage et gestion des différents prestataires pour ce projet 😎',
+    'Si vous avez eu des connaissances en e-commerce, dans les paiements en ligne, dans les webservices, ce serait un plus. Vous devez avoir au minimum 3 ans d\’expérience sur un poste similaire.',
+    'Angular, NodeJs, HTML5/CSS, Javascript, SQL',
     3,
     3
   );
