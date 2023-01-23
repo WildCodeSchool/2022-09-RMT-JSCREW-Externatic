@@ -68,5 +68,5 @@ router.post(
 router.post("/register", connexionControllers.add);
 
 router.post("/offres", offreControllers.add);
-
+router.put("/offres/:id", offreControllers.edit);
 module.exports = router;
