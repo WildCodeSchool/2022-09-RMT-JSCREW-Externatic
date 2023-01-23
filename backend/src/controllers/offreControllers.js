@@ -1,4 +1,19 @@
 const models = require("../models");
+const validate = require("../service/offre");
+
+// fonction pour mettre à jour les dates en auto
+const dateInscript = () => {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let date = new Date().getDate();
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  return `${year}-${month}-${date}`;
+};
 
 const random = (req, res) => {
   models.offre
@@ -15,17 +30,22 @@ const random = (req, res) => {
 // create offre formulaire
 
 const add = (req, res) => {
-  const offreForm = req.body;
+  const offre = req.body;
+  const error = validate(offre);
 
-  models.offre
-    .insert(offreForm)
-    .then(([result]) => {
-      res.location(`/offres/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.offre
+      .insert(offre, dateInscript())
+      .then(([result]) => {
+        res.location(`/offres/${result.insertId}`).sendStatus(201);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
 
 const browse = (req, res) => {
@@ -38,6 +58,33 @@ const browse = (req, res) => {
       console.error(err);
       res.sendStatus(500);
     });
+};
+
+const edit = (req, res) => {
+  const offre = req.body;
+  offre.id = parseInt(req.params.id, 10);
+
+  // delete offre.dateOffre;
+
+  const error = validate(offre);
+
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.offre
+      .update(offre)
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
 
 const read = (req, res) => {
@@ -68,4 +115,4 @@ const candidatures = (req, res) => {
     });
 };
 
-module.exports = { random, browse, read, add, candidatures };
+module.exports = { random, browse, read, add, edit, candidatures };
