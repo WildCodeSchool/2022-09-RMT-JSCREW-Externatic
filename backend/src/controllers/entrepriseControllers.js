@@ -1,6 +1,7 @@
 const models = require("../models");
+const validateEntreprise = require("../service/entreprise");
 
-const dateinscript = () => {
+const dateInscript = () => {
   const year = new Date().getFullYear();
   let month = new Date().getMonth() + 1;
   let date = new Date().getDate();
@@ -44,40 +45,51 @@ const read = (req, res) => {
 // create entreprise
 
 const add = (req, res) => {
-  const entreprise = req.body;
-  entreprise.dateInscription = dateinscript();
-
-  models.entreprise
-    .insert(entreprise)
-    .then(([result]) => {
-      res
-        .location(`/entreprise/${result.insertId}`)
-        .status(201)
-        .json({ ...entreprise, id: result.insertId });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  let entreprise = req.body;
+  entreprise.dateInscription = dateInscript();
+  const error = validateEntreprise(entreprise);
+  if (error) {
+    console.error(error);
+    res.status(422).send(error);
+  } else {
+    models.entreprise
+      .insert(entreprise)
+      .then(([result]) => {
+        res
+          .location(`/entreprise/${result.insertId}`)
+          .status(201)
+          .json({ ...entreprise, id: result.insertId });
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
 // edit entreprise
 const edit = (req, res) => {
-  const entreprise = req.body;
+  let entreprise = req.body;
   delete entreprise.dateInscription;
   // TODO validations (length, format...)
-  models.entreprise
-    .update(entreprise, parseInt(req.params.id, 10))
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+
+  const error = validateEntreprise(entreprise);
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.entreprise
+      .update(entreprise, parseInt(req.params.id, 10))
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
 
 const random = (req, res) => {

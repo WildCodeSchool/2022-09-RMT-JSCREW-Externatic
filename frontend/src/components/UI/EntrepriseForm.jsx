@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 import apiConnexion from "@services/apiConnexion";
 import toastiConfig from "@services/toastiConfig";
 import EntrepriseSelect from "./EntrepriseSelect";
 
 const firmType = {
-  logo: null,
   nom_entreprise: "",
   adresse: "",
   code_postal: "",
@@ -28,15 +26,15 @@ function EntrepriseForm() {
 
   // Fonction qui gère la récupération des données "entreprise" avec axios
   const getAllEntreprises = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/entreprises`)
+    apiConnexion
+      .get(`/entreprises`)
       .then((job) => setEntreprises(job.data))
       .catch((error) => console.error(error));
   };
 
   const getAllDomain = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/domaines`)
+    apiConnexion
+      .get(`/domaines`)
       .then((job) => setDomain(job.data))
       .catch((error) => console.error(error));
   };
@@ -54,7 +52,7 @@ function EntrepriseForm() {
   };
 
   const sendFirm = (e) => {
-    e.preventDefault();
+    e.preventDefault();   
     apiConnexion
       .post("/entreprises", firm)
       .then((res) => {
@@ -67,16 +65,18 @@ function EntrepriseForm() {
       })
       .catch((err) => {
         toast.error(
-          `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
+          err.response.data.details[0].message,
           toastiConfig
         );
-        console.warn(err);
+        console.warn(err.response.data.details[0].message);
       });
   };
 
   const selectEntreprise = (id) => {
     const entp = entreprises.find((e) => e.id === parseInt(id, 10));
-    setFirm(entp);
+    const newEntp = { ...entp };
+    delete newEntp.logo;
+    setFirm(newEntp);
   };
 
   /**
@@ -95,10 +95,10 @@ function EntrepriseForm() {
         })
         .catch((err) => {
           toast.error(
-            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
+            err.response.data.details[0].message,
             toastiConfig
           );
-          console.warn(err);
+          console.warn(err.response.data.details[0].message);
         });
     }
   };
@@ -106,7 +106,7 @@ function EntrepriseForm() {
   return (
     <div className=" mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
       <div className=" shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
-        <h2 className="font-roboto text-2xl font-light text-center capitalize ">
+        <h2 className="font-roboto text-#52525b text-2xl font-light text-center capitalize ">
           Formulaire entreprise
         </h2>
         <EntrepriseSelect
@@ -344,7 +344,7 @@ function EntrepriseForm() {
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50 "
+                  focus:ring-opacity-50"
                 placeholder="nombre employes"
                 required
               />
@@ -370,12 +370,20 @@ function EntrepriseForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50 "
                 placeholder="domaine"
-                required                                  
+                required
               >
-              {domain.map((dom)=>{
-                return <option key={dom.id} value={dom.id} selected={dom.id===firm.domaine_id}>{dom.nom}</option>
-              })}
-             </select>
+                {domain.map((dom) => {
+                  return (
+                    <option
+                      key={dom.id}
+                      value={dom.id}
+                      selected={dom.id === firm.domaine_id}
+                    >
+                      {dom.nom}
+                    </option>
+                  );
+                })}
+              </select>
             </label>
           </div>
           <div className="mb-6">
@@ -383,9 +391,10 @@ function EntrepriseForm() {
               <button
                 type="button"
                 onClick={sendFirm}
+                
                 className="
-                  w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
-                "
+                  w-40 bg-white mt-4 transition duration-300 hover:bg-fushia hover:text-white ease-in-out text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+                 mr-10"
               >
                 Ajouter
               </button>
@@ -396,7 +405,7 @@ function EntrepriseForm() {
                 onClick={() => handelUpdateEntreprise()}
                 className="
                   w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
-                "
+                  mr-10 "
               >
                 Mettre à jour
               </button>
