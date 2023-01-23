@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import User from "../../contexts/User";
@@ -30,7 +29,7 @@ function RegisterModal({ visible, onclose }) {
     newRegistration[place] = value;
     setRegistration(newRegistration);
   };
-  const navigate = useNavigate();
+
   const sendForm = (e) => {
     e.preventDefault();
     if (registration.mot_de_passe !== confirmPassword) {
@@ -47,7 +46,7 @@ function RegisterModal({ visible, onclose }) {
             `Veuillez vous connecter pour continuer l'aventure`,
             toastifyConfig
           );
-          setTimeout(() => onclose(), 1500)
+          setTimeout(() => onclose(), 1500);
         })
         .catch((err) => {
           toast.error(

@@ -8,28 +8,28 @@ import "./NavBar.css";
 
 function NavBar() {
   const { user } = useContext(User.UserContext);
-
-  const profilConnex = (user) => {
-    if (user) {
-      const userId = user.id ? user.id : user;
-      return (
- <Link
-    to = {`/profil/${userId}`}
-    className="hover:decoration-blue-400 border-gray-400 my-6 "
-    onClick={() => setIsNavOpen(false)}
-  >
-    <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
-      Profil
-    </p>
-  </Link>
-      )
-    }
-  }
-
   const [connexionModalIsVisible, setConnexionModalIsVisible] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const handleOnCloseConnexionModal = () => {
     setConnexionModalIsVisible(false);
+  };
+
+  const profilConnex = () => {
+    if (user) {
+      const userId = user.id ? user.id : user;
+      return (
+        <Link
+          to={`/profil/${userId}`}
+          className="hover:decoration-blue-400 border-gray-400 my-6 "
+          onClick={() => setIsNavOpen(false)}
+        >
+          <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
+            Profil
+          </p>
+        </Link>
+      );
+    }
+    return null;
   };
 
   return (
@@ -112,7 +112,7 @@ function NavBar() {
                 Offres d'emploi
               </p>
             </Link>
-            {profilConnex(user)}
+            {profilConnex()}
             <Link
               to="/infos"
               className="hover:decoration-blue-400 border-gray-400 my-6 "

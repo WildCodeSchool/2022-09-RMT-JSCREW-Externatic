@@ -90,7 +90,6 @@ function Profil() {
     }
   };
 
-
   if (user.id) {
     const getFullProfil = () => {
       apiConnexion

@@ -6,7 +6,7 @@ function UserProvider({ children }) {
   const [user, setUser] = useState(sessionStorage.getItem("user"));
   const handleUser = (data) => {
     setUser(data);
-    sessionStorage.setItem("user", JSON.stringify(data))
+    sessionStorage.setItem("user", JSON.stringify(data));
   };
 
   return (
