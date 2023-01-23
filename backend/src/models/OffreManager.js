@@ -47,6 +47,19 @@ class OffreManager extends AbstractManager {
     ]);
   }
 
+  // mise à jour des offres avec UPDATE
+  update(offre) {
+    const newOffre = { ...offre };
+    const dateFinOffre = newOffre.date_fin_offre;
+    delete newOffre.date_fin_offre;
+    delete newOffre.dateOffre;
+
+    return this.connection.query(
+      `update ${this.table} set ?, date_fin_offre = ? where id = ?`,
+      [newOffre, dateFinOffre, newOffre.id]
+    );
+  }
+
   findCandidatures(id) {
     return this.connection.query(
       `SELECT o.id, o.poste, o.localisation FROM ${this.table} AS o INNER JOIN candidature AS c ON o.id = c.offre_id WHERE c.candidat_id = ?`,
