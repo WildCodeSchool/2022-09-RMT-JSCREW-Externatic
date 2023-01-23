@@ -6,7 +6,7 @@ import CarteAvantages from "@components/UI/CardOffre/CarteAvantages";
 import CarteProfil from "@components/UI/CardOffre/CarteProfil";
 import CarteSalaire from "@components/UI/CardOffre/CarteSalaire";
 import ListOfOffers from "@components/UI/CardOffre/ListOfOffers";
-import icon4 from "@assets/externatic_favicon.png";
+import icon4 from "../../../public/externatic_favicon.png";
 
 function UneOffre() {
   const { id } = useParams();

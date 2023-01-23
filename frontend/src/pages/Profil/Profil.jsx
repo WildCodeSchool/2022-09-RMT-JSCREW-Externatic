@@ -7,7 +7,7 @@ import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
 import avatar from "@assets/Avatar.png";
 import Card from "@components/UI/Card";
-import icon4 from "@assets/externatic_favicon.png";
+import icon4 from "../../../public/externatic_favicon.png";
 import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";

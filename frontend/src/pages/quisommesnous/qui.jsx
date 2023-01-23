@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet";
 import "./qui.css";
 import dessinduo1 from "@assets/pictureduo.png";
 import dessinduo2 from "@assets/pictureduo2.png";
-import icon4 from "@assets/externatic_favicon.png";
+import icon4 from "../../../public/externatic_favicon.png";
 
 function Quisommesnous() {
   return (

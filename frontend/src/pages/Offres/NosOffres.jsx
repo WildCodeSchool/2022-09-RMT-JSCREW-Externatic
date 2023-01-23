@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Card from "@components/UI/Card";
 import connaissance from "@assets/connaissance.png";
-import icon4 from "@assets/externatic_favicon.png";
+import icon4 from "../../../public/externatic_favicon.png";
 
 function NosOffres() {
   const [offresData, setOffresData] = useState([]);
