@@ -60,7 +60,7 @@ function NosOffres() {
                 .map((offre) => offre.poste)
                 .filter((value, index, self) => self.indexOf(value) === index)
                 .map((poste) => (
-                  <option value={poste} key={poste} className="text-darkPink">
+                  <option value={poste} key={poste} className="">
                     {poste}
                   </option>
                 ))}
@@ -94,7 +94,7 @@ function NosOffres() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center mb-10 mx-14">
+      <div className="flex flex-col md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-items-center justify-center mb-10 mx-14">
         {offresData &&
           offresData
             .filter((offre) => !selectedPoste || offre.poste === selectedPoste)
