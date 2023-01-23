@@ -26,11 +26,11 @@ function CartePrincipale({ offre }) {
           Fin des candidatures : {offre?.date_fin_offre}
         </h2>
       </div>
-      <div>
+      <div className="flex flex-col align-items text-center">
         <h1 className="text-center text-2xl underline underline-offset-8 my-4">
           Missions
         </h1>
-        <p className="w-90 md:w-96 text-justify my-4 mx-6 p-3">
+        <p className="text-center text-justify my-4 mx-6 p-3">
           🎯 {offre?.mission}
         </p>
       </div>
