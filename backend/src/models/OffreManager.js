@@ -36,9 +36,7 @@ class OffreManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(
-      `SELECT * FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
-    );
+    return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
   find(id) {
