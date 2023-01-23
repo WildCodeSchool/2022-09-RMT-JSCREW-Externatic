@@ -40,8 +40,21 @@ router.get("/entreprises/rand", entrepriseControllers.random);
 
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
+router.get("/candidatures/:id", offreControllers.candidatures);
+
 // mur d'authentification
 router.use(checkAuth);
+
+router.get("/profil/:id", candidatControllers.read);
+
+router.put(
+  "/profil/:id",
+  upload.fields([
+    { name: "avatar", maxCount: 1 },
+    { name: "cv", maxCount: 1 },
+  ]),
+  candidatControllers.edit
+);
 
 // routes privées
 router.post("/entreprises", entrepriseControllers.add);

@@ -4,17 +4,17 @@ USE `externatic`;
 
 DROP TABLE IF EXISTS `externatic`.`candidature`;
 
+DROP TABLE IF EXISTS `externatic`.`offre`;
+
+DROP TABLE IF EXISTS `externatic`.`entreprise`;
+
+DROP TABLE IF EXISTS `externatic`.`domaine`;
+
 DROP TABLE IF EXISTS `externatic`.`candidat`;
 
 DROP TABLE IF EXISTS `externatic`.`consultant`;
 
 DROP TABLE IF EXISTS `externatic`.`connexion`;
-
-DROP TABLE IF EXISTS `externatic`.`entreprise`;
-
-DROP TABLE IF EXISTS `externatic`.`offre`;
-
-DROP TABLE IF EXISTS `externatic`.`domaine`;
 
 -- -----------------------------------------------------
 -- Table `externatic`.`connexion`
@@ -34,8 +34,15 @@ INSERT INTO
   `connexion`(`utilisateur`, `hashedPassword`, `role`)
 VALUES
   (
-    'alain.villeneuve@email.f',
-    '$argon2id$v=19$m=65536,t=5,p=1$gK38z/m731hAiZeDmlerHA$kKpFSFCvJNsWB77QbB/jbm6Dmkt8IlSEaZJStPxdW/I',
+
+    'alain.villeneuve@email.fr',
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
+    'candidat'
+  ),
+  (
+    'admin@email.fr',
+    '$argon2id$v=19$m=65536,t=5,p=1$K4MCUL/SfTYXJwTvaNReLA$rykd7aX4kbZqvkGAUGaaEw0So7b/T4qRDU2sfSMP3js',
+
     'administrateur'
   );
 
@@ -44,8 +51,9 @@ INSERT INTO
 VALUES
   (
     'jules.simons@email.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$R5zhYw9IOecMbCx4Ck1ykQ$yCnhM7xzF+Sx0CJM/uvTCHo6JNcxeSgtFWCeWWQWAUM',
-    'consultant'
+    '$argon2id$v=19$m=65536,t=5,p=1$/HK/Ld5LeiO4jvCt1RiZ5w$uZ4S6Rv3fgZjJ7zXOcSWu/4AqVYS7b8shoQ8jBp97iQ',
+    'candidat'
+
   );
 
 INSERT INTO
@@ -53,7 +61,7 @@ INSERT INTO
 VALUES
   (
     'leo.dupuis@gmail.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$a7y8HAgcdUFN7Woyayt+cg$FAS/LW8r2mpjr6EIdBMozVpS7I89gswYddM9sr+f1ls',
+    '$argon2id$v=19$m=65536,t=5,p=1$ljTaKRXcTPtt0DA6x++gJQ$cV4GQmsqa3o9WGu5Mr88ibCNlolIyryFXbMecKApIEA',
     'candidat'
   ),
   (

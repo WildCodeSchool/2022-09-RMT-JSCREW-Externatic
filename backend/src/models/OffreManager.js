@@ -7,7 +7,7 @@ class OffreManager extends AbstractManager {
 
   rand(number) {
     return this.connection.query(
-      `select poste, localisation from  ${this.table} ORDER BY rand() LIMIT ?`,
+      `select id, poste, localisation from  ${this.table} ORDER BY rand() LIMIT ?`,
       [number]
     );
   }
@@ -50,6 +50,13 @@ class OffreManager extends AbstractManager {
     return this.connection.query(
       `update ${this.table} set ?, date_fin_offre = ? where id = ?`,
       [newOffre, dateFinOffre, newOffre.id]
+    );
+  }
+
+  findCandidatures(id) {
+    return this.connection.query(
+      `SELECT o.id, o.poste, o.localisation FROM ${this.table} AS o INNER JOIN candidature AS c ON o.id = c.offre_id WHERE c.candidat_id = ?`,
+      [id]
     );
   }
 }
