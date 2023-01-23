@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
+import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
 
 const toastifyConfig = {
@@ -20,6 +21,8 @@ function ConnexionModal({ visible, onclose }) {
     mot_de_passe: "",
   });
 
+  const userContext = useContext(User.UserContext);
+
   const handleConnexion = (place, value) => {
     const newConnexion = { ...connexion };
     newConnexion[place] = value;
@@ -29,7 +32,8 @@ function ConnexionModal({ visible, onclose }) {
     e.preventDefault();
     apiConnexion
       .post("/login", connexion)
-      .then(() => {
+      .then((data) => {
+        userContext.handleUser(data.data);
         toast.success(`Bonjour à vous`, toastifyConfig);
       })
       .catch(() => {

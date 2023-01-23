@@ -19,14 +19,28 @@
   position: fixed;
   left: 0;
   width: 420px;
-  height: 70vh;
+  height: 100vh;
   top: 0;
-  background: #c91961;
+  background: linear-gradient(334deg, #c91961, #851342, #851342);
   z-index: 10;
+  background-size: 180% 180%;
+  animation: gradient-animation 6s ease infinite;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .Menu::-webkit-scrollbar {
