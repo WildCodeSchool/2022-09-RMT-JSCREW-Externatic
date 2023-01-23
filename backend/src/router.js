@@ -27,7 +27,8 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage, limits: {fileSize: 5MB, 
+fieldSize: 5MB}} });
 // fin de la configuration de l'upload
 
 // routes publiques
