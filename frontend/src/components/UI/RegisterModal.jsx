@@ -44,10 +44,10 @@ function RegisterModal({ visible, onclose }) {
         .then((data) => {
           userContext.handleUser(data.data.insertId);
           toast.success(
-            `completez votre profil pour finaliser votre inscription`,
+            `Veuillez vous connecter pour continuer l'aventure`,
             toastifyConfig
           );
-          navigate("/profil");
+          setTimeout(() => onclose(), 1500)
         })
         .catch((err) => {
           toast.error(

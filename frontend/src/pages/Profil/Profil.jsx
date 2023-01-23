@@ -40,8 +40,6 @@ function Profil() {
     connexion_id: userId,
   };
 
-  // ajout d'un zéro pour les dates et les mois inférieurs à 10
-
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -92,7 +90,6 @@ function Profil() {
     }
   };
 
-  // Fonction qui gère la récupération des données profil
 
   if (user.id) {
     const getFullProfil = () => {
