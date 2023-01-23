@@ -137,7 +137,7 @@ function Profil() {
         .put(`/profil/${user.id}`, formData)
         .then(() => {
           toast.success(
-            `Bonjour,  votre profil à bien été modifié.`,
+            `Bonjour,  votre profil a bien été modifié.`,
             toastifyConfig
           );
         })
