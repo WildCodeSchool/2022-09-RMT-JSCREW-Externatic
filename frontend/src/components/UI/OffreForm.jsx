@@ -194,27 +194,7 @@ function OffreForm() {
                 placeholder="localisation"
               />
             </label>
-            <label>
-              <span className="text-gray-700">date de l'offre</span>
-              <input
-                required
-                type="date"
-                name="dateOffre"
-                value={offre.dateOffre}
-                onChange={(e) => handleOffre(e.target.name, e.target.value)}
-                className="
-                  w-full
-                  block px-16 py-2 mt-2
-                  border-gray-300
-                  rounded-md
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50"
-                placeholder="date de l'offre"
-              />
-            </label>
+
             <label>
               <span className="text-gray-700">date de fin de l'offre</span>
               <input
