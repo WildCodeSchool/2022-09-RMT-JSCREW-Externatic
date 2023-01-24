@@ -44,7 +44,7 @@ function Profil() {
 
   // ajout d'un zéro pour les dates et les mois inférieurs à 10
 
-  const [candidatures, setCandidatures] = useState({});
+  const [candidatures, setCandidatures] = useState([]);
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -374,7 +374,7 @@ function Profil() {
             <div className="lg:flex lg:justify-around lg:w-full">
               {candidatures.map((candidature) => (
                 <Link to={`/offres/${candidature.id}`}>
-                  <Card candidature={candidature} key={candidature.id} />
+                  <Card offre={candidature} key={candidature.id} />
                 </Link>
               ))}
             </div>

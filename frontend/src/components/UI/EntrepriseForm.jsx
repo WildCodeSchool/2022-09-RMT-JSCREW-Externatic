@@ -1,25 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import apiConnexion from "@services/apiConnexion";
 import toastiConfig from "@services/toastiConfig";
+import EntrepriseSelect from "./EntrepriseSelect";
+
+const firmType = {
+  nom_entreprise: "",
+  adresse: "",
+  code_postal: "",
+  ville: "",
+  pays: "",
+  email: "",
+  telephone: "",
+  description: "",
+  numero_siret: "",
+  nombre_employes: "",
+  domaine_id: 2,
+};
 
 function EntrepriseForm() {
-  const [firm, setFirm] = useState({
-    logo: null,
-    nom_entreprise: "",
-    adresse: "",
-    code_postal: "",
-    ville: "",
-    pays: "",
-    email: "",
-    telephone: "",
-    description: "",
-    numero_siret: "",
-    nombre_employes: "",
-    dateInscription: "",
-    domaine_id: 2,
-  });
+  const [domain, setDomain] = useState([]);
+  const [firm, setFirm] = useState(firmType);
+  const [entreprises, setEntreprises] = useState([]);
+
+  // Fonction qui gère la récupération des données "entreprise" avec axios
+  const getAllEntreprises = () => {
+    apiConnexion
+      .get(`/entreprises`)
+      .then((job) => setEntreprises(job.data))
+      .catch((error) => console.error(error));
+  };
+
+  const getAllDomain = () => {
+    apiConnexion
+      .get(`/domaines`)
+      .then((job) => setDomain(job.data))
+      .catch((error) => console.error(error));
+  };
+
+  // Données "entreprise"
+  useEffect(() => {
+    getAllEntreprises();
+    getAllDomain();
+  }, []);
 
   const handleEntreprise = (place, value) => {
     const newFirm = { ...firm };
@@ -28,12 +52,12 @@ function EntrepriseForm() {
   };
 
   const sendFirm = (e) => {
-    e.preventDefault();
-
+    e.preventDefault();   
     apiConnexion
-
       .post("/entreprises", firm)
-      .then(() => {
+      .then((res) => {
+        getAllEntreprises();
+        setFirm(res.data);
         toast.success(
           `Bonjour  votre entreprise au nom de  ${firm.nom_entreprise} a bien été enregistrée .`,
           toastiConfig
@@ -41,20 +65,55 @@ function EntrepriseForm() {
       })
       .catch((err) => {
         toast.error(
-          `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
+          err.response.data.details[0].message,
           toastiConfig
         );
-        console.warn(err);
+        console.warn();
       });
+  };
+
+  const selectEntreprise = (id) => {
+    const entp = entreprises.find((e) => e.id === parseInt(id, 10));
+    const newEntp = { ...entp };
+    delete newEntp.logo;
+    setFirm(newEntp);
+  };
+
+  /**
+   * update the entreprise
+   */
+
+  const handelUpdateEntreprise = () => {
+    if (firm.id) {
+      apiConnexion
+        .put(`/entreprises/${firm.id}`, firm)
+        .then(() => {
+          toast.success(
+            `Bonjour  votre entreprise au nom de  ${firm.nom_entreprise} à bien été modifier.`,
+            toastiConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            err.response.data.details[0].message,
+            toastiConfig
+          );
+          console.warn();
+        });
+    }
   };
 
   return (
     <div className=" mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
       <div className=" shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
-        <h1 className="font-poppins text-2xl font-semibold text-center text-indigo-700  uppercase ">
+        <h2 className="font-roboto text-#52525b text-2xl font-light text-center capitalize ">
           Formulaire entreprise
-        </h1>
-        <form onSubmit={(e) => sendFirm(e)} className="mt-6">
+        </h2>
+        <EntrepriseSelect
+          selectEntreprise={selectEntreprise}
+          entreprises={entreprises}
+        />
+        <form className="mt-6">
           <div className="mb-2">
             <label>
               <span className="text-gray-700">Nom de entreprise</span>
@@ -67,16 +126,15 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            w-full
-            block px-16 py-2 mt-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                w-full
+                block px-16 py-2 mt-2
+                border-gray-300
+                rounded-md
+                shadow-sm
+                focus:border-indigo-300
+                focus:ring
+                focus:ring-indigo-200
+                focus:ring-opacity-50"
                 placeholder="nom de entreprise"
               />
             </label>
@@ -90,16 +148,15 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            w-full
-            block px-16 py-2 mt-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                w-full
+                block px-16 py-2 mt-2
+                border-gray-300
+                rounded-md
+                shadow-sm
+                focus:border-indigo-300
+                focus:ring
+                focus:ring-indigo-200
+                focus:ring-opacity-50"
                 placeholder="Adresse"
               />
             </label>
@@ -113,16 +170,15 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            w-full
-            block px-16 py-2 mt-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                w-full
+                block px-16 py-2 mt-2
+                border-gray-300
+                rounded-md
+                shadow-sm
+                focus:border-indigo-300
+                focus:ring
+                focus:ring-indigo-200
+                focus:ring-opacity-50"
                 placeholder="Code postale"
               />
             </label>
@@ -136,16 +192,15 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            w-full
-            block px-16 py-2 mt-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  w-full
+                  block px-16 py-2 mt-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50"
                 placeholder="ville"
               />
             </label>
@@ -159,16 +214,15 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            w-full
-            block px-16 py-2 mt-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  w-full
+                  block px-16 py-2 mt-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50 "
                 placeholder="pays"
               />
             </label>
@@ -184,17 +238,16 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            block
-            w-full
-            mt-2 px-16 py-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  block
+                  w-full
+                  mt-2 px-16 py-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50"
                 placeholder="john.cooks@example.com"
                 required
               />
@@ -209,17 +262,16 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            block
-            w-full
-            mt-2 px-16 py-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  block
+                  w-full
+                  mt-2 px-16 py-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50"
                 placeholder="telephone"
                 required
               />
@@ -235,17 +287,16 @@ function EntrepriseForm() {
                     handleEntreprise(e.target.name, e.target.value)
                   }
                   className="
-            block
-            w-full
-            mt-2 px-16 py-8
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                    block
+                    w-full
+                    mt-2 px-16 py-8
+                    border-gray-300
+                    rounded-md
+                    shadow-sm
+                    focus:border-indigo-300
+                    focus:ring
+                    focus:ring-indigo-200
+                    focus:ring-opacity-50   "
                   rows="5"
                 />
               </label>
@@ -260,17 +311,16 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            block
-            w-full
-            mt-2 px-16 py-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  block
+                  w-full
+                  mt-2 px-16 py-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50 "
                 placeholder="numero siret"
                 required
               />
@@ -285,80 +335,87 @@ function EntrepriseForm() {
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            block
-            w-full
-            mt-2 px-16 py-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  block
+                  w-full
+                  mt-2 px-16 py-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50"
                 placeholder="nombre employes"
                 required
               />
             </label>
             <label>
-              <span className="text-gray-700">Date d'inscription</span>
-              <input
-                name="dateInscription"
-                type="date"
-                value={firm.dateInscription}
-                onChange={(e) =>
-                  handleEntreprise(e.target.name, e.target.value)
-                }
-                className="
-            block
-            w-full
-            mt-2 px-16 py-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
-                placeholder="date inscription"
-                required
-              />
-            </label>
-            <label>
               <span className="text-gray-700">Domaine</span>
-              <input
-                name="domaine "
+              <select
+                name="domaine_id"
                 type="text"
-                value={firm.domaine_id}
                 onChange={(e) =>
                   handleEntreprise(e.target.name, e.target.value)
                 }
                 className="
-            block
-            w-full
-            mt-2 px-16 py-2
-            border-gray-300
-            rounded-md
-            shadow-sm
-            focus:border-indigo-300
-            focus:ring
-            focus:ring-indigo-200
-            focus:ring-opacity-50
-          "
+                  block
+                  w-full
+                  mt-2 px-16 py-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50 "
                 placeholder="domaine"
                 required
-              />
+              >
+                {domain.map((dom) => {
+                  return (
+                    <option
+                      key={dom.id}
+                      value={dom.id}
+                      selected={dom.id === firm.domaine_id}
+                    >
+                      {dom.nom}
+                    </option>
+                  );
+                })}
+              </select>
             </label>
           </div>
           <div className="mb-6">
+            {!firm.id && (
+              <button
+                type="button"
+                onClick={sendFirm}
+                className="
+                  w-40 bg-white mt-4 transition duration-300 hover:bg-fushia hover:text-white ease-in-out text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+                 mr-10"
+              >
+                Ajouter
+              </button>
+            )}
+            {firm.id && (
+              <button
+                type="button"
+                onClick={() => handelUpdateEntreprise()}
+                className="
+                  w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+                  mr-10 "
+              >
+                Mettre à jour
+              </button>
+            )}
             <button
-              type="submit"
+              type="button"
+              onClick={() => setFirm(firmType)}
               className="
-              w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
-          "
+                w-40 bg-white mt-4 transition duration-300 hover:bg-pink hover:text-white text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
+              "
             >
-              Envoyer
+              Annuler
             </button>
           </div>
           <div />
@@ -379,5 +436,4 @@ function EntrepriseForm() {
     </div>
   );
 }
-
 export default EntrepriseForm;
