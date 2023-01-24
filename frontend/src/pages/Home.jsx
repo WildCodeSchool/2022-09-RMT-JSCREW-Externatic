@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Card from "@components/UI/Card";
 import RegisterModal from "@components/UI/RegisterModal";
 import Carousel from "@components/Carousel/Carousel";
@@ -7,6 +8,7 @@ import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
 import icon3 from "@assets/sablier.png";
+import icon4 from "../../public/externatic_favicon.png";
 
 export default function Home() {
   const [randomData, setRandomData] = useState([]);
@@ -24,6 +26,12 @@ export default function Home() {
   }, []);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Accueil</title>
+        <meta name="description" content="Page d'accueil du site Externatic" />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
       <div className="relative">
         <div className="">
           <img alt="" src={img3} />
