@@ -49,7 +49,9 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mt-4">Rejoins-nous!</h2>
         <div className="lg:flex lg:justify-around lg:w-full">
           {randomData.map((offre) => (
-            <Card key={offre.id} offre={offre} />
+            <Link to={`/offres/${offre.id}`}>
+              <Card key={offre.id} offre={offre} />
+            </Link>
           ))}
         </div>
         <Link to="/offres">
