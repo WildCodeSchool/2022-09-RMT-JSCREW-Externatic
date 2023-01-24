@@ -27,7 +27,7 @@ function OffreForm() {
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
     apiConnexion
-      .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
+      .get(`/offres`)
       .then((job) => setJobs(job.data))
       .catch((error) => console.error(error));
   };
