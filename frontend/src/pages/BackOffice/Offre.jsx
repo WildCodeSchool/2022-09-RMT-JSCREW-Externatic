@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import apiConnexion from "@services/apiConnexion";
 
 function Offres() {
   const [jobs, setjobs] = useState([]);
 
   // Fonction qui gère la récupération des données "offre" avec axios
   const getAllOffres = () => {
-    axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/offres`)
+    apiConnexion
+      .get(`/offres`)
       .then((offres) => setjobs(offres.data))
       .catch((error) => console.error(error));
   };
