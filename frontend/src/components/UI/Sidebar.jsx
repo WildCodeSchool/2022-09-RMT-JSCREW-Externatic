@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import "./Sidebar.css";
+
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
   return (
@@ -8,8 +10,8 @@ export default function Sidebar() {
       <div
         className={
           open
-            ? "w-40 flex flex-col h-screen p-3 bg-indigo shadow duration-300"
-            : "w-60 flex flex-col h-screen p-3 bg-indigo shadow duration-300 "
+            ? "w-40 flex flex-col h-full p-3 bganimationcard  shadow duration-300 "
+            : "w-60 flex flex-col h-full p-3 bganimationcard  shadow duration-300 "
         }
       >
         <div className="space-y-3">
@@ -63,7 +65,7 @@ export default function Sidebar() {
           </div>
           <div className="flex-1">
             <ul className="pt-2 pb-4 space-y-1 text-sm">
-              <li className="rounded-sm">
+              <li className="rounded-sm hover:darkPink">
                 <Link
                   to="/dashboard"
                   className="flex items-center p-2 space-x-3 rounded-md"
@@ -82,13 +84,13 @@ export default function Sidebar() {
                       d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                     />
                   </svg>
-                  <span className="text-white">Home</span>
+                  <span className="text-white hover:text-orange">Home</span>
                 </Link>
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/dashboard/entreprises"
-                  className="text-white flex items-center p-2 space-x-3 rounded-md"
+                  to="entreprises"
+                  className="text-white flex items-center p-2 space-x-3 rounded-md hover:black"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -104,13 +106,13 @@ export default function Sidebar() {
                       d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
                     />
                   </svg>
-                  Entreprise
+                  <span className="text-white hover:text-orange">Entreprise</span>
                 </Link>
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/dashboard/offres"
-                  className="flex items-center p-2 space-x-3 rounded-md"
+                  to="offre"
+                  className="flex items-center p-2 space-x-3 rounded-md hover:text-indigo transition-colors duration-300 transform"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -126,12 +128,12 @@ export default function Sidebar() {
                       d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"
                     />
                   </svg>
-                  <span className="text-white">Offres</span>
+                  <span className="text-white hover:text-orange">Offres</span>
                 </Link>
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/consultants"
+                  to="consultants"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -148,7 +150,7 @@ export default function Sidebar() {
                       d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                     />
                   </svg>
-                  <span className="text-white">Consultants</span>
+                  <span className="text-white hover:text-orange">Consultants</span>
                 </Link>
               </li>
               <li className="rounded-sm">
