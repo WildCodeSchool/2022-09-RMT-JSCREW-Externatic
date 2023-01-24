@@ -18,15 +18,15 @@ function NavBar() {
     if (user) {
       const userId = user.id ? user.id : user;
       return (
-        <Link
-          to={`/profil/${userId}`}
+        <a
+          href={`/profil/${userId}`}
           className="hover:decoration-blue-400 border-gray-400 my-6 "
           onClick={() => setIsNavOpen(false)}
         >
           <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
             Profil
           </p>
-        </Link>
+        </a>
       );
     }
     return null;
@@ -94,43 +94,43 @@ function NavBar() {
             </svg>
           </button>
           <div className="flex flex-col justify-between min-h-[200px] w-80 text-2xl">
-            <Link
-              to="/"
+            <a
+              href="/"
               className="border-gray-400 my-6 "
               onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Accueil
               </p>
-            </Link>
-            <Link
-              to="/offres"
+            </a>
+            <a
+              href="/offres"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
               onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Offres d'emploi
               </p>
-            </Link>
+            </a>
             {profilConnex()}
-            <Link
-              to="/infos"
+            <a
+              href="/infos"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
               onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Qui sommes-nous ?
               </p>
-            </Link>
-            <Link
-              to="/"
+            </a>
+            <a
+              href="/"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
               onClick={() => setIsNavOpen(false)}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Contact
               </p>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
