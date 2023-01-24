@@ -39,7 +39,7 @@ INSERT INTO
 VALUES
   (
     'alain.villeneuve@email.fr',
-    '$argon2id$v=19$m=65536,t=5,p=1$gK38z/m731hAiZeDmlerHA$kKpFSFCvJNsWB77QbB/jbm6Dmkt8IlSEaZJStPxdW/I',
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
     'candidat',
     1
   ),
