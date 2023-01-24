@@ -31,15 +31,19 @@ const random = (req, res) => {
 
 const add = (req, res) => {
   const offre = req.body;
+  offre.dateOffre = dateInscript();
   const error = validate(offre);
-
   if (error) {
+    console.error(error);
     res.status(422).send(error);
   } else {
     models.offre
-      .insert(offre, dateInscript())
+      .insert(offre)
       .then(([result]) => {
-        res.location(`/offres/${result.insertId}`).sendStatus(201);
+        res
+          .location(`/offres/${result.insertId}`)
+          .status(201)
+          .json({ ...offre, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
@@ -62,9 +66,7 @@ const browse = (req, res) => {
 
 const edit = (req, res) => {
   const offre = req.body;
-  offre.id = parseInt(req.params.id, 10);
-
-  // delete offre.dateOffre;
+  delete offre.dateOffre;
 
   const error = validate(offre);
 
@@ -72,7 +74,7 @@ const edit = (req, res) => {
     res.status(422).send(error);
   } else {
     models.offre
-      .update(offre)
+      .update(offre, parseInt(req.params.id, 10))
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);

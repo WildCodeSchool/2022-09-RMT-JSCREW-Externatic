@@ -46,16 +46,11 @@ class OffreManager extends AbstractManager {
   }
 
   // mise à jour des offres avec UPDATE
-  update(offre) {
-    const newOffre = { ...offre };
-    const dateFinOffre = newOffre.date_fin_offre;
-    delete newOffre.date_fin_offre;
-    delete newOffre.dateOffre;
-
-    return this.connection.query(
-      `update ${this.table} set ?, date_fin_offre = ? where id = ?`,
-      [newOffre, dateFinOffre, newOffre.id]
-    );
+  update(offre, id) {
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      offre,
+      id,
+    ]);
   }
 
   findCandidatures(id) {
