@@ -53,11 +53,8 @@ function OffreForm() {
         toast.success(`Votre offre a bien été enregistrée`, toastiConfig);
       })
       .catch((err) => {
-        toast.error(
-          `Veuillez renseigner vos champs, votre formulaire n'a pas été enregistré`,
-          toastiConfig
-        );
-        console.warn(err);
+        toast.error(err.response.data.details[0].message, toastiConfig);
+        console.warn(err.response.data.details[0].message);
       });
   };
 
@@ -78,15 +75,11 @@ function OffreForm() {
           );
         })
         .catch((err) => {
-          toast.error(
-            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
-            toastiConfig
-          );
-          console.warn(err);
+          toast.error(err.response.data.details[0].message, toastiConfig);
+          console.warn(err.response.data.details[0].message);
         });
     }
   };
-
   return (
     <div className="mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
       <div className="shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
