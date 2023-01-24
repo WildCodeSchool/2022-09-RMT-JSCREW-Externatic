@@ -32,7 +32,7 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: "",
+    email: user.email,
     description: "",
     metier: "",
     telephone: "",
