@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "@components/UI/Card";
+import Pagination from "@components/UI/Pagination";
 import connaissance from "@assets/connaissance.png";
 import loupe from "@assets/loupe.png";
 import localisationjob from "@assets/localisation.png";
@@ -9,6 +10,9 @@ function NosOffres() {
   const [offresData, setOffresData] = useState([]);
   const [selectedPoste, setSelectedPoste] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedAll] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [offresPerPage] = useState(5);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres`)
@@ -18,6 +22,13 @@ function NosOffres() {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  // get current offres
+  const indexOfLastOffre = currentPage * offresPerPage;
+  const indexOfFirstOffre = indexOfLastOffre - offresPerPage;
+  const currentOffres = offresData.slice(indexOfFirstOffre, indexOfLastOffre);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="font-roboto text-black">
@@ -49,8 +60,8 @@ function NosOffres() {
               className="w-80"
               onChange={(event) => setSelectedPoste(event.target.value)}
             >
-              <option value={undefined} selected>
-                Métier
+              <option value={selectedAll} selected>
+                Métiers
               </option>
               {offresData
                 .filter(
@@ -78,8 +89,8 @@ function NosOffres() {
               className="w-80"
               onChange={(event) => setSelectedCity(event.target.value)}
             >
-              <option value={undefined} selected>
-                Ville
+              <option value={selectedAll} selected>
+                Villes
               </option>
               {offresData
                 .filter(
@@ -94,9 +105,9 @@ function NosOffres() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-items-center justify-center mb-10 mx-14">
-        {offresData &&
-          offresData
+      <div className="flex flex-col md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-items-center justify-center mb-5 mx-14">
+        {currentOffres &&
+          currentOffres
             .filter((offre) => !selectedPoste || offre.poste === selectedPoste)
             .filter(
               (offre) => !selectedCity || offre.localisation === selectedCity
@@ -107,6 +118,11 @@ function NosOffres() {
               </Link>
             ))}
       </div>
+      <Pagination
+        offresPerPage={offresPerPage}
+        totalOffres={offresData.length}
+        paginate={paginate}
+      />
     </div>
   );
 }

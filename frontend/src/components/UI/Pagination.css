@@ -1,0 +1,40 @@
+.nextPage {
+  --color: #851342;
+  font-family: inherit;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  color: var(--color);
+}
+
+.nextPage:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.nextPage:hover {
+  color: #fff;
+}
+
+.nextPage:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.nextPage:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.nextPage:active:before {
+  background: #851342;
+}
