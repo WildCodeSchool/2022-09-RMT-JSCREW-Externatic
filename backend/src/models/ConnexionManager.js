@@ -18,6 +18,13 @@ class ConnexionManager extends AbstractManager {
       [utilisateur]
     );
   }
+
+  updateProfil(candidat) {
+    return this.connection.query(
+      `update ${this.table} set profil = true where id = ?`,
+      [candidat.connexion_id]
+    );
+  }
 }
 
 module.exports = ConnexionManager;

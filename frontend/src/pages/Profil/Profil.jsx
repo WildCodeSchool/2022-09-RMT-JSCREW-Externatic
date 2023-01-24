@@ -20,7 +20,7 @@ const toastifyConfig = {
 };
 
 function Profil() {
-  const { user } = useContext(User.UserContext);
+  const { user, updateUserProfil } = useContext(User.UserContext);
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
 
@@ -74,7 +74,9 @@ function Profil() {
     } else {
       apiConnexion
         .post("/profil", formData)
-        .then(() => {
+        .then((res) => {
+          handleProfil("id", res.id);
+          updateUserProfil();
           toast.success(
             `Bonjour ${profil.nom} ${profil.prenom}, votre profil a bien été enregistré.`,
             toastifyConfig
