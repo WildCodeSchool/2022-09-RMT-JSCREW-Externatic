@@ -8,7 +8,7 @@ import SelectOffreForm from "./SelectOffreForm";
 const offreType = {
   contrat: "",
   condition_travail: "",
-  avantages: null,
+  avantages: "",
   poste: "",
   localisation: "",
   date_fin_offre: "",

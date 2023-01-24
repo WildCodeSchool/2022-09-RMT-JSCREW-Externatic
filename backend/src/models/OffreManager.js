@@ -15,7 +15,7 @@ class OffreManager extends AbstractManager {
   insert(Offre) {
     return this.connection.query(
       `insert into ${this.table} 
-      (contrat, condition_travail, poste, avantages, localisation, dateOffre, date_fin_offre, salaire, 
+      (contrat, condition_travail, avantages, poste, localisation, dateOffre, date_fin_offre, salaire, 
         mission, profil_recherche, specialitees, entreprise_id, domaine_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         Offre.contrat,
