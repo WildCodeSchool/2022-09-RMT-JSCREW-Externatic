@@ -68,7 +68,7 @@ function EntrepriseForm() {
           err.response.data.details[0].message,
           toastiConfig
         );
-        console.warn(err.response.data.details[0].message);
+        console.warn();
       });
   };
 
@@ -98,7 +98,7 @@ function EntrepriseForm() {
             err.response.data.details[0].message,
             toastiConfig
           );
-          console.warn(err.response.data.details[0].message);
+          console.warn();
         });
     }
   };
@@ -116,7 +116,7 @@ function EntrepriseForm() {
         <form className="mt-6">
           <div className="mb-2">
             <label>
-              <span className="text-gray-700">nom de entreprise</span>
+              <span className="text-gray-700">Nom de entreprise</span>
               <input
                 required
                 type="text"
@@ -139,7 +139,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">adresse</span>
+              <span className="text-gray-700">Adresse</span>
               <input
                 type="text"
                 name="adresse"
@@ -161,7 +161,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">code postal</span>
+              <span className="text-gray-700">Code postal</span>
               <input
                 type="text"
                 name="code_postal"
@@ -205,7 +205,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">pays</span>
+              <span className="text-gray-700">Pays</span>
               <input
                 type="text"
                 name="pays"
@@ -253,7 +253,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">telephone</span>
+              <span className="text-gray-700">Téléphone</span>
               <input
                 name="telephone"
                 type="tel"
@@ -278,7 +278,7 @@ function EntrepriseForm() {
             </label>
             <div className="mb-2">
               <label>
-                <span className="text-gray-700">description</span>
+                <span className="text-gray-700">Description</span>
                 <input
                   name="description"
                   type="text"
@@ -302,7 +302,7 @@ function EntrepriseForm() {
               </label>
             </div>
             <label>
-              <span className="text-gray-700">numero_siret</span>
+              <span className="text-gray-700">Numéro de siret</span>
               <input
                 name="numero_siret"
                 type="text"
@@ -326,7 +326,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">nombre_employes</span>
+              <span className="text-gray-700">Nombre d'employés</span>
               <input
                 name="nombre_employes"
                 type="text"
@@ -349,9 +349,8 @@ function EntrepriseForm() {
                 required
               />
             </label>
-
             <label>
-              <span className="text-gray-700">domaine</span>
+              <span className="text-gray-700">Domaine</span>
               <select
                 name="domaine_id"
                 type="text"
@@ -391,7 +390,6 @@ function EntrepriseForm() {
               <button
                 type="button"
                 onClick={sendFirm}
-                
                 className="
                   w-40 bg-white mt-4 transition duration-300 hover:bg-fushia hover:text-white ease-in-out text-darkPink border-2 border-solid border-darkPink font-bold py-2 px-4 pl-2 rounded
                  mr-10"
