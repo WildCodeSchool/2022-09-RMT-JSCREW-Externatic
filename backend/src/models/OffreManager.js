@@ -36,9 +36,7 @@ class OffreManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(
-      `SELECT * FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
-    );
+    return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
   find(id) {
@@ -52,6 +50,17 @@ class OffreManager extends AbstractManager {
       `SELECT o.id, o.poste, o.localisation FROM ${this.table} AS o INNER JOIN candidature AS c ON o.id = c.offre_id WHERE c.candidat_id = ?`,
       [id]
     );
+  }
+
+  findAllPage(query = 1) {
+    const page = (query - 1) * 10;
+    return this.connection.query(`select * from ${this.table} limit ?, 10`, [
+      page,
+    ]);
+  }
+
+  findCount() {
+    return this.connection.query(`SELECT count(*) as pages FROM ${this.table}`);
   }
 }
 

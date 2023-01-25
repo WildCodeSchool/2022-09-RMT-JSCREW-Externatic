@@ -40,6 +40,28 @@ const browse = (req, res) => {
     });
 };
 
+const browsePage = (req, res) => {
+  models.offre
+    .findAllPage(req.query.page)
+    .then(([offre]) => {
+      models.offre
+        .findCount()
+        .then(([count]) => {
+          res
+            .status(200)
+            .json({ offre, pages: Math.ceil(count[0].pages / 10) });
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.offre
     .find(req.params.id)
@@ -68,4 +90,4 @@ const candidatures = (req, res) => {
     });
 };
 
-module.exports = { random, browse, read, add, candidatures };
+module.exports = { random, browse, read, add, candidatures, browsePage };

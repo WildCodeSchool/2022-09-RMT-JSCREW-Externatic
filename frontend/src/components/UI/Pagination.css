@@ -1,7 +1,5 @@
 .nextPage {
   --color: #851342;
-  font-family: inherit;
-  display: inline-block;
   position: relative;
   overflow: hidden;
   border: 2px solid var(--color);
