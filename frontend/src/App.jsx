@@ -24,7 +24,6 @@ function App() {
             <Route path="/offres" element={<NosOffres />} />
             <Route path="/offres/:id" element={<UneOffre />} />
             <Route path="/entreprises" element={<Entreprise />} />
-            <Route path="/offre" element={<Offre />} />
             <Route path="/profil" element={<Profil />} />
             <Route path="/profil/:id" element={<Profil />} />
             <Route path="/infos" element={<Quisommesnous />} />
@@ -32,6 +31,8 @@ function App() {
           <Route path="/dashboard/" element={<Private />}>
             <Route path="entreprises" element={<AdminEntreprise />} />
             <Route path="offres" element={<AdminOffres />} />
+            <Route path="offres" element={<Offre />} />
+
           </Route>
         </Routes>
       </Router>
