@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 
 const router = express.Router();
+const domaineControllers = require("./controllers/domaineControllers");
 const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
@@ -39,7 +40,9 @@ router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 router.get("/candidatures/:id", offreControllers.candidatures);
-
+router.post("/offres", offreControllers.add);
+router.put("/offres/:id", offreControllers.edit);
+router.get("/domaines/", domaineControllers.browse);
 // mur d'authentification
 router.use(checkAuth);
 
@@ -66,7 +69,5 @@ router.post(
 );
 
 router.post("/register", connexionControllers.add);
-router.post("/offres", offreControllers.add);
-router.put("/offres/:id", offreControllers.edit);
 
 module.exports = router;

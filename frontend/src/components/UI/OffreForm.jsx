@@ -22,6 +22,7 @@ const offreType = {
 
 function OffreForm() {
   const [offre, setOffre] = useState(offreType);
+  const [domaine, setDomaine] = useState([]);
   const [jobs, setJobs] = useState([]);
 
   // Fonction qui gère la récupération des données "offre" avec axios
@@ -32,8 +33,16 @@ function OffreForm() {
       .catch((error) => console.error(error));
   };
 
+  const getAllDomaine = () => {
+    apiConnexion
+      .get(`/domaines`)
+      .then((job) => setDomaine(job.data))
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     getAllOffres();
+    getAllDomaine();
   }, []);
 
   const handleOffre = (place, value) => {
@@ -322,25 +331,37 @@ function OffreForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">identifiant du domaine</span>
-              <input
-                required
-                type="text"
+              <span className="text-gray-700">domaine</span>
+              <select
                 name="domaine_id"
-                value={offre.domaine_id}
+                type="text"
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
+                  block
                   w-full
-                  block px-16 py-2 mt-2
+                  mt-2 px-16 py-2
                   border-gray-300
                   rounded-md
                   shadow-sm
                   focus:border-indigo-300
                   focus:ring
                   focus:ring-indigo-200
-                  focus:ring-opacity-50"
-                placeholder="identifiant du domaine"
-              />
+                  focus:ring-opacity-50 "
+                placeholder="domaine"
+                required
+              >
+                {domaine.map((dom) => {
+                  return (
+                    <option
+                      key={dom.id}
+                      value={dom.id}
+                      selected={dom.id === offre.domaine_id}
+                    >
+                      {dom.nom}
+                    </option>
+                  );
+                })}
+              </select>
             </label>
           </div>
           <div className="mb-6">
