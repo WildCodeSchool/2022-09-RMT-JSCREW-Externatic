@@ -3,9 +3,19 @@ import { createContext, useState, useEffect } from "react";
 const UserContext = createContext();
 
 function UserProvider({ children }) {
-  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
+  const [user, setUser] = useState(
+    sessionStorage.user !== "undefined"
+      ? JSON.parse(sessionStorage.getItem("user"))
+      : null
+  );
+
   const handleUser = (data) => {
     setUser(data);
+  };
+
+  const logout = () => {
+    setUser();
+    sessionStorage.removeItem("user");
   };
 
   const updateUserProfil = () => {
@@ -22,6 +32,7 @@ function UserProvider({ children }) {
         user,
         handleUser,
         updateUserProfil,
+        logout,
       }}
     >
       {children}
