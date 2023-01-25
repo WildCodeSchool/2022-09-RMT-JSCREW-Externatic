@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require("joi");
 // ajouter au service
 const validateEntreprise = (data) => {
   return Joi.object({
@@ -12,7 +12,7 @@ const validateEntreprise = (data) => {
     telephone: Joi.string().min(3).max(30).presence("required"),
     description: Joi.string().min(10).presence("required"),
     numero_siret: Joi.string().min(9).max(14).presence("required"),
-    nombre_employes : Joi.number().integer().min(1).presence("required"),
+    nombre_employes: Joi.number().integer().min(1).presence("required"),
     domaine_id: Joi.number().presence("required"),
     dateInscription: Joi.string().min(10).presence("optional"),
   }).validate(data, { aborEarly: false }).error;
