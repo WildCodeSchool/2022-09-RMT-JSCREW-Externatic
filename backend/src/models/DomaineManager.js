@@ -5,5 +5,4 @@ class DomaineManager extends AbstractManager {
     super({ table: "domaine" });
   }
 }
-
 module.exports = DomaineManager;
