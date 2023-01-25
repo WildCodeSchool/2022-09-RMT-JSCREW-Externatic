@@ -5,7 +5,7 @@ class CandidatManager extends AbstractManager {
     super({ table: "candidat" });
   }
 
-  insert(candidat, profilPhoto, profilCv, dateInscript) {
+  insert(candidat, profilPhoto, profilCv, dateInscript, connexionId) {
     return this.connection.query(
       `insert into ${this.table} (photo, nom, prenom, age, adresse, code_postal, ville, pays, email, cv, description, metier, telephone, dateInscription, dateDisponibilite, connexion_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
@@ -24,7 +24,7 @@ class CandidatManager extends AbstractManager {
         candidat.telephone,
         dateInscript,
         candidat.dateDisponibilite,
-        candidat.connexion_id,
+        connexionId,
       ]
     );
   }
@@ -36,7 +36,7 @@ class CandidatManager extends AbstractManager {
     );
   }
 
-  update(candidat, profilPhoto, profilCv) {
+  update(candidat, profilPhoto, profilCv, connexionId) {
     const newCandidat = { ...candidat };
     const dateDispo = newCandidat.dateDisponibilite;
     delete newCandidat.dateDisponibilite;
@@ -55,7 +55,7 @@ class CandidatManager extends AbstractManager {
 
     return this.connection.query(
       `update ${this.table} set ?, dateDisponibilite = ? where connexion_id = ?`,
-      [newCandidat, dateDispo.split("T").shift(), newCandidat.connexion_id]
+      [newCandidat, dateDispo.split("T").shift(), connexionId]
     );
   }
 }

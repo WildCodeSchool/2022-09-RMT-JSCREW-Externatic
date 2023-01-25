@@ -22,9 +22,9 @@ const toastifyConfig = {
 };
 
 function Profil() {
-  const { user } = useContext(User.UserContext);
-
-  const userId = user.id ? user.id : user;
+  const { user, updateUserProfil } = useContext(User.UserContext);
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
 
   const profilType = {
     nom: "",
@@ -34,16 +34,14 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: "",
+    email: user.email,
     description: "",
     metier: "",
     telephone: "",
     dateDisponibilite: "",
-    connexion_id: userId,
+    connexion_id: user.id,
   };
-
-  // ajout d'un zéro pour les dates et les mois inférieurs à 10
-
+  
   const [candidatures, setCandidatures] = useState([]);
   const [profil, setProfil] = useState(profilType);
 
@@ -52,29 +50,48 @@ function Profil() {
     newProfil[place] = value;
     setProfil(newProfil);
   };
-  const inputRef1 = useRef(null);
-  const inputRef2 = useRef(null);
+
   const sendForm = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("avatar", inputRef1.current.files[0]);
     formData.append("cv", inputRef2.current.files[0]);
     formData.append("data", JSON.stringify(profil));
-    apiConnexion
-      .post("/profil", formData)
-      .then(() => {
-        toast.success(
-          `Bonjour ${profil.nom} ${profil.prenom} votre inscription a bien été enregistrée.`,
-          toastifyConfig
-        );
-      })
-      .catch((err) => {
-        toast.error(
-          `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
-          toastifyConfig
-        );
-        console.warn(err);
-      });
+    if (user.profil) {
+      apiConnexion
+        .put(`/profil/${user.id}`, formData)
+        .then(() => {
+          toast.success(
+            `Bonjour, votre profil a bien été modifié.`,
+            toastifyConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    } else {
+      apiConnexion
+        .post("/profil", formData)
+        .then((res) => {
+          handleProfil("id", res.id);
+          updateUserProfil();
+          toast.success(
+            `Bonjour ${profil.nom} ${profil.prenom}, votre profil a bien été enregistré.`,
+            toastifyConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    }
   };
 
   // La fonction previewPicture
@@ -95,17 +112,17 @@ function Profil() {
     }
   };
 
-  // Fonction qui gère la récupération des données profil
 
-  if (user.id) {
-    const getFullProfil = () => {
-      apiConnexion
-        .get(`/profil/${user.id}`)
-        .then((profilUser) => {
-          setProfil(profilUser.data);
-        })
-        .catch((error) => console.error(error));
-    };
+ // Fonction qui gère la récupération des données profil
+  const getFullProfil = () => {
+    apiConnexion
+      .get(`/profil/${user.id}`)
+      .then((profilUser) => {
+        setProfil(profilUser.data);
+      })
+      .catch((error) => console.error(error));
+  };
+
     // Fonction qui gère la récupération des données de candidatures liées au profil
     const getCandidatures = () => {
       apiConnexion
@@ -116,40 +133,16 @@ function Profil() {
         .catch((error) => console.error(error));
     };
 
-    // Données "profil"
-    useEffect(() => {
+  useEffect(() => {
+    if (user.profil) {
       getFullProfil();
+      }
     }, []);
 
     // Données "candidatures"
     useEffect(() => {
       getCandidatures();
     }, []);
-  }
-
-  const handelUpdateProfil = () => {
-    if (user.id) {
-      const formData = new FormData();
-      formData.append("avatar", inputRef1.current.files[0]);
-      formData.append("cv", inputRef2.current.files[0]);
-      formData.append("data", JSON.stringify(profil));
-      apiConnexion
-        .put(`/profil/${user.id}`, formData)
-        .then(() => {
-          toast.success(
-            `Bonjour  votre profil à bien été modifier.`,
-            toastifyConfig
-          );
-        })
-        .catch((err) => {
-          toast.error(
-            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
-            toastifyConfig
-          );
-          console.warn(err);
-        });
-    }
-  };
 
   return (
     <div className="profil flex justify-center">
@@ -347,7 +340,7 @@ function Profil() {
             />
           </div>
         </div>
-        {!user.id && (
+        {!user.profil && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
               className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
@@ -357,12 +350,11 @@ function Profil() {
             </button>
           </div>
         )}
-        {user.id && (
+        {user.profil && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
               className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
-              type="button"
-              onClick={() => handelUpdateProfil()}
+              type="submit"
             >
               Mettre à jour
             </button>

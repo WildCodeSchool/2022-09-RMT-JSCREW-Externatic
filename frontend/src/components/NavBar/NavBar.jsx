@@ -1,15 +1,41 @@
-import { React, useState } from "react";
+import { React, useState, useContext } from "react";
 import logo from "@assets/Logo-Externatic.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ConnexionModal from "../UI/ConnexionModal";
+import User from "../../contexts/User";
 
 import "./NavBar.css";
 
 function NavBar() {
+  const { user } = useContext(User.UserContext);
+  const navigate = useNavigate();
   const [connexionModalIsVisible, setConnexionModalIsVisible] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const handleOnCloseConnexionModal = () => {
     setConnexionModalIsVisible(false);
+  };
+
+  const setManageRedirect = (url) => {
+    setIsNavOpen(false);
+    navigate(url);
+  };
+
+  const profilConnex = () => {
+    if (user) {
+      const userId = user.id ? user.id : user;
+      return (
+        <button
+          type="button"
+          className="hover:decoration-blue-400 border-gray-400 my-6 "
+          onClick={() => setManageRedirect(`/profil/${userId}`)}
+        >
+          <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
+            Profil
+          </p>
+        </button>
+      );
+    }
+    return null;
   };
 
   return (
@@ -74,51 +100,43 @@ function NavBar() {
             </svg>
           </button>
           <div className="flex flex-col justify-between min-h-[200px] w-80 text-2xl">
-            <Link
-              to="/"
+            <button
+              type="button"
               className="border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Accueil
               </p>
-            </Link>
-            <Link
-              to="/offres"
+            </button>
+            <button
+              type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/offres")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Offres d'emploi
               </p>
-            </Link>
-            <Link
-              to="/profil/:id"
+            </button>
+            {profilConnex()}
+            <button
+              type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
-            >
-              <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
-                Profil
-              </p>
-            </Link>
-            <Link
-              to="/infos"
-              className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/infos")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Qui sommes-nous ?
               </p>
-            </Link>
-            <Link
-              to="/"
+            </button>
+            <button
+              type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Contact
               </p>
-            </Link>
+            </button>
           </div>
         </div>
       </div>
