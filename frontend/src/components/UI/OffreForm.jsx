@@ -12,7 +12,7 @@ const offreType = {
   poste: "",
   localisation: "",
   date_fin_offre: "",
-  salaire: null,
+  salaire: "",
   mission: "",
   profil_recherche: "",
   specialitees: "",
