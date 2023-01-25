@@ -67,7 +67,7 @@ export default function Sidebar() {
             <ul className="pt-2 pb-4 space-y-1 text-sm">
               <li className="rounded-sm hover:darkPink">
                 <Link
-                  to="dashboard"
+                  to="/dashboard"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
