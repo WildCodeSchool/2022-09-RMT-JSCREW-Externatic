@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import CartePrincipale from "@components/UI/CardOffre/CartePrincipale";
 import CarteAvantages from "@components/UI/CardOffre/CarteAvantages";
 import CarteProfil from "@components/UI/CardOffre/CarteProfil";
 import CarteSalaire from "@components/UI/CardOffre/CarteSalaire";
 import ListOfOffers from "@components/UI/CardOffre/ListOfOffers";
+import icon4 from "../../../public/externatic_favicon.png";
 
 function UneOffre() {
   const { id } = useParams();
@@ -21,7 +23,16 @@ function UneOffre() {
 
   return (
     <div className="container-offre font-roboto">
-      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed bottom-0 z-10 w-screen drop-shadow-xl hover:bg-darkPink hover:text-white text-xl text-black ">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Offre</title>
+        <meta
+          name="description"
+          content="Page Offre qui affiche toutes les informations concernant une offre d'emploi du site Externatic"
+        />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
+      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed z-10 w-screen drop-shadow-xl hover:bg-darkPink hover:text-white text-xl text-black ">
         <button type="button" className="font-bold w-full h-full">
           Postuler à cette offre
         </button>

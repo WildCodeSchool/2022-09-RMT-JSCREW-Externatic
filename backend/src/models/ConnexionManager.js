@@ -7,8 +7,8 @@ class ConnexionManager extends AbstractManager {
 
   insert(connexion) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (utilisateur, hashedPassword, role) VALUES (?, ?, ?)`,
-      [connexion.utilisateur, connexion.hashedPassword, "candidat"]
+      `INSERT INTO ${this.table} (utilisateur, hashedPassword, role, profil) VALUES (?, ?, ?, ?)`,
+      [connexion.utilisateur, connexion.hashedPassword, "candidat", 0]
     );
   }
 
@@ -16,6 +16,13 @@ class ConnexionManager extends AbstractManager {
     return this.connection.query(
       "select * from connexion where utilisateur = ?",
       [utilisateur]
+    );
+  }
+
+  updateProfil(candidat) {
+    return this.connection.query(
+      `update ${this.table} set profil = true where id = ?`,
+      [candidat]
     );
   }
 }

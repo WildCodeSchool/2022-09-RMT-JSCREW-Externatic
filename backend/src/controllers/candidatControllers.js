@@ -14,7 +14,7 @@ const dateinscript = () => {
   return `${year}-${month}-${date}`;
 };
 
-const add = (req, res) => {
+const add = async (req, res) => {
   let candidat = req.body.data;
   const profilPhoto = `assets${
     req.files.avatar ? req.files.avatar[0].filename : "/avatar/Avatar.png"
@@ -24,24 +24,33 @@ const add = (req, res) => {
   }`;
 
   candidat = JSON.parse(candidat);
+
   const error = validate(candidat);
   if (error) {
     res.status(422).send(error);
   } else {
-    models.candidat
-      .insert(candidat, profilPhoto, profilCv, dateinscript())
-      .then(([result]) => {
-        res.location(`/profil/${result.insertId}`).sendStatus(201);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
+    try {
+      const user = await models.candidat.insert(
+        candidat,
+        profilPhoto,
+        profilCv,
+        dateinscript(),
+        req.auth.id
+      );
+      await models.connexion.updateProfil(req.auth.id);
+      res
+        .location(`/profil/${user.insertId}`)
+        .status(201)
+        .json({ id: user.insertId });
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
   }
 };
 
 const read = (req, res) => {
-  if (parseInt(req.params.id, 10)) {
+  if (parseInt(req.params.id, 10) === req.auth.id) {
     models.candidat
       .findOne(req.params.id)
       .then(([rows]) => {
@@ -77,7 +86,7 @@ const edit = (req, res) => {
     res.status(422).send(error);
   } else {
     models.candidat
-      .update(candidat, profilPhoto, profilCv)
+      .update(candidat, profilPhoto, profilCv, req.auth.id)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
