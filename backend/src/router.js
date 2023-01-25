@@ -7,6 +7,7 @@ const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
+const itemController = require("./controllers/itemControllers");
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -44,7 +45,7 @@ router.put("/entreprises/:id", entrepriseControllers.edit);
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
 router.get("/candidatures/:id", offreControllers.candidatures);
-
+router.post("/sendEmail", itemController.sendMail);
 
 // mur d'authentification
 router.use(checkAuth);

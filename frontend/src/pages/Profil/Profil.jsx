@@ -27,7 +27,6 @@ function Profil() {
   const { user, updateUserProfil } = useContext(User.UserContext);
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
-
   const profilType = {
     nom: "",
     prenom: "",
@@ -36,14 +35,14 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: user.email,
+    email: user.utilisateur,
     description: "",
     metier: "",
     telephone: "",
     dateDisponibilite: "",
     connexion_id: user.id,
   };
-  
+
   const [candidatures, setCandidatures] = useState([]);
   const [profil, setProfil] = useState(profilType);
 
@@ -54,7 +53,16 @@ function Profil() {
   };
 
   const sendForm = (e) => {
+    const email = {
+      name: profil.nom,
+      surname: profil.prenom,
+      email: profil.email,
+      phone: profil.telephone,
+      message:
+        "Merci de votre inscription à bien été prise en compte. Un consultant prendra bientôt contacte avec vous.",
+    };
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("avatar", inputRef1.current.files[0]);
     formData.append("cv", inputRef2.current.files[0]);
@@ -94,6 +102,15 @@ function Profil() {
           );
           console.warn(err);
         });
+      // Envoie d'un email
+      apiConnexion
+        .post("/SendEmail", email)
+        .then((res) => {
+          console.warn(res);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
 
@@ -115,8 +132,7 @@ function Profil() {
     }
   };
 
-
- // Fonction qui gère la récupération des données profil
+  // Fonction qui gère la récupération des données profil
   const getFullProfil = () => {
     apiConnexion
       .get(`/profil/${user.id}`)
@@ -126,26 +142,26 @@ function Profil() {
       .catch((error) => console.error(error));
   };
 
-    // Fonction qui gère la récupération des données de candidatures liées au profil
-    const getCandidatures = () => {
-      apiConnexion
-        .get(`/candidatures/${user.id}`)
-        .then((userCandidatures) => {
-          setCandidatures(userCandidatures.data);
-        })
-        .catch((error) => console.error(error));
-    };
+  // Fonction qui gère la récupération des données de candidatures liées au profil
+  const getCandidatures = () => {
+    apiConnexion
+      .get(`/candidatures/${user.id}`)
+      .then((userCandidatures) => {
+        setCandidatures(userCandidatures.data);
+      })
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     if (user.profil) {
       getFullProfil();
-      }
-    }, []);
+    }
+  }, []);
 
-    // Données "candidatures"
-    useEffect(() => {
-      getCandidatures();
-    }, []);
+  // Données "candidatures"
+  useEffect(() => {
+    getCandidatures();
+  }, []);
 
   return (
     <div className="profil flex justify-center">
@@ -306,7 +322,7 @@ function Profil() {
               type="email"
               placeholder="nom@exemple.com"
               name="email"
-              value={profil.email}
+              value={user.utilisateur}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
