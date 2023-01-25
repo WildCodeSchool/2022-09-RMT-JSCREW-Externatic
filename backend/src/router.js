@@ -44,7 +44,8 @@ router.put("/entreprises/:id", entrepriseControllers.edit);
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
 router.get("/candidatures/:id", offreControllers.candidatures);
-
+router.post("/offres", offreControllers.add);
+router.put("/offres/:id", offreControllers.edit);
 
 // mur d'authentification
 router.use(checkAuth);
@@ -71,7 +72,5 @@ router.post(
 );
 
 router.post("/register", connexionControllers.add);
-
-router.post("/offres", offreControllers.add);
 
 module.exports = router;

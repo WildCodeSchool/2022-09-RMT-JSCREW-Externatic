@@ -8,6 +8,7 @@ import Home from "@pages/Home";
 import UneOffre from "@pages/UneOffre/UneOffre";
 import Offre from "@pages/BackOffice/Offre";
 import AdminEntreprise from "@pages/BackOffice/AdminEntreprise";
+import AdminOffres from "@pages/BackOffice/AdminOffres";
 import Public from "@pages/Layout/Public";
 import Private from "@pages/Layout/Private";
 
@@ -29,7 +30,7 @@ function App() {
           </Route>
           <Route path="/dashboard/" element={<Private />}>
             <Route path="entreprises" element={<AdminEntreprise />} />
-            <Route path="offres" element={<Offre />} />
+            <Route path="offres" element={<AdminOffres />} />
           </Route>
         </Routes>
       </Router>

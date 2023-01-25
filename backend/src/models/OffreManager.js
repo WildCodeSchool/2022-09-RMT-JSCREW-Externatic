@@ -15,7 +15,7 @@ class OffreManager extends AbstractManager {
   insert(Offre) {
     return this.connection.query(
       `insert into ${this.table} 
-      (contrat, condition_travail, poste, avantages, localisation, dateOffre, date_fin_offre, salaire, 
+      (contrat, condition_travail, avantages, poste, localisation, dateOffre, date_fin_offre, salaire, 
         mission, profil_recherche, specialitees, entreprise_id, domaine_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         Offre.contrat,
@@ -36,13 +36,19 @@ class OffreManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(
-      `SELECT * FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
-    );
+    return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
   find(id) {
     return this.connection.query(`SELECT * FROM  ${this.table} WHERE id = ?`, [
+      id,
+    ]);
+  }
+
+  // mise à jour des offres avec UPDATE
+  update(offre, id) {
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      offre,
       id,
     ]);
   }
