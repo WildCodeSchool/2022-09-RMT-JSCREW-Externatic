@@ -1271,6 +1271,139 @@ VALUES
     3
   );
 
+    INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '2 jours de TT/semaine',
+    'Rejoignez notre équipe techniques de 10 personnes dans le sud de la France, avec un bon esprit d’équipe, un parcours d’intégration dans une ambiance conviviale et chaleureuse, une mutuelle avantageuse, et du café a volonté !',
+    'Développeur Web PHP',
+    'Marseille',
+    '02/02/2023',
+    '30/03/2023',
+    'De 35 000 à 40 000€ par an',
+    'Vos principales missions consisteront à : Analyser les besoins utilisateurs et métiers ; Proposer l\'axe de développement ; Développer les applications et scripts nécessaires & Assurer la maintenance corrective et évolutive des applications.',
+    'Une forte culture et implication dans la sécurité des systèmes et du développement, l\'utilisation de Laravel ou d\'un framework MVC sont des atouts supplémentaires pour ce poste. Une connaissance linux/debian/Ubuntu sera très appréciable.',
+    'PHP, Javascrpit, SQL',
+    2,
+    1
+  );
+
+    INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '2 jours de TT/semaine',
+    'Participation au transport - réduction tarifaires - tickets restaurant',
+    'Développeur Web Junior JS',
+    'Nantes',
+    '21/01/2023',
+    '30/04/2023',
+    'De 30 000 à 35 000€ par an',
+    'Vous contribuerez à la maintenance et l\’amélioration continue des performances des clients front-end. Vous contribuerez aux librairies web (SDK) permettant d\’embarquer ce client “end user” dans une application ou une page web et de le paramétrer, et aux documentations associées',
+    'Attiré par les projets innovants et dynamique, vous avez un fort intérêt pour les défis techniques. Indépendamment de votre formation, vous faites preuve d\’un intérêt poussé pour l\’informatique et d\’une vision large des technologies et tendances du monde Internet. Vous êtes très rigoureux, méthodique et d\’une grande autonomie. Vous appréciez le travail en équipe, vous avez envie d\'apprendre.',
+    'Javascrpit, React, Angular, TypeScript, ThreeJs',
+    2,
+    1
+  );
+
+   INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '2 jours de TT/semaine',
+    'Nous mettons à disposition le matériel nécessaire et laissons le choix l\’environnement de travail (avec une préférence pour Linux ). La rémunération de base est calculée selon votre profil, en fonction de la grille de la convention Syntec.',
+    'Développeur Web Junior PHP',
+    'Marseille',
+    '22/01/2023',
+    '10/04/2023',
+    'De 40 000 à 45 000€ par an',
+    'Gestion et adaptation des solutions techniques lors du développement des fonctionnalités du site web. Participation à la conception des outils et méthodes propres à l\’environnement technique Web. Gestion de la maintenance du site web.',
+    'Nous recherchons un·e développeur·se web fullstack passionné⋅e, en phase avec nos valeurs, ayant déjà une expérience dans le milieu afin de participer au développement de nos projets en cours et à venir. Tu devras être en mesure d\’intervenir sur des projets variés, techniques, originaux et ambitieux.',
+    'PHP, Symfony, Python, HTML/CSS, MySQL',
+    2,
+    1
+  );
+  
+     INSERT INTO
+  `externatic`.`offre` (
+    `contrat`,
+    `condition_travail`,
+    `avantages`,
+    `poste`,
+    `localisation`,
+    `dateOffre`,
+    `date_fin_offre`,
+    `salaire`,
+    `mission`,
+    `profil_recherche`,
+    `specialitees`,
+    `entreprise_id`,
+    `domaine_id`
+  )
+VALUES
+  (
+    'CDI',
+    '3 jours de TT/semaine',
+    'Participation au transport, RTT, tickets restaurant, semaine flexible pour télétravailler',
+    'Développeur Web FullStack JS',
+    'Marseille',
+    '12/01/2023',
+    '15/04/2023',
+    'De 40 000 à 45 000€ par an',
+    'Développer de nouvelles fonctionnalités sur les applications Web actuelles et celles en train de se construire. S\’impliquer dans les cérémonies scrum (daily, sprint planning, grooming, retro, demo). Être force de proposition 😊',
+    'Maitrise d\'un frameworks Back JS et d\'un framework Front JS. De solides compétences en développement (code versionning, testing, bonnes pratiques de dev, ..). Connaissance des pratiques agile Scrum',
+    'Javascrpit, VueJs, ReactJs, Git, Postgres',
+    2,
+    1
+  );
+
+
 -- -----------------------------------------------------
 -- Table `externatic`.`candidature`
 -- -----------------------------------------------------
