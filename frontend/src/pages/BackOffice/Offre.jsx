@@ -12,7 +12,6 @@ function Offres() {
       .catch((error) => console.error(error));
   };
 
-
   // Données "offre" update
   useEffect(() => {
     getAllOffres();

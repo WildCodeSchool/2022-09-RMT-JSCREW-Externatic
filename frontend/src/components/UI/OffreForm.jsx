@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toastiConfig from "@services/toastiConfig";
 import SelectOffreForm from "./SelectOffreForm";
+// import EntrepriseSelect from "./EntrepriseSelect";
 
 const offreType = {
   contrat: "",
@@ -23,6 +24,7 @@ const offreType = {
 function OffreForm() {
   const [offre, setOffre] = useState(offreType);
   const [domaine, setDomaine] = useState([]);
+  const [entreprise, setEntreprise] = useState([]);
   const [jobs, setJobs] = useState([]);
 
   // Fonction qui gère la récupération des données "offre" avec axios
@@ -39,9 +41,17 @@ function OffreForm() {
       .catch((error) => console.error(error));
   };
 
+  const getAllEntreprises = () => {
+    apiConnexion
+      .get(`/entreprises`)
+      .then((job) => setEntreprise(job.data))
+      .catch((error) => console.error(error));
+  };
+
   useEffect(() => {
     getAllOffres();
     getAllDomaine();
+    getAllEntreprises();
   }, []);
 
   const handleOffre = (place, value) => {
@@ -94,6 +104,7 @@ function OffreForm() {
         <h1 className="font-roboto text-2xl font-light text-center capitalize ">
           Formulaire offre
         </h1>
+
         <SelectOffreForm selectJobs={selectJobs} jobs={jobs} />
         <form className="mt-6">
           <div className="mb-2">
@@ -309,12 +320,11 @@ function OffreForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">identifiant de l'entreprise</span>
-              <input
+              <span className="text-gray-700">entreprise</span>
+              <select
                 required
                 type="text"
                 name="entreprise_id"
-                value={offre.entreprise_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
@@ -326,8 +336,20 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="identifiant de l'entreprise"
-              />
+                placeholder="entreprise"
+              >
+                {entreprise.map((ent) => {
+                  return (
+                    <option
+                      key={ent.id}
+                      value={ent.id}
+                      selected={ent.id === offre.entreprise_id}
+                    >
+                      {ent.nom_entreprise}
+                    </option>
+                  );
+                })}
+              </select>
             </label>
             <label>
               <span className="text-gray-700">domaine</span>
@@ -346,7 +368,7 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="identifiant du domaine"
+                placeholder="domaine"
               >
                 {domaine.map((dom) => {
                   return (

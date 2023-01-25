@@ -45,7 +45,7 @@ const read = (req, res) => {
 // create entreprise
 
 const add = (req, res) => {
-  let entreprise = req.body;
+  const entreprise = req.body;
   entreprise.dateInscription = dateInscript();
   const error = validateEntreprise(entreprise);
   if (error) {
@@ -68,7 +68,7 @@ const add = (req, res) => {
 };
 // edit entreprise
 const edit = (req, res) => {
-  let entreprise = req.body;
+  const entreprise = req.body;
   delete entreprise.dateInscription;
   // TODO validations (length, format...)
 
