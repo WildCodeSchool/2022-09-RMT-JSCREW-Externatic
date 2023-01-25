@@ -22,6 +22,7 @@ const offreType = {
 
 function OffreForm() {
   const [offre, setOffre] = useState(offreType);
+  const [domaine, setDomaine] = useState([]);
   const [jobs, setJobs] = useState([]);
 
   // Fonction qui gère la récupération des données "offre" avec axios
@@ -31,9 +32,16 @@ function OffreForm() {
       .then((job) => setJobs(job.data))
       .catch((error) => console.error(error));
   };
+  const getAllDomaine = () => {
+    apiConnexion
+      .get(`/domaines`)
+      .then((job) => setDomaine(job.data))
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     getAllOffres();
+    getAllDomaine();
   }, []);
 
   const handleOffre = (place, value) => {
@@ -322,12 +330,11 @@ function OffreForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">identifiant du domaine</span>
-              <input
+              <span className="text-gray-700">domaine</span>
+              <select
                 required
                 type="text"
                 name="domaine_id"
-                value={offre.domaine_id}
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
@@ -340,7 +347,19 @@ function OffreForm() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
                 placeholder="identifiant du domaine"
-              />
+              >
+                {domaine.map((dom) => {
+                  return (
+                    <option
+                      key={dom.id}
+                      value={dom.id}
+                      selected={dom.id === offre.domaine_id}
+                    >
+                      {dom.nom}
+                    </option>
+                  );
+                })}
+              </select>
             </label>
           </div>
           <div className="mb-6">
