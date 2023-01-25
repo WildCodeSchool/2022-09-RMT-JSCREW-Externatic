@@ -1,6 +1,6 @@
 import { React, useState, useContext } from "react";
 import logo from "@assets/Logo-Externatic.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ConnexionModal from "../UI/ConnexionModal";
 import User from "../../contexts/User";
 
@@ -8,25 +8,31 @@ import "./NavBar.css";
 
 function NavBar() {
   const { user } = useContext(User.UserContext);
+  const navigate = useNavigate();
   const [connexionModalIsVisible, setConnexionModalIsVisible] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const handleOnCloseConnexionModal = () => {
     setConnexionModalIsVisible(false);
   };
 
+  const setManageRedirect = (url) => {
+    setIsNavOpen(false);
+    navigate(url);
+  };
+
   const profilConnex = () => {
     if (user) {
       const userId = user.id ? user.id : user;
       return (
-        <a
-          href={`/profil/${userId}`}
+        <button
+          type="button"
           className="hover:decoration-blue-400 border-gray-400 my-6 "
-          onClick={() => setIsNavOpen(false)}
+          onClick={() => setManageRedirect(`/profil/${userId}`)}
         >
           <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
             Profil
           </p>
-        </a>
+        </button>
       );
     }
     return null;
@@ -94,43 +100,43 @@ function NavBar() {
             </svg>
           </button>
           <div className="flex flex-col justify-between min-h-[200px] w-80 text-2xl">
-            <a
-              href="/"
+            <button
+              type="button"
               className="border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Accueil
               </p>
-            </a>
-            <a
-              href="/offres"
+            </button>
+            <button
+              type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/offres")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Offres d'emploi
               </p>
-            </a>
+            </button>
             {profilConnex()}
-            <a
-              href="/infos"
+            <button
+              type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/infos")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Qui sommes-nous ?
               </p>
-            </a>
-            <a
-              href="/"
+            </button>
+            <button
+              type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setIsNavOpen(false)}
+              onClick={() => setManageRedirect("/")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Contact
               </p>
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ class ConnexionManager extends AbstractManager {
   updateProfil(candidat) {
     return this.connection.query(
       `update ${this.table} set profil = true where id = ?`,
-      [candidat.connexion_id]
+      [candidat]
     );
   }
 }
