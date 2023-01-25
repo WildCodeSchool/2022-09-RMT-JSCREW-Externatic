@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 
 const router = express.Router();
+const domaineControllers = require("./controllers/domaineControllers");
 const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
@@ -38,9 +39,14 @@ router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
+router.post("/entreprises", entrepriseControllers.add);
+router.put("/entreprises/:id", entrepriseControllers.edit);
+router.get("/entreprises/:id", entrepriseControllers.read);
+router.get("/domaines/", domaineControllers.browse);
 router.get("/candidatures/:id", offreControllers.candidatures);
 router.post("/offres", offreControllers.add);
 router.put("/offres/:id", offreControllers.edit);
+
 
 // mur d'authentification
 router.use(checkAuth);
@@ -57,7 +63,6 @@ router.put(
 );
 
 // routes privées
-router.post("/entreprises", entrepriseControllers.add);
 router.post(
   "/profil",
   upload.fields([

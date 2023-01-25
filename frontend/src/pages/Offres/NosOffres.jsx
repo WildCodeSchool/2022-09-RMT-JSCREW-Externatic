@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Card from "@components/UI/Card";
 import connaissance from "@assets/connaissance.png";
+import icon4 from "../../../public/externatic_favicon.png";
 
 function NosOffres() {
   const [offresData, setOffresData] = useState([]);
@@ -17,6 +19,15 @@ function NosOffres() {
 
   return (
     <div className="">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Nos offres</title>
+        <meta
+          name="description"
+          content="Page Nos offres qui affiche toutes les offres d'emploi du site Externatic"
+        />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
       <div className="flex flex-col items-center text-dark my-5 mx-5">
         <div className="font-bold text-center mb-4">
           Vos opportunités d'emploi,
