@@ -43,7 +43,7 @@ function Profil() {
     dateDisponibilite: "",
     connexion_id: user.id,
   };
-  
+
   const [candidatures, setCandidatures] = useState([]);
   const [profil, setProfil] = useState(profilType);
 
@@ -115,8 +115,7 @@ function Profil() {
     }
   };
 
-
- // Fonction qui gère la récupération des données profil
+  // Fonction qui gère la récupération des données profil
   const getFullProfil = () => {
     apiConnexion
       .get(`/profil/${user.id}`)
@@ -126,26 +125,26 @@ function Profil() {
       .catch((error) => console.error(error));
   };
 
-    // Fonction qui gère la récupération des données de candidatures liées au profil
-    const getCandidatures = () => {
-      apiConnexion
-        .get(`/candidatures/${user.id}`)
-        .then((userCandidatures) => {
-          setCandidatures(userCandidatures.data);
-        })
-        .catch((error) => console.error(error));
-    };
+  // Fonction qui gère la récupération des données de candidatures liées au profil
+  const getCandidatures = () => {
+    apiConnexion
+      .get(`/candidatures/${user.id}`)
+      .then((userCandidatures) => {
+        setCandidatures(userCandidatures.data);
+      })
+      .catch((error) => console.error(error));
+  };
 
   useEffect(() => {
     if (user.profil) {
       getFullProfil();
-      }
-    }, []);
+    }
+  }, []);
 
-    // Données "candidatures"
-    useEffect(() => {
-      getCandidatures();
-    }, []);
+  // Données "candidatures"
+  useEffect(() => {
+    getCandidatures();
+  }, []);
 
   return (
     <div className="profil flex justify-center">

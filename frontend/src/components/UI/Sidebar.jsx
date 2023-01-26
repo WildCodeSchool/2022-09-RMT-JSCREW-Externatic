@@ -106,7 +106,9 @@ export default function Sidebar() {
                       d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
                     />
                   </svg>
-                  <span className="text-white hover:text-orange">Entreprise</span>
+                  <span className="text-white hover:text-orange">
+                    Entreprise
+                  </span>
                 </Link>
               </li>
               <li className="rounded-sm">
@@ -150,7 +152,9 @@ export default function Sidebar() {
                       d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                     />
                   </svg>
-                  <span className="text-white hover:text-orange">Consultants</span>
+                  <span className="text-white hover:text-orange">
+                    Consultants
+                  </span>
                 </Link>
               </li>
               <li className="rounded-sm">
