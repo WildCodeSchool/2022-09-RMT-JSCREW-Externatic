@@ -1,4 +1,5 @@
 require("dotenv").config();
+const models = require("../models");
 
 const browse = (req, res) => {
   models.item

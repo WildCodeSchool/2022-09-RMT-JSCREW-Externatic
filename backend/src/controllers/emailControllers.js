@@ -1,9 +1,15 @@
 const nodemailer = require("nodemailer");
-// const models = require("../models");
 require("dotenv").config();
 
-const sendMail = async (req, res) => {
-  const { name, surname, phone, email, message } = req.body;
+const sendMail = async (req) => {
+  const email = {
+    name: req.nom,
+    surname: req.prenom,
+    phone: req.telephone,
+    email: req.email,
+    message:
+      "Votre inscription à bien été prise en compte. Un consultant prendra bientôt contacte avec vous.",
+  };
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_SENDIN,
@@ -16,25 +22,28 @@ const sendMail = async (req, res) => {
   });
 
   const mailOptions = {
-    from: email,
-    to: "glemoine@hotmail.fr", // this is the address to which the email will be sent
-    subject: "New message from contact form",
-    text: `${message} \n\n Phone: ${phone} \n\n Name: ${name} \n\n Surname: ${surname} \n\n Email: ${email}`,
-    html: `<p>${message}</p> <p>Phone: ${phone}</p> <p>Name: ${name}</p> <p>Surname: ${surname}</p> <p>Email: ${email}</p>`,
+    from: "glemoine@hotmail.fr",
+    to: email.email, // this is the address to which the email will be sent
+    subject: "Nouveau message d'Externatic",
+    attachments: [
+      {
+        filename: "Logo-Externatic.png",
+        path: "public/assets/images/Logo-Externatic.png",
+        cid: "logo",
+      },
+    ],
+    text: `${email.message} \n\n Phone: ${email.phone} \n\n Name: ${email.name} \n\n Surname: ${email.surname} \n\n Email: ${email.email}`,
+    html: `<p>Bonjour,</p> <p>${email.message}</p> <p>Rappel de vos coordonnées :</p><p>Téléphone: ${email.phone}</p><p>Nom: ${email.name}</p> <p>Prenom: ${email.surname}</p><p>Email: ${email.email}</p> <img src="cid:logo" height="100" />`,
   };
 
   return transporter
     .sendMail(mailOptions)
     .then((info) => {
       console.warn(info);
-      res.status(200).send("Message sent");
     })
     .catch((err) => {
       console.warn(err);
-      res.status(500).send("Something went wrong");
     });
 };
 
-module.exports = {
-  sendMail,
-};
+module.exports = sendMail;

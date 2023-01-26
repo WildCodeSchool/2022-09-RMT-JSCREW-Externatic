@@ -53,14 +53,6 @@ function Profil() {
   };
 
   const sendForm = (e) => {
-    const email = {
-      name: profil.nom,
-      surname: profil.prenom,
-      email: profil.email,
-      phone: profil.telephone,
-      message:
-        "Merci de votre inscription à bien été prise en compte. Un consultant prendra bientôt contacte avec vous.",
-    };
     e.preventDefault();
 
     const formData = new FormData();
@@ -101,15 +93,6 @@ function Profil() {
             toastifyConfig
           );
           console.warn(err);
-        });
-      // Envoie d'un email
-      apiConnexion
-        .post("/SendEmail", email)
-        .then((res) => {
-          console.warn(res);
-        })
-        .catch((err) => {
-          console.error(err);
         });
     }
   };
