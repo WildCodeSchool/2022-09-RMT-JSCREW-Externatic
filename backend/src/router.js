@@ -45,6 +45,8 @@ router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
 router.get("/candidatures/:id", offreControllers.candidatures);
 router.get("/nbCandidats", candidatControllers.getCount);
+router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
+router.get("/nbOffres", offreControllers.getCountOffre);
 
 // mur d'authentification
 router.use(checkAuth);

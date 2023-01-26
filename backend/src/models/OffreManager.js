@@ -35,6 +35,12 @@ class OffreManager extends AbstractManager {
     );
   }
 
+  findCount() {
+    return this.connection.query(
+      `select count(id) as count from  ${this.table}`
+    );
+  }
+
   findAll() {
     return this.connection.query(
       `SELECT * FROM ${this.table} AS o INNER JOIN entreprise AS e ON e.id = o.entreprise_id`
