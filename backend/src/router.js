@@ -47,6 +47,9 @@ router.get("/candidatures/:id", offreControllers.candidatures);
 router.get("/nbCandidats", candidatControllers.getCount);
 router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
 router.get("/nbOffres", offreControllers.getCountOffre);
+router.post("/offres", offreControllers.add);
+router.put("/offres/:id", offreControllers.edit);
+
 
 // mur d'authentification
 router.use(checkAuth);
@@ -73,7 +76,5 @@ router.post(
 );
 
 router.post("/register", connexionControllers.add);
-
-router.post("/offres", offreControllers.add);
 
 module.exports = router;
