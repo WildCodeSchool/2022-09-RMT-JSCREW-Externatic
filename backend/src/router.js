@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 
 const router = express.Router();
+const consultantControllers = require("./controllers/consultantControllers");
 const domaineControllers = require("./controllers/domaineControllers");
 const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
@@ -46,7 +47,11 @@ router.get("/domaines/", domaineControllers.browse);
 router.get("/candidatures/:id", offreControllers.candidatures);
 router.post("/offres", offreControllers.add);
 router.put("/offres/:id", offreControllers.edit);
-
+router.get("/consultants", consultantControllers.browse);
+router.get("/consultants/:id", consultantControllers.read);
+router.post("/consultants", consultantControllers.add);
+router.put("/consultants/:id", consultantControllers.edit);
+router.delete("/consultants/:id", consultantControllers.destroy);
 // mur d'authentification
 router.use(checkAuth);
 
