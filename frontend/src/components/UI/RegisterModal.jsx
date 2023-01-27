@@ -67,7 +67,7 @@ function RegisterModal({ visible, onclose }) {
         <h2 className="text-center text-4xl font-bold mt-4">Inscription</h2>
         <form
           onSubmit={(e) => sendForm(e)}
-          className="bg-white   px-8 pt-6 pb-8 mb-4"
+          className="bg-white   px-6 pt-6 pb-8 mb-4"
         >
           <input
             required
@@ -92,9 +92,9 @@ function RegisterModal({ visible, onclose }) {
           <input
             required
             className="shadow appearance-none border rounded-full w-full mt-4 py-2 px-3 bg-grey text-black placeholder-black"
-            id="Confirmer MDP"
+            id="Confirmer mot de passe"
             type="password"
-            placeholder="Confirmer MDP"
+            placeholder="Confirmer mot de passe"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </form>
@@ -102,7 +102,7 @@ function RegisterModal({ visible, onclose }) {
           <button
             onClick={(e) => sendForm(e)}
             type="submit"
-            className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-2xl"
+            className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
           >
             Valider
           </button>
