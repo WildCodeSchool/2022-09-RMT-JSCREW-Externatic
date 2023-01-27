@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from "react";
-import apiConnexion from "@services/apiConnexion";
+import React from "react";
 
-function Offres() {
-  const [jobs, setjobs] = useState([]);
-
-  // Fonction qui gère la récupération des données "offre" avec axios
-  const getAllOffres = () => {
-    apiConnexion
-      .get(`/offres`)
-      .then((offres) => setjobs(offres.data))
-      .catch((error) => console.error(error));
-  };
-
-  // Données "offre" update
-  useEffect(() => {
-    getAllOffres();
-  }, []);
-
+function SelectOffreForm({ selectJobs, jobs }) {
   return (
     <div>
       <div className=" mb-3 flex justify-left">
         <div className="mb-3 xl:w-96">
           <select
+            onChange={(e) => {
+              selectJobs(e.target.value);
+            }}
             className="form-select appearance-none
               block
               w-full
@@ -39,9 +26,9 @@ function Offres() {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected> offre</option>
+            <option selected>Les Offres</option>
             {jobs.map((offre) => (
-              <option key={offre.id} value="">
+              <option key={offre.id} value={offre.id}>
                 {offre.poste}
               </option>
             ))}
@@ -52,4 +39,4 @@ function Offres() {
   );
 }
 
-export default Offres;
+export default SelectOffreForm;

@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
   `utilisateur` VARCHAR(255) UNIQUE NOT NULL,
   `hashedPassword` VARCHAR(255) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
+  `profil` BOOLEAN DEFAULT false,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
@@ -34,170 +35,216 @@ CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
 -- Data for table `externatic`.`connexion`
 -- -----------------------------------------------------
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`)
+  `connexion`(
+    `utilisateur`,
+    `hashedPassword`,
+    `role`,
+    `profil`
+  )
 VALUES
   (
     'alain.villeneuve@email.fr',
     '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
-    'candidat'
+    'candidat',
+    1
   ),
   (
     'admin@email.fr',
     '$argon2id$v=19$m=65536,t=5,p=1$K4MCUL/SfTYXJwTvaNReLA$rykd7aX4kbZqvkGAUGaaEw0So7b/T4qRDU2sfSMP3js',
-    'administrateur'
+    'administrateur',
+    1
   );
 
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`)
+  `connexion`(
+    `utilisateur`,
+    `hashedPassword`,
+    `role`,
+    `profil`
+  )
 VALUES
   (
     'jules.simons@email.com',
     '$argon2id$v=19$m=65536,t=5,p=1$/HK/Ld5LeiO4jvCt1RiZ5w$uZ4S6Rv3fgZjJ7zXOcSWu/4AqVYS7b8shoQ8jBp97iQ',
-    'candidat'
+    'candidat',
+    1
   );
 
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`)
+  `connexion`(
+    `utilisateur`,
+    `hashedPassword`,
+    `role`,
+    `profil`
+  )
 VALUES
   (
     'leo.dupuis@gmail.com',
     '$argon2id$v=19$m=65536,t=5,p=1$ljTaKRXcTPtt0DA6x++gJQ$cV4GQmsqa3o9WGu5Mr88ibCNlolIyryFXbMecKApIEA',
-    'candidat'
+    'candidat',
+    1
   ),
   (
     "franck.gascard@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$0V1WR6sYiBta8aZCZCXROA$4GtsulV1jW1K7gi98Eg/KdZgAQ5vTDnyJbBwZFTxiag",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "benjamin.casseron@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$52xCe/PKuxjzhgVXf3V/Bw$iPBpeqjGmjwg5xgJAddqdRLWSBQCOHoDTLR1GMbVw4Y",
-    "Consultant"
+    "Consultant",
+    1
   ),
   (
     "sabrina.blanchet@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$QYnNu0v6LJ3rQgfld5GuUw$Morq/xKz7ka7LukRvBG+t+IGktYmtMXaedKq6UqrBdY",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "mathieu.debroise@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$7g2/MXBsB4XkML7yadMQEg$CWnGMtkFqsPP7CooSucq3lY7F5vRBrKzFHDA53tJFV8",
-    "Consultant"
+    "Consultant",
+    1
   ),
   (
     "thomas.limare@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$CriKcNEI6ytY9MZppPJiRQ$wUNlTvruOjTw0RF+FLIHTh3xjEPTB88ZPAgKG3DzFro",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "ando.philistin@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$2enKB7+4DiOHTUITy7WK5w$AcS556X/1qJOD7k+MwCLQ321ji5jC5pZCDIBHFyct5U",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "donatien.mahieu@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$Gofqkb/tyJFSyrMUEI8vAw$25X3FLE7N76jxZh616oj6lGmZxrDPPoZ4udfyxlP8bs",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "yvonnick.loidreau@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$B+K3VbN2ixZJDgr4onROfA$XWemGjYfLAVdTqseotjzoE6YEzHJErPQXDziI8/ZKQM",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "sandra.jagu@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$NwYpk2YS6efiziSPK/Qn1w$odNiScKMXqKRXipvYFkQ6UaskGGLjkPDB+68/R6WGlU",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "mathilde.hamel@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$UL3MfR3AMLIMPwuteuIjDw$xBed5vMgsUfW/sinZJj2hE+BG15GbEt/PyeVuEOvTTA",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "justine.cote@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$CL8twZI39JEmC+F1tjua3A$HW9yPTZZtWscg6MEy7pHxniaIqfIZuyZ/pYm2+qxn08",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "perrine.dupisson@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$tbFftgt0qePrwv74DPpvNQ$MObXh2YP8SNH8pnb5u1r/KYB6YZdWqsRRtEL4uIwcRQ",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "noe.lambert@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$D6LkKuBi8jfM7ZGZA2PAOQ$u4f6mCbUu9yoDhCJFf5gIDCE1TzgHTsb3wUWAUiGF58",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "antoine.lopez@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$rOUM+9lCK3KhgHphPTMzTg$cw7UdZFUziZKX57TXHfeOBdTt/g7QXCK2+BftCvgyR8",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "pierre.seghier@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$O7qyUqbc1B7OtSN4soD4sQ$vcD5spnWqWPVBnSKQf4N7hUtKraY2zE+qP3F5soBYv4",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "lise.demartino@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$DoYK+EyUe2hI4fxFdgmMTg$aCqDDqlARVkMH3iMRpgqQQhKwQig3cnRLHKXDEIWqCM",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "alexandre.urien@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$U/Ea/9iCVJMbBjnF8Na1Fg$l7RBAbQI1E2jCZgceO3Knn2ed0wFQhktJ4RFE5B2qJc",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "adele.sold @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$ldQ6+atDySqdtNNHz+tapg$c872nQfD0B8Y8lnwGa300odVO3SRR7pCBtsXGoxPPZk",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "margaux.aubert @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$dz97nd77JIpUFbXK1t6gXw$ttpdYrkq+ZbcqO3Q81VHrxG1EYOg4aoRWjxxogiX+Mc",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "nicolas.bouet @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$cT+X+ZVTxm7IWQ7M9mY0LQ$Sm1+wrCr+xiFIa3Cbv2ZUOBogi8REWredAZPuH0Ui1g",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "lucie.froeschel @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$ySw7Fh7GJ4f5SGlRLr8ERw$yJ2Zj4uhJtPWSPY43N5ql2nBn5RXM7UB03w/oVve5q0",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "Raphael.sanchez @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$ayvtf2vi9ayaQHR+kxcJew$TD4DwFJSfixYwDtxw5nX54rgDkxnYUs+1Ylysampvo4",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "thomas.rovere @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$Aa4FKlaCk9s9/2vSeAisPw$AmS47P4Wtf5V4ahhDOeJLsb4ICrpmcUX4N8fKkgtqj4",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "charlotte.nadaud @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$g2gQLkZcbHJijvwQ1Ow5Dg$lolc7l83GVjLYgtqwDJe/swRua6lTmS5UMTZp3Cqdv4",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "ruben.baracchini @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$xHXN3G/uicDb2E86D3QpcQ$sC6+8Bjp0VbVwXSzzgjbYXJF6+7sL5eoZlvEXeuijtk",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "tiffene.buleon @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$thdHw9zmFnJYBTZUFZUhOA$hezorJOBpJzHe1xiI8FFMefLliBIwTs26t+9zH3bWSQ",
-    "consultant"
+    "consultant",
+    1
   ),
   (
     "talsy.loemba @externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$U/Ea/9iCVJMbBjnF8Na1Fg$l7RBAbQI1E2jCZgceO3Knn2ed0wFQhktJ4RFE5B2qJc",
-    "consultant"
+    "consultant",
+    1
   );
 
 -- -----------------------------------------------------
@@ -665,8 +712,10 @@ CREATE TABLE IF NOT EXISTS `externatic`.`entreprise` (
   `nombre_employes` INT NOT NULL,
   `dateInscription` DATE NOT NULL,
   `domaine_id` INT NOT NULL,
+  `consultant_id` INT,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_domaine_entreprise` FOREIGN KEY (`domaine_id`) REFERENCES `externatic`.`domaine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_domaine_entreprise` FOREIGN KEY (`domaine_id`) REFERENCES `externatic`.`domaine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_consultant_entreprise` FOREIGN KEY (`consultant_id`) REFERENCES `externatic`.`consultant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 -- -----------------------------------------
@@ -686,7 +735,8 @@ INSERT INTO
     `numero_siret`,
     `nombre_employes`,
     `dateInscription`,
-    `domaine_id`
+    `domaine_id`,
+    `consultant_id`
   )
 VALUES
   (
@@ -702,6 +752,7 @@ VALUES
     '123456789',
     500,
     '2022-09-15',
+    1,
     1
   ),
   (
@@ -717,6 +768,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -732,7 +784,8 @@ VALUES
     "",
     250,
     "2023-01-08",
-    1
+    1,
+    2
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/03/allovoisins-1.png",
@@ -747,6 +800,7 @@ VALUES
     "",
     50,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -762,6 +816,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -777,6 +832,7 @@ VALUES
     "753886092",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -792,6 +848,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -807,6 +864,7 @@ VALUES
     "",
     8600,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -822,6 +880,7 @@ VALUES
     "",
     50,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -837,6 +896,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -852,6 +912,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -867,6 +928,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -882,6 +944,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -897,6 +960,7 @@ VALUES
     "",
     500,
     "2023-08-01",
+    1,
     1
   ),
   (
@@ -912,6 +976,7 @@ VALUES
     "",
     300,
     "2023-01-08",
+    1,
     1
   );
 
@@ -929,7 +994,8 @@ INSERT INTO
     `numero_siret`,
     `nombre_employes`,
     `dateInscription`,
-    `domaine_id`
+    `domaine_id`,
+    `consultant_id`
   )
 VALUES
   (
@@ -945,7 +1011,8 @@ VALUES
     '987452314',
     20,
     '2022-07-01',
-    2
+    2,
+    1
   );
 
 INSERT INTO
@@ -962,7 +1029,8 @@ INSERT INTO
     `numero_siret`,
     `nombre_employes`,
     `dateInscription`,
-    `domaine_id`
+    `domaine_id`,
+    `consultant_id`
   )
 VALUES
   (
@@ -978,7 +1046,8 @@ VALUES
     '456321789',
     100,
     '2022-12-07',
-    3
+    3,
+    1
   );
 
 -- -----------------------------------------------------
@@ -1113,6 +1182,9 @@ CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `candidat_id` INT NOT NULL,
   `offre_id` INT NOT NULL,
+  `dateCandidature` DATE NOT NULL,
+  `suiviParCandidat` BOOLEAN NOT NULL DEFAULT true,
+  `traiteParConsultant` BOOLEAN NOT NULL DEFAULT false,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_candidature_candidat` FOREIGN KEY (`candidat_id`) REFERENCES `externatic`.`candidat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_candidature_offre` FOREIGN KEY (`offre_id`) REFERENCES `externatic`.`offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1122,31 +1194,67 @@ CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
 -- Data for table `externatic`.`candidature`;
 -- ----------------------------------------
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (1, 1);
+  (1, 1, "2023-01-08", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (1, 2);
+  (1, 2, "2023-01-12", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (2, 2);
+  (2, 2, "2023-01-16", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (2, 3);
+  (2, 3, "2023-01-02", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (3, 1);
+  (3, 1, "2023-01-09", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (3, 3);
+  (3, 3, "2023-01-06", true, false);

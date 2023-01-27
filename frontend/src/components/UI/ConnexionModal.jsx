@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import User from "../../contexts/User";
@@ -22,6 +23,7 @@ function ConnexionModal({ visible, onclose }) {
   });
 
   const userContext = useContext(User.UserContext);
+  const navigate = useNavigate("");
 
   const handleConnexion = (place, value) => {
     const newConnexion = { ...connexion };
@@ -35,6 +37,11 @@ function ConnexionModal({ visible, onclose }) {
       .then((data) => {
         userContext.handleUser(data.data);
         toast.success(`Bonjour à vous`, toastifyConfig);
+        if (data.data.profil) {
+          setTimeout(() => onclose(), 2000);
+        } else {
+          setTimeout(() => navigate(`profil/${data.data.id}`), 2000);
+        }
       })
       .catch(() => {
         toast.error(

@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from "react";
-import apiConnexion from "@services/apiConnexion";
+import React from "react";
 
-function Offres() {
-  const [jobs, setjobs] = useState([]);
-
-  // Fonction qui gère la récupération des données "offre" avec axios
-  const getAllOffres = () => {
-    apiConnexion
-      .get(`/offres`)
-      .then((offres) => setjobs(offres.data))
-      .catch((error) => console.error(error));
-  };
-
-  // Données "offre" update
-  useEffect(() => {
-    getAllOffres();
-  }, []);
-
+function EntrepriseSelect({ selectEntreprise, entreprises }) {
   return (
     <div>
       <div className=" mb-3 flex justify-left">
         <div className="mb-3 xl:w-96">
           <select
+            onChange={(e) => {
+              selectEntreprise(e.target.value);
+            }}
             className="form-select appearance-none
               block
               w-full
@@ -29,6 +16,7 @@ function Offres() {
               py-1.5
               text-base
               font-normal
+              font-roboto
               text-gray-700
               bg-white bg-clip-padding bg-no-repeat
               border border-solid border-gray-300
@@ -39,10 +27,10 @@ function Offres() {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected> offre</option>
-            {jobs.map((offre) => (
-              <option key={offre.id} value="">
-                {offre.poste}
+            <option selected>Les Entreprises</option>
+            {entreprises.map((entreprise) => (
+              <option key={entreprise.id} value={entreprise.id}>
+                {entreprise.nom_entreprise}
               </option>
             ))}
           </select>
@@ -52,4 +40,4 @@ function Offres() {
   );
 }
 
-export default Offres;
+export default EntrepriseSelect;

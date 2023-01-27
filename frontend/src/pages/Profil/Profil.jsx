@@ -1,12 +1,19 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 import apiConnexion from "@services/apiConnexion";
+
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
 import avatar from "@assets/Avatar.png";
-import Card from "@components/UI/Card";
+
+import CandidatureTable from "@components/Table/CandidatureTable";
+
 import User from "../../contexts/User";
+
+import icon4 from "../../../public/externatic_favicon.png";
+
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -22,10 +29,9 @@ const toastifyConfig = {
 };
 
 function Profil() {
-  const { user } = useContext(User.UserContext);
-
-  const userId = user.id ? user.id : user;
-
+  const { user, updateUserProfil } = useContext(User.UserContext);
+  const inputRef1 = useRef(null);
+  const inputRef2 = useRef(null);
   const profilType = {
     nom: "",
     prenom: "",
@@ -34,17 +40,14 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: "",
+    email: user.utilisateur,
     description: "",
     metier: "",
     telephone: "",
     dateDisponibilite: "",
-    connexion_id: userId,
+    connexion_id: user.id,
   };
 
-  // ajout d'un zéro pour les dates et les mois inférieurs à 10
-
-  const [candidatures, setCandidatures] = useState({});
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -52,29 +55,50 @@ function Profil() {
     newProfil[place] = value;
     setProfil(newProfil);
   };
-  const inputRef1 = useRef(null);
-  const inputRef2 = useRef(null);
+
   const sendForm = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("avatar", inputRef1.current.files[0]);
     formData.append("cv", inputRef2.current.files[0]);
     formData.append("data", JSON.stringify(profil));
-    apiConnexion
-      .post("/profil", formData)
-      .then(() => {
-        toast.success(
-          `Bonjour ${profil.nom} ${profil.prenom} votre inscription a bien été enregistrée.`,
-          toastifyConfig
-        );
-      })
-      .catch((err) => {
-        toast.error(
-          `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
-          toastifyConfig
-        );
-        console.warn(err);
-      });
+
+    if (user.profil) {
+      apiConnexion
+        .put(`/profil/${user.id}`, formData)
+        .then(() => {
+          toast.success(
+            `Bonjour, votre profil a bien été modifié.`,
+            toastifyConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    } else {
+      apiConnexion
+        .post("/profil", formData)
+        .then((res) => {
+          handleProfil("id", res.id);
+          updateUserProfil();
+          toast.success(
+            `Bonjour ${profil.nom} ${profil.prenom}, votre profil a bien été enregistré.`,
+            toastifyConfig
+          );
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre inscription n'a pas été validée`,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    }
   };
 
   // La fonction previewPicture
@@ -96,63 +120,33 @@ function Profil() {
   };
 
   // Fonction qui gère la récupération des données profil
-
-  if (user.id) {
-    const getFullProfil = () => {
-      apiConnexion
-        .get(`/profil/${user.id}`)
-        .then((profilUser) => {
-          setProfil(profilUser.data);
-        })
-        .catch((error) => console.error(error));
-    };
-    // Fonction qui gère la récupération des données de candidatures liées au profil
-    const getCandidatures = () => {
-      apiConnexion
-        .get(`/candidatures/${user.id}`)
-        .then((userCandidatures) => {
-          setCandidatures(userCandidatures.data);
-        })
-        .catch((error) => console.error(error));
-    };
-
-    // Données "profil"
-    useEffect(() => {
-      getFullProfil();
-    }, []);
-
-    // Données "candidatures"
-    useEffect(() => {
-      getCandidatures();
-    }, []);
-  }
-
-  const handelUpdateProfil = () => {
-    if (user.id) {
-      const formData = new FormData();
-      formData.append("avatar", inputRef1.current.files[0]);
-      formData.append("cv", inputRef2.current.files[0]);
-      formData.append("data", JSON.stringify(profil));
-      apiConnexion
-        .put(`/profil/${user.id}`, formData)
-        .then(() => {
-          toast.success(
-            `Bonjour  votre profil à bien été modifier.`,
-            toastifyConfig
-          );
-        })
-        .catch((err) => {
-          toast.error(
-            `Veuillez vérifier vos champs, votre modification n'a pas été prise en compte `,
-            toastifyConfig
-          );
-          console.warn(err);
-        });
-    }
+  const getFullProfil = () => {
+    apiConnexion
+      .get(`/profil/${user.id}`)
+      .then((profilUser) => {
+        setProfil(profilUser.data);
+      })
+      .catch((error) => console.error(error));
   };
+
+  useEffect(() => {
+    // Si le profil est déjà existant
+    if (user.profil) {
+      getFullProfil();
+    }
+  }, []);
 
   return (
     <div className="profil flex justify-center">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Profil</title>
+        <meta
+          name="description"
+          content="Page Profil qui affiche toutes les informations concernant un utilisateur"
+        />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
       <form
         encType="multipart/form-data"
         onSubmit={(e) => sendForm(e)}
@@ -301,7 +295,7 @@ function Profil() {
               type="email"
               placeholder="nom@exemple.com"
               name="email"
-              value={profil.email}
+              value={user.utilisateur}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -347,7 +341,7 @@ function Profil() {
             />
           </div>
         </div>
-        {!user.id && (
+        {!user.profil && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
               className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
@@ -357,29 +351,17 @@ function Profil() {
             </button>
           </div>
         )}
-        {user.id && (
+        {user.profil && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
               className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
-              type="button"
-              onClick={() => handelUpdateProfil()}
+              type="submit"
             >
               Mettre à jour
             </button>
           </div>
         )}
-        {user.id && (
-          <div>
-            <h1 className="text-center">Vos candidatures</h1>
-            <div className="lg:flex lg:justify-around lg:w-full">
-              {candidatures.map((candidature) => (
-                <Link to={`/offres/${candidature.id}`}>
-                  <Card candidature={candidature} key={candidature.id} />
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        {user.id && <CandidatureTable user={user} />}
       </form>
       <ToastContainer
         position="bottom-right"
