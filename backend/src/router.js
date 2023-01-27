@@ -7,6 +7,7 @@ const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
+const candidaturesControllers = require("./controllers/candidaturesControllers");
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -39,25 +40,23 @@ router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
-router.post("/entreprises", entrepriseControllers.add);
-router.put("/entreprises/:id", entrepriseControllers.edit);
+
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
-router.get("/candidatures/:id", offreControllers.candidatures);
+
 router.get("/nbCandidats", candidatControllers.getCount);
 router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
 router.get("/nbOffres", offreControllers.getCountOffre);
-router.post("/offres", offreControllers.add);
-router.put("/offres/:id", offreControllers.edit);
+
 
 
 // mur d'authentification
-router.use(checkAuth);
 
-router.get("/profil/:id", candidatControllers.read);
+router.get("/profil/:id", checkAuth, candidatControllers.read);
 
 router.put(
   "/profil/:id",
+  checkAuth,
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "cv", maxCount: 1 },
@@ -68,6 +67,7 @@ router.put(
 // routes privées
 router.post(
   "/profil",
+  checkAuth,
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "cv", maxCount: 1 },
@@ -75,6 +75,17 @@ router.post(
   candidatControllers.add
 );
 
-router.post("/register", connexionControllers.add);
+router.get(
+  "/candidatures/:user_id",
+  checkAuth,
+  candidaturesControllers.browseById
+);
+router.put("/candidatures/:id", checkAuth, candidaturesControllers.edit);
+
+router.post("/entreprises", checkAuth, entrepriseControllers.add);
+router.put("/entreprises/:id", entrepriseControllers.edit);
+
+router.post("/offres", offreControllers.add);
+router.put("/offres/:id", offreControllers.edit);
 
 module.exports = router;
