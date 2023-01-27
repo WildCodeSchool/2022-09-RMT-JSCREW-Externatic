@@ -102,13 +102,13 @@ function RegisterModal({ visible, onclose }) {
           <button
             onClick={(e) => sendForm(e)}
             type="submit"
-            className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
+            className="rounded-full px-6 py-1 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
           >
             Valider
           </button>
           <button
             type="button"
-            className="rounded-full px-6 mt-2 text-darkPink text-md"
+            className="rounded-full px-6 mt-2 text-darkPink text-md hover:underline"
             onClick={onclose}
           >
             Retour
