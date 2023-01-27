@@ -3,19 +3,20 @@ import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toastiConfig from "@services/toastiConfig";
+import ConsultantSelect from "./consultantSelect";
 
 const consultType = {
   image_url: "",
   nom_consultant: "",
   telephone: "",
   email: "",
-  linkedin: "",
+  LinkedIn: "",
   connexion_id: "",
 };
 
 function FormConsultants() {
   const [consult, setConsult] = useState(consultType);
-  const [setAdmin] = useState([]);
+  const [admin, setAdmin] = useState([]);
   // Fonction qui gère la récupération des données "consultants" avec axios
   const getAllConsultants = () => {
     apiConnexion
@@ -50,10 +51,10 @@ function FormConsultants() {
       });
   };
 
-  // const selectConsultants = (id) => {
-  //   const consults = admin.find((e) => e.id === parseInt(id, 10));
-  //   setConsult(consult);
-  // };
+  const selectConsultants = (id) => {
+    const consults = admin.find((e) => e.id === parseInt(id, 10));
+    setConsult(consults);
+  };
 
   // // Mettre à jour un consultant
   const handelUpdateConsult = () => {
@@ -76,6 +77,10 @@ function FormConsultants() {
         <h1 className="font-roboto text-2xl font-light text-center capitalize ">
           Formulaire Consultants
         </h1>
+        <ConsultantSelect
+          selectConsultants={selectConsultants}
+          consultants={admin}
+        />
         <form className="mt-6">
           <div className="mb-2">
             <label>
@@ -121,7 +126,7 @@ function FormConsultants() {
               />
             </label>
             <label>
-              <span className="text-gray-700">avantages</span>
+              <span className="text-gray-700">téléphone</span>
               <input
                 required
                 type="text"
@@ -165,10 +170,9 @@ function FormConsultants() {
             <label>
               <span className="text-gray-700">lien LinkedIn</span>
               <input
-                required
                 type="text"
                 name="linkedin"
-                value={consult.linkedin}
+                value={consult.LinkedIn}
                 onChange={(e) => handleConsult(e.target.name, e.target.value)}
                 className="
                   w-full
@@ -181,27 +185,6 @@ function FormConsultants() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
                 placeholder="LinkedIn"
-              />
-            </label>
-            <label>
-              <span className="text-gray-700">Connexion_id</span>
-              <input
-                required
-                type="text"
-                name="connexion_id"
-                value={consult.connexion_id}
-                onChange={(e) => handleConsult(e.target.name, e.target.value)}
-                className="
-                  w-full
-                  block px-16 py-2 mt-2
-                  border-gray-300
-                  rounded-md
-                  shadow-sm
-                  focus:border-indigo-300
-                  focus:ring
-                  focus:ring-indigo-200
-                  focus:ring-opacity-50"
-                placeholder=""
               />
             </label>
           </div>
