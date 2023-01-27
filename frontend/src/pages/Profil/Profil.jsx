@@ -1,14 +1,19 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 import apiConnexion from "@services/apiConnexion";
+
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
 import avatar from "@assets/Avatar.png";
-import Card from "@components/UI/Card";
-import icon4 from "../../../public/externatic_favicon.png";
+
+import CandidatureTable from "@components/Table/CandidatureTable";
+
 import User from "../../contexts/User";
+
+import icon4 from "../../../public/externatic_favicon.png";
+
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -44,6 +49,7 @@ function Profil() {
   };
 
   const [candidatures, setCandidatures] = useState([]);
+
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -125,6 +131,7 @@ function Profil() {
       .catch((error) => console.error(error));
   };
 
+
   // Fonction qui gère la récupération des données de candidatures liées au profil
   const getCandidatures = () => {
     apiConnexion
@@ -136,6 +143,7 @@ function Profil() {
   };
 
   useEffect(() => {
+    // Si le profil est déjà existant
     if (user.profil) {
       getFullProfil();
     }
@@ -371,18 +379,7 @@ function Profil() {
             </button>
           </div>
         )}
-        {user.id && (
-          <div>
-            <h1 className="text-center">Vos candidatures</h1>
-            <div className="lg:flex lg:justify-around lg:w-full">
-              {candidatures.map((candidature) => (
-                <Link to={`/offres/${candidature.id}`}>
-                  <Card offre={candidature} key={candidature.id} />
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        {user.id && <CandidatureTable user={user} />}
       </form>
       <ToastContainer
         position="bottom-right"

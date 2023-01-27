@@ -52,7 +52,7 @@ function EntrepriseForm() {
   };
 
   const sendFirm = (e) => {
-    e.preventDefault();   
+    e.preventDefault();
     apiConnexion
       .post("/entreprises", firm)
       .then((res) => {
@@ -64,10 +64,7 @@ function EntrepriseForm() {
         );
       })
       .catch((err) => {
-        toast.error(
-          err.response.data.details[0].message,
-          toastiConfig
-        );
+        toast.error(err.response.data.details[0].message, toastiConfig);
         console.warn();
       });
   };
@@ -94,10 +91,7 @@ function EntrepriseForm() {
           );
         })
         .catch((err) => {
-          toast.error(
-            err.response.data.details[0].message,
-            toastiConfig
-          );
+          toast.error(err.response.data.details[0].message, toastiConfig);
           console.warn();
         });
     }

@@ -1,6 +1,24 @@
 const models = require("../models");
 const validateEntreprise = require("../service/entreprise");
 
+/**
+ * fonction count entreprise
+ */
+const getCountEntp = (req, res) => {
+  models.entreprise
+    .findCount()
+    .then((data) => {
+      res.status(200).send(data[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+/**
+ *
+ * fonction inscription du jour
+ */
 const dateInscript = () => {
   const year = new Date().getFullYear();
   let month = new Date().getMonth() + 1;
@@ -45,7 +63,7 @@ const read = (req, res) => {
 // create entreprise
 
 const add = (req, res) => {
-  let entreprise = req.body;
+  const entreprise = req.body;
   entreprise.dateInscription = dateInscript();
   const error = validateEntreprise(entreprise);
   if (error) {
@@ -68,7 +86,7 @@ const add = (req, res) => {
 };
 // edit entreprise
 const edit = (req, res) => {
-  let entreprise = req.body;
+  const entreprise = req.body;
   delete entreprise.dateInscription;
   // TODO validations (length, format...)
 
@@ -110,4 +128,5 @@ module.exports = {
   edit,
   read,
   random,
+  getCountEntp,
 };
