@@ -1,6 +1,18 @@
 const models = require("../models");
 const validate = require("../service/candidat");
 
+const getCount = (req, res) => {
+  models.candidat
+    .findCount()
+    .then((data) => {
+      res.status(200).send(data[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const dateinscript = () => {
   const year = new Date().getFullYear();
   let month = new Date().getMonth() + 1;
@@ -105,4 +117,5 @@ module.exports = {
   add,
   read,
   edit,
+  getCount,
 };

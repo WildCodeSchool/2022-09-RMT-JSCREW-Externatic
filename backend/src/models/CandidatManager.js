@@ -36,6 +36,12 @@ class CandidatManager extends AbstractManager {
     );
   }
 
+  findCount() {
+    return this.connection.query(
+      `select count(id) as count from  ${this.table}`
+    );
+  }
+
   update(candidat, profilPhoto, profilCv, connexionId) {
     const newCandidat = { ...candidat };
     const dateDispo = newCandidat.dateDisponibilite;

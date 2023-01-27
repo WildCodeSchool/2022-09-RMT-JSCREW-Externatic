@@ -15,6 +15,21 @@ const dateInscript = () => {
   return `${year}-${month}-${date}`;
 };
 
+/**
+ * fonction count offre
+ */
+const getCountOffre = (req, res) => {
+  models.offre
+    .findCount()
+    .then((data) => {
+      res.status(200).send(data[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const random = (req, res) => {
   models.offre
     .rand(3)
@@ -117,4 +132,5 @@ const candidatures = (req, res) => {
     });
 };
 
-module.exports = { random, browse, read, add, edit, candidatures };
+
+module.exports = { random, browse, read, add, candidatures, getCountOffre };
