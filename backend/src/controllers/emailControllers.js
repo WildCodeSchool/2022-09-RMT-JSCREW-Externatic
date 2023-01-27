@@ -8,7 +8,7 @@ const sendMail = async (req) => {
     phone: req.telephone,
     email: req.email,
     message:
-      "Votre inscription à bien été prise en compte. Un consultant prendra bientôt contacte avec vous.",
+      "Votre inscription a bien été prise en compte. Un consultant prendra bientôt contact avec vous.",
   };
 
   const transporter = nodemailer.createTransport({
