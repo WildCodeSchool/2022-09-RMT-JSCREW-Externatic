@@ -48,8 +48,6 @@ function Profil() {
     connexion_id: user.id,
   };
 
-  const [candidatures, setCandidatures] = useState([]);
-
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -131,27 +129,11 @@ function Profil() {
       .catch((error) => console.error(error));
   };
 
-
-  // Fonction qui gère la récupération des données de candidatures liées au profil
-  const getCandidatures = () => {
-    apiConnexion
-      .get(`/candidatures/${user.id}`)
-      .then((userCandidatures) => {
-        setCandidatures(userCandidatures.data);
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
     // Si le profil est déjà existant
     if (user.profil) {
       getFullProfil();
     }
-  }, []);
-
-  // Données "candidatures"
-  useEffect(() => {
-    getCandidatures();
   }, []);
 
   return (
