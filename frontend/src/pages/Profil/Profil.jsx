@@ -49,9 +49,6 @@ function Profil() {
     connexion_id: user.id,
   };
 
-
-  const [candidatures, setCandidatures] = useState([]);
-
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -131,7 +128,6 @@ function Profil() {
       })
       .catch((error) => console.error(error));
   };
-
 
   useEffect(() => {
     // Si le profil est déjà existant
