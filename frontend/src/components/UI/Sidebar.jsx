@@ -10,11 +10,11 @@ export default function Sidebar() {
       <div
         className={
           open
-            ? "w-40 flex flex-col h-full p-3 bganimationcard  shadow duration-300 "
-            : "w-60 flex flex-col h-full p-3 bganimationcard  shadow duration-300 "
+            ? "w-40 flex flex-col h-full p-3 bganimationcard  shadow duration-300"
+            : "w-60 flex flex-col h-full p-3 bganimationcard  shadow duration-300"
         }
       >
-        <div className="space-y-3">
+        <div className="space-y-3 fixed">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-bold text-white">Dashboard</h2>
             <button type="button" onClick={() => setOpen(!open)}>
@@ -67,7 +67,7 @@ export default function Sidebar() {
             <ul className="pt-2 pb-4 space-y-1 text-sm">
               <li className="rounded-sm hover:darkPink">
                 <Link
-                  to="/dashboard"
+                  to="/"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -113,7 +113,7 @@ export default function Sidebar() {
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="offre"
+                  to="offres"
                   className="flex items-center p-2 space-x-3 rounded-md hover:text-indigo transition-colors duration-300 transform"
                 >
                   <svg

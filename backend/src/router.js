@@ -44,6 +44,12 @@ router.post("/register", hashPassword, connexionControllers.add);
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
 
+router.get("/nbCandidats", candidatControllers.getCount);
+router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
+router.get("/nbOffres", offreControllers.getCountOffre);
+
+
+
 // mur d'authentification
 
 router.get("/profil/:id", checkAuth, candidatControllers.read);
