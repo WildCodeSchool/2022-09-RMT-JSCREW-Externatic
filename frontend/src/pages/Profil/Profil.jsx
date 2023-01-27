@@ -32,7 +32,6 @@ function Profil() {
   const { user, updateUserProfil } = useContext(User.UserContext);
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
-
   const profilType = {
     nom: "",
     prenom: "",
@@ -41,7 +40,7 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: user.email,
+    email: user.utilisateur,
     description: "",
     metier: "",
     telephone: "",
@@ -59,6 +58,7 @@ function Profil() {
 
   const sendForm = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("avatar", inputRef1.current.files[0]);
     formData.append("cv", inputRef2.current.files[0]);
@@ -295,7 +295,7 @@ function Profil() {
               type="email"
               placeholder="nom@exemple.com"
               name="email"
-              value={profil.email}
+              value={user.utilisateur}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>

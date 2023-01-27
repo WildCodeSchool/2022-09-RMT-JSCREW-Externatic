@@ -1,5 +1,6 @@
 const models = require("../models");
 const validate = require("../service/candidat");
+const sendMail = require("./emailControllers");
 
 const getCount = (req, res) => {
   models.candidat
@@ -50,6 +51,7 @@ const add = async (req, res) => {
         req.auth.id
       );
       await models.connexion.updateProfil(req.auth.id);
+      sendMail(candidat);
       res
         .location(`/profil/${user.insertId}`)
         .status(201)
