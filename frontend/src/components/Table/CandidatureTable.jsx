@@ -81,18 +81,18 @@ function CandidatureTable({ user }) {
             {candidatures &&
               candidatures.map((candidature) => (
                 <tr>
-                  <td className="text-center border border-slate-600 hover:text-darkPink text-xs hover:underline">
+                  <td className="text-center border border-slate-600 bg-white hover:text-darkPink text-xs hover:underline">
                     <Link to={`/offres/${candidature.offre_id}`}>
                       {candidature.poste}
                     </Link>
                   </td>
-                  <td className="text-center border border-slate-600 text-xs">
+                  <td className="text-center border bg-white border-slate-600 text-xs">
                     {candidature.localisation}
                   </td>
-                  <td className="text-center border border-slate-600 text-xs">
+                  <td className="text-center border bg-white border-slate-600 text-xs">
                     {candidature.dateCandidature.split("T").shift()}
                   </td>
-                  <td className="text-center border border-slate-600 text-xs">
+                  <td className="text-center bg-white border border-slate-600 text-xs">
                     <a
                       href={`mailto:${candidature.email}`}
                       className="hover:text-darkPink hover:underline"
@@ -100,7 +100,7 @@ function CandidatureTable({ user }) {
                       Email
                     </a>
                   </td>
-                  <td className="text-center border border-slate-600 text-xs ">
+                  <td className="text-center border bg-white border-slate-600 text-xs ">
                     <button
                       type="button"
                       className="hover:text-darkPink hover:underline"
