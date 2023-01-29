@@ -33,7 +33,8 @@ class CandidaturesManager extends AbstractManager {
       INNER JOIN offre AS o ON o.id = c.offre_id
       INNER JOIN entreprise AS e ON e.id = o.entreprise_id
       INNER JOIN consultant AS co ON co.id = e.consultant_id
-      WHERE co.id = ? AND c.traiteParConsultant = ?
+      INNER JOIN connexion AS cx ON cx.id = co.connexion_id
+      WHERE cx.id = ? AND c.traiteParConsultant = ?
       ORDER BY e.nom_entreprise ASC, c.dateCandidature ASC`,
       [id, 0]
     );
