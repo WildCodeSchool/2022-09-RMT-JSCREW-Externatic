@@ -8,7 +8,7 @@ import img3 from "@assets/test1-2.jpg";
 import icon1 from "@assets/main.png";
 import icon2 from "@assets/fusee.png";
 import icon3 from "@assets/sablier.png";
-import icon4 from "@assets/externatic_favicon.png";
+import icon4 from "../../public/externatic_favicon.png";
 
 export default function Home() {
   const [randomData, setRandomData] = useState([]);

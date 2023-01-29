@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import apiConnexion from "@services/apiConnexion";
 import Card from "@components/UI/Card";
 import Pagination from "@components/UI/Offres/Pagination";
 import FilterJob from "@components/UI/Offres/FilterJob";
 import FilterLocalisation from "@components/UI/Offres/FilterLocalisation";
 import connaissance from "@assets/connaissance.png";
+import icon4 from "../../../public/externatic_favicon.png";
 
 function NosOffres() {
   const [offresData, setOffresData] = useState();
@@ -31,6 +33,15 @@ function NosOffres() {
 
   return (
     <div className="font-roboto text-black">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Nos offres</title>
+        <meta
+          name="description"
+          content="Page Nos offres qui affiche toutes les offres d'emploi du site Externatic"
+        />
+        <link rel="icon" type="image/png" href={icon4} />
+      </Helmet>
       <div className="flex flex-col items-center my-5 mx-5">
         <div className="font-bold text-center text-xl md:text-2xl mb-4">
           Vos opportunités d'emploi,
