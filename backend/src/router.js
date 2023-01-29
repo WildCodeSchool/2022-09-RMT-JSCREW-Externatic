@@ -48,6 +48,10 @@ router.get("/nbCandidats", candidatControllers.getCount);
 router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
 router.get("/nbOffres", offreControllers.getCountOffre);
 
+router.get(
+  "/candidaturesForConsultants/:id",
+  candidaturesControllers.browseCandidaturesForConsultant
+);
 
 // mur d'authentification
 

@@ -34,7 +34,24 @@ const browseById = (req, res) => {
   }
 };
 
+const browseCandidaturesForConsultant = (req, res) => {
+  // if (parseInt(req.params.user_id, 10) === req.auth.id) {
+  models.candidature
+    .findCandidaturesForConsultant(req.params.id)
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+  //   } else {
+  //   res.sendStatus(401);
+  // }
+};
+
 module.exports = {
   edit,
   browseById,
+  browseCandidaturesForConsultant,
 };
