@@ -1,42 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Link, useSearchParams } from "react-router-dom";
+import apiConnexion from "@services/apiConnexion";
 import Card from "@components/UI/Card";
+import Pagination from "@components/UI/Offres/Pagination";
+import FilterJob from "@components/UI/Offres/FilterJob";
+import FilterLocalisation from "@components/UI/Offres/FilterLocalisation";
 import connaissance from "@assets/connaissance.png";
-import icon4 from "../../../public/externatic_favicon.png";
 
 function NosOffres() {
-  const [offresData, setOffresData] = useState([]);
+  const [offresData, setOffresData] = useState();
+  const [selectedPoste, setSelectedPoste] = useState();
+  const [selectedCity, setSelectedCity] = useState();
+  const [nbPages, setNbPages] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/offres`)
-      .then((res) => res.json())
+    const page = parseInt(searchParams.get("page"), 10) || 1;
+    let url = `/offres?page=${page}`;
+    if (selectedPoste?.poste) url += `&poste=${selectedPoste.poste}`;
+    if (selectedCity?.localisation)
+      url += `&localisation=${selectedCity.localisation}`;
+    apiConnexion
+      .get(url)
       .then((data) => {
-        setOffresData(data);
+        setOffresData(data.data.offre);
+        setNbPages(data.data.pages);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [searchParams, selectedPoste, selectedCity]);
 
   return (
-    <div className="">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Nos offres</title>
-        <meta
-          name="description"
-          content="Page Nos offres qui affiche toutes les offres d'emploi du site Externatic"
-        />
-        <link rel="icon" type="image/png" href={icon4} />
-      </Helmet>
-      <div className="flex flex-col items-center text-dark my-5 mx-5">
-        <div className="font-bold text-center mb-4">
+    <div className="font-roboto text-black">
+      <div className="flex flex-col items-center my-5 mx-5">
+        <div className="font-bold text-center text-xl md:text-2xl mb-4">
           Vos opportunités d'emploi,
           <br />
           uniquement chez les clients finaux
         </div>
         <div className="flex flex-col items-center justify-center">
           <img src={connaissance} alt="connaissance" className="w-10 mb-3" />
-          <div className="text-justify w-12/12 md:w-8/12">
+          <div className="text-justify md:text-center w-12/12 md:w-8/12">
             Si vous recherchez des opportunités d’emploi dans le domaine
             informatique, le cabinet de recrutement Externatic peut mettre à
             votre disposition une équipe de consultants en technologie de
@@ -45,44 +48,31 @@ function NosOffres() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-around lg:mx-40 xl:mx-56 my-2">
-        <h2 className="font-bold text-center mb-4 md:mb-0">
+      <div className="flex flex-col items-center justify-around lg:mx-40 xl:mx-56 my-8 mb-8">
+        <h2 className="font-bold text-center underline underline-offset-8 mb-4 md:mb-0">
           Toutes nos offres :
         </h2>
-        <div className="flex items-center my-2">
-          <div className="border-solid border-2 border-darkPink rounded-3xl p-3">
-            <select>
-              <option selected>Titre du poste</option>
-              <option value="devweb">Développeur Web</option>
-              <option value="ingetest">Ingénieur automatisation de test</option>
-              <option value="devjavaspring">Développeur Java Spring</option>
-            </select>
-          </div>
-        </div>
-        <div className="flex items-center my-2">
-          <div className="border-solid border-2 border-darkPink rounded-3xl p-3 ">
-            <select>
-              <option selected>Ville</option>
-              <option value="pariscv">Paris</option>
-              <option value="lyoncv">Lyon</option>
-              <option value="rennescv">Rennes</option>
-            </select>
-          </div>
-        </div>
-        <button
-          type="button"
-          className="text-darkPink border-solid border-2 border-darkPink rounded-xl px-3 mx-3 my-3 hover:bg-darkPink hover:text-white "
-        >
-          Recherche
-        </button>
+        <FilterJob
+          selectedPoste={selectedPoste}
+          setSelectedPoste={setSelectedPoste}
+        />
+        <FilterLocalisation
+          selectedCity={selectedCity}
+          setSelectedCity={setSelectedCity}
+        />
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center mb-5 mx-14">
+      <div className="flex flex-col md:grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-items-center justify-center mb-5 mx-14">
         {offresData &&
           offresData.map((offre) => (
             <Link to={`/offres/${offre.id}`}>
               <Card key={offre.id} offre={offre} />
             </Link>
           ))}
+      </div>
+      <div className="flex flex-row justify-center my-5 mt-16">
+        {new Array(nbPages).fill().map((_, index) => {
+          return <Pagination index={index} setPages={setSearchParams} />;
+        })}
       </div>
     </div>
   );

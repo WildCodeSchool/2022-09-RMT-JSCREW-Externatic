@@ -6,7 +6,7 @@ import CarteAvantages from "@components/UI/CardOffre/CarteAvantages";
 import CarteProfil from "@components/UI/CardOffre/CarteProfil";
 import CarteSalaire from "@components/UI/CardOffre/CarteSalaire";
 import ListOfOffers from "@components/UI/CardOffre/ListOfOffers";
-import icon4 from "../../../public/externatic_favicon.png";
+import icon4 from "@assets/externatic_favicon.png";
 
 function UneOffre() {
   const { id } = useParams();
@@ -22,7 +22,7 @@ function UneOffre() {
   }, [id]);
 
   return (
-    <div className="container-offre">
+    <div className="container-offre font-roboto">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Offre</title>
@@ -38,10 +38,10 @@ function UneOffre() {
         </button>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center">
-        <div className="flex justify-center md:w-6/12 lg:w-6/12 xl:w-6/12 mx-6 mt-28">
+        <div className="flex justify-center md:w-7/12 lg:w-6/12 xl:w-5/12 mx-6 mt-4">
           <CartePrincipale offre={offre} />
         </div>
-        <div className="flex flex-col md:w-6/12 lg:w-4/12 xl:w-4/12 mx-6 items-center md:mt-28">
+        <div className="flex flex-col md:w-5/12 lg:w-4/12 xl:w-4/12 mx-6 items-center md:mt-4">
           <CarteAvantages offre={offre} />
           <CarteProfil offre={offre} />
           <CarteSalaire offre={offre} />
