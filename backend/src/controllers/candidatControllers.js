@@ -48,7 +48,7 @@ const add = async (req, res) => {
         profilPhoto,
         profilCv,
         dateinscript(),
-        req.auth.id
+        candidat.connexion_id
       );
       await models.connexion.updateProfil(req.auth.id);
       sendMail(candidat);
@@ -100,7 +100,7 @@ const edit = (req, res) => {
     res.status(422).send(error);
   } else {
     models.candidat
-      .update(candidat, profilPhoto, profilCv, req.auth.id)
+      .update(candidat, profilPhoto, profilCv, candidat.id)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);

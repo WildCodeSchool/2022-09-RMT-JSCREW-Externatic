@@ -9,8 +9,8 @@ function UserProvider({ children }) {
       : null
   );
 
-  const handleUser = (data) => {
-    setUser(data);
+  const handleUser = (data,mail) => {
+    setUser({data, mail});
   };
 
   const logout = () => {

@@ -40,12 +40,12 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: user.utilisateur,
+    email: user.mail,
     description: "",
     metier: "",
     telephone: "",
     dateDisponibilite: "",
-    connexion_id: user.id,
+    connexion_id: user.data,
   };
 
   const [profil, setProfil] = useState(profilType);
@@ -55,18 +55,18 @@ function Profil() {
     newProfil[place] = value;
     setProfil(newProfil);
   };
+  const userProfil = user.data.profil? user.data.profil : user.profil;
+  const userDataId = user.data.id ? user.data.id : user.data;
 
   const sendForm = (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("avatar", inputRef1.current.files[0]);
     formData.append("cv", inputRef2.current.files[0]);
     formData.append("data", JSON.stringify(profil));
-
-    if (user.profil) {
+    if (userProfil) {
       apiConnexion
-        .put(`/profil/${user.id}`, formData)
+        .put(`/profil/${userDataId}`, formData)
         .then(() => {
           toast.success(
             `Bonjour, votre profil a bien été modifié.`,
@@ -121,8 +121,9 @@ function Profil() {
 
   // Fonction qui gère la récupération des données profil
   const getFullProfil = () => {
+    console.log(userDataId)
     apiConnexion
-      .get(`/profil/${user.id}`)
+      .get(`/profil/${userDataId}`)
       .then((profilUser) => {
         setProfil(profilUser.data);
       })
@@ -131,7 +132,9 @@ function Profil() {
 
   useEffect(() => {
     // Si le profil est déjà existant
-    if (user.profil) {
+    
+    console.log(userProfil);
+    if (userProfil) {
       getFullProfil();
     }
   }, []);
@@ -295,7 +298,7 @@ function Profil() {
               type="email"
               placeholder="nom@exemple.com"
               name="email"
-              value={user.utilisateur}
+              value={user.mail ? user.mail : profil.email}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -341,7 +344,7 @@ function Profil() {
             />
           </div>
         </div>
-        {!user.profil && (
+        {!userProfil && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
               className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
@@ -351,7 +354,7 @@ function Profil() {
             </button>
           </div>
         )}
-        {user.profil && (
+        {userProfil && (
           <div className="buttonvalid flex justify-center mt-5">
             <button
               className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
@@ -361,7 +364,7 @@ function Profil() {
             </button>
           </div>
         )}
-        {user.id && <CandidatureTable user={user} />}
+        {user.data.utilisateur && <CandidatureTable user={user} />}
       </form>
       <ToastContainer
         position="bottom-right"

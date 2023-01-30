@@ -22,7 +22,7 @@ function CandidatureTable({ user }) {
 
   const getCandidatures = () => {
     apiConnexion
-      .get(`/candidatures/${user.id}`)
+      .get(`/candidatures/${user.data.id}`)
       .then((userCandidatures) => {
         setCandidatures(userCandidatures.data);
       })

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import apiConnexion from "@services/apiConnexion";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import User from "../../contexts/User";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +18,7 @@ const toastifyConfig = {
 
 function RegisterModal({ visible, onclose }) {
   const userContext = useContext(User.UserContext);
-
+  const navigate = useNavigate("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registration, setRegistration] = useState({
     utilisateur: "",
@@ -29,7 +30,6 @@ function RegisterModal({ visible, onclose }) {
     newRegistration[place] = value;
     setRegistration(newRegistration);
   };
-
   const sendForm = (e) => {
     e.preventDefault();
     if (registration.mot_de_passe !== confirmPassword) {
@@ -41,12 +41,16 @@ function RegisterModal({ visible, onclose }) {
       apiConnexion
         .post("/register", registration)
         .then((data) => {
-          userContext.handleUser(data.data.insertId);
+          userContext.handleUser(data.data.insertId,registration.utilisateur);
           toast.success(
             `Veuillez vous connecter pour continuer l'aventure`,
             toastifyConfig
           );
-          setTimeout(() => onclose(), 1500);
+          if (data.data.profil) {
+            setTimeout(() => onclose(), 2000);
+          } else {
+            setTimeout(() => navigate(`profil/${data.data.id}`), 2000);
+          }
         })
         .catch((err) => {
           toast.error(

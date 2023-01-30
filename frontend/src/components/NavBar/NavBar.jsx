@@ -22,7 +22,7 @@ function NavBar() {
 
   const profilConnex = () => {
     if (user) {
-      const userId = user.id ? user.id : user;
+      const userId = user.id ? user.id : user.data.id;
       return (
         <button
           type="button"
