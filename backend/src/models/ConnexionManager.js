@@ -37,6 +37,13 @@ class ConnexionManager extends AbstractManager {
       [candidat]
     );
   }
+
+  updatePassword(email, password) {
+    return this.connection.query(
+      `update ${this.table} set profil = true, hashedPassword = ? where utilisateur = ?`,
+      [password, email]
+    );
+  }
 }
 
 module.exports = ConnexionManager;

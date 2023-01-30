@@ -60,7 +60,7 @@ router.put("/consultants/:id", consultantControllers.edit);
 router.delete("/consultants/:id", consultantControllers.destroy);
 // mur d'authentification
 router.use(checkAuth);
-
+router.put("/firstConnexion", checkAuth, connexionControllers.edit);
 router.get("/profil/:id", candidatControllers.read);
 
 router.put(
