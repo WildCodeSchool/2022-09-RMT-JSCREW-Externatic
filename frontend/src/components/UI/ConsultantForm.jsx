@@ -7,11 +7,11 @@ import ConsultantSelect from "./consultantSelect";
 
 const consultType = {
   image_url: "",
+  role: "",
   nom_consultant: "",
   telephone: "",
   email: "",
   LinkedIn: "",
-  connexion_id: "",
 };
 
 function FormConsultants() {
@@ -84,7 +84,7 @@ function FormConsultants() {
         <form className="mt-6">
           <div className="mb-2">
             <label>
-              <span className="text-gray-700">Photo Consultant</span>
+              <span className="text-gray-700">photo consultant</span>
               <input
                 required
                 type="text"
@@ -123,6 +123,27 @@ function FormConsultants() {
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
                 placeholder="role"
+              />
+            </label>
+            <label>
+              <span className="text-gray-700">nom</span>
+              <input
+                required
+                type="text"
+                name="nom_consultant"
+                value={consult.nom_consultant}
+                onChange={(e) => handleConsult(e.target.name, e.target.value)}
+                className="
+                  w-full
+                  block px-16 py-2 mt-2
+                  border-gray-300
+                  rounded-md
+                  shadow-sm
+                  focus:border-indigo-300
+                  focus:ring
+                  focus:ring-indigo-200
+                  focus:ring-opacity-50"
+                placeholder="nom"
               />
             </label>
             <label>
@@ -170,8 +191,9 @@ function FormConsultants() {
             <label>
               <span className="text-gray-700">lien LinkedIn</span>
               <input
+                require
                 type="text"
-                name="linkedin"
+                name="LinkedIn"
                 value={consult.LinkedIn}
                 onChange={(e) => handleConsult(e.target.name, e.target.value)}
                 className="

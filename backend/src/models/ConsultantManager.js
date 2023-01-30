@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class ItemManager extends AbstractManager {
+class ConsultantManager extends AbstractManager {
   constructor() {
     super({ table: "consultant" });
   }
@@ -9,7 +9,7 @@ class ItemManager extends AbstractManager {
     return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
-  insert(consult) {
+  insert(consult, connexionId) {
     return this.connection.query(
       `insert into ${this.table} (image_url, nom_consultant, role, telephone, email, LinkedIn, connexion_id) values (?, ?, ?, ?, ?, ?, ? )`,
       [
@@ -19,17 +19,25 @@ class ItemManager extends AbstractManager {
         consult.telephone,
         consult.email,
         consult.LinkedIn,
-        consult.connexion_id,
+        connexionId,
       ]
     );
   }
 
-  update(consultant) {
-    return this.connection.query(`update ${this.table} set ? where id = ?`, [
-      consultant,
-      consultant.id,
-    ]);
+  findOne(connexionId) {
+    return this.connection.query(
+      `select * from  ${this.table} where connexion_id = ?`,
+      [connexionId]
+    );
+  }
+
+  update(consultant, connexionId) {
+    const newConsultant = { ...consultant };
+    return this.connection.query(
+      `update ${this.table} set ? where connexionId = ?`,
+      [newConsultant, connexionId]
+    );
   }
 }
 
-module.exports = ItemManager;
+module.exports = ConsultantManager;

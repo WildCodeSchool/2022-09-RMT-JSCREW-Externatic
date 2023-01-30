@@ -1,4 +1,5 @@
 const models = require("../models");
+const validate = require("../service/consultants");
 
 const browse = (req, res) => {
   models.consultant
@@ -28,42 +29,43 @@ const read = (req, res) => {
     });
 };
 
-const add = (req, res) => {
+const add = async (req, res) => {
   const consultant = req.body;
 
-  // TODO validations (length, format...)
-
-  models.consultant
-    .insert(consultant)
-    .then(([result]) => {
-      res.location(`/consultants/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  try {
+    await models.connexion.insertConsultant(consultant);
+    const consult = await models.consultant.insert(consultant);
+    res
+      .location(`/consultants/${consult.insertId}`)
+      .status(201)
+      .json({ ...consultant, id: consult.insertId });
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(500);
+  }
 };
 
 const edit = (req, res) => {
   const consultant = req.body;
+  const error = validate(consultant);
 
-  // TODO validations (length, format...)
-
-  consultant.id = parseInt(req.params.id, 10);
-
-  models.consultant
-    .update(consultant)
-    .then(([result]) => {
-      if (result.affectedRows === 0) {
-        res.sendStatus(404);
-      } else {
-        res.sendStatus(204);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+  if (error) {
+    res.status(422).send(error);
+  } else {
+    models.consultant
+      .update(consultant, parseInt(req.params.id, 10))
+      .then(([result]) => {
+        if (result.affectedRows === 0) {
+          res.sendStatus(404);
+        } else {
+          res.sendStatus(204);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  }
 };
 
 const destroy = (req, res) => {
