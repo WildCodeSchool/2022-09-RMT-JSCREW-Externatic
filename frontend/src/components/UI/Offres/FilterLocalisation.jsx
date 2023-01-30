@@ -19,7 +19,7 @@ function FilterLocalisation({ selectedCity, setSelectedCity }) {
       <div className="flex items-center border-solid border-2 border-darkPink rounded-3xl p-3 ">
         <img src={localisationjob} alt="localisationjob" className="w-7 mr-5" />
         <select
-          className="w-80"
+          className="w-60 md:w-80"
           value={selectedCity?.localisation}
           onChange={(event) =>
             setSelectedCity({ localisation: event.target.value })
