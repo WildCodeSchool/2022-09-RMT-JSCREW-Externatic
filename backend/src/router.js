@@ -84,6 +84,16 @@ router.get(
   candidaturesControllers.browseById
 );
 router.put("/candidatures/:id", checkAuth, candidaturesControllers.edit);
+router.get(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.browseCandidaturesForConsultant
+);
+router.put(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.editCandidaturesForConsultant
+);
 
 router.post("/entreprises", checkAuth, entrepriseControllers.add);
 router.put("/entreprises/:id", entrepriseControllers.edit);
