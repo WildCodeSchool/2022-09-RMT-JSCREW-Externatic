@@ -581,90 +581,91 @@ VALUES
     " Chargée de recutement IT - Lille ",
     " 06 20 18 15 15 ",
     " adele.sold @externatic.fr ",
-    " https: / / www.linkedin.com / in / ad % C3 % A8le - sold - 07b68314a / ",
+    " https://www.linkedin.com/in/ad%C3%A8le-sold-07b68314a/",
     21
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2020 / 09 / MAU -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2020/09/MAU-1-300x300.jpg ",
     " Margaux AUBERT ",
     " Responsable Communication / Marketing ",
     " 06 66 76 57 40 ",
     " margaux.aubert @externatic.fr ",
-    " https: / / www.linkedin.com / in / margaux - aubert / ",
+    " https://www.linkedin.com/in/margaux-aubert/",
     22
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / NBO -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2021/09/NBO-1-300x300.jpg ",
     " Nicolas BOUET",
     " Consultant recrutement IT - Nantes / Rennes ",
     " 06 98 28 83 68 ",
     " nicolas.bouet @externatic.fr ",
-    " https: / / www.linkedin.com / in / bouet - nicolas / ",
+    " https://www.linkedin.com/in/bouet-nicolas/",
     23
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / LFR -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2021/09/LFR-1-300x300.jpg ",
     " Lucie FROESCHEL ",
     " Consultante recrutement IT à Bordeaux ",
     " 06 82 32 11 45 ",
     " lucie.froeschel @externatic.fr ",
-    " https: / / www.linkedin.com / in / lucie - froeschel / ",
+    " https://www.linkedin.com/in/lucie-froeschel/",
     24
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / RSA -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2021/09/RSA-1-300x300.jpg ",
     " Raphael SANCHEZ ",
     " Consultant recrutement IT à Bordeaux ",
     " 06 49 49 91 68 ",
     " Raphael.sanchez @externatic.fr ",
-    " https: / / www.linkedin.com / in / raphael - sanchez - roson / ",
+    " https://www.linkedin.com/in/raphael-sanchez-roson/",
     25
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 05 / TRO1 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/05/TRO1-300x300.png ",
     " Thomas ROVERE",
     " Consultant en recrutement IT à Bordeaux ",
     " 07 65 75 57 03 ",
     " thomas.rovere @externatic.fr ",
-    " https: / / www.linkedin.com / in / thomas - rovere / ",
+    " https://www.linkedin.com/in/thomas-rovere/",
     26
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 07 / CNA1 - 300x298.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/07/CNA1-300x298.png ",
     " Charlotte NADAUD ",
     " Chargée de recrutement IT à Bordeaux ",
     " 06 73 45 10 59 ",
     " charlotte.nadaud @externatic.fr ",
-    " https: / / www.linkedin.com / in / charlotte - nadaud / ",
+    " https://www.linkedin.com/in/charlotte-nadaud/",
     27
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 09 / RBA2 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/09/RBA2-300x300.png ",
     " Ruben BARACCHINI ",
     " Consultant recrutement IT à Bordeaux ",
     " 06 66 84 94 50 ",
     " ruben.baracchini @externatic.fr ",
-    " https: / / www.linkedin.com / in / ruben - baracchini - 78a474158 / ",
+    " https://www.linkedin.com/in/ruben-baracchini-78a474158/",
     28
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2020 / 09 / site -01 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2020/09/site-01-300x300.png",
     " Tiffène BULEON",
     " Consultante en recrutement IT à Nantes ",
     " 06 74 82 70 85 ",
     " tiffene.buleon @externatic.fr ",
-    " https: / / www.linkedin.com / in / tiff % C3 % A8ne - buleon - 288512b6 / ",
+    " https://www.linkedin.com/in/tiff%C3%A8ne-buleon-288512b6/",
     29
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 12 / site -03 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/12/site-03-300x300.png",
     " Talsy LOEMBA ",
     " Consultant recrutement IT à Nantes ",
     " 06 50 69 21 78 ",
     " talsy.loemba @externatic.fr ",
-    " https: / / www.linkedin.com / in / talsy - loemba / ",
+    " https://www.linkedin.com/in/talsy-loemba/",
     30
   );
+
 
 -- -----------------------------------------------------
 -- Table `externatic`.`Domaine`
