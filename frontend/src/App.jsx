@@ -7,6 +7,7 @@ import Home from "@pages/Home";
 import UneOffre from "@pages/UneOffre/UneOffre";
 import AdminEntreprise from "@pages/BackOffice/AdminEntreprise";
 import AdminOffres from "@pages/BackOffice/AdminOffres";
+import ConsultantDashboard from "@pages/BackOffice/ConsultantDashboard";
 import Public from "@pages/Layout/Public";
 import PublicCandidat from "@pages/Layout/PublicCandidat";
 import Private from "@pages/Layout/Private";
@@ -33,10 +34,12 @@ function App() {
           <Route path="/dashboard/" element={<Private />}>
             <Route path="consultant" element={<PrivateConsultant />}>
               <Route path="offres" element={<AdminOffres />} />
+              <Route path="candidatures/:id" element={<ConsultantDashboard />} />
             </Route>
             <Route path="admin" element={<PrivateAdmin />}>
               <Route path="entreprises" element={<AdminEntreprise />} />
             </Route>
+
           </Route>
         </Routes>
       </Router>
