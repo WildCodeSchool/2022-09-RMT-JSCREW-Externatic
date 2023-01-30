@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
 import { Outlet, Navigate } from "react-router-dom";
-import Sidebar from "@components/UI/Sidebar";
 import User from "../../contexts/User";
 
-function Dashboard() {
+function DashboardConsultant() {
   const { user } = useContext(User.UserContext);
 
-  if (user.role === "candidat") {
+  if (user.role !== "consultant") {
     return <Navigate to="/" replace />;
   }
   return (
     <div className="flex">
-      <Sidebar />
       <Outlet />
     </div>
   );
 }
-export default Dashboard;
+export default DashboardConsultant;
