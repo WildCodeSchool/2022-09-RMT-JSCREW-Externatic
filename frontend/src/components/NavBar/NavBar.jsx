@@ -21,7 +21,7 @@ function NavBar() {
   };
 
   const profilConnex = () => {
-    if (user) {
+    if (user && user?.role === "candidat") {
       const userId = user.id ? user.id : user;
       return (
         <button
