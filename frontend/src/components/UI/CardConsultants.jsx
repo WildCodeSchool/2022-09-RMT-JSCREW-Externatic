@@ -15,7 +15,11 @@ function CardConsultants({ consultant }) {
         <div className="flex align-items items-center justify-center h-20 mb-3">
           <h1 className="m-3">{consultant?.nom_consultant}</h1>
           <a href={consultant.LinkedIn}>
-            <img src={linkedin} alt="logo linkedin" className="w-12 m-3" />
+            <img
+              src={linkedin}
+              alt="logo linkedin"
+              className="w-12 m-3 hover:scale-125"
+            />
           </a>
         </div>
         <div className="my-3 text-center">
