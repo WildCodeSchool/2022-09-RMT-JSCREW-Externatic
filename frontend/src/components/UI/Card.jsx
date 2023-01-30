@@ -10,7 +10,7 @@ function Card({ offre }) {
       </h3>
       <div className="flex flex-col mx-3">
         <div className="flex flex-row justify-around items-center my-3">
-          <p className="flex flex-row ml-4">{localisation} 📍</p>
+          <p className="flex flex-row ml-4">📍 {localisation}</p>
           <img src={iconAjout} alt="bouton-ajout" className="ml-10 w-10 h-10" />
         </div>
       </div>

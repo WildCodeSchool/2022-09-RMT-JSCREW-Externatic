@@ -29,13 +29,18 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: "5MB", fieldSize: "5MB" },
+});
 // fin de la configuration de l'upload
 
 // routes publiques
-router.get("/offres", offreControllers.browse);
+router.get("/offres", offreControllers.browsePage);
 router.get("/offres/rand", offreControllers.random);
 router.get("/offres/:id", offreControllers.read);
+router.get("/job", offreControllers.browseJob);
+router.get("/localisation", offreControllers.browseLocalisation);
 router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
