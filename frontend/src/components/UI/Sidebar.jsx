@@ -159,7 +159,7 @@ export default function Sidebar() {
               </li>
               <li className="rounded-sm">
                 <Link
-                  to="/settings"
+                  to="candidatures/:id"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -181,7 +181,7 @@ export default function Sidebar() {
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span className="text-white">Settings</span>
+                  <span className="text-white">Candidatures</span>
                 </Link>
               </li>
               <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">

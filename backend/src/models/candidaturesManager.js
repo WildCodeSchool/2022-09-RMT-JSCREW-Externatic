@@ -39,6 +39,18 @@ class CandidaturesManager extends AbstractManager {
       [id, 0]
     );
   }
+
+  updateForConsultant(id, userId) {
+    return this.connection.query(
+      `update ${this.table} AS c
+      INNER JOIN offre AS o ON o.id = c.offre_id
+      INNER JOIN entreprise AS e ON e.id = o.entreprise_id
+      INNER JOIN consultant AS co ON co.id = e.consultant_id
+       set traiteParConsultant = ?
+        where c.id = ? AND co.connexion_id = ?`,
+      [true, id, userId]
+    );
+  }
 }
 
 module.exports = CandidaturesManager;

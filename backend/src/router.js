@@ -48,11 +48,6 @@ router.get("/nbCandidats", candidatControllers.getCount);
 router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
 router.get("/nbOffres", offreControllers.getCountOffre);
 
-router.get(
-  "/candidaturesForConsultants/:id",
-  candidaturesControllers.browseCandidaturesForConsultant
-);
-
 // mur d'authentification
 
 router.get("/profil/:id", checkAuth, candidatControllers.read);
@@ -84,6 +79,16 @@ router.get(
   candidaturesControllers.browseById
 );
 router.put("/candidatures/:id", checkAuth, candidaturesControllers.edit);
+router.get(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.browseCandidaturesForConsultant
+);
+router.put(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.editCandidaturesForConsultant
+);
 
 router.post("/entreprises", checkAuth, entrepriseControllers.add);
 router.put("/entreprises/:id", entrepriseControllers.edit);
