@@ -45,7 +45,7 @@ const validateUser = (req, res) => {
           res.sendStatus(401);
         }
       } else {
-        res.sendStatus(401);
+        res.sendStatus(404);
       }
     })
     .catch((err) => {

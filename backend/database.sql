@@ -63,13 +63,13 @@ VALUES
   ),
   (
     "franck.gascard@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$0V1WR6sYiBta8aZCZCXROA$4GtsulV1jW1K7gi98Eg/KdZgAQ5vTDnyJbBwZFTxiag",
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
     "consultant",
     1
   ),
   (
     "benjamin.casseron@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$52xCe/PKuxjzhgVXf3V/Bw$iPBpeqjGmjwg5xgJAddqdRLWSBQCOHoDTLR1GMbVw4Y",
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
     "consultant",
     1
   ),
