@@ -41,6 +41,7 @@ function ConnexionModal({ visible, onclose }) {
           setTimeout(() => onclose(), 2000);
         } else {
           setTimeout(() => navigate(`profil/${data.data.id}`), 2000);
+          setTimeout(() => onclose(), 2000);
         }
       })
       .catch(() => {
