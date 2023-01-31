@@ -19,7 +19,7 @@ function FilterJob({ selectedPoste, setSelectedPoste }) {
       <div className="flex items-center border-solid border-2 border-darkPink rounded-3xl p-3">
         <img src={loupe} alt="loupejob" className="w-7 mr-5" />
         <select
-          className="w-80"
+          className="w-60 md:w-80"
           value={selectedPoste?.poste}
           onChange={(event) => setSelectedPoste({ poste: event.target.value })}
         >

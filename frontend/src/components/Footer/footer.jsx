@@ -17,18 +17,30 @@ function Footer() {
         </div>
         <div className="flex flex-row justify-center items-center mb-4 md:w-1/3">
           <a href="https://www.linkedin.com/company/externatic?originalSubdomain=fr">
-            <img src={linkedin} alt="logo linkedin" className="w-12 m-3" />
+            <img
+              src={linkedin}
+              alt="logo linkedin"
+              className="w-12 m-3 hover:scale-150"
+            />
           </a>
           <a href="https://www.instagram.com/externatic/">
-            <img src={instagram} alt="logo instagram" className="w-12 m-3" />
+            <img
+              src={instagram}
+              alt="logo instagram"
+              className="w-12 m-3 hover:scale-150"
+            />
           </a>
           <a href="https://twitter.com/Externatic">
-            <img src={twitter} alt="logo twitter" className="w-12 m-3" />
+            <img
+              src={twitter}
+              alt="logo twitter"
+              className="w-12 m-3 hover:scale-150"
+            />
           </a>
         </div>
         <div className="md:w-1/3 md:text-right">
           <p className="font-bold text-xl">Contact</p>
-          <div className="mb-7">
+          <div className="mb-2">
             <br />
             Tél. +33 (0)2 85 52 26 33
             <br />
@@ -40,7 +52,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <p className="text-center">
+      <p className="text-center pb-4">
         Copyright - Externatic 2022 - Tous droits réservés
       </p>
     </div>

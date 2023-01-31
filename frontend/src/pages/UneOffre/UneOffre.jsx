@@ -32,13 +32,13 @@ function UneOffre() {
         />
         <link rel="icon" type="image/png" href={icon4} />
       </Helmet>
-      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed z-10 w-screen drop-shadow-xl hover:bg-darkPink hover:text-white text-xl text-black ">
+      <div className="flex justify-center items-center bg-white h-20 border-y-2 border-darkPink fixed bottom-0 z-10 w-screen drop-shadow-xl hover:bg-darkPink hover:text-white text-xl text-black ">
         <button type="button" className="font-bold w-full h-full">
           Postuler à cette offre
         </button>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center">
-        <div className="flex justify-center md:w-7/12 lg:w-6/12 xl:w-5/12 mx-6 mt-4">
+        <div className="flex justify-center md:w-7/12 lg:w-6/12 xl:w-6/12 mx-6 mt-4">
           <CartePrincipale offre={offre} />
         </div>
         <div className="flex flex-col md:w-5/12 lg:w-4/12 xl:w-4/12 mx-6 items-center md:mt-4">
