@@ -8,6 +8,8 @@ const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
 const candidaturesControllers = require("./controllers/candidaturesControllers");
+const consultantsControllers = require("./controllers/consultantsControllers");
+
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -36,13 +38,16 @@ const upload = multer({
 // fin de la configuration de l'upload
 
 // routes publiques
-router.get("/offres", offreControllers.browse);
+router.get("/offres", offreControllers.browsePage);
 router.get("/offres/rand", offreControllers.random);
 router.get("/offres/:id", offreControllers.read);
+router.get("/job", offreControllers.browseJob);
+router.get("/localisation", offreControllers.browseLocalisation);
 router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
+router.get("/consultants", consultantsControllers.browse);
 
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
@@ -82,6 +87,16 @@ router.get(
   candidaturesControllers.browseById
 );
 router.put("/candidatures/:id", checkAuth, candidaturesControllers.edit);
+router.get(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.browseCandidaturesForConsultant
+);
+router.put(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.editCandidaturesForConsultant
+);
 
 router.post("/entreprises", checkAuth, entrepriseControllers.add);
 router.put("/entreprises/:id", entrepriseControllers.edit);

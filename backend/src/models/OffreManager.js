@@ -58,6 +58,47 @@ class OffreManager extends AbstractManager {
       id,
     ]);
   }
+
+  findAllPage(search) {
+    const page = (search.page - 1) * 10;
+    let query = `SELECT * from ${this.table}`;
+    const value = [];
+    if (search.poste) {
+      query += ` WHERE poste LIKE ?`;
+      value.push(`%${search.poste}%`);
+    }
+    if (search.localisation) {
+      query += ` ${search.poste ? "AND" : "WHERE"} localisation LIKE ?`;
+      value.push(`%${search.localisation}%`);
+    }
+    query += " LIMIT ?, 10"; // LIMIT ?, 10
+    value.push(page);
+    return this.connection.query(query, value);
+  }
+
+  findAllJob() {
+    return this.connection.query(`SELECT DISTINCT poste FROM ${this.table}`);
+  }
+
+  findAllLocalisation() {
+    return this.connection.query(
+      `SELECT DISTINCT localisation FROM ${this.table}`
+    );
+  }
+
+  findCountPages(search) {
+    let query = `SELECT count(*) as pages FROM ${this.table}`;
+    const value = [];
+    if (search.poste) {
+      query += ` WHERE poste LIKE ?`;
+      value.push(`%${search.poste}%`);
+    }
+    if (search.localisation) {
+      query += ` ${search.poste ? "AND" : "WHERE"} localisation LIKE ?`;
+      value.push(`%${search.localisation}%`);
+    }
+    return this.connection.query(query, value);
+  }
 }
 
 module.exports = OffreManager;
