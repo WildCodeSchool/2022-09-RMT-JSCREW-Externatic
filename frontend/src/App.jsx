@@ -31,9 +31,8 @@ function App() {
             <Route path="/infos" element={<Quisommesnous />} />
           </Route>
           <Route path="/dashboard/" element={<Private />}>
-            <Route path="consultant" element={<PrivateConsultant />}>
-              <Route path="offres" element={<AdminOffres />} />
-            </Route>
+            <Route path="offres" element={<AdminOffres />} />
+            <Route path="consultant" element={<PrivateConsultant />} />
             <Route path="admin" element={<PrivateAdmin />}>
               <Route path="entreprises" element={<AdminEntreprise />} />
             </Route>

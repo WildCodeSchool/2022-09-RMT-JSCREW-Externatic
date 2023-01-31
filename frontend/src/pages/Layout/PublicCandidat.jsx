@@ -4,7 +4,7 @@ import User from "../../contexts/User";
 
 function PublicCandidat() {
   const { user } = useContext(User.UserContext);
-  if (user.role !== "candidat") {
+  if (user && user.role !== "candidat") {
     return <Navigate to="/" replace />;
   }
   return (
