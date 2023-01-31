@@ -1,8 +1,20 @@
 const models = require("../models");
 
+const dateInscript = () => {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let date = new Date().getDate();
+  if (month < 10) {
+    month = `0${month}`;
+  }
+  if (date < 10) {
+    date = `0${date}`;
+  }
+  return `${year}-${month}-${date}`;
+};
+
 const edit = (req, res) => {
   const id = parseInt(req.params.id, 10);
-
   models.candidature
     .update(id, req.auth.id)
     .then(([result]) => {
@@ -68,9 +80,27 @@ const editCandidaturesForConsultant = (req, res) => {
     });
 };
 
+const add = (req, res) => {
+  const candidature = req.body;
+  candidature.dateInscription = dateInscript();
+  models.candidature
+    .insert(candidature)
+    .then(([result]) => {
+      res
+        .location(`/candidatures/${result.insertId}`)
+        .status(201)
+        .json({ ...candidature, id: result.insertId });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   edit,
   browseById,
   browseCandidaturesForConsultant,
   editCandidaturesForConsultant,
+  add,
 };

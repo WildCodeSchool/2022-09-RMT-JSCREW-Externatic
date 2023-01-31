@@ -1,7 +1,65 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import apiConnexion from "@services/apiConnexion";
+import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import User from "../../contexts/User";
 import "@components/UI/ModalPostuler.css";
+import "react-toastify/dist/ReactToastify.css";
+
+const toastifyConfig = {
+  position: "bottom-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+};
 
 function ModalPostuler({ setDisplayModal, offre }) {
+  const { id } = useParams();
+  const offreId = parseInt(id, 10);
+  const { user } = useContext(User.UserContext);
+  const candidatureType = {
+    candidat_id: "",
+    offreId,
+  };
+  const [candidature, setCandidature] = useState(candidatureType);
+
+  const handleCandidature = (place, value) => {
+    const newCandidature = { ...candidature };
+    newCandidature[place] = value;
+    setCandidature(newCandidature);
+  };
+
+  useEffect(() => {
+    apiConnexion
+      .get(`/candidat/${user.id}`)
+      .then((data) => {
+        handleCandidature("candidat_id", data.data.id);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const createCandidature = () => {
+    apiConnexion
+      .post("/candidatures", candidature)
+      .then(() => {
+        toast.success(
+          `Votre candidature a bien été enregistrée !`,
+          toastifyConfig
+        );
+      })
+      .catch((err) => {
+        toast.error(
+          `Veuillez vérifier vos champs, votre candidature n'a pas été validée !`,
+          toastifyConfig
+        );
+        console.warn(err);
+      });
+  };
+
   return (
     <div>
       <div className="fixed inset-0 bg-black bg-opacity-70 transition-opacity" />
@@ -38,7 +96,8 @@ function ModalPostuler({ setDisplayModal, offre }) {
                   type="button"
                   className="validationpostuler mx-5"
                   onClick={() => {
-                    setDisplayModal(false);
+                    createCandidature();
+                    setDisplayModal();
                   }}
                 >
                   <span className="text">Valider</span>
@@ -62,6 +121,18 @@ function ModalPostuler({ setDisplayModal, offre }) {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
