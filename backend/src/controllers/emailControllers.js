@@ -1,15 +1,15 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const sendMail = async (req) => {
-  const email = {
-    name: req.nom,
-    surname: req.prenom,
-    phone: req.telephone,
-    email: req.email,
-    message:
-      "Votre inscription a bien été prise en compte. Un consultant prendra bientôt contact avec vous.",
-  };
+const sendMail = async (email) => {
+  // const email = {
+  //   name: req.nom,
+  //   surname: req.prenom,
+  //   phone: req.telephone,
+  //   email: req.email,
+  //   message:
+  //     "Votre inscription a bien été prise en compte. Un consultant prendra bientôt contact avec vous.",
+  // };
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_SENDIN,
