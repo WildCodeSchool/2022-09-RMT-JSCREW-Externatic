@@ -6,7 +6,7 @@ function DashboardAdmin() {
   const { user } = useContext(User.UserContext);
 
   if (user.role !== "administrateur") {
-    return <Navigate to="/dashboard/admin/entreprises" replace />;
+    return <Navigate to="/dashboard/offres" replace />;
   }
   return (
     <div className="flex">

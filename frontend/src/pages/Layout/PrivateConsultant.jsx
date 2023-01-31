@@ -6,7 +6,7 @@ function DashboardConsultant() {
   const { user } = useContext(User.UserContext);
 
   if (user.role !== "consultant") {
-    return <Navigate to="/dashboard/consultant/offres" replace />;
+    return <Navigate to="/dashboard/admin/entreprises" replace />;
   }
   return (
     <div className="flex">
