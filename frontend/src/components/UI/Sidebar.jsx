@@ -100,7 +100,7 @@ export default function Sidebar() {
               {user?.role === "administrateur" && (
                 <li className="rounded-sm">
                   <Link
-                    to="entreprises"
+                    to="admin/entreprises"
                     className="text-white flex items-center p-2 space-x-3 rounded-md hover:black"
                   >
                     <svg
