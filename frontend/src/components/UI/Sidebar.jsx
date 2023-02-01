@@ -193,7 +193,7 @@ export default function Sidebar() {
                   </Link>
                 </li>
               )}
-              <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
+              <li className="flex items-center p-2 space-x-3 rounded-md">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 text-gray-100"
