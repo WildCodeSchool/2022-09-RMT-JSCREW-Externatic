@@ -131,7 +131,7 @@ function NavBar() {
             <button
               type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setManageRedirect("/")}
+              onClick={() => setManageRedirect("/contact")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Contact

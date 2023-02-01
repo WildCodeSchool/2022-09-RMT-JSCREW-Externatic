@@ -8,6 +8,7 @@ const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
 const candidaturesControllers = require("./controllers/candidaturesControllers");
+const contactControllers = require("./controllers/contactControllers");
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -40,6 +41,7 @@ router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
+router.post("/contact", contactControllers.add);
 
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);

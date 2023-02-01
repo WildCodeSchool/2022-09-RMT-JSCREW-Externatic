@@ -4,6 +4,7 @@ import NosOffres from "@pages/Offres/NosOffres";
 import Entreprise from "@pages/BackOffice/Entreprise";
 import Profil from "@pages/Profil/Profil";
 import Quisommesnous from "@pages/quisommesnous/qui";
+import Contact from "@pages/Contact/Contact";
 import Home from "@pages/Home";
 import UneOffre from "@pages/UneOffre/UneOffre";
 import AdminEntreprise from "@pages/BackOffice/AdminEntreprise";
@@ -23,6 +24,7 @@ function App() {
             <Route path="/offres" element={<NosOffres />} />
             <Route path="/offres/:id" element={<UneOffre />} />
             <Route path="/entreprises" element={<Entreprise />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/profil" element={<Profil />} />
             <Route path="/profil/:id" element={<Profil />} />
             <Route path="/infos" element={<Quisommesnous />} />
