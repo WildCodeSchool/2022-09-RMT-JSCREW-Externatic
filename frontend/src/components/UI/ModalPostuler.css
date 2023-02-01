@@ -1,0 +1,124 @@
+.annulationpostuler {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #e62222;
+}
+
+.annulationpostuler,
+button span {
+  transition: 200ms;
+}
+
+.annulationpostuler .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+.annulationpostuler .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.annulationpostuler svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.annulationpostuler:hover {
+  background: #ff3636;
+}
+
+.annulationpostuler:hover .text {
+  color: transparent;
+}
+
+.annulationpostuler:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.annulationpostuler:focus {
+  outline: none;
+}
+
+.annulationpostuler:active .icon svg {
+  transform: scale(0.8);
+}
+
+/* Validation */
+.validationpostuler {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: green;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: green;
+}
+
+.validationpostuler,
+button span {
+  transition: 200ms;
+}
+
+.validationpostuler .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+.validationpostuler .icon {
+  position: absolute;
+  border-left: 1px solid green;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.validationpostuler svg {
+  width: 15px;
+  fill: #eee;
+}
+
+.validationpostuler:hover {
+  background: green;
+}
+
+.validationpostuler:hover .text {
+  color: transparent;
+}
+
+.validationpostuler:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+.validationpostuler:focus {
+  outline: none;
+}
+
+.validationpostuler:active .icon svg {
+  transform: scale(0.8);
+}
