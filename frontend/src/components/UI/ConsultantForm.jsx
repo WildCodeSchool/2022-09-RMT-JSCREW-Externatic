@@ -21,7 +21,9 @@ function FormConsultants() {
   const getAllConsultants = () => {
     apiConnexion
       .get(`/consultants`)
-      .then((consults) => setAdmin(consults.data))
+      .then((consults) => {
+        setAdmin(consults.data);
+      })
       .catch((error) => console.error(error));
   };
 
@@ -35,25 +37,23 @@ function FormConsultants() {
     setConsult(newConsult);
   };
 
+  const selectConsultants = (id) => {
+    const consults = admin.find((e) => e.id === parseInt(id, 10));
+    setConsult(consults);
+  };
+
   const sendForm = (e) => {
     e.preventDefault();
-
     apiConnexion
       .post("/consultants", consult)
-      .then((res) => {
+      .then(() => {
         getAllConsultants();
-        setConsult(res.data);
         toast.success(`Le consultant a bien été enregistré`, toastiConfig);
       })
       .catch((err) => {
         toast.error(err.response.data.details[0].message, toastiConfig);
-        console.warn(err.response.data.details[0].message);
+        console.warn();
       });
-  };
-
-  const selectConsultants = (id) => {
-    const consults = admin.find((e) => e.id === parseInt(id, 10));
-    setConsult(consults);
   };
 
   // // Mettre à jour un consultant
@@ -66,7 +66,7 @@ function FormConsultants() {
         })
         .catch((err) => {
           toast.error(err.response.data.details[0].message, toastiConfig);
-          console.warn(err.response.data.details[0].message);
+          console.warn();
         });
     }
   };

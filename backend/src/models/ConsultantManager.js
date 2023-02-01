@@ -9,16 +9,16 @@ class ConsultantManager extends AbstractManager {
     return this.connection.query(`SELECT * FROM ${this.table}`);
   }
 
-  insert(consult, connexionId) {
+  insert(consultant, connexionId) {
     return this.connection.query(
       `insert into ${this.table} (image_url, nom_consultant, role, telephone, email, LinkedIn, connexion_id) values (?, ?, ?, ?, ?, ?, ? )`,
       [
-        consult.image_url,
-        consult.nom_consultant,
-        consult.role,
-        consult.telephone,
-        consult.email,
-        consult.LinkedIn,
+        consultant.image_url,
+        consultant.nom_consultant,
+        consultant.role,
+        consultant.telephone,
+        consultant.email,
+        consultant.LinkedIn,
         connexionId,
       ]
     );
@@ -31,11 +31,10 @@ class ConsultantManager extends AbstractManager {
     );
   }
 
-  update(consultant, connexionId) {
-    const newConsultant = { ...consultant };
+  update(consultant, id) {
     return this.connection.query(
       `update ${this.table} set ? where connexionId = ?`,
-      [newConsultant, connexionId]
+      [consultant, id]
     );
   }
 }

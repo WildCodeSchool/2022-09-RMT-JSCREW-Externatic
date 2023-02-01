@@ -9,7 +9,6 @@ const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
 const { hashPassword } = require("./service/auth");
-const registrerValidate = require("./middleware/registrer");
 const checkAuth = require("./middleware/auth");
 
 // configuration de l'upload profil
@@ -34,7 +33,7 @@ const upload = multer({ storage });
 // fin de la configuration de l'upload
 
 // routes publiques
-router.get("/offres", offreControllers.browse);
+router.get("/offreForm", offreControllers.browse);
 router.get("/offres/rand", offreControllers.random);
 router.get("/offres/:id", offreControllers.read);
 router.get("/entreprises", entrepriseControllers.browse);
@@ -50,12 +49,7 @@ router.post("/offres", offreControllers.add);
 router.put("/offres/:id", offreControllers.edit);
 router.get("/consultants", consultantControllers.browse);
 router.get("/consultants/:id", consultantControllers.read);
-router.post(
-  "/consultants",
-  registrerValidate,
-  hashPassword,
-  consultantControllers.add
-);
+router.post("/consultants", consultantControllers.add);
 router.put("/consultants/:id", consultantControllers.edit);
 router.delete("/consultants/:id", consultantControllers.destroy);
 // mur d'authentification

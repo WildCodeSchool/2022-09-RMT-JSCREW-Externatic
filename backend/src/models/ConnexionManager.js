@@ -16,10 +16,10 @@ class ConnexionManager extends AbstractManager {
     return this.connection.query(
       `INSERT INTO ${this.table} (utilisateur, hashedPassword, role, profil) VALUES (?, ?, ?, ?)`,
       [
-        connexion.email,
+        connexion.consultant.email,
         "$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888",
         "consultant",
-        0,
+        1,
       ]
     );
   }

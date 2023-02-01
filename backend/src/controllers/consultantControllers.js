@@ -32,16 +32,27 @@ const read = (req, res) => {
 const add = async (req, res) => {
   const consultant = req.body;
 
-  try {
-    await models.connexion.insertConsultant(consultant);
-    const consult = await models.consultant.insert(consultant);
-    res
-      .location(`/consultants/${consult.insertId}`)
-      .status(201)
-      .json({ ...consultant, id: consult.insertId });
-  } catch (err) {
-    console.error(err);
-    res.sendStatus(500);
+  const error = validate(consultant);
+  if (error) {
+    console.error(error);
+    res.status(422).send(error);
+  } else {
+    try {
+      const result = await models.connexion.insertConsultant({
+        consultant,
+      });
+      const result1 = await models.consultant.insert(
+        consultant,
+        result[0].insertId
+      );
+      res
+        .location(`/consultants/${result[0].insertId}`)
+        .status(201)
+        .json({ connexion_id: result[0].insertId, id: result1[0].insertId });
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
   }
 };
 
