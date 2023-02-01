@@ -7,10 +7,12 @@ module.exports = {
       black: "#404040",
       pink: "#C91961",
       darkPink: "#851342",
-      indigo: "#4338ca",
+      indigo: "#818cf8",
       grey: "#D9D9D9",
       orange: "#EA580C",
       fushia: "#9d174d",
+      grayZinc: "#374151",
+      grayLight: "#6b7280",
     },
     extend: {
       fontFamily: {
