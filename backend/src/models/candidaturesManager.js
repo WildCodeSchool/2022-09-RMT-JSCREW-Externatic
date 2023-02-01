@@ -55,15 +55,11 @@ class CandidaturesManager extends AbstractManager {
     );
   }
 
-  insert(candidature) {
+  insert(offre, id) {
     return this.connection.query(
       `INSERT INTO ${this.table} 
       (candidat_id, offre_id, dateCandidature) VALUES (?, ?, ?)`,
-      [
-        candidature.candidat_id,
-        candidature.offreId,
-        candidature.dateInscription,
-      ]
+      [id, offre.id, offre.dateInscription]
     );
   }
 }
