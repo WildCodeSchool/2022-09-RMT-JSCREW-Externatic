@@ -33,7 +33,6 @@ export default function ConsultantDashboard() {
 
   useEffect(() => {
     getCandidatures();
-    toast("hello", toastifyConfig);
   }, []);
 
   const handleUpdateCandidature = (id) => {
@@ -74,6 +73,15 @@ export default function ConsultantDashboard() {
                   Candidat
                 </th>
                 <th className="text-center border border-slate-600 bg-darkPink text-white">
+                  Téléphone
+                </th>
+                <th className="text-center border border-slate-600 bg-darkPink text-white">
+                  Email
+                </th>
+                <th className="text-center border border-slate-600 bg-darkPink text-white">
+                  CV
+                </th>
+                <th className="text-center border border-slate-600 bg-darkPink text-white">
                   Archiver
                 </th>
               </tr>
@@ -95,6 +103,25 @@ export default function ConsultantDashboard() {
                     </td>
                     <td className="text-center bg-white border border-slate-600 text-xs">
                       {`${candidature.prenom} ${candidature.nom}`}
+                    </td>
+                    <td className="text-center border bg-white border-slate-600 text-xs">
+                      {candidature.telephone}
+                    </td>
+                    <td className="text-center border bg-white border-slate-600 text-xs">
+                      <a
+                        href={`mailto:${candidature.email}`}
+                        className="hover:text-darkPink hover:underline"
+                      >
+                        Email
+                      </a>
+                    </td>
+                    <td className="text-center border bg-white border-slate-600 text-xs">
+                      <a
+                        href={`${candidature.cv}`}
+                        className="hover:text-darkPink hover:underline"
+                      >
+                        CV
+                      </a>
                     </td>
                     <td className="text-center border bg-white border-slate-600 text-xs ">
                       <button

@@ -30,7 +30,7 @@ class CandidaturesManager extends AbstractManager {
 
   findCandidaturesForConsultant(id) {
     return this.connection.query(
-      `SELECT e.nom_entreprise, o.poste, o.id, c.dateCandidature, ca.nom, ca.prenom, c.id AS candidature_id, ca.email, co.nom_consultant
+      `SELECT e.nom_entreprise, o.poste, o.id, c.dateCandidature, ca.nom, ca.prenom, ca.telephone, ca.email, ca.cv, c.id AS candidature_id, ca.email, co.nom_consultant
       FROM ${this.table} AS c
       INNER JOIN candidat AS ca ON ca.id = c.candidat_id
       INNER JOIN offre AS o ON o.id = c.offre_id
