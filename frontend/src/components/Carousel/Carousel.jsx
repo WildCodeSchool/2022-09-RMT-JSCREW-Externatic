@@ -56,8 +56,8 @@ function Carousel() {
   }, [logos]);
 
   return (
-    <div className="carousel my-12 mx-auto">
-      <h2 className=" text-2xl md:text-4xl leading-8 font-semibold text-slate-700 text-center">
+    <div className="carousel font-roboto my-8 mx-auto">
+      <h2 className="text-black text-xl md:text-3xl leading-8 font-semibold text-slate-700 text-center mb-4">
         Ils nous font confiance
       </h2>
       <div className="relative overflow-hidden">

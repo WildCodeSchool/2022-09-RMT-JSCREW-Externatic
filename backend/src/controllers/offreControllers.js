@@ -15,6 +15,21 @@ const dateInscript = () => {
   return `${year}-${month}-${date}`;
 };
 
+/**
+ * fonction count offre
+ */
+const getCountOffre = (req, res) => {
+  models.offre
+    .findCount()
+    .then((data) => {
+      res.status(200).send(data[0]);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const random = (req, res) => {
   models.offre
     .rand(3)
@@ -89,6 +104,52 @@ const edit = (req, res) => {
   }
 };
 
+const browsePage = (req, res) => {
+  models.offre
+    .findAllPage(req.query)
+    .then(([offre]) => {
+      models.offre
+        .findCountPages(req.query)
+        .then(([count]) => {
+          res
+            .status(200)
+            .json({ offre, pages: Math.ceil(count[0].pages / 10) });
+        })
+        .catch((err) => {
+          console.error(err);
+          res.sendStatus(500);
+        });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const browseJob = (req, res) => {
+  models.offre
+    .findAllJob()
+    .then(([offres]) => {
+      res.send(offres);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const browseLocalisation = (req, res) => {
+  models.offre
+    .findAllLocalisation()
+    .then(([offres]) => {
+      res.send(offres);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.offre
     .find(req.params.id)
@@ -105,16 +166,14 @@ const read = (req, res) => {
     });
 };
 
-const candidatures = (req, res) => {
-  models.offre
-    .findCandidatures(req.params.id)
-    .then(([rows]) => {
-      res.send(rows);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
+module.exports = {
+  random,
+  browse,
+  read,
+  add,
+  getCountOffre,
+  edit,
+  browsePage,
+  browseJob,
+  browseLocalisation,
 };
-
-module.exports = { random, browse, read, add, edit, candidatures };

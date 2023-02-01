@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
-import User from "../../contexts/User";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const toastifyConfig = {
@@ -16,8 +16,6 @@ const toastifyConfig = {
 };
 
 function RegisterModal({ visible, onclose }) {
-  const userContext = useContext(User.UserContext);
-
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registration, setRegistration] = useState({
     utilisateur: "",
@@ -40,8 +38,7 @@ function RegisterModal({ visible, onclose }) {
     } else {
       apiConnexion
         .post("/register", registration)
-        .then((data) => {
-          userContext.handleUser(data.data.insertId);
+        .then(() => {
           toast.success(
             `Veuillez vous connecter pour continuer l'aventure`,
             toastifyConfig
@@ -62,12 +59,12 @@ function RegisterModal({ visible, onclose }) {
     return null;
   }
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
+    <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
       <div className="bg-white w-5/6 lg:w-1/4 rounded-2xl shadow-md border-2 border-darkPink">
         <h2 className="text-center text-4xl font-bold mt-4">Inscription</h2>
         <form
           onSubmit={(e) => sendForm(e)}
-          className="bg-white   px-8 pt-6 pb-8 mb-4"
+          className="bg-white   px-6 pt-6 pb-8 mb-4"
         >
           <input
             required
@@ -92,26 +89,26 @@ function RegisterModal({ visible, onclose }) {
           <input
             required
             className="shadow appearance-none border rounded-full w-full mt-4 py-2 px-3 bg-grey text-black placeholder-black"
-            id="Confirmer MDP"
+            id="Confirmer mot de passe"
             type="password"
-            placeholder="Confirmer MDP"
+            placeholder="Confirmer mot de passe"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </form>
-        <div className="mt-4 flex justify-around mb-6">
-          <button
-            type="button"
-            className="rounded-full px-6 border-2 border-darkPink text-darkPink text-2xl"
-            onClick={onclose}
-          >
-            Retour
-          </button>
+        <div className="mt-4 flex flex-col items-center mb-6">
           <button
             onClick={(e) => sendForm(e)}
             type="submit"
-            className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-2xl"
+            className="rounded-full px-6 py-1 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
           >
             Valider
+          </button>
+          <button
+            type="button"
+            className="rounded-full px-6 mt-2 text-darkPink text-md hover:underline"
+            onClick={onclose}
+          >
+            Retour
           </button>
         </div>
       </div>

@@ -21,7 +21,7 @@ function NavBar() {
   };
 
   const profilConnex = () => {
-    if (user) {
+    if (user && user?.role === "candidat") {
       const userId = user.id ? user.id : user;
       return (
         <button
@@ -36,6 +36,11 @@ function NavBar() {
       );
     }
     return null;
+  };
+
+  const getLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -154,7 +159,7 @@ function NavBar() {
           <button
             className="mt-4 md:mt-3 transition-colors duration-300 bg-darkPink bottom-1/4 p-1 md:p-2 px-4 md:px-6 -translate-x-1/2 hover:bg-pink text-white rounded-lg border-2"
             type="button"
-            onClick={() => logout()}
+            onClick={() => getLogout()}
           >
             Déconnexion
           </button>

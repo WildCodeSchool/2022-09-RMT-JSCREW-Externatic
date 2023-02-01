@@ -393,6 +393,7 @@ function OffreForm() {
                   w-40 
                   bg-white 
                   mt-4 
+                  mr-10
                   transition duration-300 
                   hover:bg-pink 
                   hover:text-white 
@@ -415,6 +416,7 @@ function OffreForm() {
                 w-40
                 bg-white 
                 mt-4
+                mr-10
                 transition duration-300 
                 hover:bg-pink 
                 hover:text-white 

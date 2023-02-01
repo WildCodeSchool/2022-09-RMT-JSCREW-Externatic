@@ -8,6 +8,9 @@ const offreControllers = require("./controllers/offreControllers");
 const entrepriseControllers = require("./controllers/entrepriseControllers");
 const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
+const candidaturesControllers = require("./controllers/candidaturesControllers");
+const consultantsControllers = require("./controllers/consultantsControllers");
+
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -29,36 +32,43 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: "5MB", fieldSize: "5MB" },
+});
 // fin de la configuration de l'upload
 
 // routes publiques
+
 router.get("/offreForm", offreControllers.browse);
+router.get("/offres", offreControllers.browsePage);
 router.get("/offres/rand", offreControllers.random);
 router.get("/offres/:id", offreControllers.read);
+router.get("/job", offreControllers.browseJob);
+router.get("/localisation", offreControllers.browseLocalisation);
 router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
+router.get("/candidat/:id", checkAuth, candidatControllers.readId);
+router.post("/candidatures", checkAuth, candidaturesControllers.add);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
-router.post("/entreprises", entrepriseControllers.add);
-router.put("/entreprises/:id", entrepriseControllers.edit);
+router.get("/consultants", consultantsControllers.browse);
+
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
-router.get("/candidatures/:id", offreControllers.candidatures);
-router.post("/offres", offreControllers.add);
-router.put("/offres/:id", offreControllers.edit);
-router.get("/consultants", consultantControllers.browse);
 router.get("/consultants/:id", consultantControllers.read);
-router.post("/consultants", consultantControllers.add);
-router.put("/consultants/:id", consultantControllers.edit);
-router.delete("/consultants/:id", consultantControllers.destroy);
+router.get("/nbCandidats", candidatControllers.getCount);
+router.get("/nbEntreprises", entrepriseControllers.getCountEntp);
+router.get("/nbOffres", offreControllers.getCountOffre);
+
 // mur d'authentification
-router.use(checkAuth);
 router.put("/firstConnexion", checkAuth, connexionControllers.edit);
-router.get("/profil/:id", candidatControllers.read);
+router.get("/profil/:id", checkAuth, candidatControllers.read);
+
 
 router.put(
   "/profil/:id",
+  checkAuth,
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "cv", maxCount: 1 },
@@ -69,6 +79,7 @@ router.put(
 // routes privées
 router.post(
   "/profil",
+  checkAuth,
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "cv", maxCount: 1 },
@@ -76,6 +87,30 @@ router.post(
   candidatControllers.add
 );
 
-router.post("/register", connexionControllers.add);
+router.get(
+  "/candidatures/:user_id",
+  checkAuth,
+  candidaturesControllers.browseById
+);
+router.put("/candidatures/:id", checkAuth, candidaturesControllers.edit);
+router.get(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.browseCandidaturesForConsultant
+);
+router.put(
+  "/candidaturesForConsultants/:id",
+  checkAuth,
+  candidaturesControllers.editCandidaturesForConsultant
+);
+
+router.post("/consultants", consultantControllers.add);
+router.put("/consultants/:id", consultantControllers.edit);
+router.delete("/consultants/:id", consultantControllers.destroy);
+router.post("/entreprises", checkAuth, entrepriseControllers.add);
+router.put("/entreprises/:id", entrepriseControllers.edit);
+
+router.post("/offres", offreControllers.add);
+router.put("/offres/:id", offreControllers.edit);
 
 module.exports = router;

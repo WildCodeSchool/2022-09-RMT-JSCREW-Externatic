@@ -1,14 +1,19 @@
 import React, { useState, useRef, useContext, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
 import apiConnexion from "@services/apiConnexion";
+
 import cvUpload from "@assets/cv_uploaded.png";
 import cv from "@assets/cv.png";
 import avatar from "@assets/Avatar.png";
-import Card from "@components/UI/Card";
-import icon4 from "../../../public/externatic_favicon.png";
+
+import CandidatureTable from "@components/Table/CandidatureTable";
+
 import User from "../../contexts/User";
+
+import icon4 from "../../../public/externatic_favicon.png";
+
 import "react-toastify/dist/ReactToastify.css";
 import "@pages/Profil/Profil.css";
 
@@ -27,7 +32,6 @@ function Profil() {
   const { user, updateUserProfil } = useContext(User.UserContext);
   const inputRef1 = useRef(null);
   const inputRef2 = useRef(null);
-
   const profilType = {
     nom: "",
     prenom: "",
@@ -36,7 +40,7 @@ function Profil() {
     code_postal: "",
     ville: "",
     pays: "",
-    email: user.email,
+    email: user.utilisateur,
     description: "",
     metier: "",
     telephone: "",
@@ -44,7 +48,6 @@ function Profil() {
     connexion_id: user.id,
   };
 
-  const [candidatures, setCandidatures] = useState([]);
   const [profil, setProfil] = useState(profilType);
 
   const handleProfil = (place, value) => {
@@ -55,6 +58,7 @@ function Profil() {
 
   const sendForm = (e) => {
     e.preventDefault();
+
     const formData = new FormData();
     formData.append("avatar", inputRef1.current.files[0]);
     formData.append("cv", inputRef2.current.files[0]);
@@ -125,25 +129,11 @@ function Profil() {
       .catch((error) => console.error(error));
   };
 
-  // Fonction qui gère la récupération des données de candidatures liées au profil
-  const getCandidatures = () => {
-    apiConnexion
-      .get(`/candidatures/${user.id}`)
-      .then((userCandidatures) => {
-        setCandidatures(userCandidatures.data);
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
+    // Si le profil est déjà existant
     if (user.profil) {
       getFullProfil();
     }
-  }, []);
-
-  // Données "candidatures"
-  useEffect(() => {
-    getCandidatures();
   }, []);
 
   return (
@@ -305,7 +295,7 @@ function Profil() {
               type="email"
               placeholder="nom@exemple.com"
               name="email"
-              value={profil.email}
+              value={user.utilisateur}
               onChange={(e) => handleProfil(e.target.name, e.target.value)}
             />
           </div>
@@ -371,18 +361,7 @@ function Profil() {
             </button>
           </div>
         )}
-        {user.id && (
-          <div>
-            <h1 className="text-center">Vos candidatures</h1>
-            <div className="lg:flex lg:justify-around lg:w-full">
-              {candidatures.map((candidature) => (
-                <Link to={`/offres/${candidature.id}`}>
-                  <Card offre={candidature} key={candidature.id} />
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
+        {user.id && <CandidatureTable user={user} />}
       </form>
       <ToastContainer
         position="bottom-right"

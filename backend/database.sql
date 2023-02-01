@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
   `utilisateur` VARCHAR(255) UNIQUE NOT NULL,
   `hashedPassword` VARCHAR(255) NOT NULL,
   `role` VARCHAR(45) NOT NULL,
-  `profil` BOOLEAN NOT NULL,
+  `profil` BOOLEAN DEFAULT false,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
@@ -36,11 +36,16 @@ CREATE TABLE IF NOT EXISTS `externatic`.`connexion` (
 -- Data for table `externatic`.`connexion`
 -- -----------------------------------------------------
 INSERT INTO
-  `connexion`(`utilisateur`, `hashedPassword`, `role`, `profil`)
+  `connexion`(
+    `utilisateur`,
+    `hashedPassword`,
+    `role`,
+    `profil`
+  )
 VALUES
   (
     'alain.villeneuve@email.fr',
-    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
+    '$argon2id$v=19$m=65536,t=5,p=1$AxsgJgdT3M2qxbaF7fcFQA$nIXNQKIWJBtFyfYpQLlLc7DkCBusP6G+GiuuZOddJf4',
     'candidat',
     1
   ),
@@ -49,16 +54,34 @@ VALUES
     '$argon2id$v=19$m=65536,t=5,p=1$K4MCUL/SfTYXJwTvaNReLA$rykd7aX4kbZqvkGAUGaaEw0So7b/T4qRDU2sfSMP3js',
     'administrateur',
     1
-  ),
-   (
+  );
+
+INSERT INTO
+  `connexion`(
+    `utilisateur`,
+    `hashedPassword`,
+    `role`,
+    `profil`
+  )
+VALUES
+  (
     'jules.simons@email.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$R5zhYw9IOecMbCx4Ck1ykQ$yCnhM7xzF+Sx0CJM/uvTCHo6JNcxeSgtFWCeWWQWAUM',
+    '$argon2id$v=19$m=65536,t=5,p=1$/HK/Ld5LeiO4jvCt1RiZ5w$uZ4S6Rv3fgZjJ7zXOcSWu/4AqVYS7b8shoQ8jBp97iQ',
     'candidat',
     1
-  ),
-   (
+  );
+
+INSERT INTO
+  `connexion`(
+    `utilisateur`,
+    `hashedPassword`,
+    `role`,
+    `profil`
+  )
+VALUES
+  (
     'leo.dupuis@gmail.com',
-    '$argon2id$v=19$m=65536,t=5,p=1$a7y8HAgcdUFN7Woyayt+cg$FAS/LW8r2mpjr6EIdBMozVpS7I89gswYddM9sr+f1ls',
+    '$argon2id$v=19$m=65536,t=5,p=1$ljTaKRXcTPtt0DA6x++gJQ$cV4GQmsqa3o9WGu5Mr88ibCNlolIyryFXbMecKApIEA',
     'candidat',
     1
   ),
@@ -83,7 +106,7 @@ VALUES
   (
     "mathieu.debroise@externatic.fr",
     "$argon2id$v=19$m=65536,t=5,p=1$7g2/MXBsB4XkML7yadMQEg$CWnGMtkFqsPP7CooSucq3lY7F5vRBrKzFHDA53tJFV8",
-    "consultant",
+    "Consultant",
     1
   ),
   (
@@ -224,7 +247,6 @@ VALUES
     "consultant",
     1
   );
-
 
 -- -----------------------------------------------------
 -- Table `externatic`.`candidat`
@@ -408,7 +430,7 @@ VALUES
     "06 99 48 33 98",
     "franck.gascard@externatic.fr",
     "https://www.linkedin.com/in/franckgascard/",
-    4
+    5
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/BCA-1-300x300.jpg",
@@ -417,7 +439,7 @@ VALUES
     "06 87 28 36 85",
     "benjamin.casseron@externatic.fr",
     "https://www.linkedin.com/in/benjamincasseron/",
-    5
+    6
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/SBL-1-300x300.jpg",
@@ -426,7 +448,7 @@ VALUES
     "07 83 77 37 09",
     "sabrina.blanchet@externatic.fr",
     "https://www.linkedin.com/in/sabrina-blanchet-7a2948b/",
-    6
+    7
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/MDE-1-300x300.jpg",
@@ -435,7 +457,7 @@ VALUES
     "06 83 46 10 43",
     "mathieu.debroise@externatic.fr",
     "https://www.linkedin.com/in/mathieudebroise/",
-    7
+    8
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/TLI-1-300x300.jpg",
@@ -444,7 +466,7 @@ VALUES
     "06 73 87 40 18",
     "thomas.limare@externatic.fr",
     "https://www.linkedin.com/in/thomas-limare-36b52b116/",
-    8
+    9
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/APH-1-300x300.jpg",
@@ -453,7 +475,7 @@ VALUES
     "07 49 31 93 69",
     "ando.philistin@externatic.fr",
     "https://www.linkedin.com/in/ando-philistin/",
-    9
+    10
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2022/01/DMA1-300x300.png",
@@ -462,7 +484,7 @@ VALUES
     "",
     "donatien.mahieu@externatic.fr",
     "https://www.linkedin.com/in/donatien-mahieu/",
-    10
+    11
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/YLO-1-300x300.jpg",
@@ -471,7 +493,7 @@ VALUES
     "06 11 55 36 82",
     "yvonnick.loidreau@externatic.fr",
     "https://www.linkedin.com/in/yvonnick-loidreau-32417284/",
-    11
+    12
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/SJA-1-300x300.jpg",
@@ -480,7 +502,7 @@ VALUES
     "02 85 52 26 33",
     "sandra.jagu@externatic.fr",
     "https://www.linkedin.com/in/sandra-jagu-b73b3670/",
-    12
+    13
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2022/03/MHA1-300x300.png",
@@ -489,7 +511,7 @@ VALUES
     "06 70 35 46 55",
     "mathilde.hamel@externatic.fr",
     "https://www.linkedin.com/in/mathilde-hamel-560a52111/",
-    13
+    14
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2022/03/JCO-1-300x300.jpg",
@@ -498,7 +520,7 @@ VALUES
     "06 02 42 82 63",
     "justine.cote@externatic.fr",
     "https://www.linkedin.com/in/justine-eriau/",
-    14
+    15
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/05/PDU-1-300x300.jpg",
@@ -507,7 +529,7 @@ VALUES
     "06 29 51 22 51",
     "perrine.dupisson@externatic.fr",
     "https://www.linkedin.com/in/perrine-dupisson/",
-    15
+    16
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/03/NLA-1-300x300.jpg",
@@ -516,7 +538,7 @@ VALUES
     "07 83 58 06 14",
     "noe.lambert@externatic.fr",
     "https://www.linkedin.com/in/no%C3%A9-lambert-aouizerat/",
-    16
+    17
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2022/09/ALO1-300x300.png",
@@ -525,7 +547,7 @@ VALUES
     "06 40 83 19 54",
     "antoine.lopez@externatic.fr",
     "https://www.linkedin.com/in/antoine-lopez-093b231a0/",
-    17
+    18
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/06/PSE-1-300x300.jpg",
@@ -534,7 +556,7 @@ VALUES
     "06 50 99 50 98",
     "pierre.seghier@externatic.fr",
     "https://www.linkedin.com/in/pierre-seghier-59462399/",
-    18
+    19
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2022/01/LDE1-300x300.png",
@@ -543,7 +565,7 @@ VALUES
     "06 79 65 00 66",
     "lise.demartino@externatic.fr",
     "https://www.linkedin.com/in/lise-de-martino/",
-    19
+    20
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/09/AUR-1-300x300.jpg",
@@ -552,7 +574,7 @@ VALUES
     "06 01 39 55 60",
     "alexandre.urien@externatic.fr",
     "https://www.linkedin.com/in/alexandre-urien/",
-    20
+    21
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2022/09/ASO1-300x300.png",
@@ -560,90 +582,92 @@ VALUES
     " Chargée de recutement IT - Lille ",
     " 06 20 18 15 15 ",
     " adele.sold @externatic.fr ",
-    " https: / / www.linkedin.com / in / ad % C3 % A8le - sold - 07b68314a / ",
-    21
+    " https://www.linkedin.com/in/ad%C3%A8le-sold-07b68314a/",
+    22
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2020 / 09 / MAU -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2020/09/MAU-1-300x300.jpg ",
     " Margaux AUBERT ",
     " Responsable Communication / Marketing ",
     " 06 66 76 57 40 ",
     " margaux.aubert @externatic.fr ",
-    " https: / / www.linkedin.com / in / margaux - aubert / ",
-    22
+    " https://www.linkedin.com/in/margaux-aubert/",
+    23
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / NBO -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2021/09/NBO-1-300x300.jpg ",
     " Nicolas BOUET",
     " Consultant recrutement IT - Nantes / Rennes ",
     " 06 98 28 83 68 ",
     " nicolas.bouet @externatic.fr ",
-    " https: / / www.linkedin.com / in / bouet - nicolas / ",
-    23
+
+    " https://www.linkedin.com/in/bouet-nicolas/",
+    24
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / LFR -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2021/09/LFR-1-300x300.jpg ",
     " Lucie FROESCHEL ",
     " Consultante recrutement IT à Bordeaux ",
     " 06 82 32 11 45 ",
     " lucie.froeschel @externatic.fr ",
-    " https: / / www.linkedin.com / in / lucie - froeschel / ",
-    24
+    " https://www.linkedin.com/in/lucie-froeschel/",
+    25
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2021 / 09 / RSA -1 - 300x300.jpg ",
+    " https://www.externatic.fr/wp-content/uploads/2021/09/RSA-1-300x300.jpg ",
     " Raphael SANCHEZ ",
     " Consultant recrutement IT à Bordeaux ",
     " 06 49 49 91 68 ",
     " Raphael.sanchez @externatic.fr ",
-    " https: / / www.linkedin.com / in / raphael - sanchez - roson / ",
-    25
+    " https://www.linkedin.com/in/raphael-sanchez-roson/",
+    26
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 05 / TRO1 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/05/TRO1-300x300.png ",
     " Thomas ROVERE",
     " Consultant en recrutement IT à Bordeaux ",
     " 07 65 75 57 03 ",
     " thomas.rovere @externatic.fr ",
-    " https: / / www.linkedin.com / in / thomas - rovere / ",
-    26
+    " https://www.linkedin.com/in/thomas-rovere/",
+    27
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 07 / CNA1 - 300x298.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/07/CNA1-300x298.png ",
     " Charlotte NADAUD ",
     " Chargée de recrutement IT à Bordeaux ",
     " 06 73 45 10 59 ",
     " charlotte.nadaud @externatic.fr ",
-    " https: / / www.linkedin.com / in / charlotte - nadaud / ",
-    27
+    " https://www.linkedin.com/in/charlotte-nadaud/",
+    28
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 09 / RBA2 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/09/RBA2-300x300.png ",
     " Ruben BARACCHINI ",
     " Consultant recrutement IT à Bordeaux ",
     " 06 66 84 94 50 ",
     " ruben.baracchini @externatic.fr ",
-    " https: / / www.linkedin.com / in / ruben - baracchini - 78a474158 / ",
-    28
+    " https://www.linkedin.com/in/ruben-baracchini-78a474158/",
+    29
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2020 / 09 / site -01 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2020/09/site-01-300x300.png",
     " Tiffène BULEON",
     " Consultante en recrutement IT à Nantes ",
     " 06 74 82 70 85 ",
     " tiffene.buleon @externatic.fr ",
-    " https: / / www.linkedin.com / in / tiff % C3 % A8ne - buleon - 288512b6 / ",
-    29
+    " https://www.linkedin.com/in/tiff%C3%A8ne-buleon-288512b6/",
+    30
   ),
   (
-    " https: / / www.externatic.fr / wp - content / uploads / 2022 / 12 / site -03 - 300x300.png ",
+    " https://www.externatic.fr/wp-content/uploads/2022/12/site-03-300x300.png",
     " Talsy LOEMBA ",
     " Consultant recrutement IT à Nantes ",
     " 06 50 69 21 78 ",
     " talsy.loemba @externatic.fr ",
-    " https: / / www.linkedin.com / in / talsy - loemba / ",
-    30
+    " https://www.linkedin.com/in/talsy-loemba/",
+    31
   );
+
 
 -- -----------------------------------------------------
 -- Table `externatic`.`Domaine`
@@ -691,8 +715,10 @@ CREATE TABLE IF NOT EXISTS `externatic`.`entreprise` (
   `nombre_employes` INT NOT NULL,
   `dateInscription` DATE NOT NULL,
   `domaine_id` INT NOT NULL,
+  `consultant_id` INT,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_domaine_entreprise` FOREIGN KEY (`domaine_id`) REFERENCES `externatic`.`domaine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_domaine_entreprise` FOREIGN KEY (`domaine_id`) REFERENCES `externatic`.`domaine` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_consultant_entreprise` FOREIGN KEY (`consultant_id`) REFERENCES `externatic`.`consultant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 
 -- -----------------------------------------
@@ -712,7 +738,8 @@ INSERT INTO
     `numero_siret`,
     `nombre_employes`,
     `dateInscription`,
-    `domaine_id`
+    `domaine_id`,
+    `consultant_id`
   )
 VALUES
   (
@@ -728,6 +755,7 @@ VALUES
     '123456789',
     500,
     '2022-09-15',
+    1,
     1
   ),
   (
@@ -743,6 +771,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -758,7 +787,8 @@ VALUES
     "",
     250,
     "2023-01-08",
-    1
+    1,
+    2
   ),
   (
     "https://www.externatic.fr/wp-content/uploads/2021/03/allovoisins-1.png",
@@ -773,6 +803,7 @@ VALUES
     "",
     50,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -788,6 +819,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -803,6 +835,7 @@ VALUES
     "753886092",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -818,6 +851,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -833,6 +867,7 @@ VALUES
     "",
     8600,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -848,6 +883,7 @@ VALUES
     "",
     50,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -863,6 +899,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -878,6 +915,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -893,6 +931,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -908,6 +947,7 @@ VALUES
     "",
     500,
     "2023-01-08",
+    1,
     1
   ),
   (
@@ -923,6 +963,7 @@ VALUES
     "",
     500,
     "2023-08-01",
+    1,
     1
   ),
   (
@@ -938,6 +979,7 @@ VALUES
     "",
     300,
     "2023-01-08",
+    1,
     1
   );
 
@@ -955,7 +997,8 @@ INSERT INTO
     `numero_siret`,
     `nombre_employes`,
     `dateInscription`,
-    `domaine_id`
+    `domaine_id`,
+    `consultant_id`
   )
 VALUES
   (
@@ -971,7 +1014,8 @@ VALUES
     '987452314',
     20,
     '2022-07-01',
-    2
+    2,
+    1
   );
 
 INSERT INTO
@@ -988,7 +1032,8 @@ INSERT INTO
     `numero_siret`,
     `nombre_employes`,
     `dateInscription`,
-    `domaine_id`
+    `domaine_id`,
+    `consultant_id`
   )
 VALUES
   (
@@ -1004,7 +1049,8 @@ VALUES
     '456321789',
     100,
     '2022-12-07',
-    3
+    3,
+    1
   );
 
 -- -----------------------------------------------------
@@ -1052,19 +1098,19 @@ INSERT INTO
 VALUES
   (
     'CDI',
-    'Full remote',
-    ' Carte swile / CSE /  locaux en centre ville de Nantes avec coporate appartment en cas de remote (2-3 jours / mois sur site attendu) contexte international  possibilités d évolution.',
-    'Développeur fullstack JS full ',
+    'Télétravail',
+    'Carte swile / CSE / Nos locaux se trouvent en centre ville de Nantes avec coporate appartement en cas de remote (2-3 jours / mois sur site attendu) contexte international + possibilités d\'évolution.',
+    'Développeur Web FullStack JS',
     'Nantes',
     '07/12/2022',
-    '08/03/2023',
-    '45 000 - 60 000€',
-    'Vous rejoignez cette nouvelle feature team : En contexte Agile, vous serez impliqué dans le build (étude et développement) Node et react de la solution en contexte serverless Au sein de cette société innovante où le niveau tech est une architecture Serverless',
-    'Soft skills : Vous êtes proactif et autonome, vous souhaitez avoir un impact au sein de la structure Vous aimez travailler en équipe et partager Vous êtes dans l amélioration continue et aimez apprendre de vos réussites mais aussi de vos erreurs',
-    'NodeJS / Architecture Serverless / React / Git / GCP / Approche DDD etc.',
+    '18/03/2023',
+    'De 45 000 à 60 000€ par an',
+    'Vous rejoignez notre team : En contexte Agile, vous serez impliqué dans le build (étude et développement via Node et React) de la solution en contexte serverless. Au sein de cette société innovante où le niveau tech est une architecture Serverless.',
+    'Vous êtes proactif et autonome, vous souhaitez avoir un impact au sein de la structure en pleine évolution. Vous aimez travailler en équipe et partager ! Vous êtes dans l\'amélioration continue et aimez apprendre de vos réussites mais aussi de vos erreurs.',
+    'NodeJs / Architecture Serverless / React / Git&Github / MySQL',
     1,
     2
-  );
+);
 
 INSERT INTO
   `externatic`.`offre` (
@@ -1083,21 +1129,21 @@ INSERT INTO
     `domaine_id`
   )
 VALUES
-  (
+(
     'CDI',
-    'Contrat : CDI, forfait jours Lieu de travail : Nantes, Lyon ou Paris avec 2 jours de télétravail par semaine) ; ou full remote + déplacements à prévoir 2-3 jours par mois',
-    '???',
-    '???',
-    '???',
-    '01/01/22',
-    '05/01/22',
-    '000€',
-    'c infrastructure (sécurité, performances …) Résoudre les incidents et en faire le suivi Supporter les équipes techniques, dev et data pour la mise en place de nouveaux projets ou fonctionnalités',
-    'Etre à l’aise avec les processus d’intégration et de déploiement continu Etre en phase avec ces traits culturels : curiosité et pragmatisme, autonomie et solidarité, passion et fiabilité Valoriser l’esprit d’équipe Avoir un bon relationnel Et un excellent sens de l’humour :)',
-    'Ruby On Rails, RabbitMQ, PostgreSQL, React, React Native',
+    '3/4 jours de TT/semaine',
+    'Un équilibre pro/perso grâce au télétravail et aux libertés d\'horaires de travail. Des locaux sympathiques à Station F (Paris 13) si tu souhaites venir en présentiel. Une équipe sympathique avec qui partager un apéro après le travail. Des points en visio sur Gather.town, qui rend les visios agréables et fun.',
+    'Développeur Web Ruby/React',
+    'Paris',
+    '01/02/23',
+    '01/04/23',
+    'De 50 000 à 55 000€ par an',
+    'Développement des infrastructures (sécurité, performances …). Résoudre les incidents et en faire le suivi. Supporter les équipes techniques, dev et data pour la mise en place de nouveaux projets ou fonctionnalitées',
+    'Etre à l’aise avec les processus d’intégration et de déploiement continu. Etre en phase avec ces traits culturels : curiosité et pragmatisme, autonomie et solidarité, passion et fiabilité. Bien évidemment valoriser l’esprit d’équipe, un excellent sens de l’humour 😊',
+    'Ruby, RabbitMQ, PostgreSQL, React, React Native',
     2,
     1
-  );
+);
 
 INSERT INTO
   `externatic`.`offre` (
@@ -1116,21 +1162,328 @@ INSERT INTO
     `domaine_id`
   )
 VALUES
-  (
-    'CDI',
-    'TT ou FULL REMOTE possible.',
-    DEFAULT,
-    'Développeur senior PHP/React ',
-    'Bordeaux',
-    '23/11/2022',
-    '05/05/2023',
-    ' 45-55K €/ an selon profil',
-    'Développer de nouvelles fonctionnalités sur les outils du produit Améliorer les processus techniques et les environnements de développement Prendre en main des problématiques métier plus que des technologies Améliorer les fonctionnalités existantes : correction de bugs, optimisation des temps de réponses, etc',
-    'Être à l écoute des utilisateurs quant aux problématiques rencontrées Et bien évidement rendre vos futurs utilisateurs heureux',
-    'Langages : PHP 8 et Javascript ECMAScript6 et plus, Symfony / API Platform, API Rest/Soap, POO, framework & Design patterns, Base de données : MySQL, ElasticSearch, Outils de développement collaboratif : Git & submodules, GitLab & registry, Gitflow, DevOps : Docker, CI/CD, Linux : SSH, bash & co, AWS est un plus non négligeable, car projet de migration des services vers le cloud.',
-    3,
-    3
-  );
+(
+'CDI',
+'Télétravail',
+'Entreprise innovante intervenant dans un domaine de pointe avec une stack technique riche. Aspect multiculturel et tourné sur l\'international.',
+'Développeur Web PHP/React ',
+'Bordeaux',
+'23/11/2022',
+'05/05/2023',
+'De 40 000 à 45 000€ par an',
+'Développer de nouvelles fonctionnalités sur les outils du produit. Améliorer les processus techniques et les environnements de développement. Prendre en main des problématiques et améliorer les fonctionnalitées existantes : correction de bugs, optimisation des temps de réponses, etc.',
+'Être à l\'écoute des utilisateurs et aux problématiques rencontrées. Posséder des bases en design et en expérience utilisateur (UX) 🎨',
+'PHP 8, Angular, Symfony, MySQL, ElasticSearch, Git, GitLab & registry, Gitflow',
+3,
+3
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDD',
+'1 jour de TT/semaine',
+'Formation externe (séminaire IO, Devoxx World, ...). Locaux refait à neuf, CSE attractif, restaurant d\'entreprise, mise à disposition d\'un complexe sportif et prime d\'intéressement.',
+'Développeur Web FullStack Spring/JS',
+'Bordeaux',
+'23/01/2023',
+'01/06/2023',
+'De 60 000 à 65 000€ par an',
+'Participer aux séances de conception fonctionnelles et techniques des futures solutions. Réaliser les développements associés ainsi que les tests automatisés. Contribuer de façon active avec votre équipe à l\'amélioration de la qualité logicielle.',
+'Vous justifiez d\'une expérience de 3 ans minimum dans le développement de services web et cloud. Vous êtes rodés aux pratiques agiles et au travail en équipe ; de plus, vous êtes une personne curieuse, sensible aux problématiques de qualité de code.',
+'Springboot, React, Kotlin, Rest, Azure, Docker',
+3,
+3
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'1 jour de TT/semaine',
+'Des formations agiles et l\'accès à des solutions de formation e-learning. CE et tickets restaurants grâce à notre partenaires, et on vous réserve bien d\'autres surprises, alors rejoignez-nous ⚡',
+'Développeur Web FullStack JS',
+'Paris',
+'13/01/2023',
+'02/04/2023',
+'De 50 000 à 60 000€ par an',
+'Participation à la conception. Réalisation du développement des applications & des tests qualités. Participation à l\'architecture du produit, aux revues de code et à la qualité et stabilité du code.',
+'2 ans d\'expérience en développement web avec Javascript, et plus particulièrement avec les frameworks Angular & NodeJs (fullStack). Tu as déjà travaillé avec l\'infrastructure AWS & l\'environnement Linux.',
+'ReactJs, Angular, NodeJs, Scrum, Agile',
+3,
+3
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'Télétravail',
+'Emploi du temps flexible grâce au télétravail. Rémunération + variable sur objectifs + mutuelle.',
+'Développeur Web FullStack JS',
+'Paris',
+'16/01/2023',
+'16/04/2023',
+'De 30 000 à 35 000€ par an',
+'Développer des logiciels en toute autonomie à partir de cahiers des charges, spécifications fonctionnelles ou de tâches définies à l\'intérieur de sprints. Participer à la mise en production et à la livraison de l\'application. Rédiger des notes explicatives pour détailler le code et le rendre compréhensible par les autres intervenants.',
+'De formation de Bac +2 à Bac +5, vous disposez d\'une prémière expérience d\'au moins 3 ans. Vous disposez d\'une bonne culture digitale et entretenez une veille régulière sur les nouvelles technologies afin de consolider votre expérience. Autonome, créatif, et bien sûr vous aimez travailler en équipe 😊',
+'ReactJs, Spring-Boot, NodeJs, MySql, Approche Rest',
+3,
+3
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'3 jours de TT/semaine',
+'Emploi du temps flexible grâce au télétravail. Projets qui s\'inscrit dans un cadre international.',
+'Développeur Web FullStack Java/Angular',
+'Paris',
+'11/01/2023',
+'16/04/2023',
+'De 35 000 à 38 000€ par an',
+'Participer à la conception et au chiffrage des user ou technical stories à implémenter. Coder les features et les tests unitaires associés dans le respect des normes, de l\’ergonomie et des bonnes pratiques d\’ingénierie logicielle. Être moteur à la réduction de la dette technique et à l\’amélioration continue de son équipe',
+'Bonnes connaissances de GIT, bonnes connaissances du développement web avec Angular, HTML, CSS & bonnes bases de programmation en Java et construction des livrables (ex : jar) avec un IDE',
+'Java 11/Quarkus, Plotly (Python & JS), HTML5, CSS3, Angular, Maven, GIT, Jenkins',
+3,
+3
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'2 jours de TT/semaine',
+'Multiples avantages sociaux : mutuelle d\'entreprise, tickets restaurant, tickets CESU, épargne salariale, intéressement. Emploi du temps flexible grâce au télétravail.',
+'Développeur Web FullStack JS',
+'La Rochelle',
+'09/01/2023',
+'21/03/2023',
+'De 30 000 à 35 000€ par an',
+'Maintenance et optimisation de l’existant après une formation métier. Recueil et la formalisation des expressions de besoin des différents services intervenants. Mise en place des évolutions des applications et de nouveaux projets d\’applications web/mobile : étude de faisabilité, conception technique, rédaction du cahier des charges. Pilotage et gestion des différents prestataires pour ce projet 😎',
+'Si vous avez eu des connaissances en e-commerce, dans les paiements en ligne, dans les webservices, ce serait un plus. Vous devez avoir au minimum 3 ans d\’expérience sur un poste similaire.',
+'Angular, NodeJs, HTML5/CSS, Javascript, SQL',
+3,
+3
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'2 jours de TT/semaine',
+'Rejoignez notre équipe techniques de 10 personnes dans le sud de la France, avec un bon esprit d’équipe, un parcours d’intégration dans une ambiance conviviale et chaleureuse, une mutuelle avantageuse, et du café a volonté !',
+'Développeur Web PHP',
+'Marseille',
+'02/02/2023',
+'30/03/2023',
+'De 35 000 à 40 000€ par an',
+'Vos principales missions consisteront à : Analyser les besoins utilisateurs et métiers ; Proposer l\'axe de développement ; Développer les applications et scripts nécessaires & Assurer la maintenance corrective et évolutive des applications.',
+'Une forte culture et implication dans la sécurité des systèmes et du développement, l\'utilisation de Laravel ou d\'un framework MVC sont des atouts supplémentaires pour ce poste. Une connaissance linux/debian/Ubuntu sera très appréciable.',
+'PHP, Javascrpit, SQL',
+2,
+1
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'2 jours de TT/semaine',
+'Participation au transport - réduction tarifaires - tickets restaurant',
+'Développeur Web Junior JS',
+'Nantes',
+'21/01/2023',
+'30/04/2023',
+'De 30 000 à 35 000€ par an',
+'Vous contribuerez à la maintenance et l\’amélioration continue des performances des clients front-end. Vous contribuerez aux librairies web (SDK) permettant d\’embarquer ce client “end user” dans une application ou une page web et de le paramétrer, et aux documentations associées',
+'Attiré par les projets innovants et dynamique, vous avez un fort intérêt pour les défis techniques. Indépendamment de votre formation, vous faites preuve d\’un intérêt poussé pour l\’informatique et d\’une vision large des technologies et tendances du monde Internet. Vous êtes très rigoureux, méthodique et d\’une grande autonomie. Vous appréciez le travail en équipe, vous avez envie d\'apprendre.',
+'Javascrpit, React, Angular, TypeScript, ThreeJs',
+2,
+1
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'2 jours de TT/semaine',
+'Nous mettons à disposition le matériel nécessaire et laissons le choix l\’environnement de travail (avec une préférence pour Linux ). La rémunération de base est calculée selon votre profil, en fonction de la grille de la convention Syntec.',
+'Développeur Web Junior PHP',
+'Marseille',
+'22/01/2023',
+'10/04/2023',
+'De 40 000 à 45 000€ par an',
+'Gestion et adaptation des solutions techniques lors du développement des fonctionnalités du site web. Participation à la conception des outils et méthodes propres à l\’environnement technique Web. Gestion de la maintenance du site web.',
+'Nous recherchons un·e développeur·se web fullstack passionné⋅e, en phase avec nos valeurs, ayant déjà une expérience dans le milieu afin de participer au développement de nos projets en cours et à venir. Tu devras être en mesure d\’intervenir sur des projets variés, techniques, originaux et ambitieux.',
+'PHP, Symfony, Python, HTML/CSS, MySQL',
+2,
+1
+);
+
+
+INSERT INTO
+`externatic`.`offre` (
+`contrat`,
+`condition_travail`,
+`avantages`,
+`poste`,
+`localisation`,
+`dateOffre`,
+`date_fin_offre`,
+`salaire`,
+`mission`,
+`profil_recherche`,
+`specialitees`,
+`entreprise_id`,
+`domaine_id`
+)
+VALUES
+(
+'CDI',
+'3 jours de TT/semaine',
+'Participation au transport, RTT, tickets restaurant, semaine flexible pour télétravailler',
+'Développeur Web FullStack JS',
+'Marseille',
+'12/01/2023',
+'15/04/2023',
+'De 40 000 à 45 000€ par an',
+'Développer de nouvelles fonctionnalités sur les applications Web actuelles et celles en train de se construire. S\’impliquer dans les cérémonies scrum (daily, sprint planning, grooming, retro, demo). Être force de proposition 😊',
+'Maitrise d\'un frameworks Back JS et d\'un framework Front JS. De solides compétences en développement (code versionning, testing, bonnes pratiques de dev, ..). Connaissance des pratiques agile Scrum',
+'Javascrpit, VueJs, ReactJs, Git, Postgres',
+2,
+1
+);
+
 
 -- -----------------------------------------------------
 -- Table `externatic`.`candidature`
@@ -1139,6 +1492,9 @@ CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `candidat_id` INT NOT NULL,
   `offre_id` INT NOT NULL,
+  `dateCandidature` DATE NOT NULL,
+  `suiviParCandidat` BOOLEAN NOT NULL DEFAULT true,
+  `traiteParConsultant` BOOLEAN NOT NULL DEFAULT false,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_candidature_candidat` FOREIGN KEY (`candidat_id`) REFERENCES `externatic`.`candidat` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_candidature_offre` FOREIGN KEY (`offre_id`) REFERENCES `externatic`.`offre` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -1148,31 +1504,67 @@ CREATE TABLE IF NOT EXISTS `externatic`.`candidature` (
 -- Data for table `externatic`.`candidature`;
 -- ----------------------------------------
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (1, 1);
+  (1, 1, "2023-01-08", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (1, 2);
+  (1, 2, "2023-01-12", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (2, 2);
+  (2, 2, "2023-01-16", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (2, 3);
+  (2, 3, "2023-01-02", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (3, 1);
+  (3, 1, "2023-01-09", true, false);
 
 INSERT INTO
-  `externatic`.`candidature` (`candidat_id`, `offre_id`)
+  `externatic`.`candidature` (
+    `candidat_id`,
+    `offre_id`,
+    `dateCandidature`,
+    `suiviParCandidat`,
+    `traiteParConsultant`
+  )
 VALUES
-  (3, 3);
+  (3, 3, "2023-01-06", true, false);
