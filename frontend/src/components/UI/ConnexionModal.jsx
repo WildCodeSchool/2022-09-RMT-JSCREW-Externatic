@@ -38,7 +38,17 @@ function ConnexionModal({ visible, onclose }) {
         userContext.handleUser(data.data);
         toast.success(`Bonjour à vous`, toastifyConfig);
         if (data.data.profil) {
-          setTimeout(() => onclose(), 2000);
+          if (data.data.role === "candidat") {
+            setTimeout(() => onclose(), 2000);
+          } else if (data.data.role === "consultant") {
+            setTimeout(
+              () =>
+                navigate(`dashboard/consultant/candidatures/${data.data.id}`),
+              2000
+            );
+          } else if (data.data.role === "administrateur") {
+            setTimeout(() => navigate(`dashboard/admin/entreprises`), 2000);
+          }
         } else {
           setTimeout(() => navigate(`profil/${data.data.id}`), 2000);
           setTimeout(() => onclose(), 2000);

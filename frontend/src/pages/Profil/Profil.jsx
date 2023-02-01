@@ -147,222 +147,230 @@ function Profil() {
         />
         <link rel="icon" type="image/png" href={icon4} />
       </Helmet>
-      <form
-        encType="multipart/form-data"
-        onSubmit={(e) => sendForm(e)}
-        className="w-full max-w-lg mb-5 p-5 rounded-3xl"
-      >
-        <div className="flex flex-wrap -mx-3 md:mb-6">
-          <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img
-              src={
-                profil.photo
-                  ? `${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`
-                  : avatar
-              }
-              id="image"
-              alt="avatar"
-            />
-            <input
-              className="hidden"
-              type="file"
-              ref={inputRef1}
-              name="avatar"
-              accept=".jpg, .png, .gif"
-              onChange={(evt) => previewPicture(evt, "photo")}
-            />
-          </label>
-          <label className="container w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0 hover:cursor-pointer">
-            <img src={profil.cv ? cvUpload : cv} alt="cv" id="pdf" />
-            <input
-              className="hidden"
-              type="file"
-              ref={inputRef2}
-              name="cv"
-              accept=".pdf"
-              onChange={(evt) => previewPicture(evt, "pdf")}
-            />
-          </label>
-        </div>
+      <div className="flex flex-col items-center mt-8 lg:flex-row lg:mx-6 lg:items-start">
+        <form
+          encType="multipart/form-data"
+          onSubmit={(e) => sendForm(e)}
+          className="w-11/12 bg-white border-2 border-black max-w-lg my-5 p-5 rounded-2xl drop-shadow-2xl"
+        >
+          <div className="flex flex-row items-center md:mb-6">
+            <label className="container flex justify-center mt-3 mb-3 md:mb-0 hover:cursor-pointer">
+              <img
+                src={
+                  profil.photo
+                    ? `${import.meta.env.VITE_BACKEND_URL}/${profil.photo}`
+                    : avatar
+                }
+                id="image"
+                alt="avatar"
+                className="h-40 w-36"
+              />
+              <input
+                className="hidden"
+                type="file"
+                ref={inputRef1}
+                name="avatar"
+                accept=".jpg, .png, .gif"
+                onChange={(evt) => previewPicture(evt, "photo")}
+              />
+            </label>
+            <label className="container flex justify-center mt-3 mb-3 md:mb-0 hover:cursor-pointer">
+              <img
+                src={profil.cv ? cvUpload : cv}
+                alt="cv"
+                id="pdf"
+                className="h-40 w-36"
+              />
+              <input
+                className="hidden"
+                type="file"
+                ref={inputRef2}
+                name="cv"
+                accept=".pdf"
+                onChange={(evt) => previewPicture(evt, "pdf")}
+              />
+            </label>
+          </div>
 
-        <div className="flex flex-wrap -mx-3 md:mb-6">
-          <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-              id="grid-nom"
-              type="text"
-              placeholder="Nom"
-              name="nom"
-              value={profil.nom}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
+          <div className="flex flex-wrap -mx-3 md:mb-6">
+            <div className="w-full md:w-1/2 px-3 mt-6 mb-6 md:mb-0">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                id="grid-nom"
+                type="text"
+                placeholder="Nom"
+                name="nom"
+                value={profil.nom}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3 md:mt-6">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                id="grid-last-name"
+                type="text"
+                placeholder="Prenom"
+                name="prenom"
+                value={profil.prenom}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3 mt-6 mb-3 md:mb-0">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="grid-age"
+                type="text"
+                placeholder="Age"
+                name="age"
+                value={profil.age}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3 md:mt-6">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-telephone"
+                type="text"
+                placeholder="Téléphone"
+                name="telephone"
+                value={profil.telephone}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
           </div>
-          <div className="w-full md:w-1/2 px-3 md:mt-6">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-              id="grid-last-name"
-              type="text"
-              placeholder="Prenom"
-              name="prenom"
-              value={profil.prenom}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
+          <div className="flex flex-wrap md:grid md:grid-rows-3 md:grid-flow-col -mx-3 mt-6">
+            <div className=" row-span-3 w-full pl-3 mr-4 md:mr-10">
+              <textarea
+                required
+                className="block mb-6 w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                id="grid-adresse"
+                type="text"
+                rows="8"
+                placeholder="Adresse"
+                name="adresse"
+                value={profil.adresse}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className=" col-span-1 w-full px-4">
+              <input
+                required
+                className="appearance-none block w-full md:ml-2 bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-ville"
+                type="text"
+                placeholder="Ville"
+                name="ville"
+                value={profil.ville}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
+              <input
+                required
+                className="appearance-none block w-full md:ml-2 bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-pays"
+                type="text"
+                placeholder="code postal"
+                name="code_postal"
+                value={profil.code_postal}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
+              <input
+                required
+                className="appearance-none block w-full md:ml-2 bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-pays"
+                type="text"
+                placeholder="Pays"
+                name="pays"
+                value={profil.pays}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
           </div>
-          <div className="w-full md:w-1/2 px-3 mt-6 mb-3 md:mb-0">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-age"
-              type="text"
-              placeholder="Age"
-              name="age"
-              value={profil.age}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
+          <div className="flex flex-wrap -mx-3 mb-6 mt-6 md:mt-0">
+            <div className="w-full px-3">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-email"
+                type="email"
+                placeholder="nom@exemple.com"
+                name="email"
+                value={user.utilisateur}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
           </div>
-          <div className="w-full md:w-1/2 px-3 md:mt-6">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-telephone"
-              type="text"
-              placeholder="Téléphone"
-              name="telephone"
-              value={profil.telephone}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
+          <div className="flex flex-wrap -mx-3 mb-2">
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-dispo"
+                type="date"
+                placeholder="Disponibilité"
+                name="dateDisponibilite"
+                value={profil.dateDisponibilite.split("T").shift()}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-3">
+              <input
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-poste"
+                type="text"
+                placeholder="Métier"
+                name="metier"
+                value={profil.metier}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
           </div>
-        </div>
-        <div className="flex flex-wrap md:grid md:grid-rows-3 md:grid-flow-col -mx-3 mt-6">
-          <div className=" row-span-3 w-full pl-3 mr-4 md:mr-10">
-            <textarea
-              required
-              className="block mb-6 w-full bg-white text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white"
-              id="grid-adresse"
-              type="text"
-              rows="8"
-              placeholder="Adresse"
-              name="adresse"
-              value={profil.adresse}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
+          <div className="flex flex-wrap -mx-3 mb-2 mt-6">
+            <div className="w-full px-3 mb-6 md:mb-0">
+              <textarea
+                required
+                className="appearance-none block w-full bg-grey bg-opacity-50 border-none text-black text-center rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-description"
+                type="text"
+                rows="6"
+                placeholder="Description"
+                name="description"
+                value={profil.description}
+                onChange={(e) => handleProfil(e.target.name, e.target.value)}
+              />
+            </div>
           </div>
-          <div className=" col-span-1 w-full px-4">
-            <input
-              required
-              className="appearance-none block w-full md:ml-2 bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-ville"
-              type="text"
-              placeholder="Ville"
-              name="ville"
-              value={profil.ville}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-          <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
-            <input
-              required
-              className="appearance-none block w-full md:ml-2 bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-pays"
-              type="text"
-              placeholder="code postal"
-              name="code_postal"
-              value={profil.code_postal}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-          <div className=" row-span-1 col-span-2 w-full px-4 mt-6 md:mt-0">
-            <input
-              required
-              className="appearance-none block w-full md:ml-2 bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-pays"
-              type="text"
-              placeholder="Pays"
-              name="pays"
-              value={profil.pays}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-6 mt-6 md:mt-0">
-          <div className="w-full px-3">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-email"
-              type="email"
-              placeholder="nom@exemple.com"
-              name="email"
-              value={user.utilisateur}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-2">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-dispo"
-              type="date"
-              placeholder="Disponibilité"
-              name="dateDisponibilite"
-              value={profil.dateDisponibilite.split("T").shift()}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-          <div className="w-full md:w-1/2 px-3">
-            <input
-              required
-              className="appearance-none block w-full bg-white text-black rounded-full py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-poste"
-              type="text"
-              placeholder="Métier"
-              name="metier"
-              value={profil.metier}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-2 mt-6">
-          <div className="w-full px-3 mb-6 md:mb-0">
-            <textarea
-              required
-              className="appearance-none block w-full bg-white text-black rounded-2xl py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-description"
-              type="text"
-              rows="4"
-              placeholder="Description"
-              name="description"
-              value={profil.description}
-              onChange={(e) => handleProfil(e.target.name, e.target.value)}
-            />
-          </div>
-        </div>
-        {!user.profil && (
-          <div className="buttonvalid flex justify-center mt-5">
-            <button
-              className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
-              type="submit"
-            >
-              Valider
-            </button>
-          </div>
-        )}
-        {user.profil && (
-          <div className="buttonvalid flex justify-center mt-5">
-            <button
-              className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
-              type="submit"
-            >
-              Mettre à jour
-            </button>
-          </div>
-        )}
+          {!user.profil && (
+            <div className="buttonvalid flex justify-center mt-5">
+              <button
+                className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+                type="submit"
+              >
+                Valider
+              </button>
+            </div>
+          )}
+          {user.profil && (
+            <div className="buttonvalid flex justify-center my-5">
+              <button
+                className="bg-darkPink content-center hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-xl"
+                type="submit"
+              >
+                Mettre à jour
+              </button>
+            </div>
+          )}
+        </form>
         {user.id && <CandidatureTable user={user} />}
-      </form>
+      </div>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

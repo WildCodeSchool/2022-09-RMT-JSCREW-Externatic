@@ -7,18 +7,18 @@ form {
 }
 
 input:focus {
-  border: 2px solid pink;
+  border: 2px solid grey;
 }
 input {
-  border: 2px solid pink;
+  border: 2px solid grey;
 }
 
 textarea {
-  border: 2px solid pink;
+  border: 2px solid grey;
 }
 
 textarea:focus {
-  border: 2px solid pink;
+  border: 2px solid grey;
 }
 
 input[type="date"]::before {
