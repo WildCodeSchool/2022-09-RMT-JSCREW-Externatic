@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import apiConnexion from "@services/apiConnexion";
 import { ToastContainer, toast } from "react-toastify";
-import User from "../../contexts/User";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const toastifyConfig = {
@@ -16,8 +16,6 @@ const toastifyConfig = {
 };
 
 function RegisterModal({ visible, onclose }) {
-  const userContext = useContext(User.UserContext);
-
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registration, setRegistration] = useState({
     utilisateur: "",
@@ -40,8 +38,7 @@ function RegisterModal({ visible, onclose }) {
     } else {
       apiConnexion
         .post("/register", registration)
-        .then((data) => {
-          userContext.handleUser(data.data.insertId);
+        .then(() => {
           toast.success(
             `Veuillez vous connecter pour continuer l'aventure`,
             toastifyConfig
@@ -102,13 +99,13 @@ function RegisterModal({ visible, onclose }) {
           <button
             onClick={(e) => sendForm(e)}
             type="submit"
-            className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
+            className="rounded-full px-6 py-1 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
           >
             Valider
           </button>
           <button
             type="button"
-            className="rounded-full px-6 mt-2 text-darkPink text-md"
+            className="rounded-full px-6 mt-2 text-darkPink text-md hover:underline"
             onClick={onclose}
           >
             Retour

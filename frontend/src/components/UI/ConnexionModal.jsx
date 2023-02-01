@@ -38,9 +38,20 @@ function ConnexionModal({ visible, onclose }) {
         userContext.handleUser(data.data);
         toast.success(`Bonjour à vous`, toastifyConfig);
         if (data.data.profil) {
-          setTimeout(() => onclose(), 2000);
+          if (data.data.role === "candidat") {
+            setTimeout(() => onclose(), 2000);
+          } else if (data.data.role === "consultant") {
+            setTimeout(
+              () =>
+                navigate(`dashboard/consultant/candidatures/${data.data.id}`),
+              2000
+            );
+          } else if (data.data.role === "administrateur") {
+            setTimeout(() => navigate(`dashboard/admin/entreprises`), 2000);
+          }
         } else {
           setTimeout(() => navigate(`profil/${data.data.id}`), 2000);
+          setTimeout(() => onclose(), 2000);
         }
       })
       .catch(() => {
@@ -83,20 +94,20 @@ function ConnexionModal({ visible, onclose }) {
             onChange={(e) => handleConnexion(e.target.name, e.target.value)}
           />
         </form>
-        <div className="mt-4 flex justify-around mb-6">
-          <button
-            type="button"
-            className="rounded-full px-6 border-2 border-darkPink text-darkPink text-2xl"
-            onClick={onclose}
-          >
-            Retour
-          </button>
+        <div className="mt-4 flex flex-col items-center mb-6">
           <button
             onClick={(e) => sendForm(e)}
             type="submit"
-            className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-2xl"
+            className="rounded-full px-6 py-1 bg-darkPink text-white hover:bg-white hover:text-darkPink text-xl"
           >
             Valider
+          </button>
+          <button
+            type="button"
+            className="rounded-full px-6 mt-2 text-darkPink text-md hover:underline"
+            onClick={onclose}
+          >
+            Retour
           </button>
         </div>
       </div>

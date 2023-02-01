@@ -21,7 +21,7 @@ function NavBar() {
   };
 
   const profilConnex = () => {
-    if (user) {
+    if (user && user?.role === "candidat") {
       const userId = user.id ? user.id : user;
       return (
         <button
@@ -38,9 +38,14 @@ function NavBar() {
     return null;
   };
 
+  const getLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <nav className="navBar z-50 sticky h-16 bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden">
-      <div className="bg-white mt-6 md:mt-4 mr-14 md:mr-2 justify-self-start md:ml-0 justify-self-center">
+      <div className="bg-white mt-6 md:mt-4 mr-14 md:mr-2 md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
             src={logo}
@@ -154,7 +159,7 @@ function NavBar() {
           <button
             className="mt-4 md:mt-3 transition-colors duration-300 bg-darkPink bottom-1/4 p-1 md:p-2 px-4 md:px-6 -translate-x-1/2 hover:bg-pink text-white rounded-lg border-2"
             type="button"
-            onClick={() => logout()}
+            onClick={() => getLogout()}
           >
             Déconnexion
           </button>

@@ -1,10 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+import User from "../../contexts/User";
 
 import "./Sidebar.css";
 
 export default function Sidebar() {
+  const { user, logout } = useContext(User.UserContext);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const getLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <div>
       <div
@@ -87,30 +97,32 @@ export default function Sidebar() {
                   <span className="text-white hover:text-orange">Home</span>
                 </Link>
               </li>
-              <li className="rounded-sm">
-                <Link
-                  to="entreprises"
-                  className="text-white flex items-center p-2 space-x-3 rounded-md hover:black"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 text-gray-100"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="white"
-                    strokeWidth={2}
+              {user?.role === "administrateur" && (
+                <li className="rounded-sm">
+                  <Link
+                    to="entreprises"
+                    className="text-white flex items-center p-2 space-x-3 rounded-md hover:black"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                    />
-                  </svg>
-                  <span className="text-white hover:text-orange">
-                    Entreprise
-                  </span>
-                </Link>
-              </li>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-gray-100"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="white"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
+                      />
+                    </svg>
+                    <span className="text-white hover:text-orange">
+                      Entreprise
+                    </span>
+                  </Link>
+                </li>
+              )}
               <li className="rounded-sm">
                 <Link
                   to="offres"
@@ -133,34 +145,66 @@ export default function Sidebar() {
                   <span className="text-white hover:text-orange">Offres</span>
                 </Link>
               </li>
-              <li className="rounded-sm">
-                <Link
-                  to="consultants"
-                  className="flex items-center p-2 space-x-3 rounded-md"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="white"
-                    className="w-6 h-6"
+              {user?.role === "administrateur" && (
+                <li className="rounded-sm">
+                  <Link
+                    to="consultants"
+                    className="flex items-center p-2 space-x-3 rounded-md"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                    />
-                  </svg>
-                  <span className="text-white hover:text-orange">
-                    Consultants
-                  </span>
-                </Link>
-              </li>
-              <li className="rounded-sm">
-                <Link
-                  to="/settings"
-                  className="flex items-center p-2 space-x-3 rounded-md"
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="white"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                      />
+                    </svg>
+                    <span className="text-white hover:text-orange">
+                      Consultants
+                    </span>
+                  </Link>
+                </li>
+              )}
+              {user?.role === "consultant" && (
+                <li className="rounded-sm">
+                  <Link
+                    to="consultant/candidatures/:id"
+                    className="flex items-center p-2 space-x-3 rounded-md"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-gray-100"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="white"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                    <span className="text-white">Candidatures</span>
+                  </Link>
+                </li>
+              )}
+              <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
+                <button
+                  type="button"
+                  className="flex items-center p-1 space-x-2 rounded-md"
+                  onClick={() => getLogout()}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -173,33 +217,11 @@ export default function Sidebar() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                     />
                   </svg>
-                  <span className="text-white">Settings</span>
-                </Link>
-              </li>
-              <li className="rounded-sm flex items-center p-2 space-x-3 rounded-md">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 text-gray-100"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="white"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                  />
-                </svg>
-                <span className="text-white">Logout</span>
+                  <span className="text-white">Logout</span>
+                </button>
               </li>
             </ul>
           </div>
