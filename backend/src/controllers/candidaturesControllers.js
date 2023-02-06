@@ -81,15 +81,15 @@ const editCandidaturesForConsultant = (req, res) => {
 };
 
 const add = (req, res) => {
-  const candidature = req.body;
-  candidature.dateInscription = dateInscript();
+  const offre = req.body;
+  offre.dateInscription = dateInscript();
   models.candidature
-    .insert(candidature)
+    .insert(offre, req.auth.id)
     .then(([result]) => {
       res
         .location(`/candidatures/${result.insertId}`)
         .status(201)
-        .json({ ...candidature, id: result.insertId });
+        .json({ ...offre, id: result.insertId });
     })
     .catch((err) => {
       console.error(err);

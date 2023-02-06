@@ -54,6 +54,9 @@ function ConnexionModal({ visible, onclose }) {
           setTimeout(() => navigate(`profil/${data.data.id}`), 2000);
         } else if (data.data.profil === 1 && data.data.role === "consultant") {
           setConfirmConsulant(false);
+          setTimeout(() => navigate(`dashboard/admin/entreprises`), 2000);
+        } else if (data.data.profil === 1 && data.data.role === "administrateur") {
+          setTimeout(() => navigate(`dashboard/admin/entreprises`), 2000);
         } else {
           userContext.handleUser(data.data);
           setTimeout(() => onclose(), 2000);

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NosOffres from "@pages/Offres/NosOffres";
 import Profil from "@pages/Profil/Profil";
 import Quisommesnous from "@pages/quisommesnous/qui";
+import Contact from "@pages/Contact/Contact";
 import Home from "@pages/Home";
 import UneOffre from "@pages/UneOffre/UneOffre";
 import AdminEntreprise from "@pages/BackOffice/AdminEntreprise";
@@ -27,6 +28,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/offres" element={<NosOffres />} />
             <Route path="/offres/:id" element={<UneOffre />} />
+            <Route path="/entreprises" element={<Entreprise />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/profil" element={<Profil />} />
+            <Route path="/profil/:id" element={<Profil />} />
             <Route path="" element={<PublicCandidat />}>
               <Route path="/profil" element={<Profil />} />
               <Route path="/profil/:id" element={<Profil />} />

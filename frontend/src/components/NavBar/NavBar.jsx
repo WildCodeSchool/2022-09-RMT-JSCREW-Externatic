@@ -45,7 +45,7 @@ function NavBar() {
 
   return (
     <nav className="navBar z-50 sticky h-16 bg-white top-0 grid justify-items-stretch font-roboto overflow-hidden">
-      <div className="bg-white mt-6 md:mt-4 mr-14 md:mr-2 justify-self-start md:ml-0 justify-self-center">
+      <div className="bg-white mt-6 md:mt-4 mr-14 md:mr-2 md:ml-0 justify-self-center">
         <Link to="/" className="logo">
           <img
             src={logo}
@@ -136,7 +136,7 @@ function NavBar() {
             <button
               type="button"
               className="hover:decoration-blue-400 border-gray-400 my-6 "
-              onClick={() => setManageRedirect("/")}
+              onClick={() => setManageRedirect("/contact")}
             >
               <p className="bugerMenu hover:text-3xl hover:cursor-pointer">
                 Contact
