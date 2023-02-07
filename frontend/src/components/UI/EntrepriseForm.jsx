@@ -110,7 +110,7 @@ function EntrepriseForm() {
         <form className="mt-6">
           <div className="mb-2">
             <label>
-              <span className="text-gray-700">Nom de entreprise</span>
+              <span className="text-gray-700 mx-2">Nom de l'entreprise</span>
               <input
                 required
                 type="text"
@@ -121,7 +121,7 @@ function EntrepriseForm() {
                 }
                 className="
                 w-full
-                block px-16 py-2 mt-2
+                block px-3 py-2 mt-2 mb-4
                 border-gray-300
                 rounded-md
                 shadow-sm
@@ -129,11 +129,11 @@ function EntrepriseForm() {
                 focus:ring
                 focus:ring-indigo-200
                 focus:ring-opacity-50"
-                placeholder="nom de entreprise"
+                placeholder="Nom de l'entreprise"
               />
             </label>
             <label>
-              <span className="text-gray-700">Adresse</span>
+              <span className="text-gray-700 mx-2">Adresse</span>
               <input
                 type="text"
                 name="adresse"
@@ -143,7 +143,7 @@ function EntrepriseForm() {
                 }
                 className="
                 w-full
-                block px-16 py-2 mt-2
+                block px-3 py-2 mt-2 mb-4
                 border-gray-300
                 rounded-md
                 shadow-sm
@@ -155,7 +155,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">Code postal</span>
+              <span className="text-gray-700 mx-2">Code postal</span>
               <input
                 type="text"
                 name="code_postal"
@@ -165,7 +165,7 @@ function EntrepriseForm() {
                 }
                 className="
                 w-full
-                block px-16 py-2 mt-2
+                block px-3 py-2 mt-2 mb-4
                 border-gray-300
                 rounded-md
                 shadow-sm
@@ -177,7 +177,7 @@ function EntrepriseForm() {
               />
             </label>
             <label>
-              <span className="text-gray-700">Ville</span>
+              <span className="text-gray-700 mx-2">Ville</span>
               <input
                 type="text"
                 name="ville"
@@ -187,7 +187,7 @@ function EntrepriseForm() {
                 }
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -195,11 +195,11 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="ville"
+                placeholder="Ville"
               />
             </label>
             <label>
-              <span className="text-gray-700">Pays</span>
+              <span className="text-gray-700 mx-2">Pays</span>
               <input
                 type="text"
                 name="pays"
@@ -209,7 +209,7 @@ function EntrepriseForm() {
                 }
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -217,13 +217,13 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50 "
-                placeholder="pays"
+                placeholder="Pays"
               />
             </label>
           </div>
           <div className="mb-2">
             <label>
-              <span className="text-gray-700"> Adresse email</span>
+              <span className="text-gray-700 mx-2"> Adresse email</span>
               <input
                 name="email"
                 type="email"
@@ -234,7 +234,7 @@ function EntrepriseForm() {
                 className="
                   block
                   w-full
-                  mt-2 px-16 py-2
+                  px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -242,12 +242,12 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="john.cooks@example.com"
+                placeholder="John.cooks@example.com"
                 required
               />
             </label>
             <label>
-              <span className="text-gray-700">Téléphone</span>
+              <span className="text-gray-700 mx-2">Téléphone</span>
               <input
                 name="telephone"
                 type="tel"
@@ -258,7 +258,7 @@ function EntrepriseForm() {
                 className="
                   block
                   w-full
-                  mt-2 px-16 py-2
+                  px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -266,13 +266,13 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="telephone"
+                placeholder="Téléphone"
                 required
               />
             </label>
             <div className="mb-2">
               <label>
-                <span className="text-gray-700">Description</span>
+                <span className="text-gray-700 mx-2">Description</span>
                 <input
                   name="description"
                   type="text"
@@ -283,7 +283,7 @@ function EntrepriseForm() {
                   className="
                     block
                     w-full
-                    mt-2 px-16 py-8
+                    px-3 py-2 mt-2 mb-4
                     border-gray-300
                     rounded-md
                     shadow-sm
@@ -291,12 +291,13 @@ function EntrepriseForm() {
                     focus:ring
                     focus:ring-indigo-200
                     focus:ring-opacity-50   "
-                  rows="5"
+                  placeholder="Description"
+                  required
                 />
               </label>
             </div>
             <label>
-              <span className="text-gray-700">Numéro de siret</span>
+              <span className="text-gray-700 mx-2">Numéro de siret</span>
               <input
                 name="numero_siret"
                 type="text"
@@ -307,7 +308,7 @@ function EntrepriseForm() {
                 className="
                   block
                   w-full
-                  mt-2 px-16 py-2
+                  px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -315,12 +316,12 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50 "
-                placeholder="numero siret"
+                placeholder="Numero siret"
                 required
               />
             </label>
             <label>
-              <span className="text-gray-700">Nombre d'employés</span>
+              <span className="text-gray-700 mx-2">Nombre d'employés</span>
               <input
                 name="nombre_employes"
                 type="text"
@@ -331,7 +332,7 @@ function EntrepriseForm() {
                 className="
                   block
                   w-full
-                  mt-2 px-16 py-2
+                  px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -339,12 +340,12 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="nombre employes"
+                placeholder="Nombre employes"
                 required
               />
             </label>
             <label>
-              <span className="text-gray-700">Domaine</span>
+              <span className="text-gray-700 mx-2">Domaine</span>
               <select
                 name="domaine_id"
                 type="text"
@@ -354,7 +355,7 @@ function EntrepriseForm() {
                 className="
                   block
                   w-full
-                  mt-2 px-16 py-2
+                  px-3 py-2 mt-2 mb-4
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -362,7 +363,7 @@ function EntrepriseForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50 "
-                placeholder="domaine"
+                placeholder="Domaine"
                 required
               >
                 {domain.map((dom) => {

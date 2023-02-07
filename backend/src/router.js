@@ -11,7 +11,6 @@ const candidaturesControllers = require("./controllers/candidaturesControllers")
 const contactControllers = require("./controllers/contactControllers");
 const consultantsControllers = require("./controllers/consultantsControllers");
 
-
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -40,6 +39,7 @@ const upload = multer({
 // fin de la configuration de l'upload
 
 // routes publiques
+router.get("/offreForm", offreControllers.browse);
 router.get("/offres", offreControllers.browsePage);
 router.get("/offres/rand", offreControllers.random);
 router.get("/offres/:id", offreControllers.read);
@@ -52,8 +52,6 @@ router.post("/candidatures", checkAuth, candidaturesControllers.add);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 router.post("/contact", contactControllers.add);
-
-
 
 router.get("/consultants", consultantsControllers.browse);
 router.get("/entreprises/:id", entrepriseControllers.read);
