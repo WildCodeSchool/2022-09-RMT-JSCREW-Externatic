@@ -160,10 +160,27 @@ const edit = (req, res) => {
   }
 };
 
+const getId = (req, res) => {
+  models.candidat
+    .findId(req.auth.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(200).json({});
+      } else {
+        res.status(200).json(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   add,
   read,
   edit,
   getCount,
   readId,
+  getId,
 };

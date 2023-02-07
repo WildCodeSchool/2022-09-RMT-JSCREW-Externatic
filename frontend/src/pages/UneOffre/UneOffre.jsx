@@ -25,19 +25,35 @@ const toastifyConfig = {
 
 function UneOffre() {
   const { id } = useParams();
+  const [candidatId, setCandidatId] = useState();
   const [offre, setOffre] = useState();
   const [displayModal, setDisplayModal] = useState(false);
 
-  useEffect(() => {
+  const GetOffre = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setOffre(data);
       })
       .catch((err) => console.error(err));
+  };
+
+  const getCandidatId = () => {
+    apiConnexion
+      .get("/candidatId")
+      .then((userCandidatId) => {
+        setCandidatId(userCandidatId.data);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    GetOffre();
+    getCandidatId();
   }, [id]);
 
   const createCandidature = () => {
+    offre.candidatId = candidatId;
     apiConnexion
       .post("/candidatures", offre)
       .then(() => {

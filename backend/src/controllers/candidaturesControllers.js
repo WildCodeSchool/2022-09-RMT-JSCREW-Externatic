@@ -84,7 +84,7 @@ const add = (req, res) => {
   const offre = req.body;
   offre.dateInscription = dateInscript();
   models.candidature
-    .insert(offre, req.auth.id)
+    .insert(offre)
     .then(([result]) => {
       res
         .location(`/candidatures/${result.insertId}`)

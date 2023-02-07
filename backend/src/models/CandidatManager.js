@@ -29,10 +29,10 @@ class CandidatManager extends AbstractManager {
     );
   }
 
-  findId(connexionId) {
+  findId(id) {
     return this.connection.query(
       `select id from  ${this.table} where connexion_id = ?`,
-      [connexionId]
+      [id]
     );
   }
 
