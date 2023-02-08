@@ -40,7 +40,7 @@ function UneOffre() {
 
   const getCandidatId = () => {
     apiConnexion
-      .get("/candidatId")
+      .get("/candidat")
       .then((userCandidatId) => {
         setCandidatId(userCandidatId.data);
       })

@@ -46,12 +46,11 @@ router.get("/job", offreControllers.browseJob);
 router.get("/localisation", offreControllers.browseLocalisation);
 router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
-router.get("/candidat/:id", checkAuth, candidatControllers.readId);
+router.get("/candidat", checkAuth, candidatControllers.readId);
 router.post("/candidatures", checkAuth, candidaturesControllers.add);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 router.post("/contact", contactControllers.add);
-router.get("/candidatId", checkAuth, candidatControllers.getId);
 
 router.get("/consultants", consultantsControllers.browse);
 router.get("/entreprises/:id", entrepriseControllers.read);
