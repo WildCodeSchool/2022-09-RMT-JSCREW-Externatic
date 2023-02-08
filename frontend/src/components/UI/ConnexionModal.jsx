@@ -55,7 +55,10 @@ function ConnexionModal({ visible, onclose }) {
         } else if (data.data.profil === 1 && data.data.role === "consultant") {
           setConfirmConsulant(false);
           setTimeout(() => navigate(`dashboard/admin/entreprises`), 2000);
-        } else if (data.data.profil === 1 && data.data.role === "administrateur") {
+        } else if (
+          data.data.profil === 1 &&
+          data.data.role === "administrateur"
+        ) {
           setTimeout(() => navigate(`dashboard/admin/entreprises`), 2000);
         } else {
           userContext.handleUser(data.data);
@@ -103,7 +106,6 @@ function ConnexionModal({ visible, onclose }) {
 
   return (
     <div className="fixed z-40 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
-
       {confirmConsulant && (
         <div className="bg-white w-5/6 lg:w-1/4 rounded-2xl shadow-md border-2 border-darkPink">
           <h2 className="text-center text-4xl font-bold mt-4">Connexion</h2>

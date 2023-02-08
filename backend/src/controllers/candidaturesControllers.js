@@ -81,15 +81,28 @@ const editCandidaturesForConsultant = (req, res) => {
 };
 
 const add = (req, res) => {
-  const offre = req.body;
-  offre.dateInscription = dateInscript();
-  models.candidature
-    .insert(offre, req.auth.id)
-    .then(([result]) => {
-      res
-        .location(`/candidatures/${result.insertId}`)
-        .status(201)
-        .json({ ...offre, id: result.insertId });
+  models.candidat
+    .findId(req.auth.id)
+    .then(([user]) => {
+      if (user[0] == null) {
+        res.sendStatus(404);
+      } else {
+        const offre = req.body;
+        offre.dateInscription = dateInscript();
+        offre.candidat_id = user[0].id;
+        models.candidature
+          .insert(offre)
+          .then(([result]) => {
+            res
+              .location(`/candidatures/${result.insertId}`)
+              .status(201)
+              .json({ ...offre, id: result.insertId });
+          })
+          .catch((err) => {
+            console.error(err);
+            res.sendStatus(500);
+          });
+      }
     })
     .catch((err) => {
       console.error(err);
