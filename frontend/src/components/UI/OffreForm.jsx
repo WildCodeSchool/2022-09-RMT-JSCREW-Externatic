@@ -77,8 +77,7 @@ function OffreForm() {
 
   const selectJobs = (id) => {
     const offs = jobs.find((e) => e.id === parseInt(id, 10));
-    const newOffs = { ...offs };
-    setOffre(newOffs);
+    setOffre(offs);
   };
 
   // // Mettre à jour une offre
