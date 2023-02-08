@@ -50,7 +50,7 @@ export default function ConsultantDashboard() {
     }
   };
   return (
-    <div className="flex flex-col items-center w-full h-screen ">
+    <div className="flex flex-col items-center w-full h-full ">
       <CardStats />
       <div className="mt-4">
         <h1 className="text-center text-2xl font-bold text-black mb-4">

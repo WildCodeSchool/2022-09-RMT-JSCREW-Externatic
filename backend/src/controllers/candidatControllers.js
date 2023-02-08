@@ -89,23 +89,19 @@ const add = async (req, res) => {
 };
 
 const readId = (req, res) => {
-  if (parseInt(req.params.id, 10) === req.auth.id) {
-    models.candidat
-      .findId(req.params.id)
-      .then(([rows]) => {
-        if (rows[0] == null) {
-          res.status(200).json({});
-        } else {
-          res.status(200).json(rows[0]);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  } else {
-    res.sendStatus(404);
-  }
+  models.candidat
+    .findId(req.auth.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.status(200).json({});
+      } else {
+        res.status(200).json(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
 };
 
 const read = (req, res) => {
