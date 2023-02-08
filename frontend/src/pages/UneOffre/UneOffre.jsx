@@ -25,7 +25,6 @@ const toastifyConfig = {
 
 function UneOffre() {
   const { id } = useParams();
-  const [candidatId, setCandidatId] = useState();
   const [offre, setOffre] = useState();
   const [displayModal, setDisplayModal] = useState(false);
 
@@ -38,22 +37,11 @@ function UneOffre() {
       .catch((err) => console.error(err));
   };
 
-  const getCandidatId = () => {
-    apiConnexion
-      .get("/candidat")
-      .then((userCandidatId) => {
-        setCandidatId(userCandidatId.data);
-      })
-      .catch((error) => console.error(error));
-  };
-
   useEffect(() => {
     GetOffre();
-    getCandidatId();
   }, [id]);
 
   const createCandidature = () => {
-    offre.candidatId = candidatId;
     apiConnexion
       .post("/candidatures", offre)
       .then(() => {

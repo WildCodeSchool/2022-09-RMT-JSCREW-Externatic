@@ -46,7 +46,7 @@ router.get("/job", offreControllers.browseJob);
 router.get("/localisation", offreControllers.browseLocalisation);
 router.get("/entreprises", entrepriseControllers.browse);
 router.get("/entreprises/rand", entrepriseControllers.random);
-router.get("/candidat", checkAuth, candidatControllers.readId);
+router.get("/candidats/:id", checkAuth, candidatControllers.readId);
 router.post("/candidatures", checkAuth, candidaturesControllers.add);
 router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
