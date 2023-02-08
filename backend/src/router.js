@@ -12,7 +12,6 @@ const candidaturesControllers = require("./controllers/candidaturesControllers")
 const contactControllers = require("./controllers/contactControllers");
 const consultantsControllers = require("./controllers/consultantsControllers");
 
-
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
 
@@ -56,8 +55,6 @@ router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 router.post("/contact", contactControllers.add);
 
-
-
 router.get("/consultants", consultantsControllers.browse);
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
@@ -69,7 +66,6 @@ router.get("/nbOffres", offreControllers.getCountOffre);
 // mur d'authentification
 router.put("/firstConnexion", checkAuth, connexionControllers.edit);
 router.get("/profil/:id", checkAuth, candidatControllers.read);
-
 
 router.put(
   "/profil/:id",
