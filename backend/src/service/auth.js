@@ -22,8 +22,11 @@ const hashPassword = (req, res, next) => {
     });
 };
 
+const hashNewPassword = (password) => {
+  return argon2.hash(password, hashingOptions);
+};
 const verifyHash = (hashFromDB, passwordSend) => {
   return argon2.verify(hashFromDB, passwordSend, hashingOptions);
 };
 
-module.exports = { hashPassword, verifyHash };
+module.exports = { hashPassword, verifyHash, hashNewPassword };
