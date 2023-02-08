@@ -117,8 +117,12 @@ export default function ConsultantDashboard() {
                     </td>
                     <td className="text-center border bg-white border-slate-600 text-xs">
                       <a
-                        href={`${candidature.cv}`}
+                        href={`${import.meta.env.VITE_BACKEND_URL}/${
+                          candidature.cv
+                        }`}
                         className="hover:text-darkPink hover:underline"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         CV
                       </a>
