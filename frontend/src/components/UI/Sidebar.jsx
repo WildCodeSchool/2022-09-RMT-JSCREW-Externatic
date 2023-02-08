@@ -20,8 +20,8 @@ export default function Sidebar() {
       <div
         className={
           open
-            ? "w-40 flex flex-col h-full p-3 bganimationcard  shadow duration-300"
-            : "w-60 flex flex-col h-full p-3 bganimationcard  shadow duration-300"
+            ? "w-40 flex flex-col h-full min-h-screen p-3 bganimationcard  shadow duration-300"
+            : "w-60 flex flex-col h-full min-h-screen p-3 bganimationcard  shadow duration-300"
         }
       >
         <div className="space-y-3 fixed">
