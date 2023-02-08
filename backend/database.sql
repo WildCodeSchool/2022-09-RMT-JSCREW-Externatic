@@ -87,14 +87,14 @@ VALUES
   ),
   (
     "franck.gascard@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$kuqiNWg3XLYj87YgydMBMQ$7I+KNaHqrFKsnbaYxR8ONfNfrgIiB39MvieEKuSRX1A",
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
     "consultant",
     1
   ),
   (
     "benjamin.casseron@externatic.fr",
-    "$argon2id$v=19$m=65536,t=5,p=1$zIxBC5gTsvHecIDyJPFwmA$+7BRy/tRLqe5vwby6yqjF2nxlv/VyvEjUqBpmHtJ6IQ",
-    "Consultant",
+    '$argon2id$v=19$m=65536,t=5,p=1$OaCwshalU7Ds2AbGbmdjCQ$sCoco2uqGH5xmrnaUdhB/gzB4C5xPUPpT3Mbk8Wi888',
+    "consultant",
     1
   ),
   (

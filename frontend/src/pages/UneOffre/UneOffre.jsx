@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import apiConnexion from "@services/apiConnexion";
@@ -9,6 +9,7 @@ import CarteProfil from "@components/UI/CardOffre/CarteProfil";
 import CarteSalaire from "@components/UI/CardOffre/CarteSalaire";
 import ListOfOffers from "@components/UI/CardOffre/ListOfOffers";
 import ModalPostuler from "@components/UI/ModalPostuler";
+import User from "../../contexts/User";
 import icon4 from "../../../public/externatic_favicon.png";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,6 +25,7 @@ const toastifyConfig = {
 };
 
 function UneOffre() {
+  const { user } = useContext(User.UserContext);
   const { id } = useParams();
   const [offre, setOffre] = useState();
   const [displayModal, setDisplayModal] = useState(false);
@@ -42,22 +44,30 @@ function UneOffre() {
   }, [id]);
 
   const createCandidature = () => {
-    apiConnexion
-      .post("/candidatures", offre)
-      .then(() => {
-        toast.success(
-          `Votre candidature a bien été enregistrée !`,
-          toastifyConfig
-        );
-        setDisplayModal(false);
-      })
-      .catch((err) => {
-        toast.error(
-          `Veuillez vérifier vos champs, votre candidature n'a pas été validée !`,
-          toastifyConfig
-        );
-        console.warn(err);
-      });
+    if (!user) {
+      toast.warn(
+        "Vous devez être connecté pour pouvoir postuler",
+        toastifyConfig
+      );
+      setDisplayModal(false);
+    } else {
+      apiConnexion
+        .post("/candidatures", offre)
+        .then(() => {
+          toast.success(
+            `Votre candidature a bien été enregistrée !`,
+            toastifyConfig
+          );
+          setDisplayModal(false);
+        })
+        .catch((err) => {
+          toast.error(
+            `Veuillez vérifier vos champs, votre candidature n'a pas été validée !`,
+            toastifyConfig
+          );
+          console.warn(err);
+        });
+    }
   };
   return (
     <div className="container-offre font-roboto">
