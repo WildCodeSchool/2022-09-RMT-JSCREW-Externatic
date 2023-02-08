@@ -67,7 +67,6 @@ router.get("/nbOffres", offreControllers.getCountOffre);
 router.put("/firstConnexion", checkAuth, connexionControllers.edit);
 router.get("/profil/:id", checkAuth, candidatControllers.read);
 
-
 router.put(
   "/profil/:id",
   checkAuth,

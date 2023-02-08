@@ -39,7 +39,6 @@ function App() {
           </Route>
           <Route path="/dashboard/" element={<Private />}>
             <Route path="offres" element={<AdminOffres />} />
-            <Route path="consultants" element={<AdminConsultant />} />
             <Route path="consultant" element={<PrivateConsultant />}>
               <Route
                 path="candidatures/:id"
@@ -47,6 +46,7 @@ function App() {
               />
             </Route>
             <Route path="admin" element={<PrivateAdmin />}>
+              <Route path="consultants" element={<AdminConsultant />} />
               <Route path="entreprises" element={<AdminEntreprise />} />
             </Route>
           </Route>
