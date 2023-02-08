@@ -100,7 +100,7 @@ function OffreForm() {
   };
   return (
     <div className="mt-5 mb-5 relative items-center flex flex-col justify-center min-h-screen w-full">
-      <div className="shadow-xl w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
+      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring-2 ring-darkPink lg:max-w-xl">
         <h1 className="font-roboto text-2xl font-light text-center capitalize ">
           Formulaire offre
         </h1>

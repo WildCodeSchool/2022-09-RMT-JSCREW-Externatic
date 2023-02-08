@@ -9,7 +9,7 @@ function DashboardAdmin() {
     return <Navigate to="/dashboard/offres" replace />;
   }
   return (
-    <div className="flex">
+    <div className="flex w-full">
       <Outlet />
     </div>
   );
