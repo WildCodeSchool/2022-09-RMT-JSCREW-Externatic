@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import toastiConfig from "@services/toastiConfig";
 import SelectOffreForm from "./SelectOffreForm";
-// import EntrepriseSelect from "./EntrepriseSelect";
 
 const offreType = {
   contrat: "",
@@ -108,8 +107,8 @@ function OffreForm() {
         <SelectOffreForm selectJobs={selectJobs} jobs={jobs} />
         <form className="mt-6">
           <div className="mb-2">
-            <label>
-              <span className="text-gray-700">contrat</span>
+            <label className="">
+              <span className="text-gray-700 mx-2">Contrat</span>
               <input
                 required
                 type="text"
@@ -118,7 +117,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -126,11 +125,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="contrat"
+                placeholder="Contrat"
               />
             </label>
             <label>
-              <span className="text-gray-700">condition de travail</span>
+              <span className="text-gray-700 mx-2">Condition de travail</span>
               <input
                 required
                 type="text"
@@ -139,7 +138,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -147,11 +146,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="condition de travail"
+                placeholder="Condition de travail"
               />
             </label>
             <label>
-              <span className="text-gray-700">avantages</span>
+              <span className="text-gray-700 mx-2">Avantages</span>
               <input
                 required
                 type="text"
@@ -160,7 +159,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -168,11 +167,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="avantages"
+                placeholder="Avantages"
               />
             </label>
             <label>
-              <span className="text-gray-700">poste</span>
+              <span className="text-gray-700 mx-2">Poste</span>
               <input
                 required
                 type="text"
@@ -181,7 +180,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -189,11 +188,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="poste"
+                placeholder="Poste"
               />
             </label>
             <label>
-              <span className="text-gray-700">localisation</span>
+              <span className="text-gray-700 mx-2">Localisation</span>
               <input
                 required
                 type="text"
@@ -202,7 +201,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -210,12 +209,12 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="localisation"
+                placeholder="Localisation"
               />
             </label>
 
             <label>
-              <span className="text-gray-700">date de fin de l'offre</span>
+              <span className="text-gray-700 mx-2">Date de fin de l'offre</span>
               <input
                 required
                 type="date"
@@ -224,7 +223,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -232,11 +231,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="date fin de l'offre"
+                placeholder="Date fin de l'offre"
               />
             </label>
             <label>
-              <span className="text-gray-700">salaire</span>
+              <span className="text-gray-700 mx-2">Salaire</span>
               <input
                 required
                 type="number"
@@ -245,7 +244,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -253,11 +252,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="salaire"
+                placeholder="Salaire"
               />
             </label>
             <label>
-              <span className="text-gray-700">mission</span>
+              <span className="text-gray-700 mx-2">Mission</span>
               <input
                 required
                 type="text"
@@ -266,7 +265,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -274,11 +273,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="mission"
+                placeholder="Mission"
               />
             </label>
             <label>
-              <span className="text-gray-700">profil recherché</span>
+              <span className="text-gray-700 mx-2">Profil recherché</span>
               <input
                 required
                 type="text"
@@ -287,7 +286,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -295,11 +294,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="profil recherché"
+                placeholder="Profil recherché"
               />
             </label>
             <label>
-              <span className="text-gray-700">specialitées</span>
+              <span className="text-gray-700 mx-2">Specialités</span>
               <input
                 required
                 type="text"
@@ -308,7 +307,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -316,11 +315,11 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="specialitées"
+                placeholder="Specialités"
               />
             </label>
             <label>
-              <span className="text-gray-700">entreprise</span>
+              <span className="text-gray-700 mx-2">Entreprise</span>
               <select
                 required
                 type="text"
@@ -328,7 +327,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -336,7 +335,7 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="entreprise"
+                placeholder="Entreprise"
               >
                 {entreprise.map((ent) => {
                   return (
@@ -352,7 +351,7 @@ function OffreForm() {
               </select>
             </label>
             <label>
-              <span className="text-gray-700">domaine</span>
+              <span className="text-gray-700 mx-2">Domaine</span>
               <select
                 required
                 type="text"
@@ -360,7 +359,7 @@ function OffreForm() {
                 onChange={(e) => handleOffre(e.target.name, e.target.value)}
                 className="
                   w-full
-                  block px-16 py-2 mt-2
+                  block  px-3 py-2 mt-2 mb-4 
                   border-gray-300
                   rounded-md
                   shadow-sm
@@ -368,7 +367,7 @@ function OffreForm() {
                   focus:ring
                   focus:ring-indigo-200
                   focus:ring-opacity-50"
-                placeholder="domaine"
+                placeholder="Domaine"
               >
                 {domaine.map((dom) => {
                   return (

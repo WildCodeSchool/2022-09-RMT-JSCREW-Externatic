@@ -40,7 +40,6 @@ const upload = multer({
 // fin de la configuration de l'upload
 
 // routes publiques
-
 router.get("/offreForm", offreControllers.browse);
 router.get("/offres", offreControllers.browsePage);
 router.get("/offres/rand", offreControllers.random);
