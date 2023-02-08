@@ -30,13 +30,17 @@ function UneOffre() {
   const [offre, setOffre] = useState();
   const [displayModal, setDisplayModal] = useState(false);
 
-  useEffect(() => {
+  const GetOffre = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/offres/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setOffre(data);
       })
       .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    GetOffre();
   }, [id]);
 
   const createCandidature = () => {
