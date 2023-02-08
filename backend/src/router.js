@@ -10,7 +10,6 @@ const candidatControllers = require("./controllers/candidatControllers");
 const connexionControllers = require("./controllers/connexionControllers");
 const candidaturesControllers = require("./controllers/candidaturesControllers");
 const contactControllers = require("./controllers/contactControllers");
-const consultantsControllers = require("./controllers/consultantsControllers");
 
 const { hashPassword } = require("./service/auth");
 const checkAuth = require("./middleware/auth");
@@ -26,8 +25,7 @@ const storage = multer.diskStorage({
     const filename = fileArray.join("_").split(" ").join("_");
     cb(
       null,
-      `${
-        file.fieldname === "cv" ? "/cv/" : "/avatar/"
+      `${file.fieldname === "cv" ? "/cv/" : "/avatar/"
       }${`${filename}_${Date.now()}.${ext}`}`
     );
   },
@@ -55,7 +53,7 @@ router.post("/login", connexionControllers.validateUser);
 router.post("/register", hashPassword, connexionControllers.add);
 router.post("/contact", contactControllers.add);
 
-router.get("/consultants", consultantsControllers.browse);
+router.get("/consultants", consultantControllers.browse);
 router.get("/entreprises/:id", entrepriseControllers.read);
 router.get("/domaines/", domaineControllers.browse);
 router.get("/consultants/:id", consultantControllers.read);
