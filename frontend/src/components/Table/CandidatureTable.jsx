@@ -60,16 +60,16 @@ function CandidatureTable({ user }) {
         <table className="table-fixed w-full border-collapse mb-10">
           <thead>
             <tr>
-              <th className="text-center text-darkPink underline underline-offset-4">
+              <th className="text-center text-darkPink text-xl md:text-2xl lg:pb-6">
                 Poste
               </th>
-              <th className="text-center text-darkPink underline underline-offset-4">
+              <th className="text-center text-darkPink text-xl md:text-2xl lg:pb-6">
                 Lieu
               </th>
-              <th className="text-center text-darkPink underline underline-offset-4">
+              <th className="text-center text-darkPink text-xl md:text-2xl lg:pb-6">
                 Date
               </th>
-              <th className="text-center text-darkPink underline underline-offset-4">
+              <th className="text-center text-darkPink text-xl md:text-2xl lg:pb-6">
                 Contact
               </th>
             </tr>
@@ -78,15 +78,15 @@ function CandidatureTable({ user }) {
             {candidatures &&
               candidatures.map((candidature) => (
                 <tr>
-                  <td className="text-center border-b-2 hover:text-darkPink text-xs md:text-base lg:text-lg hover:underline text-black">
+                  <td className="text-center border-b-2 hover:text-darkPink text-xs md:text-lg lg:text-lg hover:underline text-black">
                     <Link to={`/offres/${candidature.offre_id}`}>
                       {candidature.poste}
                     </Link>
                   </td>
-                  <td className="text-center border-b-2 text-xs md:text-base lg:text-lg text-black">
+                  <td className="text-center border-b-2 text-xs md:text-lg lg:text-lg text-black">
                     {candidature.localisation}
                   </td>
-                  <td className="text-center border-b-2 text-xs md:text-base lg:text-lg text-black">
+                  <td className="text-center border-b-2 text-xs md:text-lg lg:text-lg text-black">
                     {candidature.dateCandidature.split("T").shift()}
                   </td>
                   <td className="text-center border-b-2 text-xs text-black">
