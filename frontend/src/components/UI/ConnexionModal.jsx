@@ -147,22 +147,22 @@ function ConnexionModal({ visible, onclose }) {
               placeholder="Mot de passe"
               onChange={(e) => handleConnexion(e.target.name, e.target.value)}
             />
+            <div className="flex flex-col items-center mt-4 mb-6">
+              <button
+                type="submit"
+                className="rounded-xl px-6 py-2 bg-darkPink text-white hover:bg-white hover:text-darkPink hover:border-2 hover:scale-110 text-xl"
+              >
+                Valider
+              </button>
+              <button
+                type="button"
+                className="px-6 mt-3 text-darkPink text-md hover:underline"
+                onClick={onclose}
+              >
+                Retour
+              </button>
+            </div>
           </form>
-          <div className="flex flex-col items-center mb-6">
-            <button
-              type="submit"
-              className="rounded-xl px-6 py-2 bg-darkPink text-white hover:bg-white hover:text-darkPink hover:border-2 hover:scale-110 text-xl"
-            >
-              Valider
-            </button>
-            <button
-              type="button"
-              className="px-6 mt-3 text-darkPink text-md hover:underline"
-              onClick={onclose}
-            >
-              Retour
-            </button>
-          </div>
         </div>
       )}
       {!confirmConsulant && (
