@@ -26,7 +26,9 @@ function ConsultantSelect({ selectConsultants, consultants }) {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Consultant</option>
+            <option selected value={0}>
+              Consultant
+            </option>
             {consultants.map((consultant) => (
               <option key={consultant.id} value={consultant.id}>
                 {consultant.nom_consultant}
