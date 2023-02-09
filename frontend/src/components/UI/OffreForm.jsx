@@ -76,8 +76,12 @@ function OffreForm() {
   };
 
   const selectJobs = (id) => {
-    const offs = jobs.find((e) => e.id === parseInt(id, 10));
-    setOffre(offs);
+    if (parseInt(id, 10) !== 0) {
+      const offs = jobs.find((e) => e.id === parseInt(id, 10));
+      setOffre(offs);
+    } else {
+      setOffre(offreType);
+    }
   };
 
   // // Mettre à jour une offre
