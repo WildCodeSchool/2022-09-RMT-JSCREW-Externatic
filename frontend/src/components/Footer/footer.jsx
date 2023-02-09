@@ -5,7 +5,7 @@ import twitter from "@assets/twitter.png";
 function Footer() {
   return (
     <div className="bg-pink text-white">
-      <div className="flex flex-col md:flex-row p-10">
+      <div className="flex flex-col md:flex-row p-10 md:pb-0">
         <div className="flex flex-col md:w-1/3">
           <h1 className="font-bold text-xl mb-2">
             Externatic, cabinet de recrutement informatique
@@ -53,7 +53,7 @@ function Footer() {
         </div>
       </div>
       <p className="text-center pb-4">
-        Copyright - Externatic 2022 - Tous droits réservés
+        Copyright - Externatic 2023 - Tous droits réservés
       </p>
     </div>
   );

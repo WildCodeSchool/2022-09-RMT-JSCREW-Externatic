@@ -120,14 +120,16 @@ function ConnexionModal({ visible, onclose }) {
     <div className="fixed z-40 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center">
       {confirmConsulant && (
         <div className="bg-white w-5/6 lg:w-1/4 rounded-2xl shadow-md border-2 border-darkPink">
-          <h2 className="text-center text-4xl font-bold mt-4">Connexion</h2>
+          <h2 className="text-center text-black text-4xl font-bold mt-4">
+            Connexion
+          </h2>
           <form
             onSubmit={(e) => sendForm(e)}
-            className="bg-white   px-8 pt-6 pb-8 mb-4"
+            className="bg-white px-6 pt-6 pb-8"
           >
             <input
               required
-              className="shadow appearance-none border rounded-full w-full bg-grey py-2 px-3 text-black placeholder-black"
+              className="shadow appearance-none border rounded-xl w-full bg-grey py-2 px-3 text-black placeholder-black"
               id="Email"
               name="utilisateur"
               value={connexion.utilisateur}
@@ -137,7 +139,7 @@ function ConnexionModal({ visible, onclose }) {
             />
             <input
               required
-              className="shadow appearance-none border rounded-full w-full mt-4 py-2 bg-grey px-3 text-black placeholder-black"
+              className="shadow appearance-none border rounded-xl w-full mt-4 py-2 bg-grey px-3 text-black placeholder-black"
               id="Mot de passe"
               name="mot_de_passe"
               value={connexion.mot_de_passe}
@@ -145,22 +147,22 @@ function ConnexionModal({ visible, onclose }) {
               placeholder="Mot de passe"
               onChange={(e) => handleConnexion(e.target.name, e.target.value)}
             />
-            <div className="mt-4 flex justify-around mb-6">
-              <button
-                type="button"
-                className="rounded-full px-6 border-2 border-darkPink text-darkPink text-2xl"
-                onClick={onclose}
-              >
-                Retour
-              </button>
-              <button
-                type="submit"
-                className="rounded-full px-6 bg-darkPink text-white hover:bg-white hover:text-darkPink text-2xl"
-              >
-                Valider
-              </button>
-            </div>
           </form>
+          <div className="flex flex-col items-center mb-6">
+            <button
+              type="submit"
+              className="rounded-xl px-6 py-2 bg-darkPink text-white hover:bg-white hover:text-darkPink hover:border-2 hover:scale-110 text-xl"
+            >
+              Valider
+            </button>
+            <button
+              type="button"
+              className="px-6 mt-3 text-darkPink text-md hover:underline"
+              onClick={onclose}
+            >
+              Retour
+            </button>
+          </div>
         </div>
       )}
       {!confirmConsulant && (
