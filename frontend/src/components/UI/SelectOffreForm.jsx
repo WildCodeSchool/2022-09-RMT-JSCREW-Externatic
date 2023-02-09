@@ -26,7 +26,9 @@ function SelectOffreForm({ selectJobs, jobs }) {
               focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             aria-label="Default select example"
           >
-            <option selected>Les Offres</option>
+            <option selected value={0}>
+              Les Offres
+            </option>
             {jobs.map((offre) => (
               <option key={offre.id} value={offre.id}>
                 {offre.poste}

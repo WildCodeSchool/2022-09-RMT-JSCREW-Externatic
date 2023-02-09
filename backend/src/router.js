@@ -25,7 +25,8 @@ const storage = multer.diskStorage({
     const filename = fileArray.join("_").split(" ").join("_");
     cb(
       null,
-      `${file.fieldname === "cv" ? "/cv/" : "/avatar/"
+      `${
+        file.fieldname === "cv" ? "/cv/" : "/avatar/"
       }${`${filename}_${Date.now()}.${ext}`}`
     );
   },
