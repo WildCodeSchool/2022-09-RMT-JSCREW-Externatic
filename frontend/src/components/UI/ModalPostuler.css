@@ -17,9 +17,11 @@ button span {
 }
 
 .annulationpostuler .text {
+  position: relative;
   transform: translateX(35px);
   color: white;
   font-weight: bold;
+  padding-bottom: 7px;
 }
 
 .annulationpostuler .icon {
@@ -80,9 +82,11 @@ button span {
 }
 
 .validationpostuler .text {
+  position: relative;
   transform: translateX(35px);
   color: white;
   font-weight: bold;
+  padding-bottom: 7px;
 }
 
 .validationpostuler .icon {
