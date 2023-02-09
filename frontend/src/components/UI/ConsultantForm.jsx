@@ -38,8 +38,12 @@ function FormConsultants() {
   };
 
   const selectConsultants = (id) => {
-    const consults = admin.find((e) => e.id === parseInt(id, 10));
-    setConsult(consults);
+    if (parseInt(id, 10) !== 0) {
+      const consults = admin.find((e) => e.id === parseInt(id, 10));
+      setConsult(consults);
+    } else {
+      setConsult(consultType);
+    }
   };
 
   const sendForm = (e) => {
