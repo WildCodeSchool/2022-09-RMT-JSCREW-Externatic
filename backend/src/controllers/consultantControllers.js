@@ -64,7 +64,7 @@ const edit = (req, res) => {
     res.status(422).send(error);
   } else {
     models.consultant
-      .update(consultant, parseInt(req.params.id, 10))
+      .update(consultant)
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);

@@ -9,7 +9,7 @@ const validate = (data) => {
     telephone: Joi.string().min(3).max(255).presence("required"),
     email: Joi.string().presence("required"),
     LinkedIn: Joi.string().min(2).max(255).presence("optional"),
-    connexion_id: Joi.number().min(3).max(30).presence("optional"),
+    connexion_id: Joi.number().presence("optional"),
   }).validate(data, { aborEarly: false }).error;
 };
 module.exports = validate;

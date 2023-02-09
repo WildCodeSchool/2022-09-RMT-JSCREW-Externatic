@@ -31,11 +31,11 @@ class ConsultantManager extends AbstractManager {
     );
   }
 
-  update(consultant, id) {
-    return this.connection.query(
-      `update ${this.table} set ? where connexionId = ?`,
-      [consultant, id]
-    );
+  update(consultant) {
+    return this.connection.query(`update ${this.table} set ? where id = ?`, [
+      consultant,
+      consultant.id,
+    ]);
   }
 }
 
