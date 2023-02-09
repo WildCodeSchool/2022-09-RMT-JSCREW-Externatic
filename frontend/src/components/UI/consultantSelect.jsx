@@ -1,13 +1,13 @@
 import React from "react";
 
-function SelectOffreForm({ selectJobs, jobs }) {
+function ConsultantSelect({ selectConsultants, consultants }) {
   return (
     <div>
       <div className=" mb-3 flex justify-left">
         <div className="mb-3 xl:w-96">
           <select
             onChange={(e) => {
-              selectJobs(e.target.value);
+              selectConsultants(e.target.value);
             }}
             className="form-select appearance-none
               block
@@ -27,11 +27,11 @@ function SelectOffreForm({ selectJobs, jobs }) {
             aria-label="Default select example"
           >
             <option selected value={0}>
-              Les Offres
+              Consultant
             </option>
-            {jobs.map((offre) => (
-              <option key={offre.id} value={offre.id}>
-                {offre.poste}
+            {consultants.map((consultant) => (
+              <option key={consultant.id} value={consultant.id}>
+                {consultant.nom_consultant}
               </option>
             ))}
           </select>
@@ -41,4 +41,4 @@ function SelectOffreForm({ selectJobs, jobs }) {
   );
 }
 
-export default SelectOffreForm;
+export default ConsultantSelect;

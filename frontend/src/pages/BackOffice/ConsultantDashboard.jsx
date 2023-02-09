@@ -50,7 +50,7 @@ export default function ConsultantDashboard() {
     }
   };
   return (
-    <div className="flex flex-col items-center w-full h-screen ">
+    <div className="flex flex-col items-center w-full h-full ">
       <CardStats />
       <div className="mt-4">
         <h1 className="text-center text-2xl font-bold text-black mb-4">
@@ -117,8 +117,12 @@ export default function ConsultantDashboard() {
                     </td>
                     <td className="text-center border bg-white border-slate-600 text-xs">
                       <a
-                        href={`${candidature.cv}`}
+                        href={`${import.meta.env.VITE_BACKEND_URL}/${
+                          candidature.cv
+                        }`}
                         className="hover:text-darkPink hover:underline"
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         CV
                       </a>

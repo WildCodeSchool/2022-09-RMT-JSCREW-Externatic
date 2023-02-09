@@ -15,6 +15,7 @@ const validateEntreprise = (data) => {
     nombre_employes: Joi.number().integer().min(1).presence("required"),
     domaine_id: Joi.number().presence("required"),
     dateInscription: Joi.string().min(10).presence("optional"),
+    consultant_id: Joi.number().presence("optional"),
   }).validate(data, { aborEarly: false }).error;
 };
 module.exports = validateEntreprise;

@@ -147,11 +147,11 @@ function Profil() {
         />
         <link rel="icon" type="image/png" href={icon4} />
       </Helmet>
-      <div className="flex flex-col items-center mt-8 lg:flex-row lg:mx-6 lg:items-start">
+      <div className="flex flex-col items-center mt-8 lg:flex-row lg:mx-14 lg:ml-20 lg:items-start">
         <form
           encType="multipart/form-data"
           onSubmit={(e) => sendForm(e)}
-          className="w-11/12 bg-white border-2 border-black max-w-lg my-5 p-5 rounded-2xl drop-shadow-2xl"
+          className="w-11/12 bg-white border-2 border-black max-w-lg my-5 p-5 rounded-2xl drop-shadow-2xl md:text-xl"
         >
           <div className="flex flex-row items-center md:mb-6">
             <label className="container flex justify-center mt-3 mb-3 md:mb-0 hover:cursor-pointer">

@@ -40,7 +40,7 @@ export default function CardStats() {
   return (
     <div className="container mx-auto mt-12 ">
       <div className="ml-3 grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3 ">
-        <div className="w-full text-center px-4 py-5 bg-white rounded-lg shadow transform transition duration-500 hover:scale-110">
+        <div className="w-full text-center px-4 py-5 bg-white rounded-lg shadow transform transition duration-500">
           <svg
             fill="none"
             stroke="currentColor"
@@ -61,7 +61,7 @@ export default function CardStats() {
             Total Candidats
           </div>
         </div>
-        <div className="w-full text-center px-4 py-5 bg-white rounded-lg shadow transition duration-500 hover:scale-110">
+        <div className="w-full text-center px-4 py-5 bg-white rounded-lg shadow transition duration-500">
           <svg
             fill="none"
             viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ export default function CardStats() {
             Total Entreprises
           </div>
         </div>
-        <div className="w-full text-center px-4 py-5 bg-white rounded-lg shadow transition duration-500 hover:scale-110">
+        <div className="w-full text-center px-4 py-5 bg-white rounded-lg shadow transition duration-500">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

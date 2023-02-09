@@ -3,11 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NosOffres from "@pages/Offres/NosOffres";
 import Profil from "@pages/Profil/Profil";
 import Quisommesnous from "@pages/quisommesnous/qui";
+import Contact from "@pages/Contact/Contact";
+import Page404 from "@pages/Page404";
 import Home from "@pages/Home";
 import UneOffre from "@pages/UneOffre/UneOffre";
 import AdminEntreprise from "@pages/BackOffice/AdminEntreprise";
 import AdminOffres from "@pages/BackOffice/AdminOffres";
+import AdminConsultant from "@pages/BackOffice/AdminConsultants";
 import ConsultantDashboard from "@pages/BackOffice/ConsultantDashboard";
+
 import Public from "@pages/Layout/Public";
 import PublicCandidat from "@pages/Layout/PublicCandidat";
 import Private from "@pages/Layout/Private";
@@ -25,11 +29,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/offres" element={<NosOffres />} />
             <Route path="/offres/:id" element={<UneOffre />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/profil" element={<Profil />} />
+            <Route path="/profil/:id" element={<Profil />} />
             <Route path="" element={<PublicCandidat />}>
               <Route path="/profil" element={<Profil />} />
               <Route path="/profil/:id" element={<Profil />} />
             </Route>
             <Route path="/infos" element={<Quisommesnous />} />
+            <Route path="*" element={<Page404 />} />
           </Route>
           <Route path="/dashboard/" element={<Private />}>
             <Route path="offres" element={<AdminOffres />} />
@@ -40,6 +48,7 @@ function App() {
               />
             </Route>
             <Route path="admin" element={<PrivateAdmin />}>
+              <Route path="consultants" element={<AdminConsultant />} />
               <Route path="entreprises" element={<AdminEntreprise />} />
             </Route>
           </Route>
